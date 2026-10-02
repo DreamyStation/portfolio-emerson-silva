@@ -32,21 +32,21 @@ h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",sans-serif;font-weight:800;
 .sel{display:inline-block;font-weight:800;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;background:var(--mu2);border:2px solid var(--ink);padding:5px 14px;border-radius:999px;margin-bottom:20px}
 /* herói */
 .hero{position:relative;overflow:hidden;min-height:clamp(560px,46vw,700px);display:flex;align-items:center;padding-block:clamp(40px,6vw,80px)}
-.hero .wrap{z-index:2}.hero .txt{max-width:min(600px,calc(54vw - var(--m)))}
-.hero h1{font-size:clamp(2.5rem,5.2vw,4.5rem)}.hero h1 span{color:var(--ac)}
+.hero .wrap{z-index:2}.hero .txt{max-width:min(540px,calc(52vw - var(--m)))}
+.hero h1{font-size:clamp(2.5rem,5.2vw,4.5rem);text-wrap:balance}.hero h1 span{color:var(--ac)}
 .hero p{max-width:46ch;font-size:1.12rem;margin:22px 0 28px;color:var(--mu)}
 .acoes{display:flex;gap:14px;flex-wrap:wrap}
 .num{display:flex;gap:clamp(18px,3vw,40px);flex-wrap:wrap;margin-top:38px;padding-top:24px;border-top:2px solid var(--ink)}
 .num b{font-size:2.8rem;line-height:1;display:block;padding-top:6px;color:var(--ac)}.num small{color:var(--mu);font-weight:500}
-.palco{position:absolute;right:0;top:0;bottom:0;width:48vw;z-index:1}
-.palco .sun{position:absolute;left:50%;top:54%;width:min(46vw,720px);aspect-ratio:1;transform:translate(-50%,-50%)}
-.palco .dots{position:absolute;right:0;top:0;width:300px;height:300px;transform:scaleX(-1)}
+.palco{position:absolute;right:max(0px,calc(50% - 600px));top:0;bottom:0;width:min(46vw,620px);z-index:1}
+.palco .sun{position:absolute;left:50%;top:54%;width:min(46vw,640px);aspect-ratio:1;transform:translate(-50%,-50%)}
+.hero>.dots{position:absolute;right:0;top:0;width:320px;height:320px;transform:scaleX(-1);z-index:0}
 .palco .m{position:absolute;left:52%;bottom:0;transform:translateX(-50%);height:90%;width:auto;max-width:none}
 .divd{display:block;width:min(86%,780px);height:120px;margin:0 auto;--u:url(img/des_divisor.png);--c:var(--ink);opacity:.9;-webkit-mask-size:contain;mask-size:contain}
 body::before,body::after{content:"";position:fixed;top:0;bottom:0;width:70px;background:var(--ink);-webkit-mask:url(img/des_regua.png) center top/70px auto repeat-y;mask:url(img/des_regua.png) center top/70px auto repeat-y;opacity:.12;pointer-events:none;z-index:0}
-body::before{left:max(0px,calc(50% - 690px))}body::after{right:max(0px,calc(50% - 690px));transform:scaleX(-1)}
+body::before{left:0}body::after{right:0;transform:scaleX(-1)}
 main,.contato,footer,.topo{position:relative;z-index:1}
-@media(max-width:1400px){body::before,body::after{display:none}}
+@media(max-width:1380px){body::before,body::after{display:none}}
 section.painel{padding-block:clamp(36px,6vw,80px)}
 .cab{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px}
 .cab h2{font-size:clamp(2.3rem,6vw,4.2rem)}.cab p{max-width:56ch;margin:14px 0 0;color:var(--mu)}
@@ -101,7 +101,7 @@ dialog::backdrop{background:rgba(42,31,26,.78);backdrop-filter:blur(4px)}
 .mod h3{font-size:clamp(2.1rem,4.6vw,3.3rem)}.mod .tp{font-weight:700;margin:6px 0 12px;color:var(--mu)}.mod .ds{max-width:62ch;color:var(--mu)}
 .tags{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px}.tags span{border:2px solid var(--ink);background:var(--bg2);border-radius:999px;padding:3px 12px;font-size:.85rem;font-weight:700}
 .gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px;margin:18px 0}.gal figure{margin:0;background:#fff;border:2px solid var(--ink);border-radius:16px;overflow:hidden}.gal figcaption{padding:10px 14px;font-size:.88rem;font-weight:700;border-top:2px solid var(--ink);background:var(--bg2)}
-@media(max-width:860px){.hist,.contato .wrap{grid-template-columns:1fr}.foto{position:static;max-width:380px;margin-inline:auto}.topo .wrap{flex-wrap:wrap}.abas{order:3;width:100%;justify-content:space-between}.aba{flex:1;padding-inline:6px;font-size:.85rem}.cab .mini{display:none}.hero{display:block;padding-block:0 40px}.palco{position:relative;width:100%;height:360px;margin-bottom:24px}.palco .sun{width:min(90vw,420px)}.hero .txt{max-width:none}.espec{padding-right:0}.espec .dd{display:none}}
+@media(max-width:860px){.hist,.contato .wrap{grid-template-columns:1fr}.foto{position:static;max-width:380px;margin-inline:auto}.topo .wrap{flex-wrap:wrap}.abas{order:3;width:100%;justify-content:space-between}.aba{flex:1;padding-inline:6px;font-size:.85rem}.cab .mini{display:none}.hero{display:block;padding-block:0 40px}.palco{position:relative;right:auto;width:100%;height:300px;margin-bottom:20px}.palco .sun{width:min(84vw,360px)}.hero .txt{max-width:none}.espec{padding-right:0}.espec .dd{display:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style></head><body>
 <header class="topo"><div class="wrap"><a class="marca" href="#logo" data-vai="logo"><span class="cabeca"><img src="img/mascote_cabeca.png" alt=""></span>Emerson Silva</a>
@@ -111,7 +111,7 @@ dialog::backdrop{background:rgba(42,31,26,.78);backdrop-filter:blur(4px)}
 <button class="aba" role="tab" data-p="historia" aria-selected="false">Minha história</button></nav>
 <a class="btn" href="#contato">Contato</a></div></header>
 <main>
-<section class="hero" id="hero"><div class="palco" aria-hidden="true"><span class="sun t" style="--u:url(img/vint_sunburst.png);--c:var(--ray)" aria-hidden="true"></span><span class="dots t" style="--u:url(img/vint_meiotom.png);--c:var(--ray)"></span><span class="dd t " style="--u:url(img/doodles/a02.png);--c:var(--ac);width:140px;height:140px;left:0%;top:9%;transform:rotate(-8deg)" aria-hidden="true"></span><span class="dd t " style="--u:url(img/doodles/a03.png);--c:var(--ink);width:120px;height:120px;right:1%;top:7%;transform:rotate(12deg)" aria-hidden="true"></span><span class="dd t " style="--u:url(img/doodles/b03.png);--c:var(--ink);width:110px;height:110px;left:3%;bottom:13%;transform:rotate(-10deg)" aria-hidden="true"></span><span class="dd t " style="--u:url(img/doodles/a01.png);--c:var(--ac);width:100px;height:100px;right:0%;bottom:24%;transform:rotate(14deg)" aria-hidden="true"></span><span class="dd t " style="--u:url(img/doodles/a04.png);--c:var(--ink);width:100px;height:100px;left:9%;top:46%;transform:rotate(18deg)" aria-hidden="true"></span><img class="m" src="img/mascote_acenando.png" alt=""></div><div class="wrap"><div class="txt">
+<section class="hero" id="hero"><span class="dots t" style="--u:url(img/vint_meiotom.png);--c:var(--ray)" aria-hidden="true"></span><div class="palco" aria-hidden="true"><span class="sun t" style="--u:url(img/vint_sunburst.png);--c:var(--ray)" aria-hidden="true"></span><span class="dd t " style="--u:url(img/doodles/a02.png);--c:var(--ac);width:140px;height:140px;left:0%;top:9%;transform:rotate(-8deg)" aria-hidden="true"></span><span class="dd t " style="--u:url(img/doodles/a03.png);--c:var(--ink);width:120px;height:120px;right:1%;top:7%;transform:rotate(12deg)" aria-hidden="true"></span><span class="dd t " style="--u:url(img/doodles/b03.png);--c:var(--ink);width:110px;height:110px;left:3%;bottom:13%;transform:rotate(-10deg)" aria-hidden="true"></span><span class="dd t " style="--u:url(img/doodles/a01.png);--c:var(--ac);width:100px;height:100px;right:0%;bottom:24%;transform:rotate(14deg)" aria-hidden="true"></span><span class="dd t " style="--u:url(img/doodles/a04.png);--c:var(--ink);width:100px;height:100px;left:9%;top:46%;transform:rotate(18deg)" aria-hidden="true"></span><img class="m" src="img/mascote_acenando.png" alt=""></div><div class="wrap"><div class="txt">
 <span class="sel">Designer gráfico e ilustrador · Rio de Janeiro</span>
 <h1>Marcas que se <span>reconhecem</span> antes de serem lidas.</h1>
 <p>Crio identidades visuais, embalagens e sites de uma tela para pequenos negócios. Atendo o Brasil todo, online.</p>
