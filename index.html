@@ -128,6 +128,7 @@ section.painel{padding-block:clamp(36px,6vw,80px)}
 .ico img{image-rendering:pixelated;width:calc(var(--w)*var(--k)*1px);height:auto}
 @media(max-width:820px){.caps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.caps{grid-template-columns:1fr}}
+@media(max-width:560px){.topo .wrap{gap:8px 10px}.marca{font-size:1.3rem;gap:6px}.cabeca{width:38px;height:38px}.topo .btn{min-height:40px;padding:6px 16px;font-size:.9rem;box-shadow:3px 3px 0 var(--ac)}.abas{box-shadow:2px 2px 0 var(--ink)}}
 /* contato */
 .contato{position:relative;background:var(--mu2);border-top:2px solid var(--ink);padding-block:clamp(44px,7vw,90px);overflow:hidden}
 .contato .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
@@ -145,7 +146,7 @@ dialog::backdrop{background:rgba(42,31,26,.78);backdrop-filter:blur(4px)}
 .mod h3{font-size:clamp(2.1rem,4.6vw,3.3rem)}.mod .tp{font-weight:700;margin:6px 0 12px;color:var(--mu)}.mod .ds{max-width:62ch;color:var(--mu)}
 .tags{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px}.tags span{border:2px solid var(--ink);background:var(--bg2);border-radius:999px;padding:3px 12px;font-size:.85rem;font-weight:700}
 .gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px;margin:18px 0}.gal figure{margin:0;background:#fff;border:2px solid var(--ink);border-radius:16px;overflow:hidden}.gal figcaption{padding:10px 14px;font-size:.88rem;font-weight:700;border-top:2px solid var(--ink);background:var(--bg2)}
-@media(max-width:860px){.hist,.contato .wrap{grid-template-columns:1fr}.foto{position:static;max-width:380px;margin-inline:auto}.topo .wrap{flex-wrap:wrap}.abas{order:3;width:100%;justify-content:space-between}.aba{flex:1;padding-inline:6px;font-size:.85rem}.cab .mini{display:none}.hero{display:block;padding-block:0 40px}.palco{position:relative;right:auto;width:100%;height:300px;margin-bottom:20px;overflow:hidden}.palco .sun{width:min(84vw,360px)}.hero .txt{max-width:none}.espec{padding-right:0}.espec .dd{display:none}}
+@media(max-width:860px){.hist,.contato .wrap{grid-template-columns:1fr}.foto{position:static;max-width:380px;margin-inline:auto}.topo .wrap{flex-wrap:wrap}.abas{order:3;width:100%;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;-webkit-mask:linear-gradient(90deg,#000 88%,transparent);mask:linear-gradient(90deg,#000 88%,transparent)}.abas::-webkit-scrollbar{display:none}.aba{flex:none;white-space:nowrap;padding:8px 16px;font-size:.88rem;scroll-snap-align:center}.cab .mini{display:none}.hero{display:block;padding-block:0 40px}.palco{position:relative;right:auto;width:100%;height:300px;margin-bottom:20px;overflow:hidden}.palco .sun{width:min(84vw,360px)}.hero .txt{max-width:none}.espec{padding-right:0}.espec .dd{display:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style></head><body>
 <header class="topo"><div class="wrap"><a class="marca" href="#logo" data-vai="logo"><span class="cabeca"><img src="img/mascote_cabeca.png" alt=""></span>Emerson Silva</a>
@@ -216,7 +217,7 @@ const P=[{"id": "comendobem", "nome": "Comendo Bem", "tag": "Cliente real", "tip
 const abas=[...document.querySelectorAll('.aba')];
 function vai(id,rolar){if(!painel[id])id='logo';abas.forEach(a=>a.setAttribute('aria-selected',a.dataset.p===id));
  Object.entries(painel).forEach(([k,v])=>document.getElementById(v).hidden=(k!==id));document.getElementById('hero').hidden=(id!=='logo');
- history.replaceState(null,'','#'+id);document.title=({logo:'Design de logo',['ui-ux']:'UI e UX',ilustracoes:'Ilustrações',peregrin:'Peregrin',historia:'Minha história'})[id]+' · Emerson Silva';
+ document.body.dataset.tema=id;history.replaceState(null,'','#'+id);{const ab=abas.find(a=>a.dataset.p===id),bx=document.getElementById('abas-topo');if(ab&&bx&&bx.scrollWidth>bx.clientWidth)bx.scrollTo({left:ab.offsetLeft-(bx.clientWidth-ab.offsetWidth)/2,behavior:'smooth'})}document.title=({logo:'Design de logo',['ui-ux']:'UI e UX',ilustracoes:'Ilustrações',peregrin:'Peregrin',historia:'Minha história'})[id]+' · Emerson Silva';
  if(rolar)document.getElementById('abas-topo').scrollIntoView({behavior:'smooth',block:'start'})}
 abas.forEach(a=>a.onclick=()=>vai(a.dataset.p,true));
 document.querySelectorAll('[data-vai]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();vai(a.dataset.vai,true)}));
