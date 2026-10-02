@@ -31,7 +31,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",sans-serif;font-weight:800;
 .btn.sec{background:var(--bg2);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}.btn.sec:hover{box-shadow:6px 6px 0 var(--ink)}
 .sel{display:inline-block;font-weight:800;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;background:var(--mu2);border:2px solid var(--ink);padding:5px 14px;border-radius:999px;margin-bottom:20px}
 /* herói */
-.hero{position:relative;overflow:hidden;min-height:clamp(560px,46vw,700px);display:flex;align-items:center;padding-block:clamp(40px,6vw,80px) clamp(64px,8vw,130px)}
+.hero{position:relative;overflow:hidden;min-height:clamp(500px,37vw,600px);display:flex;align-items:center;padding-block:clamp(40px,6vw,80px) clamp(64px,8vw,130px)}
 .hero .wrap{z-index:2}.hero .txt{max-width:min(540px,calc(52vw - var(--m)))}
 .hero h1{font-size:clamp(2.5rem,5.2vw,4.5rem);text-wrap:balance}.hero h1 span{color:var(--ac)}
 .hero p{max-width:46ch;font-size:1.12rem;margin:22px 0 28px;color:var(--mu)}
@@ -39,7 +39,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",sans-serif;font-weight:800;
 .num{display:flex;gap:clamp(18px,3vw,40px);flex-wrap:wrap;margin-top:38px;padding-top:24px;border-top:2px solid var(--ink)}
 .num b{font-size:2.8rem;line-height:1;display:block;padding-top:6px;color:var(--ac)}.num small{color:var(--mu);font-weight:500}
 .palco{position:absolute;right:max(0px,calc(50% - 600px));top:0;bottom:0;width:min(46vw,620px);z-index:1;display:flex;justify-content:center;align-items:flex-end}
-.palco .sun{position:absolute;left:50%;top:54%;width:min(46vw,640px);aspect-ratio:1;transform:translate(-50%,-50%);z-index:0}
+.palco .sun{position:absolute;left:50%;top:54%;width:min(46vw,640px);aspect-ratio:1;translate:-50% -50%;z-index:0}
 .hero>.dots{position:absolute;right:0;top:0;width:320px;height:320px;transform:scaleX(-1);z-index:0}
 .palco .m{position:relative;z-index:1;height:86%;width:auto;max-width:none;display:block}
 .faixa-w{overflow:hidden;padding-block:18px;margin-top:34px;position:relative;z-index:2}
@@ -51,7 +51,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",sans-serif;font-weight:800;
 .trilho .ic{display:block;width:52px;height:52px;margin:0 16px;background:var(--mu2);-webkit-mask:var(--u) center/contain no-repeat;mask:var(--u) center/contain no-repeat;flex:none}
 .faixa.b .ic{background:var(--bg)}
 @keyframes corre{to{transform:translateX(-50%)}}
-.sun{animation:gira 70s linear infinite;will-change:rotate}@keyframes gira{to{rotate:360deg}}
+.sun{animation:giraSol 60s linear infinite;transform-origin:50% 50%}@keyframes giraSol{from{rotate:0deg}to{rotate:360deg}}
 .divd{display:block;width:min(86%,780px);height:120px;margin:0 auto;--u:url(img/des_divisor.png);--c:var(--ink);opacity:.9;-webkit-mask-size:contain;mask-size:contain}
 body::before,body::after{content:"";position:fixed;top:0;bottom:0;width:70px;background:var(--ink);-webkit-mask:url(img/des_regua.png) center top/70px auto repeat-y;mask:url(img/des_regua.png) center top/70px auto repeat-y;opacity:.12;pointer-events:none;z-index:0}
 body::before{left:0}body::after{right:0;transform:scaleX(-1)}
