@@ -27,7 +27,23 @@
     '@keyframes popIn{0%{opacity:0;transform:scale(.55) translateY(18px)}55%{opacity:1;transform:scale(1.07) translateY(-3px)}78%{transform:scale(.98) translateY(0)}100%{opacity:1;transform:scale(1) translateY(0)}}' +
     '@keyframes popOut{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.7) translateY(14px)}}' +
     '@media (prefers-reduced-motion:reduce){[data-pop]{opacity:1!important;transform:none!important;animation:none!important}}';
+  if (cfg.mode === 'fade') {
+    css.textContent =
+      '[data-pop]{opacity:0;will-change:opacity}' +
+      '[data-pop].pop-in{animation:fadeIn .8s ease both;animation-delay:var(--pd,0ms)}' +
+      '[data-pop].pop-out{animation:fadeOut .35s ease both}' +
+      '@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeOut{from{opacity:1}to{opacity:0}}' +
+      '@media (prefers-reduced-motion:reduce){[data-pop]{opacity:1!important;animation:none!important}}';
+  }
   document.head.appendChild(css);
+  // clique com pop (opção click: seletor): usa a Web Animations API na propriedade scale, sem tocar nas animações de entrada
+  if (cfg.click) {
+    document.addEventListener('pointerdown', function (e) {
+      var el = e.target.closest && e.target.closest(cfg.click);
+      if (!el || !el.animate) return;
+      el.animate([{ scale: 1 }, { scale: .9 }, { scale: 1.07 }, { scale: 1 }], { duration: 420, easing: 'cubic-bezier(.2,1.4,.4,1)' });
+    }, true);
+  }
 
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) {
