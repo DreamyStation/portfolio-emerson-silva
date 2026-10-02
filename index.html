@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Emerson Silva · Designer gráfico e ilustrador</title>
+<meta name="description" content="Portfólio de Emerson Silva, designer gráfico e ilustrador no Rio de Janeiro: identidades visuais, logotipos, embalagens e sites de uma tela.">
+<meta name="theme-color" content="#E6DDF5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23D62D24'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='30' text-anchor='middle' fill='%23fff'%3EES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap">
+<style>
+:root{--bg:#E6DDF5;--bg2:#F5F0FC;--bg3:#D9CCEF;--tx:#2B2142;--mu:#62577F;--ac:#D62D24;--ac2:#B9A4E8;--ln:rgba(43,33,66,.16);--r:22px;--m:clamp(18px,5vw,56px)}
+[hidden]{display:none!important}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.6 "DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit}button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px;border-radius:8px}
+h1,h2,h3{font-family:"Syne",sans-serif;font-weight:800;line-height:1.02;margin:0;letter-spacing:-.02em}
+.wrap{width:min(100% - 2*var(--m),1180px);margin-inline:auto}
+.topo{position:sticky;top:0;z-index:40;background:rgba(230,221,245,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--ln)}
+.topo .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.marca{font:800 1.15rem "Syne";text-decoration:none;display:flex;align-items:center;gap:10px}.marca i{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--ac);color:#fff;font-style:normal;font-size:.95rem}
+.abas{display:flex;gap:6px;background:var(--bg2);padding:5px;border-radius:999px;border:1px solid var(--ln)}
+.aba{border:0;background:transparent;padding:9px 18px;border-radius:999px;font-weight:700;font-size:.95rem;color:var(--mu);transition:background .25s,color .25s}
+.aba[aria-selected=true]{background:var(--ac);color:#fff}.aba:hover{color:var(--tx)}.aba[aria-selected=true]:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:10px 22px;border-radius:999px;border:0;background:var(--ac);color:#fff;font-weight:800;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 6px 0 #9C1F19}
+.btn:hover{transform:translateY(-2px) scale(1.03)}.btn:active{transform:translateY(3px);box-shadow:0 2px 0 #9C1F19}.btn.sec{background:transparent;color:var(--tx);border:2px solid var(--tx);box-shadow:none}
+.hero{position:relative;padding-block:clamp(48px,9vw,120px) clamp(36px,6vw,80px);overflow:hidden}
+.hero .wrap>*{min-width:0}.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,5vw,64px);align-items:center}
+.sel{display:inline-block;font-weight:700;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ac);margin-bottom:18px}
+.hero h1{font-size:clamp(2.3rem,5.6vw,4.3rem);line-height:1.08}.hero h1 span{color:var(--ac)}
+.hero p{max-width:46ch;color:var(--mu);font-size:1.15rem;margin:22px 0 28px}
+.hero .acoes{display:flex;gap:12px;flex-wrap:wrap}
+.colagem{position:relative;aspect-ratio:1/1;max-width:480px;margin-inline:auto;width:100%}
+.colagem img{position:absolute;width:62%;border-radius:18px;border:1px solid var(--ln);box-shadow:0 24px 50px rgba(43,33,66,.28);object-fit:cover;aspect-ratio:1616/1264}
+.colagem img:nth-child(1){left:0;top:4%;rotate:-7deg}.colagem img:nth-child(2){right:0;top:28%;rotate:5deg}.colagem img:nth-child(3){left:12%;bottom:0;rotate:-2deg}
+.num{display:flex;gap:clamp(18px,4vw,48px);flex-wrap:wrap;margin-top:34px}.num b{font:800 2.2rem "Syne";color:var(--tx);display:block;line-height:1}.num small{color:var(--mu)}
+section.painel{padding-block:clamp(36px,6vw,84px)}
+.cab{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.cab h2{font-size:clamp(2rem,5.2vw,3.6rem)}.cab p{max-width:48ch;color:var(--mu);margin:10px 0 0}
+.filtros{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid var(--ln);background:transparent;padding:8px 16px;border-radius:999px;font-weight:700;font-size:.9rem;color:var(--mu);transition:all .2s}
+.chip[aria-pressed=true]{background:var(--tx);color:#fff;border-color:var(--tx)}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:22px}
+.proj{background:var(--bg2);border:1px solid var(--ln);border-radius:var(--r);overflow:hidden;cursor:pointer;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,1.2,.4,1),border-color .2s}
+.proj:hover{transform:translateY(-6px) scale(1.01);border-color:var(--ac)}
+.proj .cap{aspect-ratio:1616/1264;overflow:hidden;background:var(--bg3)}.proj .cap img{width:100%;height:100%;object-fit:cover;transition:transform .6s}.proj:hover .cap img{transform:scale(1.06)}
+.proj .txt{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.etq{align-self:flex-start;font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:rgba(214,45,36,.12);color:#B4221B}
+.proj h3{font-size:1.7rem}.proj p{margin:0;color:var(--mu);font-size:.98rem}.proj .tp{color:var(--tx);font-weight:700;font-size:.92rem}
+.mais{margin-top:auto;padding-top:6px;font-weight:800;color:var(--ac)}
+.principios{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:46px}
+.pr{background:var(--bg2);border:1px solid var(--ln);border-radius:var(--r);padding:24px}.pr b{font:800 3rem "Syne";color:var(--ac);line-height:1}.pr h3{font-size:1.35rem;margin:12px 0 6px}.pr p{margin:0;color:var(--mu)}
+.fluxo{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin:0 0 46px}
+.fluxo div{flex:1 1 180px;background:var(--bg3);border-radius:18px;padding:16px 18px;position:relative}.fluxo b{color:var(--ac);font:800 .85rem "DM Sans";letter-spacing:.12em}.fluxo p{margin:4px 0 0;font-weight:700}
+.casos{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,350px),1fr));gap:26px}
+.caso{background:var(--bg2);border:1px solid var(--ln);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:14px}
+.fone{width:min(78%,260px);margin:0 auto;border-radius:34px;padding:9px;background:#16121f;border:2px solid #3b3350;box-shadow:0 20px 40px rgba(43,33,66,.35)}
+.fone img{border-radius:26px;width:100%;aspect-ratio:1/2;object-fit:cover;object-position:top}
+.caso h3{font-size:1.5rem}.caso .tp{color:var(--ac);font-weight:800;font-size:.9rem}.caso ul{margin:0;padding-left:1.1em;color:var(--mu)}.caso li{margin:4px 0}
+.nota{margin-top:34px;padding:20px 24px;border:1px dashed var(--ln);border-radius:var(--r);color:var(--mu);max-width:70ch}.nota b{color:var(--tx)}
+.hist{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,64px);align-items:start}
+.foto{position:sticky;top:96px}.foto img{border-radius:var(--r);border:1px solid var(--ln);aspect-ratio:1/1;object-fit:cover;width:100%}
+.foto p{color:var(--mu);font-size:.92rem;margin:12px 0 0}
+.hist .corpo p{color:#463B63;margin:0 0 18px}.hist .corpo p:first-of-type{font-size:1.25rem;color:var(--tx)}
+.linha{border-left:2px solid var(--ln);margin:30px 0 0 8px;padding-left:26px;display:flex;flex-direction:column;gap:26px}
+.marco{position:relative}.marco::before{content:"";position:absolute;left:-35px;top:7px;width:16px;height:16px;border-radius:50%;background:var(--ac);box-shadow:0 0 0 6px var(--bg)}
+.marco b{font:800 .9rem "DM Sans";letter-spacing:.1em;color:var(--ac)}.marco h3{font-size:1.3rem;margin:3px 0 2px}.marco p{margin:0;color:var(--mu)}
+.contato{padding-block:clamp(40px,6vw,80px);background:#2B2142;color:#F5F0FC}.contato .btn.sec{color:#F5F0FC;border-color:#F5F0FC}
+.contato h2{font-size:clamp(2rem,5vw,3.4rem);max-width:16ch}.contato .links{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.contato p{color:#CFC4E8;max-width:50ch}
+footer{padding:26px var(--m);color:var(--mu);font-size:.9rem;text-align:center}
+dialog{border:0;background:transparent;padding:0;max-width:none;max-height:none;width:100%;height:100%;color:var(--tx)}
+dialog::backdrop{background:rgba(43,33,66,.7);backdrop-filter:blur(6px)}
+.mod{position:fixed;inset:0;display:grid;place-items:center;padding:16px}
+.mod .cx{width:min(100%,1080px);max-height:94vh;overflow:auto;background:var(--bg2);border:1px solid var(--ln);border-radius:28px;padding:clamp(18px,4vw,36px);animation:modIn .5s cubic-bezier(.2,1.3,.35,1) both}
+@keyframes modIn{0%{opacity:0;transform:scale(.8) translateY(30px)}100%{opacity:1;transform:none}}
+.mod .fx{position:sticky;top:0;float:right;z-index:3;width:46px;height:46px;border-radius:50%;border:1px solid var(--ln);background:var(--bg3);font-size:1.3rem}
+.mod h3{font-size:clamp(1.8rem,4vw,2.8rem)}.mod .tp{color:var(--ac);font-weight:800;margin:6px 0 12px}.mod .ds{color:#463B63;max-width:62ch}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px}.tags span{border:1px solid var(--ln);border-radius:999px;padding:4px 12px;font-size:.85rem;color:var(--mu)}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:14px;margin:18px 0}.gal figure{margin:0;background:var(--bg3);border-radius:16px;overflow:hidden}.gal figcaption{padding:10px 14px;font-size:.88rem;color:var(--mu)}
+@media(max-width:860px){.hero .wrap,.hist{grid-template-columns:1fr}.foto{position:static;max-width:380px}.colagem{max-width:380px}.topo .wrap{flex-wrap:wrap}.abas{order:3;width:100%;justify-content:space-between}.aba{flex:1;padding-inline:8px;font-size:.88rem}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<header class="topo"><div class="wrap"><a class="marca" href="#logo" data-vai="logo"><i>ES</i>Emerson Silva</a>
+<nav class="abas" id="abas-topo" role="tablist" aria-label="Seções">
+<button class="aba" role="tab" data-p="logo" aria-selected="true">Design de logo</button>
+<button class="aba" role="tab" data-p="ui-ux" aria-selected="false">UI e UX</button>
+<button class="aba" role="tab" data-p="historia" aria-selected="false">Minha história</button></nav>
+<a class="btn" href="#contato">Contato</a></div></header>
+<main>
+<section class="hero" id="hero"><div class="wrap"><div>
+<span class="sel">Designer gráfico e ilustrador · Rio de Janeiro</span>
+<h1>Marcas que se <span>reconhecem</span> antes de serem lidas.</h1>
+<p>Crio identidades visuais, embalagens e sites de uma tela para pequenos negócios. Atendo o Brasil todo, online.</p>
+<div class="acoes"><a class="btn" href="#logo" data-vai="logo">Ver logotipos</a><a class="btn sec" href="#ui-ux" data-vai="ui-ux">Ver UI e UX</a></div>
+<div class="num"><div><b>6</b><small>identidades visuais</small></div><div><b>6</b><small>sites de uma tela</small></div><div><b>2026</b><small>formado em Design Gráfico</small></div></div></div>
+<div class="colagem" aria-hidden="true"><img src="img/badulce_0.jpg" alt=""><img src="img/fawkes_0.jpg" alt=""><img src="img/naregua_0.jpg" alt=""></div></div></section>
+
+<section class="painel" id="p-logo"><div class="wrap">
+<div class="cab"><div><h2>Design de logo</h2><p>Identidades visuais completas: logo, cores, tipografia, embalagem e peças para redes sociais. Cada projeto está identificado como cliente real, marca própria ou conceitual.</p></div>
+<div class="filtros" role="group" aria-label="Filtrar"><button class="chip" data-f="todos" aria-pressed="true">Todos</button><button class="chip" data-f="Cliente" aria-pressed="false">Clientes</button><button class="chip" data-f="Marca própria" aria-pressed="false">Marca própria</button><button class="chip" data-f="Projeto conceitual" aria-pressed="false">Conceituais</button></div></div>
+<div class="grade"><button class="proj" type="button" data-id="comendobem" data-tag="Cliente real"><div class="cap"><img src="img/comendobem_0.jpg" alt="Logotipo Comendo Bem" loading="lazy"></div><div class="txt"><span class="etq">Cliente real</span><h3>Comendo Bem</h3><div class="tp">Identidade visual e embalagem</div><p>Marmita fit congelada em três linhas, cada uma com a sua cor. A cinta de papel identifica o prato antes de ele ser lido.</p><span class="mais">Ver projeto →</span></div></button><button class="proj" type="button" data-id="badulce" data-tag="Cliente · em andamento"><div class="cap"><img src="img/badulce_0.jpg" alt="Logotipo Badulce" loading="lazy"></div><div class="txt"><span class="etq">Cliente · em andamento</span><h3>Badulce</h3><div class="tp">Refinamento de marca, embalagens e cardápio online</div><p>Doces caseiros em rosa vivo e rosa bebê. Mantive o desenho da logo, vetorizei e criei um sistema com babados, corações e embalagens para imprimir em casa.</p><span class="mais">Ver projeto →</span></div></button><button class="proj" type="button" data-id="fawkes" data-tag="Marca própria"><div class="cap"><img src="img/fawkes_0.jpg" alt="Logotipo Agência Fawkes" loading="lazy"></div><div class="txt"><span class="etq">Marca própria</span><h3>Agência Fawkes</h3><div class="tp">Identidade visual e sistema de marca</div><p>A identidade da minha agência: uma águia de óculos de aviador que vira o ícone do nome, em duas tintas, vermelho e creme.</p><span class="mais">Ver projeto →</span></div></button><button class="proj" type="button" data-id="naregua" data-tag="Projeto conceitual"><div class="cap"><img src="img/naregua_0.jpg" alt="Logotipo NA RÉGUA" loading="lazy"></div><div class="txt"><span class="etq">Projeto conceitual</span><h3>NA RÉGUA</h3><div class="tp">Identidade visual · barbearia</div><p>A régua é a linha de base do logo e o A é uma tesoura. A palavra grande e pesada se lê de longe na fachada.</p><span class="mais">Ver projeto →</span></div></button><button class="proj" type="button" data-id="baga" data-tag="Projeto conceitual"><div class="cap"><img src="img/baga_0.jpg" alt="Logotipo BAGA" loading="lazy"></div><div class="txt"><span class="etq">Projeto conceitual</span><h3>BAGA</h3><div class="tp">Identidade visual · açaíteria</div><p>Um açaí que é gente. O mascote, no estilo rubber hose dos desenhos antigos, pisa no próprio nome.</p><span class="mais">Ver projeto →</span></div></button><button class="proj" type="button" data-id="fornalha" data-tag="Projeto conceitual"><div class="cap"><img src="img/fornalha_0.jpg" alt="Logotipo FORNALHA" loading="lazy"></div><div class="txt"><span class="etq">Projeto conceitual</span><h3>FORNALHA</h3><div class="tp">Identidade visual · hamburgueria</div><p>E se uma hamburgueria virasse jornal de bairro? A marca fala como "O Diário da Brasa": manchetes, colunas e meio-tom.</p><span class="mais">Ver projeto →</span></div></button></div></div></section>
+
+<section class="painel" id="p-ui" hidden><div class="wrap">
+<div class="cab"><div><h2>UI e UX</h2><p>Estou me aprofundando em UI e UX e usei os sites de uma tela como laboratório: páginas com uma função só, pensadas para o celular, que terminam em uma mensagem pronta.</p></div></div>
+<div class="principios">
+<div class="pr"><b>1</b><h3>Uma tela, uma função</h3><p>Quanto menos coisa, mais gente chega até o fim do pedido.</p></div>
+<div class="pr"><b>2</b><h3>O total antes de confirmar</h3><p>Ninguém gosta de surpresa na hora de pagar.</p></div>
+<div class="pr"><b>3</b><h3>Botão final com a mensagem montada</h3><p>O cliente não precisa escrever nada: só enviar.</p></div></div>
+<div class="fluxo" aria-label="Fluxo comum dos sites"><div><b>01</b><p>Escolher</p></div><div><b>02</b><p>Ver o total</p></div><div><b>03</b><p>Confirmar</p></div><div><b>04</b><p>Enviar a mensagem pronta</p></div></div>
+<div class="casos"><article class="caso"><div class="fone"><img src="img/naregua_tela.jpg" alt="Tela do site NA RÉGUA no celular" loading="lazy"></div><div><div class="tp">Agenda online</div><h3>NA RÉGUA</h3></div><ul><li>Serviço, dia e horário em uma sequência só</li><li>O total aparece antes de confirmar</li><li>A mensagem sai montada para o WhatsApp da barbearia</li></ul><a class="btn sec" href="https://dreamystation.github.io/fawkes-sites/naregua/" target="_blank" rel="noopener">Testar ao vivo →</a></article><article class="caso"><div class="fone"><img src="img/fornalha_tela.jpg" alt="Tela do site FORNALHA no celular" loading="lazy"></div><div><div class="tp">Cardápio com carrinho</div><h3>FORNALHA</h3></div><ul><li>Abas por categoria e quantidade com + e −</li><li>Carrinho sempre à vista, na base da tela</li><li>Entrega ou retirada, com a taxa somada ao total</li></ul><a class="btn sec" href="https://dreamystation.github.io/fawkes-sites/fornalha/" target="_blank" rel="noopener">Testar ao vivo →</a></article><article class="caso"><div class="fone"><img src="img/baga_tela.jpg" alt="Tela do site BAGA no celular" loading="lazy"></div><div><div class="tp">Monte o seu copo</div><h3>BAGA</h3></div><ul><li>O desenho do copo muda a cada escolha</li><li>O preço atualiza na hora</li><li>O pedido vai pronto para o WhatsApp</li></ul><a class="btn sec" href="https://dreamystation.github.io/fawkes-sites/baga/" target="_blank" rel="noopener">Testar ao vivo →</a></article><article class="caso"><div class="fone"><img src="img/comendobem_tela.jpg" alt="Tela do site Comendo Bem no celular" loading="lazy"></div><div><div class="tp">Monte a semana</div><h3>Comendo Bem</h3></div><ul><li>Marmitas organizadas por linha de cor</li><li>Resumo da semana antes de confirmar</li><li>Uma tela, uma função: montar o plano</li></ul><a class="btn sec" href="https://dreamystation.github.io/fawkes-sites/comendobem/" target="_blank" rel="noopener">Testar ao vivo →</a></article><article class="caso"><div class="fone"><img src="img/badulce_tela.jpg" alt="Tela do site Badulce no celular" loading="lazy"></div><div><div class="tp">Cardápio com recheios</div><h3>Badulce</h3></div><ul><li>Vitrine de doces e abas com ícones</li><li>Recheio e sabor escolhidos em botões</li><li>Envio por WhatsApp ou direct do Instagram</li></ul><a class="btn sec" href="https://dreamystation.github.io/badulce-cardapio/" target="_blank" rel="noopener">Testar ao vivo →</a></article><article class="caso"><div class="fone"><img src="img/fawkes_tela.jpg" alt="Tela do site Agência Fawkes no celular" loading="lazy"></div><div><div class="tp">Site da agência</div><h3>Agência Fawkes</h3></div><ul><li>Serviços, portfólio e orçamento em uma página</li><li>Chamada para o direct em todos os blocos</li><li>Mesma marca do material impresso e das redes</li></ul><a class="btn sec" href="https://dreamystation.github.io/fawkes-sites/fawkes/" target="_blank" rel="noopener">Testar ao vivo →</a></article></div>
+<p class="nota"><b>São projetos conceituais.</b> Marcas, preços e contatos dos sites são fictícios, criados para testar fluxos e telas. Os testes ao vivo abrem no celular.</p></div></section>
+
+<section class="painel" id="p-hist" hidden><div class="wrap"><div class="cab"><div><h2>Minha história</h2></div></div>
+<div class="hist"><aside class="foto"><img src="img/emerson.jpg" alt="Retrato de Emerson Silva" loading="lazy"><p>Emerson Silva · Rio de Janeiro</p></aside>
+<div class="corpo">
+<p>Sou Emerson, designer gráfico e ilustrador no Rio de Janeiro. Gosto de desenhar marcas que funcionam no dia a dia: na fachada, na embalagem, no feed e na tela do celular.</p>
+<p>Comecei a faculdade de Design Gráfico em 2024, na Universidade Veiga de Almeida, e me formei como tecnólogo em 2026. Os projetos que mostro aqui trazem logo, paleta, tipografia, mockups e peças para redes sociais.</p>
+<p>Fundei a Agência Fawkes para fazer identidade visual, conteúdo e sites de uma tela para comércio de bairro. Atendo o Brasil todo, de forma online, e já assinei marcas para clientes reais, como a Comendo Bem e a Badulce.</p>
+<p>Hoje estou me aprofundando em UI e UX. Os sites de uma tela são o meu laboratório: eu desenho o fluxo e as telas, e o resultado dá para testar no celular.</p>
+<div class="linha">
+<div class="marco"><b>2024</b><h3>Início em Design Gráfico</h3><p>Universidade Veiga de Almeida, Rio de Janeiro.</p></div>
+<div class="marco"><b>2026</b><h3>Formatura como tecnólogo</h3><p>Do curso para os primeiros projetos completos.</p></div>
+<div class="marco"><b>2026</b><h3>Agência Fawkes</h3><p>Identidade visual, conteúdo e sites de uma tela para comércio de bairro.</p></div>
+<div class="marco"><b>Agora</b><h3>Mais UI e UX</h3><p>Seis sites de uma tela e um fluxo de pedido que termina em uma mensagem pronta.</p></div></div></div></div></div></section>
+</main>
+<section class="contato" id="contato"><div class="wrap"><h2>Vamos criar a sua marca?</h2><p>Me chame para conversar sobre identidade visual, embalagem ou um site de uma tela para o seu negócio.</p>
+<div class="links"><a class="btn" href="https://ig.me/m/fawkes.dsg" target="_blank" rel="noopener">Chamar no direct</a><a class="btn sec" href="https://www.behance.net/emersonsilva162" target="_blank" rel="noopener">Behance</a><a class="btn sec" href="https://www.linkedin.com/in/emerson-silva-4b6513353/" target="_blank" rel="noopener">LinkedIn</a><a class="btn sec" href="https://dreamystation.github.io/fawkes-sites/" target="_blank" rel="noopener">Agência Fawkes</a></div></div></section>
+<footer>Emerson Silva · Designer gráfico e ilustrador · Rio de Janeiro</footer>
+<dialog id="dlg" aria-label="Detalhes do projeto"><div class="mod"><div class="cx" id="dlg-corpo"></div></div></dialog>
+<script>window.POP={extra:'.pr,.fluxo>div,.marco,.num>div,.sel,.colagem img,.foto img,.contato h2,.contato p,.contato .btn',exclude:'dialog,.mod'}</script>
+<script src="pop.js" defer></script>
+<script>
+const P=[{"id": "comendobem", "nome": "Comendo Bem", "tag": "Cliente real", "tipo": "Identidade visual e embalagem", "detalhe": "Criei o monograma CB e um sistema de cinta por linha: Proteína (laranja), Leve (amarelo) e Veggie (roxo). A marca aparece na marmita, na sacola kraft, nos posts e nos stories.", "tags": ["Logo", "Embalagem", "Redes sociais"], "link": "https://www.behance.net/gallery/256542005/Comendo-Bem-Identidade-visual-e-embalagem", "rotulo": "Ver no Behance", "imgs": [["00_capa_1616x1264", "Logotipo"], ["01_logo_e_variacoes", "Logo e variações"], ["03_embalagem_cintas", "Cintas de papel por linha"], ["07_carrossel", "Carrossel"]]}, {"id": "badulce", "nome": "Badulce", "tag": "Cliente · em andamento", "tipo": "Refinamento de marca, embalagens e cardápio online", "detalhe": "Faixa em A4 e adesivos redondos para as embalagens de plástico, ícones dos doces, stories, destaques e um cardápio de uma tela que envia o pedido por WhatsApp ou pelo direct do Instagram.", "tags": ["Logo", "Embalagem", "Redes sociais", "Cardápio online"], "link": "https://dreamystation.github.io/badulce-cardapio/", "rotulo": "Abrir o cardápio", "imgs": [["capa", "Logotipo"], ["prancha", "Sistema visual"], ["embalagens", "Faixa, adesivos e cartão"], ["stories", "Stories"], ["site", "Cardápio no celular"]]}, {"id": "fawkes", "nome": "Agência Fawkes", "tag": "Marca própria", "tipo": "Identidade visual e sistema de marca", "detalhe": "Lockup oficial, duas assinaturas, mascote em 8 poses, paleta, fundos e texturas, carrossel de lançamento, stories e o serviço de site de uma tela.", "tags": ["Logo", "Mascote", "Sistema de marca"], "link": "https://www.behance.net/gallery/256541781/Agencia-Fawkes-Identidade-visual-e-sistema-de-marca", "rotulo": "Ver no Behance", "imgs": [["00_capa_1616x1264", "Logotipo"], ["01_logo_e_assinaturas", "Lockup e assinaturas"], ["02_mascote", "Mascote"], ["05_carrossel", "Carrossel"]]}, {"id": "naregua", "nome": "NA RÉGUA", "tag": "Projeto conceitual", "tipo": "Identidade visual · barbearia", "detalhe": "Logo, fachada, tabela de preços, cartão fidelidade, patch, carrossel e stories. A régua com milímetros vira assinatura e corre de um slide para o outro.", "tags": ["Logo", "Fachada", "Redes sociais"], "link": "https://www.behance.net/gallery/256540655/NA-REGUA-Identidade-visual-(projeto-conceitual)", "rotulo": "Ver no Behance", "imgs": [["00_capa_1616x1264", "Logotipo"], ["01_logo_e_variacoes", "Logo e variações"], ["04_fachada", "Fachada"], ["08_carrossel", "Carrossel"]]}, {"id": "baga", "nome": "BAGA", "tag": "Projeto conceitual", "tipo": "Identidade visual · açaíteria", "detalhe": "Logo, mascote em 12 poses, padrão, mockups, carrossel e stories. A frase \"Grosso. Gelado. De verdade.\" resume o produto em três tempos.", "tags": ["Logo", "Mascote", "Ilustração"], "link": "https://www.behance.net/gallery/256541339/BAGA-Identidade-visual-(projeto-conceitual)", "rotulo": "Ver no Behance", "imgs": [["00_capa_1616x1264", "Logotipo"], ["01_logo_e_variacoes", "Logo e variações"], ["02_mascote_figurinhas", "Mascote"], ["05_mockups_1", "Mockups"]]}, {"id": "fornalha", "nome": "FORNALHA", "tag": "Projeto conceitual", "tipo": "Identidade visual · hamburgueria", "detalhe": "Tudo em duas tintas, vermelho e marrom, sobre papel creme. O mascote vive em tirinhas e nunca no centro do post.", "tags": ["Logo", "Editorial", "Mascote"], "link": "https://www.behance.net/gallery/256541481/FORNALHA-Identidade-visual-(projeto-conceitual)", "rotulo": "Ver no Behance", "imgs": [["00_capa_1616x1264", "Logotipo"], ["01_logo_e_variacoes", "Logo e variações"], ["02_mascote", "Mascote"], ["08_carrossel_e_post", "Carrossel e post"]]}];const painel={logo:'p-logo','ui-ux':'p-ui','historia':'p-hist'};
+const abas=[...document.querySelectorAll('.aba')];
+function vai(id,rolar){if(!painel[id])id='logo';abas.forEach(a=>a.setAttribute('aria-selected',a.dataset.p===id));
+ Object.entries(painel).forEach(([k,v])=>document.getElementById(v).hidden=(k!==id));document.getElementById('hero').hidden=(id!=='logo');
+ history.replaceState(null,'','#'+id);document.title=({logo:'Design de logo',['ui-ux']:'UI e UX',historia:'Minha história'})[id]+' · Emerson Silva';
+ if(rolar)document.getElementById('abas-topo').scrollIntoView({behavior:'smooth',block:'start'})}
+abas.forEach(a=>a.onclick=()=>vai(a.dataset.p,true));
+document.querySelectorAll('[data-vai]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();vai(a.dataset.vai,true)}));
+vai(location.hash.slice(1)||'logo',false);
+/* filtros */
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));const f=c.dataset.f;
+ document.querySelectorAll('.proj').forEach(p=>{const ok=f==='todos'||p.dataset.tag.startsWith(f);p.hidden=!ok})});
+/* modal */
+const dlg=document.getElementById('dlg'),corpo=document.getElementById('dlg-corpo');
+function abre(id){const p=P.find(x=>x.id===id);corpo.innerHTML=`<button class="fx" aria-label="Fechar" type="button">×</button><span class="etq">${p.tag}</span><h3 style="margin-top:12px">${p.nome}</h3><div class="tp">${p.tipo}</div><p class="ds">${p.detalhe}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><div class="gal">${p.imgs.map((i,k)=>`<figure><img src="img/${id}_${k}.jpg" alt="${p.nome}: ${i[1]}" loading="lazy"><figcaption>${i[1]}</figcaption></figure>`).join('')}</div><a class="btn" href="${p.link}" target="_blank" rel="noopener">${p.rotulo} →</a>`;
+ corpo.querySelector('.fx').onclick=()=>dlg.close();dlg.showModal();corpo.scrollTop=0}
+document.querySelectorAll('.proj').forEach(b=>b.onclick=()=>abre(b.dataset.id));
+dlg.addEventListener('click',e=>{if(e.target.classList.contains('mod'))dlg.close()});
+</script></body></html>
