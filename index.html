@@ -742,6 +742,22 @@ body[data-tema="peregrin"] .ilha{display:block;position:relative;margin-bottom:c
 html body[data-tema="logo"] .num{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px clamp(12px,1.8vw,24px)}
 html body[data-tema="logo"] .num>div{min-width:0}
 @media(max-width:860px){html body[data-tema="logo"] .num{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* termo de uso antes do download */
+.app-termo{display:flex;flex-direction:column;gap:10px;padding:14px 16px;border:2px solid var(--ink);background:var(--bg)}
+.app-termo b{font:700 .7rem "Space Mono",monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--ink)}
+.app-termo p{margin:0;font-size:.86rem;line-height:1.5;color:var(--mu)}.app-termo strong{color:var(--ink)}
+.app-aceite{display:flex;align-items:flex-start;gap:10px;margin-top:2px;padding:10px 12px;border:2px solid var(--ink);background:#fff;font-weight:800;cursor:pointer;transition:background .2s}
+.app-aceite:hover{background:var(--bg3)}
+.app-aceite input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;margin:1px 0 0;border:2px solid var(--ink);background:#fff;display:grid;place-content:center;cursor:pointer}
+.app-aceite input::after{content:"";width:12px;height:7px;border-left:3px solid #fff;border-bottom:3px solid #fff;rotate:-45deg;translate:0 -1px;scale:0;transition:scale .15s}
+.app-aceite input:checked{background:var(--ac);border-color:var(--ac)}.app-aceite input:checked::after{scale:1}
+.app-aceite input:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.app-aviso{font-weight:800!important;color:#C41D12!important}
+.app-termo.erro .app-aceite{animation:apTrema .45s}
+@keyframes apTrema{20%,60%{translate:-5px 0}40%,80%{translate:5px 0}}
+html body[data-tema="logo"] .app-baixar .btn[aria-disabled="true"]{filter:grayscale(1) opacity(.5);cursor:not-allowed;background:#1F4BFF;border-color:#1F4BFF;color:#fff}
+html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{background:#fff;border-color:#0A1A4D;color:#0A1A4D}
 /* ---- aba APPs: folha de projeto (planta técnica) ---- */
 .app{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(26px,4vw,56px);align-items:start;margin-bottom:clamp(46px,7vw,96px)}
 .app-folha{grid-column:1/-1;position:relative;margin:0;padding:72px clamp(16px,4vw,56px) 70px;overflow:hidden;background:linear-gradient(rgba(31,75,255,.14) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,rgba(31,75,255,.14) 1px,transparent 1px) 0 0/22px 22px,#fff;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ac)}
@@ -858,8 +874,15 @@ html body[data-tema="logo"] .num>div{min-width:0}
 </div>
 <aside class="app-baixar" aria-label="Baixar o Controle Financeiro">
 <h4>Baixar</h4>
-<a class="btn" id="app-apk" href="https://github.com/DreamyStation/dev-app-releases/releases/download/v0.1.0/controle-financeiro-0.1.0.apk" rel="noopener">Baixar para Android · <span data-app="tamanho">58 MB</span></a>
-<a class="btn sec" id="app-rel" href="https://github.com/DreamyStation/dev-app-releases/releases" target="_blank" rel="noopener">Ver todas as versões</a>
+<div class="app-termo" id="app-termo" role="group" aria-labelledby="termo-t">
+<b id="termo-t">Termo de uso</b>
+<p>O Controle Financeiro é uma obra de <strong>Emerson Silva - DreamyStation</strong>, protegida pela <strong>Lei de Direitos Autorais (Lei 9.610/1998)</strong> e pela <strong>Lei do Software (Lei 9.609/1998)</strong>. Todos os direitos reservados.</p>
+<p>Você pode instalar e usar o app para o seu próprio uso. É <strong>proibido copiar, plagiar, redistribuir, descompilar, alterar ou criar obras derivadas</strong> sem autorização por escrito do autor. Quem fizer isso está sujeito às sanções civis e penais previstas em lei.</p>
+<label class="app-aceite"><input type="checkbox" id="app-aceite"><span>Li e concordo com o termo de uso.</span></label>
+<p class="app-aviso" id="app-aviso" role="status" aria-live="polite" hidden>Marque a confirmação acima para poder baixar.</p>
+</div>
+<a class="btn" id="app-apk" href="#app-termo" aria-disabled="true" data-href="https://github.com/DreamyStation/dev-app-releases/releases/download/v0.1.0/controle-financeiro-0.1.0.apk" rel="noopener">Baixar para Android · <span data-app="tamanho">58 MB</span></a>
+<a class="btn sec" id="app-rel" href="#app-termo" aria-disabled="true" data-href="https://github.com/DreamyStation/dev-app-releases/releases" target="_blank" rel="noopener">Ver todas as versões</a>
 <dl class="app-meta">
 <div><dt>Versão</dt><dd data-app="versao">0.1.0</dd></div>
 <div><dt>Tamanho</dt><dd data-app="tamanho">58 MB</dd></div>
@@ -974,11 +997,26 @@ addEventListener('scroll',()=>{if(!on){on=true;requestAnimationFrame(f)}},{passi
 /* APPs: mostra a versão mais nova publicada (o botão de baixar sempre aponta para ela) */
 (function(){
  var REPO='DreamyStation/dev-app-releases',CH='apps.release.v1',TTL=10*60*1000;
+ var chk=document.getElementById('app-aceite'),aviso=document.getElementById('app-aviso'),termo=document.getElementById('app-termo');
+ function liga(){
+  var ok=!!(chk&&chk.checked);
+  ['app-apk','app-rel'].forEach(function(id){var a=document.getElementById(id);if(!a)return;
+   if(ok){a.href=a.dataset.href;a.removeAttribute('aria-disabled')}else{a.href='#app-termo';a.setAttribute('aria-disabled','true')}});
+  if(aviso&&ok)aviso.hidden=true;
+ }
+ if(chk){chk.addEventListener('change',liga);
+  ['app-apk','app-rel'].forEach(function(id){var a=document.getElementById(id);if(!a)return;
+   a.addEventListener('click',function(e){
+    if(chk.checked)return;e.preventDefault();
+    if(aviso)aviso.hidden=false;if(termo){termo.classList.remove('erro');void termo.offsetWidth;termo.classList.add('erro')}
+    chk.focus({preventScroll:false});
+   })})}
+ liga();
  function pon(k,v){document.querySelectorAll('[data-app="'+k+'"]').forEach(function(e){e.textContent=v})}
  function aplica(r){
   var apk=(r.assets||[]).filter(function(a){return /\.apk$/i.test(a.name)})[0];if(!apk)return;
   var b=document.getElementById('app-apk'),l=document.getElementById('app-rel');
-  if(b)b.href=apk.browser_download_url;if(l&&r.html_url)l.href=r.html_url;
+  if(b)b.dataset.href=apk.browser_download_url;if(l&&r.html_url)l.dataset.href=r.html_url;liga();
   pon('versao',String(r.tag_name||'').replace(/^v/,'')||'0.1.0');
   pon('tamanho',Math.round(apk.size/1048576)+' MB');
   try{pon('data',new Date(r.published_at).toLocaleDateString('pt-BR',{day:'numeric',month:'long',year:'numeric'}))}catch(e){}
