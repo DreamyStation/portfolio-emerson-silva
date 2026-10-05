@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tutorial da planilha Controle Financeiro · Emerson Silva</title>
+<meta name="description" content="Passo a passo para usar a planilha Controle Financeiro no iPhone, no Android ou no computador: do download ao primeiro lançamento.">
+<meta name="theme-color" content="#F5F7FC">
+<meta property="og:type" content="article"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="Emerson Silva">
+<meta property="og:title" content="Tutorial da planilha Controle Financeiro">
+<meta property="og:description" content="Do download ao primeiro lançamento, em linguagem simples, com exemplos.">
+<meta property="og:url" content="https://dreamystation.github.io/portfolio-emerson-silva/planilha-tutorial.html">
+<meta property="og:image" content="https://dreamystation.github.io/portfolio-emerson-silva/img/og_apps.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<link rel="canonical" href="https://dreamystation.github.io/portfolio-emerson-silva/planilha-tutorial.html">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+:root{--bg:#F5F7FC;--bg2:#fff;--bg3:#E6EBF8;--ink:#0A1A4D;--mu:#46527F;--ac:#1F4BFF;--acd:#1637C7;--red:#C41D12;--ok:#1B7A3A;--amarelo:#FFF7D6;--azul:#EEF4FB;--m:clamp(18px,5vw,56px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;color:var(--ink);font:17px/1.6 "Inter Tight",system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:linear-gradient(rgba(31,75,255,.07) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,rgba(31,75,255,.07) 1px,transparent 1px) 0 0/24px 24px,var(--bg)}
+a{color:var(--acd);font-weight:700}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{max-width:900px;margin:0 auto;padding:0 var(--m)}
+.barra{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:2px solid var(--ink)}
+.barra .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:60px;flex-wrap:wrap;padding-block:8px}
+.marca{font:700 1.1rem "Space Grotesk",sans-serif;letter-spacing:-.03em;color:var(--ink);text-decoration:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:9px 22px;border:2px solid var(--ink);border-radius:999px;background:var(--ink);color:var(--bg);font-weight:800;text-decoration:none;box-shadow:4px 4px 0 var(--ac);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ac)}
+.btn.sec{background:#fff;color:var(--ink)}
+h1,h2,h3{font-family:"Space Grotesk","Inter Tight",sans-serif;font-weight:700;letter-spacing:-.04em;line-height:1}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);margin:0 0 14px}
+h2{font-size:clamp(1.6rem,3.6vw,2.2rem);margin:0 0 14px}
+h3{font-size:1.2rem;margin:22px 0 8px;letter-spacing:-.02em}
+.etq{display:inline-block;margin:44px 0 22px;padding:2px 0 2px 12px;border-left:10px solid var(--ac);font:700 .72rem "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.lead{font-size:1.15rem;color:var(--mu);max-width:60ch;margin:0}
+.acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+nav.indice{margin:30px 0 0;padding:18px 22px;background:#fff;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ac)}
+nav.indice b{display:block;margin-bottom:8px;font:700 .72rem "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--ac)}
+nav.indice ol{margin:0;padding-left:1.4em;columns:2;column-gap:28px}
+nav.indice li{margin:3px 0;break-inside:avoid}
+section{margin-top:48px}
+section>p,section>ul,section>ol{max-width:68ch}
+p{margin:0 0 12px}
+.passos{list-style:none;counter-reset:p;margin:16px 0;padding:0;border-top:2px solid var(--ink)}
+.passos>li{counter-increment:p;position:relative;padding:14px 4px 14px 52px;border-bottom:2px solid var(--ink)}
+.passos>li::before{content:counter(p,decimal-leading-zero);position:absolute;left:6px;top:16px;font:700 .85rem "Space Mono",monospace;color:var(--ac)}
+.passos b{font-weight:800}
+.aviso,.dica{margin:16px 0;padding:14px 18px;border:2px solid var(--ink);background:#fff;max-width:68ch;break-inside:avoid}
+.aviso{border-color:var(--red);box-shadow:5px 5px 0 var(--red)}
+.dica{box-shadow:5px 5px 0 var(--ac)}
+.aviso b,.dica b{display:block;margin-bottom:2px;font:700 .72rem "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.aviso b{color:var(--red)}.dica b{color:var(--ac)}
+.aviso p,.dica p{margin:0}
+.rol{overflow-x:auto;margin:16px 0;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:.92rem;border:2px solid var(--ink)}
+th,td{padding:7px 10px;border:1px solid #C9D6E6;text-align:left;vertical-align:top}
+th{background:#0F3E73;color:#fff;font-weight:700;white-space:nowrap}
+td.am{background:var(--amarelo)}td.az{background:var(--azul)}
+td.n,th.n{text-align:right;white-space:nowrap}
+td.neg{color:var(--red);font-weight:700}
+td.forte{font-weight:800}
+caption{caption-side:bottom;text-align:left;padding:8px 2px 0;font-size:.84rem;color:var(--mu)}
+.leg{display:flex;flex-wrap:wrap;gap:10px 22px;margin:14px 0}
+.leg>span{display:flex;align-items:center;gap:8px;font-weight:700}
+.leg em{font-style:normal}
+.leg i{flex:none;display:block;width:22px;height:22px;border:1px solid #9FB1CC}
+.leg .a{background:var(--amarelo)}.leg .b{background:var(--azul)}
+code{font:700 .86em "Space Mono",monospace;background:var(--bg3);padding:1px 6px}
+dl.faq{margin:0;max-width:68ch}
+dl.faq dt{font-weight:800;margin-top:16px}
+dl.faq dd{margin:2px 0 0;color:var(--mu)}
+.rodape{margin-top:60px;padding:26px 0 40px;border-top:2px solid var(--ink);font-size:.9rem;color:var(--mu)}
+.rodape strong{color:var(--ink)}
+@media(max-width:700px){nav.indice ol{columns:1}th,td{padding:6px 8px;font-size:.86rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+@media print{
+ @page{size:A4;margin:16mm 14mm}
+ body{background:#fff;font-size:11pt;line-height:1.5}
+ .barra,.acoes,.no-print{display:none!important}
+ .wrap{max-width:none;padding:0}
+ section{margin-top:22px;break-inside:auto}
+ h2,h3{break-after:avoid}
+ .passos>li,table,.aviso,.dica{break-inside:avoid}
+ nav.indice,.aviso,.dica{box-shadow:none}
+ a{color:var(--ink);text-decoration:none}
+ th,td.am,td.az,.leg i{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .etq{margin:26px 0 12px}
+}
+</style></head><body>
+<header class="barra"><div class="wrap">
+<a class="marca" href="index.html#apps">&larr; Emerson Silva · APPs</a>
+<a class="btn" href="downloads/tutorial-planilha-controle-financeiro.pdf" download>Baixar este tutorial em PDF</a>
+</div></header>
+
+<main class="wrap">
+<span class="etq">Tutorial · planilha para iPhone, Android e computador</span>
+<h1>Como usar a planilha Controle Financeiro</h1>
+<p class="lead">Do download ao primeiro lançamento, em linguagem simples. Leva uns 10 minutos, e depois disso você anota o dia a dia em segundos. Tudo fica na sua conta do Google; nada passa por servidor meu.</p>
+<div class="acoes no-print">
+<a class="btn" href="index.html#apps">Baixar a planilha</a>
+<a class="btn sec" href="#iphone">Ir direto ao passo a passo</a>
+</div>
+
+<nav class="indice" aria-label="Neste tutorial"><b>Neste tutorial</b><ol>
+<li><a href="#antes">O que você precisa</a></li>
+<li><a href="#iphone">Abrir no iPhone (e no Android, e no computador)</a></li>
+<li><a href="#cores">Cores e abas</a></li>
+<li><a href="#saldo">Primeiro passo: o saldo inicial</a></li>
+<li><a href="#lancamentos">Anotar entradas e saídas</a></li>
+<li><a href="#resumo">Ler o Resumo</a></li>
+<li><a href="#apagar">A pagar: em que ordem</a></li>
+<li><a href="#simulador">E se eu comprar?</a></li>
+<li><a href="#objetivos">Objetivos</a></li>
+<li><a href="#categorias">Categorias</a></li>
+<li><a href="#rotina">Uma rotina simples</a></li>
+<li><a href="#acabou">Quando as linhas acabarem</a></li>
+<li><a href="#duvidas">Dúvidas comuns</a></li>
+<li><a href="#sobre">Diferenças do app, privacidade e direitos</a></li>
+</ol></nav>
+
+<section id="antes">
+<span class="etq">Antes de começar</span>
+<h2>O que você precisa</h2>
+<ul>
+<li>Uma <b>conta do Google</b> (grátis).</li>
+<li>O app <b>Planilhas Google</b> (grátis, na App Store do iPhone ou na Play Store do Android) e o app <b>Google Drive</b>. No computador não precisa instalar nada: basta o navegador.</li>
+<li>Um dos dois arquivos <code>.xlsx</code> da página dos APPs:
+<ul>
+<li><b>Planilha vazia</b>: é a que você usa de verdade.</li>
+<li><b>Planilha de exemplo</b>: já vem com 10 lançamentos fictícios, para você olhar e entender como as contas funcionam. Ela usa datas de outubro e novembro de 2026, então serve só para olhar. Quando entender, baixe a vazia.</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="iphone">
+<span class="etq">Passo 1</span>
+<h2>Abrir a planilha no iPhone</h2>
+<ol class="passos">
+<li><b>Baixe o arquivo.</b> No Safari, toque no botão de baixar e depois em "Baixar" na janelinha que aparece. O arquivo vai para o app <b>Arquivos</b>, na pasta Downloads.</li>
+<li><b>Envie para o Google Drive.</b> Abra o app Drive, toque no <b>+</b>, escolha <b>Fazer upload</b> e depois a pasta Downloads do seu iPhone e o arquivo. (Outro jeito: no app Arquivos, toque e segure o arquivo, escolha Compartilhar e depois Drive.)</li>
+<li><b>Abra o arquivo no Drive.</b> Ele abre no app Planilhas. Se você ainda não tem o app, o Drive oferece a instalação.</li>
+<li><b>Converta em Planilha Google.</b> Toque nos três pontinhos (<b>⋮</b>) e em <b>Salvar como Planilha Google</b>. <b>Esse passo é o mais importante</b>: só depois dele a planilha edita direito e a aba "A pagar" funciona. O texto do menu pode mudar um pouco conforme a versão do app.</li>
+<li><b>Use a cópia nova</b> (o ícone verde de Planilha Google). O arquivo <code>.xlsx</code> original pode ser apagado do Drive.</li>
+<li><b>Confira o idioma.</b> Nos três pontinhos, abra as configurações da planilha e veja se a localidade está em <b>Brasil</b>. É ela que faz a data <code>20/10/2026</code> e o valor <code>189,90</code> serem entendidos do jeito brasileiro.</li>
+</ol>
+<div class="dica"><b>No Android e no computador</b><p>É igual: envie o arquivo para o Drive (no computador: drive.google.com, botão Novo, Upload de arquivo), abra com Planilhas Google e use <b>Arquivo &gt; Salvar como Planilha Google</b>.</p></div>
+<div class="aviso"><b>Não abra só o .xlsx</b><p>Se você usar a planilha direto como <code>.xlsx</code> (na visualização do Drive ou num Excel antigo), a aba "A pagar" pode mostrar erro. Ela usa as funções <code>FILTER</code> e <code>SORT</code>, que o Google Planilhas entende. Testei no Google Planilhas; no Excel recente deve funcionar, mas eu não testei.</p></div>
+</section>
+
+<section id="cores">
+<span class="etq">Para se orientar</span>
+<h2>Cores e abas</h2>
+<div class="leg" aria-label="Legenda das cores">
+<span><i class="a"></i><em>Amarelo: <u>você</u> digita</em></span>
+<span><i class="b"></i><em>Azul claro: a planilha calcula, <u>não digite</u></em></span>
+</div>
+<div class="rol"><table>
+<thead><tr><th>Aba</th><th>Para que serve</th></tr></thead>
+<tbody>
+<tr><td><b>Como usar</b></td><td>Um resumo deste tutorial, dentro da própria planilha.</td></tr>
+<tr><td><b>Resumo</b></td><td>O saldo, o que sobra no mês, quanto da renda vai para dívidas e o gasto por categoria e por importância.</td></tr>
+<tr><td><b>Lançamentos</b></td><td>Onde você anota cada entrada e cada saída. É a única aba que você usa todo dia.</td></tr>
+<tr><td><b>A pagar</b></td><td>As contas que ainda vão vencer, na ordem em que vale a pena pagar. Preenche sozinha.</td></tr>
+<tr><td><b>Simulador</b></td><td>"E se eu comprar?": mostra se uma compra cabe antes de você gastar.</td></tr>
+<tr><td><b>Objetivos</b></td><td>Reserva de emergência, viagem, gastos do ano: quanto falta e quanto guardar por mês.</td></tr>
+<tr><td><b>Categorias</b></td><td>A lista de categorias que aparece quando você anota um lançamento.</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="saldo">
+<span class="etq">Passo 2</span>
+<h2>Primeiro passo: o saldo inicial</h2>
+<ol class="passos">
+<li>Abra a aba <b>Resumo</b>.</li>
+<li>Na célula amarela de <b>Saldo inicial (digite aqui)</b>, digite quanto dinheiro você tem agora: banco, carteira, tudo somado. Pode ser aproximado.</li>
+<li>Mais abaixo, em <b>Renda média por mês</b>, digite quanto você costuma receber por mês. Ela é usada para dizer se as suas dívidas pesam demais na renda.</li>
+</ol>
+<div class="dica"><b>Só uma vez</b><p>O saldo inicial é o ponto de partida. A partir daí, quem mexe no saldo são os lançamentos que você anota. Não volte aqui para "acertar" o saldo todo dia: anote o lançamento que faltou.</p></div>
+</section>
+
+<section id="lancamentos">
+<span class="etq">Passo 3 · o que você faz todo dia</span>
+<h2>Anotar entradas e saídas</h2>
+<p>Abra a aba <b>Lançamentos</b>. Cada linha é uma entrada ou uma saída. Preencha só as colunas amarelas, da esquerda para a direita:</p>
+<div class="rol"><table>
+<thead><tr><th>Coluna</th><th>O que digitar</th></tr></thead>
+<tbody>
+<tr><td><b>Data</b></td><td>O dia, como <code>20/10/2026</code>. Para contas previstas, é o dia do vencimento.</td></tr>
+<tr><td><b>Tipo</b></td><td>Escolha na lista: <b>Entrada</b> (dinheiro que entra) ou <b>Saída</b> (dinheiro que sai).</td></tr>
+<tr><td><b>Valor</b></td><td>Sempre um número positivo, como <code>189,90</code>. Quem diz se soma ou subtrai é o Tipo.</td></tr>
+<tr><td><b>Categoria</b></td><td>Escolha na lista (Mercado, Moradia, Lazer...).</td></tr>
+<tr><td><b>Importância</b></td><td><b>Essencial</b> (moradia, mercado, saúde), <b>Dívidas</b> (cartão, empréstimo, parcela), <b>Importante</b> (estudos, trabalho) ou <b>Quero</b> (o que é desejo, não necessidade).</td></tr>
+<tr><td><b>Situação</b></td><td><b>Já aconteceu</b> ou <b>Vai acontecer</b> (veja abaixo).</td></tr>
+<tr><td><b>Descrição</b></td><td>Texto livre, para você lembrar do que foi.</td></tr>
+</tbody></table></div>
+<p>As colunas <b>Valor com sinal</b>, <b>Mês</b> e <b>Peso</b> são azuis: a planilha calcula sozinha. Não mexa nelas.</p>
+
+<h3>Já aconteceu ou vai acontecer?</h3>
+<ul>
+<li><b>Já aconteceu</b>: o dinheiro já entrou ou saiu. Esse lançamento mexe no <b>saldo de hoje</b>.</li>
+<li><b>Vai acontecer</b>: é uma conta ou uma entrada prevista (aluguel, salário, parcela). Ela <b>não</b> mexe no saldo de hoje, mas entra no saldo livre do mês e na lista de "A pagar".</li>
+<li>Quando você <b>pagar</b> uma conta prevista, mude a Situação para <b>Já aconteceu</b> (e acerte a data, se pagou em outro dia). Pronto: ela sai da lista de "A pagar" e passa a descontar do saldo.</li>
+<li>Conta prevista com a data já vencida fica <b>vermelha</b>, para você não esquecer.</li>
+</ul>
+
+<h3>Como fica na prática (planilha de exemplo)</h3>
+<div class="rol"><table>
+<thead><tr><th>Data</th><th>Tipo</th><th class="n">Valor</th><th>Categoria</th><th>Importância</th><th>Situação</th><th>Descrição</th></tr></thead>
+<tbody>
+<tr><td class="am">01/10/2026</td><td class="am">Entrada</td><td class="am n">R$ 3.200,00</td><td class="am">Salário</td><td class="am">Essencial</td><td class="am">Já aconteceu</td><td class="am">Salário</td></tr>
+<tr><td class="am">02/10/2026</td><td class="am">Saída</td><td class="am n">R$ 189,90</td><td class="am">Mercado</td><td class="am">Essencial</td><td class="am">Já aconteceu</td><td class="am">Mercado</td></tr>
+<tr><td class="am">20/10/2026</td><td class="am">Saída</td><td class="am n">R$ 800,00</td><td class="am">Moradia</td><td class="am">Essencial</td><td class="am">Vai acontecer</td><td class="am">Aluguel</td></tr>
+</tbody><caption>Três linhas da planilha de exemplo: as duas primeiras já aconteceram; o aluguel ainda vai vencer.</caption></table></div>
+
+<div class="aviso"><b>Limpe, não apague</b><p>Para desfazer um lançamento, selecione as células amarelas da linha (colunas A a G) e apague só o conteúdo. <b>Não apague a linha inteira</b>: as fórmulas azuis ficam nela e fazem falta.</p></div>
+<div class="dica"><b>Dica de celular</b><p>Para anotar rápido, deixe a aba Lançamentos aberta e vá preenchendo a próxima linha vazia. Nas colunas com lista, toque na célula e escolha a opção em vez de digitar.</p></div>
+</section>
+
+<section id="resumo">
+<span class="etq">Passo 4</span>
+<h2>Ler o Resumo</h2>
+<p>A aba <b>Resumo</b> responde "como estou?" sem você fazer conta. Estes são os números da planilha de exemplo, em 5 de outubro de 2026:</p>
+<div class="rol"><table>
+<thead><tr><th>Linha</th><th class="n">Valor</th><th>O que significa</th></tr></thead>
+<tbody>
+<tr><td><b>SALDO HOJE</b></td><td class="az n forte">R$ 3.883,10</td><td>Saldo inicial (R$ 1.250,00) mais tudo o que já aconteceu: entradas menos saídas.</td></tr>
+<tr><td>+ entradas que ainda vão acontecer</td><td class="az n">R$ 3.200,00</td><td>O salário previsto até o fim do mês.</td></tr>
+<tr><td>− saídas que ainda vão acontecer</td><td class="az n">R$ 1.239,90</td><td>Aluguel, empréstimo e internet previstos até o fim do mês. Inclui contas atrasadas.</td></tr>
+<tr><td>− separado nos objetivos</td><td class="az n">R$ 3.300,00</td><td>O que você guardou para reserva e viagem (aba Objetivos).</td></tr>
+<tr><td><b>SALDO LIVRE NO MÊS</b></td><td class="az n forte">R$ 2.543,20</td><td>O que realmente sobra até o fim do mês, já descontando o que está reservado. Fica vermelho se for negativo.</td></tr>
+<tr><td>Comprometimento da renda</td><td class="az n">11%</td><td>Quanto da sua renda vai para dívidas e parcelas nos próximos 30 dias. Até 20%: <b>Tranquilo</b>. De 20% a 30%: <b>Atenção</b>. Acima de 30%: <b>Alto</b>.</td></tr>
+<tr><td>Entradas / Saídas / Sobrou no mês</td><td class="az n">R$ 3.200,00 / R$ 566,90 / R$ 2.633,10</td><td>O que já entrou, já saiu e sobrou no mês escolhido.</td></tr>
+</tbody></table></div>
+<ul>
+<li><b>Mês para ver</b>: a célula amarela começa com a data de hoje. Digite qualquer dia de outro mês (por exemplo <code>15/09/2026</code>) para ver os números daquele mês.</li>
+<li><b>Saídas do mês por categoria</b> e <b>por importância</b> mostram para onde o dinheiro foi, em valor e em porcentagem. Se "Quero" é a maior fatia, você sabe onde cortar.</li>
+</ul>
+</section>
+
+<section id="apagar">
+<span class="etq">Sem digitar nada</span>
+<h2>A pagar: em que ordem</h2>
+<p>A aba <b>A pagar</b> lista as saídas marcadas como "Vai acontecer", <b>primeiro o essencial, depois dívidas, o importante e o que você quer</b>. Dentro de cada grupo, vem antes o que vence antes. Ela se preenche sozinha a partir dos Lançamentos: você não digita nada nela.</p>
+<div class="rol"><table>
+<thead><tr><th>Vencimento</th><th>Descrição</th><th class="n">Valor</th><th>Importância</th><th class="n">Acumulado</th><th>O saldo de hoje cobre?</th></tr></thead>
+<tbody>
+<tr><td class="az">20/10/2026</td><td class="az">Aluguel</td><td class="az n">R$ 800,00</td><td class="az">Essencial</td><td class="az n">R$ 800,00</td><td class="az">Sim</td></tr>
+<tr><td class="az">25/10/2026</td><td class="az">Internet</td><td class="az n">R$ 119,90</td><td class="az">Essencial</td><td class="az n">R$ 919,90</td><td class="az">Sim</td></tr>
+<tr><td class="az">20/11/2026</td><td class="az">Aluguel do mês que vem</td><td class="az n">R$ 800,00</td><td class="az">Essencial</td><td class="az n">R$ 1.719,90</td><td class="az">Sim</td></tr>
+<tr><td class="az">22/10/2026</td><td class="az">Empréstimo, parcela</td><td class="az n">R$ 320,00</td><td class="az">Dívidas</td><td class="az n">R$ 2.039,90</td><td class="az">Sim</td></tr>
+</tbody><caption>Repare que a parcela do empréstimo (22/10) vem depois do aluguel de novembro: o essencial tem prioridade.</caption></table></div>
+<ul>
+<li><b>Acumulado</b> soma as contas na ordem da lista.</li>
+<li><b>O saldo de hoje cobre?</b> diz "Sim" enquanto o acumulado cabe no seu saldo, e "Não" quando passa. A coluna <b>Faltaria</b> mostra quanto falta.</li>
+<li>Se aparecer <b>"Nada a pagar"</b>, é bom sinal: não há nenhuma saída marcada como "Vai acontecer".</li>
+</ul>
+</section>
+
+<section id="simulador">
+<span class="etq">Antes de gastar</span>
+<h2>E se eu comprar?</h2>
+<p>O <b>Simulador</b> mostra, mês a mês, como o seu saldo ficaria com uma compra. <b>Nada é gravado</b>: é só uma conta para decidir. Se você comprar de verdade, anote em Lançamentos.</p>
+<ol class="passos">
+<li><b>Quanto custa?</b> O preço da compra.</li>
+<li><b>Como vai pagar?</b> Escolha <b>À vista</b> ou <b>Parcelado</b>.</li>
+<li>Se for parcelado: a <b>entrada</b> (paga hoje, pode ser zero), o <b>número de parcelas</b> e os <b>juros ao mês</b>. Digite os juros com o símbolo de porcentagem, por exemplo <code>3%</code>. Sem juros, deixe <code>0%</code>.</li>
+<li><b>Folga mínima</b>: quanto você quer manter de sobra no pior mês. Começa em R$ 100,00.</li>
+</ol>
+<p>A planilha calcula o valor de cada parcela, o total que sai do bolso, os juros pagos e dá o <b>veredito</b>:</p>
+<ul>
+<li><b style="color:var(--ok)">Cabe no seu orçamento</b>: em nenhum mês o saldo chega perto de acabar.</li>
+<li><b style="color:#9A6B00">Dá, mas fica apertado</b>: o saldo não fica negativo, mas passa abaixo da folga que você quer manter.</li>
+<li><b style="color:var(--red)">Não cabe agora</b>: em algum mês o saldo ficaria negativo.</li>
+</ul>
+<div class="dica"><b>Exemplo</b><p>Uma compra de R$ 1.200,00 em 6 parcelas com 3% de juros ao mês dá parcelas de <b>R$ 221,52</b>, total de <b>R$ 1.329,10</b> (R$ 129,10 de juros). Com os dados da planilha de exemplo, o veredito é "Cabe no seu orçamento". A tabela dos 12 meses mostra o saldo sem a compra e com a compra, para você ver onde aperta.</p></div>
+</section>
+
+<section id="objetivos">
+<span class="etq">Para o futuro</span>
+<h2>Objetivos</h2>
+<p>Na aba <b>Objetivos</b>, uma linha para cada coisa que você quer juntar. Preencha <b>Nome</b>, <b>Meta</b> (quanto quer juntar), <b>Guardado</b> (quanto já tem separado) e <b>Prazo</b>. A planilha calcula:</p>
+<ul>
+<li><b>Falta</b>: a meta menos o que já está guardado.</li>
+<li><b>Progresso</b>: a porcentagem da meta que você já alcançou.</li>
+<li><b>Por mês até o prazo</b>: quanto guardar por mês para chegar a tempo. Se o prazo já passou, aparece "prazo passou".</li>
+</ul>
+<p>O total da coluna Guardado aparece no topo da aba. Esse dinheiro <b>continua no saldo</b>, mas é descontado do <b>saldo livre</b> do Resumo, para você não gastar o que separou. Quando guardar mais, é só atualizar o valor de Guardado. Cabem até 30 objetivos.</p>
+</section>
+
+<section id="categorias">
+<span class="etq">Para personalizar</span>
+<h2>Categorias</h2>
+<p>A aba <b>Categorias</b> tem a lista que aparece nos Lançamentos. Para criar uma nova, escreva no fim da lista (até a linha 40). Ela passa a aparecer na hora de escolher a categoria de um lançamento.</p>
+<div class="aviso"><b>Um limite</b><p>No Resumo, o quadro "Saídas do mês por categoria" mostra as <b>12 primeiras</b> categorias. Uma categoria nova aparece na lista de escolha, mas só entra nesse quadro se estiver entre as 12 primeiras. Para isso, troque o nome de uma que você não usa em vez de acrescentar.</p></div>
+</section>
+
+<section id="rotina">
+<span class="etq">Para virar hábito</span>
+<h2>Uma rotina simples</h2>
+<ul>
+<li><b>Todo dia (2 minutos):</b> anote em Lançamentos o que entrou e o que saiu.</li>
+<li><b>Toda semana (5 minutos):</b> olhe o Resumo e a aba A pagar. Marque como "Já aconteceu" o que você pagou e confira se o saldo bate com o do banco.</li>
+<li><b>Todo mês:</b> olhe o Resumo do mês que passou, para ver para onde o dinheiro foi, e cadastre as contas previstas do mês seguinte.</li>
+<li><b>Antes de uma compra grande:</b> use o Simulador.</li>
+</ul>
+</section>
+
+<section id="acabou">
+<span class="etq">Longo prazo</span>
+<h2>Quando as linhas acabarem</h2>
+<p>A planilha vem com <b>1.000 linhas</b> de lançamentos, o bastante para meses de uso. Quando estiver perto do fim, ou na virada do ano:</p>
+<ol class="passos">
+<li>No Drive, faça uma cópia da planilha (<b>Arquivo &gt; Fazer uma cópia</b>) e guarde a antiga como histórico.</li>
+<li>Na cópia, apague o conteúdo das colunas amarelas A a G de Lançamentos.</li>
+<li>Em Resumo, troque o <b>Saldo inicial</b> pelo <b>SALDO HOJE</b> que a planilha antiga mostrava. Assim a nova começa exatamente de onde a antiga parou.</li>
+</ol>
+</section>
+
+<section id="duvidas">
+<span class="etq">Se algo estranho aparecer</span>
+<h2>Dúvidas comuns</h2>
+<dl class="faq">
+<dt>A aba "A pagar" está vazia ou com erro.</dt>
+<dd>Se mostra "Nada a pagar", é porque não há saídas marcadas como "Vai acontecer". Se mostra erro, provavelmente a planilha ainda é um arquivo .xlsx: converta em Planilha Google (passo 1).</dd>
+<dt>As datas ou os valores aparecem estranhos (por exemplo, a data vira um número).</dt>
+<dd>Confira se a localidade da planilha está em <b>Brasil</b> (passo 1). Se uma célula de data mostra um número, formate-a como data.</dd>
+<dt>O saldo não bate com o do banco.</dt>
+<dd>Veja três coisas: o saldo inicial, se há alguma conta já paga ainda marcada como "Vai acontecer", e se falta anotar algum lançamento.</dd>
+<dt>Digitei um valor errado.</dt>
+<dd>Toque na célula e corrija. As contas se refazem sozinhas.</dd>
+<dt>Dá para usar a planilha por mais de uma pessoa?</dt>
+<dd>Dá, pelo botão Compartilhar do Google, mas pense bem antes: quem tem acesso vê todo o seu dinheiro. Compartilhe só com quem você confia, e ative a verificação em duas etapas na sua conta Google.</dd>
+</dl>
+</section>
+
+<section id="sobre">
+<span class="etq">Bom saber</span>
+<h2>Diferenças do app, privacidade e direitos</h2>
+<ul>
+<li><b>A planilha é a mesma ideia do aplicativo Controle Financeiro</b>, mas não tem PIN próprio (vale a segurança da sua conta Google), voz, foto de nota nem captura de notificações de Pix e cartão. Para isso, use o app no Android.</li>
+<li><b>Privacidade:</b> os seus dados ficam na sua conta do Google. Eu não recebo nada.</li>
+<li><b>Direitos autorais:</b> a planilha é uma obra de <strong>Emerson Silva - DreamyStation</strong>, protegida pela Lei de Direitos Autorais (Lei 9.610/1998). Você pode usá-la para o seu próprio controle. É proibido copiar, redistribuir, vender ou alterar para publicar sem autorização por escrito do autor.</li>
+</ul>
+<div class="acoes no-print">
+<a class="btn" href="index.html#apps">Voltar e baixar a planilha</a>
+<a class="btn sec" href="downloads/tutorial-planilha-controle-financeiro.pdf" download>Baixar este tutorial em PDF</a>
+</div>
+</section>
+
+<footer class="rodape">
+<p><strong>Criada e desenhada por Emerson Silva - DreamyStation.</strong> Portfólio: dreamystation.github.io/portfolio-emerson-silva</p>
+<p>© 2026 Emerson Silva - DreamyStation. Todos os direitos reservados. Tutorial da versão da planilha de 5 de outubro de 2026.</p>
+</footer>
+</main>
+</body></html>

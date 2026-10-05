@@ -811,6 +811,23 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 .app-breve{grid-template-columns:1fr;padding-top:clamp(26px,4vw,40px);border-top:2px solid var(--ink)}
 .app-breve .app-corpo>p{margin-bottom:20px}
 @media(max-width:860px){.app{grid-template-columns:1fr}.app-baixar{position:static}.app-fones{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 16px}.fone-i:nth-child(2n){margin-bottom:0}.app-tb b:nth-child(n+3){display:none}.app-folha .m2{display:none}.app-folha{padding-inline:clamp(14px,5vw,28px)}}
+
+/* planilha: três abas desenhadas como folhas de planilha */
+.pl-mesa{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.6vw,38px);align-items:start}
+.pl-i{margin:0;animation:apSobe .8s var(--d,.5s) cubic-bezier(.2,1.15,.3,1) both}
+.pl-i:nth-child(2){margin-top:30px}
+.pl-tela{background:#fff;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ac)}
+.pl-tab{display:flex;align-items:center;padding:7px 12px;background:#0F3E73;color:#fff;font:700 .66rem "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.pl-lin{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px;border-top:1px solid #C9D6E6;font-size:.84rem;line-height:1.25}
+.pl-lin>span:first-child{min-width:0}
+.pl-v{flex:none;padding:2px 7px;background:#EEF4FB;font:700 .74rem "Space Mono",monospace;text-align:right}
+.pl-v.am{background:#FFF7D6}.pl-v.ok{color:var(--ok,#1B7A3A)}
+.pl-i figcaption{margin-top:16px;text-align:center;font:700 .62rem/1.45 "Space Mono",monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--ink)}
+.pl-i figcaption b{color:var(--ac)}
+.pl-ic{display:grid;place-items:center;color:var(--ink)}
+.pl-folha .m1{left:calc(33.4% - 8px)}
+@media(max-width:860px){.pl-mesa{grid-template-columns:1fr;gap:22px}.pl-i:nth-child(2){margin-top:0}.pl-folha .m1{left:calc(50% - 8px)}}
+@media(prefers-reduced-motion:reduce){.pl-i{animation:none}}
 </style></head><body>
 <header class="topo"><div class="wrap"><a class="marca" href="#logo" data-vai="logo"><span class="cabeca"><img class="hd0" src="img/head_planta.png" alt=""><canvas class="hd" width="128" height="128" aria-hidden="true"></canvas></span>Emerson Silva</a>
 <nav class="abas" id="abas-topo" role="tablist" aria-label="Seções">
@@ -846,7 +863,7 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 <section class="painel" id="p-jogo" hidden><div class="ilha"><picture><source media="(max-width:860px)" srcset="img/hero_pixel_m.webp"><img src="img/hero_pixel.webp" width="1792" height="592" alt="Ilha flutuante em pixel art com uma casinha de telhado vermelho, lagoa, árvores e o mascote andando na trilha"></picture><div class="caixa"><h2>Peregrin</h2><p>Meu jogo em pixel art, feito em Godot. Eu faço a arte (criaturas, personagens, interface, tilesets e mapas) e também a programação. Aqui estão as criaturas em animação, capturas do jogo e os ícones.</p><span class="seta">&#9654;</span></div></div><div class="wrap"><h3 class="subt">Criaturas em idle</h3><p class="sub-p">Cada criatura tem várias animações, como andar, dormir e atacar; aqui, uma delas em loop.</p><div class="bichos"><figure class="bicho"><div class="palco2"><img src="img/peregrin/hakum_parado.webp" alt="Criatura Hakum em animação parada" loading="lazy"></div><b>Hakum</b></figure><figure class="bicho"><div class="palco2"><img src="img/peregrin/barba_parado.webp" alt="Criatura Barbá em animação parada" loading="lazy"></div><b>Barbá</b></figure><figure class="bicho"><div class="palco2"><img src="img/peregrin/krogo_parado.webp" alt="Criatura Krogo em animação parada" loading="lazy"></div><b>Krogo</b></figure><figure class="bicho"><div class="palco2"><img src="img/peregrin/kumo_parado.webp" alt="Criatura Kumo em animação parada" loading="lazy"></div><b>Kumo</b></figure><figure class="bicho"><div class="palco2"><img src="img/peregrin/xartosh_parado.webp" alt="Criatura Xartosh em animação parada" loading="lazy"></div><b>Xartosh</b></figure><figure class="bicho"><div class="palco2"><img src="img/peregrin/agumo_parado.webp" alt="Criatura Agumo em animação parada" loading="lazy"></div><b>Agumo</b></figure><figure class="bicho"><div class="palco2"><img src="img/peregrin/kinoy_parado.webp" alt="Criatura Kinoy em animação parada" loading="lazy"></div><b>Kinoy</b></figure></div><h3 class="subt">Capturas do jogo</h3><div class="caps"><figure class="cap1"><img src="img/peregrin/cap/vale.png" alt="Captura do jogo Peregrin: Vale da Tartaruga" loading="lazy"><figcaption>Vale da Tartaruga</figcaption></figure><figure class="cap1"><img src="img/peregrin/cap/tela.png" alt="Captura do jogo Peregrin: Tela inicial" loading="lazy"><figcaption>Tela inicial</figcaption></figure><figure class="cap1"><img src="img/peregrin/cap/floresta.png" alt="Captura do jogo Peregrin: Rota das Fontes Termais" loading="lazy"><figcaption>Rota das Fontes Termais</figcaption></figure><figure class="cap1"><img src="img/peregrin/cap/caverna.png" alt="Captura do jogo Peregrin: Caverna das Cinzas" loading="lazy"><figcaption>Caverna das Cinzas</figcaption></figure><figure class="cap1"><img src="img/peregrin/cap/chuva.png" alt="Captura do jogo Peregrin: Rota das Fontes Termais sob chuva" loading="lazy"><figcaption>Rota das Fontes Termais sob chuva</figcaption></figure></div><h3 class="subt">Ícones das criaturas</h3><div class="icos"><span class="ico" style="--t:108px;--k:3;--w:25"><img src="img/peregrin/ic/head_01.png" alt="" loading="lazy"></span><span class="ico" style="--t:108px;--k:3;--w:20"><img src="img/peregrin/ic/head_02.png" alt="" loading="lazy"></span><span class="ico" style="--t:108px;--k:3;--w:19"><img src="img/peregrin/ic/head_03.png" alt="" loading="lazy"></span><span class="ico" style="--t:108px;--k:3;--w:22"><img src="img/peregrin/ic/head_04.png" alt="" loading="lazy"></span><span class="ico" style="--t:108px;--k:3;--w:20"><img src="img/peregrin/ic/head_05.png" alt="" loading="lazy"></span><span class="ico" style="--t:108px;--k:3;--w:22"><img src="img/peregrin/ic/head_06.png" alt="" loading="lazy"></span><span class="ico" style="--t:108px;--k:3;--w:30"><img src="img/peregrin/ic/head_07.png" alt="" loading="lazy"></span><span class="ico" style="--t:108px;--k:3;--w:23"><img src="img/peregrin/ic/head_08.png" alt="" loading="lazy"></span><span class="ico" style="--t:108px;--k:3;--w:23"><img src="img/peregrin/ic/head_09.png" alt="" loading="lazy"></span></div><h3 class="subt">Ícones de ataques</h3><div class="icos"><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_01.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_02.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_03.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_04.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_05.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_06.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_07.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_08.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_09.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_10.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_11.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_12.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_13.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_14.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_15.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_16.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_17.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_18.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_19.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_20.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_21.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_22.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_23.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_24.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_25.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_26.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_27.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_28.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_29.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_30.png" alt="" loading="lazy"></span><span class="ico" style="--t:84px;--k:4;--w:16"><img src="img/peregrin/ic/atk_31.png" alt="" loading="lazy"></span></div></div></section>
 
 <section class="painel" id="p-apps" hidden><div class="wrap">
-<div class="cab"><div><span class="sel">Aplicativos · Android</span><h2>APPs</h2><p>Aplicativos que eu projeto e desenho do ícone à última tela. Cada um tem a sua ficha, com o que faz, para que plataforma serve e o botão para baixar.</p></div></div>
+<div class="cab"><div><span class="sel">Aplicativos · Android e planilha para iPhone</span><h2>APPs</h2><p>Aplicativos que eu projeto e desenho do ícone à última tela. Cada um tem a sua ficha, com o que faz, para que plataforma serve e o botão para baixar.</p></div></div>
 <article class="app" id="app-controle">
 <figure class="app-folha" aria-label="Telas do Controle Financeiro">
 <i class="c1" aria-hidden="true"></i><i class="c2" aria-hidden="true"></i><i class="hl" aria-hidden="true"></i><i class="vl" aria-hidden="true"></i>
@@ -896,7 +913,79 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 <li>Abra o arquivo. O Android avisa que o app vem de fora da loja: permita a instalação uma vez.</li>
 <li>Abra o app, escolha o visual e crie o seu PIN. Guarde a chave de recuperação.</li>
 </ol>
-<p class="app-av">Para conferir o arquivo, compare o SHA-256 acima com o do arquivo baixado. O app só consulta a internet quando você toca em "Verificar atualização". Ainda não há versão para iPhone.</p>
+<p class="app-av">Para conferir o arquivo, compare o SHA-256 acima com o do arquivo baixado. O app só consulta a internet quando você toca em "Verificar atualização". Ainda não há app para iPhone: use a planilha logo abaixo.</p>
+<p class="app-dir">© 2026 Emerson Silva - DreamyStation. Todos os direitos reservados.</p>
+</aside>
+</article>
+<article class="app" id="app-planilha">
+<figure class="app-folha pl-folha" aria-label="Três abas da planilha Controle Financeiro, com os números da planilha de exemplo">
+<i class="c1" aria-hidden="true"></i><i class="c2" aria-hidden="true"></i><i class="hl" aria-hidden="true"></i><i class="vl" aria-hidden="true"></i>
+<i class="cota" aria-hidden="true"><em>7 abas · números da planilha de exemplo</em></i>
+<i class="mk m1" aria-hidden="true"></i><i class="mk m2" aria-hidden="true"></i>
+<div class="pl-mesa">
+<figure class="pl-i" style="--d:.55s"><div class="pl-tela"><div class="pl-tab"><b>Resumo</b></div>
+<div class="pl-lin"><span>Saldo inicial</span><span class="pl-v am">R$ 1.250,00</span></div>
+<div class="pl-lin"><span><b>SALDO HOJE</b></span><span class="pl-v"><b>R$ 3.883,10</b></span></div>
+<div class="pl-lin"><span><b>SALDO LIVRE NO MÊS</b></span><span class="pl-v"><b>R$ 2.543,20</b></span></div>
+<div class="pl-lin"><span>Comprometimento da renda</span><span class="pl-v">11% · Tranquilo</span></div>
+<div class="pl-lin"><span>Sobrou no mês</span><span class="pl-v">R$ 2.633,10</span></div></div>
+<figcaption><b>Resumo</b><br>saldo e saldo livre</figcaption></figure>
+<figure class="pl-i" style="--d:.7s"><div class="pl-tela"><div class="pl-tab"><b>A pagar</b></div>
+<div class="pl-lin"><span>20/10 · Aluguel</span><span class="pl-v">R$ 800,00</span></div>
+<div class="pl-lin"><span>25/10 · Internet</span><span class="pl-v">R$ 119,90</span></div>
+<div class="pl-lin"><span>20/11 · Aluguel</span><span class="pl-v">R$ 800,00</span></div>
+<div class="pl-lin"><span>22/10 · Empréstimo</span><span class="pl-v">R$ 320,00</span></div>
+<div class="pl-lin"><span><b>O saldo cobre tudo?</b></span><span class="pl-v ok"><b>Sim</b></span></div></div>
+<figcaption><b>A pagar</b><br>na ordem de importância</figcaption></figure>
+<figure class="pl-i" style="--d:.85s"><div class="pl-tela"><div class="pl-tab"><b>Simulador</b></div>
+<div class="pl-lin"><span>Quanto custa?</span><span class="pl-v am">R$ 1.200,00</span></div>
+<div class="pl-lin"><span>Parcelas · juros ao mês</span><span class="pl-v am">6 · 3%</span></div>
+<div class="pl-lin"><span>Valor de cada parcela</span><span class="pl-v">R$ 221,52</span></div>
+<div class="pl-lin"><span>Total que sai do bolso</span><span class="pl-v">R$ 1.329,10</span></div>
+<div class="pl-lin"><span><b>VEREDITO</b></span><span class="pl-v ok"><b>Cabe no orçamento</b></span></div></div>
+<figcaption><b>Simulador</b><br>"e se eu comprar?"</figcaption></figure>
+</div>
+<div class="app-tb" aria-hidden="true"><b>Projeto: Controle Financeiro em planilha</b><b>Amarelo: você digita</b><b>Azul: calcula sozinha</b><b>E. Silva</b></div>
+</figure>
+<div class="app-corpo">
+<div class="app-id"><span class="app-ic pl-ic" aria-hidden="true"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><rect x="6" y="8" width="36" height="32"/><path d="M6 18h36M6 28h36M20 18v22"/><path d="M26 12.5h10" stroke="#1F4BFF"/></svg></span><div><span class="etq">iPhone, Android e computador · Google Planilhas</span><h3>Controle Financeiro em planilha</h3><div class="tp">A mesma ideia do app, para quem usa iPhone</div></div></div>
+<p>O app ainda não tem versão para iPhone, então eu montei a mesma lógica numa planilha do Google: o saldo à vista, o que sobra no mês, as contas que vencem na ordem certa e a pergunta de antes de toda compra grande, "e se eu comprar?". Seus dados ficam na sua conta do Google, e o tutorial leva você do download ao primeiro lançamento em uns 10 minutos.</p>
+<ol class="app-lista">
+<li><b>Saldo e saldo livre</b><span>Mostra quanto você tem hoje e quanto realmente sobra até o fim do mês, já descontando o que você separou.</span></li>
+<li><b>A pagar, em ordem</b><span>Primeiro o essencial, depois dívidas, o importante e o que você quer. Diz se o saldo de hoje cobre tudo.</span></li>
+<li><b>E se eu comprar?</b><span>Simula a compra à vista ou parcelada e dá o veredito: cabe, aperta ou não cabe.</span></li>
+<li><b>Objetivos e renda</b><span>Reserva de emergência, viagem e gastos do ano, e quanto da sua renda já vai para dívidas e parcelas.</span></li>
+<li><b>Tutorial incluído</b><span>Um passo a passo na página e em PDF, e um resumo dentro da própria planilha.</span></li>
+</ol>
+</div>
+<aside class="app-baixar" aria-label="Baixar a planilha Controle Financeiro">
+<h4>Baixar a planilha</h4>
+<div class="app-termo" id="pl-termo" role="group" aria-labelledby="pl-termo-t">
+<b id="pl-termo-t">Termo de uso</b>
+<p>A planilha Controle Financeiro é uma obra de <strong>Emerson Silva - DreamyStation</strong>, protegida pela <strong>Lei de Direitos Autorais (Lei 9.610/1998)</strong>. Todos os direitos reservados.</p>
+<p>Você pode usá-la para o seu próprio controle financeiro. É <strong>proibido copiar, plagiar, redistribuir, vender, alterar ou criar obras derivadas</strong> sem autorização por escrito do autor. Quem fizer isso está sujeito às sanções civis e penais previstas em lei.</p>
+<label class="app-aceite"><input type="checkbox" id="pl-aceite"><span>Li e concordo com o termo de uso.</span></label>
+<p class="app-aviso" id="pl-aviso" role="status" aria-live="polite" hidden>Marque a confirmação acima para poder baixar.</p>
+</div>
+<a class="btn" id="pl-vazia" href="#pl-termo" aria-disabled="true" data-href="downloads/controle-financeiro-planilha.xlsx">Baixar a planilha vazia (.xlsx)</a>
+<a class="btn sec" id="pl-exemplo" href="#pl-termo" aria-disabled="true" data-href="downloads/controle-financeiro-planilha-exemplo.xlsx">Baixar a planilha de exemplo</a>
+<h4>Tutorial de uso</h4>
+<a class="btn sec" href="planilha-tutorial.html">Ler o tutorial passo a passo</a>
+<a class="btn sec" href="downloads/tutorial-planilha-controle-financeiro.pdf" download>Baixar o tutorial em PDF</a>
+<dl class="app-meta">
+<div><dt>Formato</dt><dd>.xlsx, abre no Google Planilhas</dd></div>
+<div><dt>Tamanho</dt><dd>70 KB cada</dd></div>
+<div><dt>Funciona em</dt><dd>iPhone, Android e computador</dd></div>
+<div><dt>Custo</dt><dd>Grátis (precisa de uma conta Google)</dd></div>
+<div><dt>Atualizada em</dt><dd>5 de outubro de 2026</dd></div>
+</dl>
+<h4>Como usar no iPhone</h4>
+<ol class="app-passos">
+<li>Baixe o arquivo e envie para o Google Drive.</li>
+<li>Abra no Drive e toque em ⋮, depois em "Salvar como Planilha Google".</li>
+<li>Na aba Resumo, digite o seu saldo inicial e comece a anotar na aba Lançamentos.</li>
+</ol>
+<p class="app-av">Testada no Google Planilhas. A planilha não tem PIN próprio (vale a segurança da sua conta Google), voz, foto de nota nem captura de notificações: para isso, use o app no Android.</p>
 <p class="app-dir">© 2026 Emerson Silva - DreamyStation. Todos os direitos reservados.</p>
 </aside>
 </article>
@@ -1033,6 +1122,28 @@ addEventListener('scroll',()=>{if(!on){on=true;requestAnimationFrame(f)}},{passi
    .catch(function(){/* sem rede ou limite do GitHub: ficam os dados gravados na página */});
  };
  if(location.hash==='#apps')window.appsAbre();
+})();
+</script>
+<script>
+/* planilha: o botão de baixar só libera depois do aceite do termo de uso */
+(function(){
+ var chk=document.getElementById('pl-aceite'),aviso=document.getElementById('pl-aviso'),termo=document.getElementById('pl-termo'),ids=['pl-vazia','pl-exemplo'];
+ if(!chk)return;
+ function liga(){
+  var ok=chk.checked;
+  ids.forEach(function(id){var a=document.getElementById(id);if(!a)return;
+   if(ok){a.href=a.dataset.href;a.setAttribute('download','');a.removeAttribute('aria-disabled')}
+   else{a.href='#pl-termo';a.removeAttribute('download');a.setAttribute('aria-disabled','true')}});
+  if(aviso&&ok)aviso.hidden=true;
+ }
+ chk.addEventListener('change',liga);
+ ids.forEach(function(id){var a=document.getElementById(id);if(!a)return;
+  a.addEventListener('click',function(e){
+   if(chk.checked)return;e.preventDefault();
+   if(aviso)aviso.hidden=false;if(termo){termo.classList.remove('erro');void termo.offsetWidth;termo.classList.add('erro')}
+   chk.focus({preventScroll:false});
+  })});
+ liga();
 })();
 </script>
 </body></html>
