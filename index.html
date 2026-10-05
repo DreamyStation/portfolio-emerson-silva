@@ -896,7 +896,7 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 <div class="app-tb" aria-hidden="true"><b>Projeto: Controle Financeiro</b><b>Esc. 1:1</b><b>Folha 01/01</b><b>E. Silva</b></div>
 </figure>
 <div class="app-corpo">
-<div class="app-id"><img class="app-ic" src="img/app_controle_icone.png" width="72" height="72" alt="Ícone do Controle Financeiro: uma barra de ouro sobre fundo azul-noite"><div><span class="etq">Android · versão <span data-app="versao">0.1.0</span></span><h3>Controle Financeiro</h3><div class="tp">Finanças pessoais, de negócio e para crianças, sem internet</div></div></div>
+<div class="app-id"><img class="app-ic" src="img/app_controle_icone.png" width="72" height="72" alt="Ícone do Controle Financeiro: uma barra de ouro sobre fundo azul-noite"><div><span class="etq">Android · versão <span data-app="versao">0.1.1</span></span><h3>Controle Financeiro</h3><div class="tp">Finanças pessoais, de negócio e para crianças, sem internet</div></div></div>
 <p>Um app para anotar o dinheiro sem dor de cabeça: o saldo à vista, as contas que vencem e uma pergunta que eu faço antes de toda compra grande, "e se eu comprar?". Eu desenhei a interface, os seis visuais e o tutorial, e cada tela fala em português simples.</p>
 <ol class="app-lista">
 <li><b>Anote do seu jeito</b><span>Escreva "padaria 12,50 ontem", fale ou fotografe a nota, e o app entende o valor, o dia e a categoria.</span></li>
@@ -916,14 +916,14 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 <label class="app-aceite"><input type="checkbox" id="app-aceite"><span>Li e concordo com o termo de uso.</span></label>
 <p class="app-aviso" id="app-aviso" role="status" aria-live="polite" hidden>Marque a confirmação acima para poder baixar.</p>
 </div>
-<a class="btn" id="app-apk" href="#app-termo" aria-disabled="true" data-href="https://github.com/DreamyStation/dev-app-releases/releases/download/v0.1.0/controle-financeiro-0.1.0.apk" rel="noopener">Baixar para Android · <span data-app="tamanho">58 MB</span></a>
+<a class="btn" id="app-apk" href="#app-termo" aria-disabled="true" data-href="https://github.com/DreamyStation/dev-app-releases/releases/download/v0.1.1/controle-financeiro-0.1.1.apk" rel="noopener">Baixar para Android · <span data-app="tamanho">58 MB</span></a>
 <a class="btn sec" id="app-rel" href="#app-termo" aria-disabled="true" data-href="https://github.com/DreamyStation/dev-app-releases/releases" target="_blank" rel="noopener">Ver todas as versões</a>
 <dl class="app-meta">
-<div><dt>Versão</dt><dd data-app="versao">0.1.0</dd></div>
+<div><dt>Versão</dt><dd data-app="versao">0.1.1</dd></div>
 <div><dt>Tamanho</dt><dd data-app="tamanho">58 MB</dd></div>
 <div><dt>Requer</dt><dd>Android 7.0 ou mais novo, 64 bits</dd></div>
 <div><dt>Publicado em</dt><dd data-app="data">5 de outubro de 2026</dd></div>
-<div><dt>SHA-256</dt><dd class="app-hash" data-app="hash">fe6c14d9f44a10a83ab422bfc6c6e61087556fba3ef59dd452d5b33124ab96e7</dd></div>
+<div><dt>SHA-256</dt><dd class="app-hash" data-app="hash">3422441d4141d06128361ee16f4d151a7bed1aa8daf196e98dc373f81b3e2a6f</dd></div>
 </dl>
 <h4>Como instalar</h4>
 <ol class="app-passos">
@@ -1132,7 +1132,7 @@ addEventListener('scroll',()=>{if(!on){on=true;requestAnimationFrame(f)}},{passi
   var apk=(r.assets||[]).filter(function(a){return /\.apk$/i.test(a.name)})[0];if(!apk)return;
   var b=document.getElementById('app-apk'),l=document.getElementById('app-rel');
   if(b)b.dataset.href=apk.browser_download_url;if(l&&r.html_url)l.dataset.href=r.html_url;liga();
-  pon('versao',String(r.tag_name||'').replace(/^v/,'')||'0.1.0');
+  pon('versao',String(r.tag_name||'').replace(/^v/,'')||'0.1.1');
   pon('tamanho',Math.round(apk.size/1048576)+' MB');
   try{pon('data',new Date(r.published_at).toLocaleDateString('pt-BR',{day:'numeric',month:'long',year:'numeric'}))}catch(e){}
   if(apk.digest)pon('hash',String(apk.digest).replace(/^sha256:/,''));
