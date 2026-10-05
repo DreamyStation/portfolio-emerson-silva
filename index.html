@@ -828,6 +828,20 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 .pl-folha .m1{left:calc(33.4% - 8px)}
 @media(max-width:860px){.pl-mesa{grid-template-columns:1fr;gap:22px}.pl-i:nth-child(2){margin-top:0}.pl-folha .m1{left:calc(50% - 8px)}}
 @media(prefers-reduced-motion:reduce){.pl-i{animation:none}}
+
+/* APPs: duas vistas (app e planilha) */
+.app[hidden],.app-ponte[hidden]{display:none!important}
+.app-seletor{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 clamp(26px,4vw,46px);scroll-margin-top:112px}
+.app-seletor button{flex:1 1 260px;display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:14px 20px;border:2px solid var(--ink);background:#fff;color:var(--ink);font:inherit;text-align:left;cursor:pointer;box-shadow:4px 4px 0 var(--ac);transition:transform .2s,box-shadow .2s,background .2s,color .2s}
+.app-seletor button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ac)}
+.app-seletor button b{font:700 1.15rem/1.1 "Space Grotesk","Inter Tight",sans-serif;letter-spacing:-.03em}
+.app-seletor button small{font:700 .64rem "Space Mono",monospace;text-transform:uppercase;letter-spacing:.07em;color:var(--mu)}
+.app-seletor button[aria-selected=true]{background:var(--ink);color:#fff;box-shadow:0 0 0 var(--ac);transform:translate(4px,4px)}
+.app-seletor button[aria-selected=true] small{color:#C9D6FF}
+.app-ponte{display:flex;align-items:center;justify-content:space-between;gap:18px 28px;flex-wrap:wrap;margin:calc(18px - clamp(46px,7vw,96px)) 0 clamp(46px,7vw,96px);padding:18px 22px;border:2px dashed var(--ink);background:#fff}
+.app-ponte div{flex:1 1 320px;display:flex;flex-direction:column;gap:2px}
+.app-ponte b{font:700 1.2rem "Space Grotesk","Inter Tight",sans-serif;letter-spacing:-.03em}
+.app-ponte span{color:var(--mu);font-size:.95rem}
 </style></head><body>
 <header class="topo"><div class="wrap"><a class="marca" href="#logo" data-vai="logo"><span class="cabeca"><img class="hd0" src="img/head_planta.png" alt=""><canvas class="hd" width="128" height="128" aria-hidden="true"></canvas></span>Emerson Silva</a>
 <nav class="abas" id="abas-topo" role="tablist" aria-label="Seções">
@@ -864,6 +878,10 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 
 <section class="painel" id="p-apps" hidden><div class="wrap">
 <div class="cab"><div><span class="sel">Aplicativos · Android e planilha para iPhone</span><h2>APPs</h2><p>Aplicativos que eu projeto e desenho do ícone à última tela. Cada um tem a sua ficha, com o que faz, para que plataforma serve e o botão para baixar.</p></div></div>
+<div class="app-seletor" id="apps-seletor" role="tablist" aria-label="Escolha o aplicativo">
+<button type="button" role="tab" data-vista="app" aria-selected="true" aria-controls="app-controle"><b>Controle Financeiro</b><small>Aplicativo · Android</small></button>
+<button type="button" role="tab" data-vista="planilha" aria-selected="false" aria-controls="app-planilha"><b>Planilha Controle Financeiro</b><small>Google Planilhas · iPhone</small></button>
+</div>
 <article class="app" id="app-controle">
 <figure class="app-folha" aria-label="Telas do Controle Financeiro">
 <i class="c1" aria-hidden="true"></i><i class="c2" aria-hidden="true"></i><i class="hl" aria-hidden="true"></i><i class="vl" aria-hidden="true"></i>
@@ -913,11 +931,15 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 <li>Abra o arquivo. O Android avisa que o app vem de fora da loja: permita a instalação uma vez.</li>
 <li>Abra o app, escolha o visual e crie o seu PIN. Guarde a chave de recuperação.</li>
 </ol>
-<p class="app-av">Para conferir o arquivo, compare o SHA-256 acima com o do arquivo baixado. O app só consulta a internet quando você toca em "Verificar atualização". Ainda não há app para iPhone: use a planilha logo abaixo.</p>
+<p class="app-av">Para conferir o arquivo, compare o SHA-256 acima com o do arquivo baixado. O app só consulta a internet quando você toca em "Verificar atualização". Para iPhone, veja a planilha no botão logo abaixo.</p>
 <p class="app-dir">© 2026 Emerson Silva - DreamyStation. Todos os direitos reservados.</p>
 </aside>
 </article>
-<article class="app" id="app-planilha">
+<aside class="app-ponte" id="ponte-app" aria-label="Planilha para iPhone">
+<div><b>Usa iPhone?</b><span>O app ainda não tem versão para iPhone, mas a mesma ideia existe numa planilha do Google, com tutorial passo a passo.</span></div>
+<a class="btn" href="#planilha" data-vista="planilha">Ver a planilha para iPhone</a>
+</aside>
+<article class="app" id="app-planilha" hidden>
 <figure class="app-folha pl-folha" aria-label="Três abas da planilha Controle Financeiro, com os números da planilha de exemplo">
 <i class="c1" aria-hidden="true"></i><i class="c2" aria-hidden="true"></i><i class="hl" aria-hidden="true"></i><i class="vl" aria-hidden="true"></i>
 <i class="cota" aria-hidden="true"><em>7 abas · números da planilha de exemplo</em></i>
@@ -989,6 +1011,10 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 <p class="app-dir">© 2026 Emerson Silva - DreamyStation. Todos os direitos reservados.</p>
 </aside>
 </article>
+<aside class="app-ponte" id="ponte-pl" aria-label="Aplicativo para Android" hidden>
+<div><b>Prefere o aplicativo?</b><span>O Controle Financeiro completo, com PIN, voz, foto de nota e os três modos, está disponível para Android.</span></div>
+<a class="btn sec" href="#apps" data-vista="app">Ver o app para Android</a>
+</aside>
 <article class="app app-breve">
 <div class="app-corpo">
 <div class="app-id"><img class="app-ic app-ic-px" src="img/head_pixel.png" width="72" height="72" alt=""><div><span class="etq">Em desenvolvimento · jogo</span><h3>Peregrin</h3><div class="tp">Jogo em pixel art feito em Godot</div></div></div>
@@ -1067,7 +1093,7 @@ function vai(id,rolar){if(!painel[id])id='logo';abas.forEach(a=>a.setAttribute('
  if(rolar)document.getElementById('abas-topo').scrollIntoView({behavior:'smooth',block:'start'});if(id==='apps'&&window.appsAbre)window.appsAbre()}
 abas.forEach(a=>a.onclick=()=>vai(a.dataset.p,true));
 document.querySelectorAll('[data-vai]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();vai(a.dataset.vai,true)}));
-vai(location.hash.slice(1)||'logo',false);
+(function(){var h=location.hash.slice(1);window.__vistaApps=h==='planilha'?'planilha':'app';vai(h==='planilha'?'apps':(h||'logo'),false)})();
 /* filtros */
 document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));const f=c.dataset.f;
  document.querySelectorAll('.proj').forEach(p=>{const ok=f==='todos'||p.dataset.tag.startsWith(f);p.hidden=!ok})});
@@ -1144,6 +1170,22 @@ addEventListener('scroll',()=>{if(!on){on=true;requestAnimationFrame(f)}},{passi
    chk.focus({preventScroll:false});
   })});
  liga();
+})();
+</script>
+<script>
+/* APPs: alterna entre o app e a planilha (seletor do topo e botões entre os dois) */
+(function(){
+ var ids={ctl:'app-controle',pa:'ponte-app',pl:'app-planilha',pp:'ponte-pl'};
+ window.appsVista=function(v,rolar){
+  var pl=v==='planilha';
+  document.getElementById(ids.ctl).hidden=pl;document.getElementById(ids.pa).hidden=pl;
+  document.getElementById(ids.pl).hidden=!pl;document.getElementById(ids.pp).hidden=!pl;
+  document.querySelectorAll('.app-seletor [data-vista]').forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.vista===(pl?'planilha':'app')))});
+  try{history.replaceState(null,'',pl?'#planilha':'#apps')}catch(e){}
+  if(rolar){var s=document.getElementById('apps-seletor');if(s)s.scrollIntoView({behavior:'smooth',block:'start'})}
+ };
+ document.querySelectorAll('[data-vista]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();window.appsVista(b.dataset.vista,true)})});
+ if(window.__vistaApps==='planilha')window.appsVista('planilha',false);
 })();
 </script>
 </body></html>
