@@ -774,7 +774,7 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 .app-folha .mk::before,.app-folha .mk::after{content:"";position:absolute;background:#E8261A}
 .app-folha .mk::before{left:50%;top:-5px;bottom:-5px;width:1.5px}.app-folha .mk::after{top:50%;left:-5px;right:-5px;height:1.5px}
 .app-folha .m1{left:calc(50% - 8px);top:calc(52% - 8px)}.app-folha .m2{right:26px;bottom:56px}
-.app-fones{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,2.4vw,34px);align-items:end}
+.app-fones{position:relative;z-index:2;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(10px,1.8vw,26px);align-items:end}
 .fone-i{margin:0;animation:apSobe .8s var(--d,.5s) cubic-bezier(.2,1.15,.3,1) both}
 .fone-i:nth-child(2n){margin-bottom:36px}
 @keyframes apSobe{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
@@ -810,7 +810,7 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 .app-av,.app-dir{margin:0;font-size:.86rem;color:var(--mu)}.app-dir{font-weight:700;color:var(--ink)}
 .app-breve{grid-template-columns:1fr;padding-top:clamp(26px,4vw,40px);border-top:2px solid var(--ink)}
 .app-breve .app-corpo>p{margin-bottom:20px}
-@media(max-width:860px){.app{grid-template-columns:1fr}.app-baixar{position:static}.app-fones{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 16px}.fone-i:nth-child(2n){margin-bottom:0}.app-tb b:nth-child(n+3){display:none}.app-folha .m2{display:none}.app-folha{padding-inline:clamp(14px,5vw,28px)}}
+@media(max-width:860px){.app{grid-template-columns:1fr}.app-baixar{position:static}.app-fones{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 16px}.fone-i:last-child:nth-child(odd){grid-column:1/-1;width:50%;justify-self:center}.fone-i:nth-child(2n){margin-bottom:0}.app-tb b:nth-child(n+3){display:none}.app-folha .m2{display:none}.app-folha{padding-inline:clamp(14px,5vw,28px)}}
 
 /* planilha: três abas desenhadas como folhas de planilha */
 .pl-mesa{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.6vw,38px);align-items:start}
@@ -896,20 +896,23 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 <figure class="fone-i" style="--d:.55s"><div class="fone"><img src="img/app_pessoal.jpg" width="412" height="892" alt="Tela inicial do Controle Financeiro Privado no modo pessoal e no visual Técnico, com fundo de planta azul, saldo, aviso de contas e lançamentos do mês" loading="lazy"></div><figcaption><b>Modo pessoal</b><br>visual Técnico</figcaption></figure>
 <figure class="fone-i" style="--d:.7s"><div class="fone"><img src="img/app_negocio.jpg" width="412" height="892" alt="Tela inicial do modo empreendimento, com saldo do negócio, resumo do mês e caixa das próximas semanas" loading="lazy"></div><figcaption><b>Modo empreendimento</b><br>visual Y2K</figcaption></figure>
 <figure class="fone-i" style="--d:.85s"><div class="fone"><img src="img/app_motorista.jpg" width="412" height="892" alt="Tela inicial do modo motorista, com o lucro real do dia, quanto rendeu cada quilômetro e cada hora e os atalhos para registrar o dia, abastecer e ver se a corrida vale a pena" loading="lazy"></div><figcaption><b>Modo motorista</b><br>visual Minimalista</figcaption></figure>
-<figure class="fone-i" style="--d:1s"><div class="fone"><img src="img/app_educativo.jpg" width="412" height="892" alt="Tela inicial do modo educativo em pixel art, com o cartão do herói no nível 1, a barra de XP, os três potinhos e o Oráculo do dia" loading="lazy"></div><figcaption><b>Modo educativo</b><br>aventura de RPG</figcaption></figure>
+<figure class="fone-i" style="--d:1s"><div class="fone"><img src="img/app_freelancer.jpg" width="412" height="892" alt="Tela inicial do modo freelancer, com o valor a receber dos contratos, o que está em atraso, os botões de novo contrato, orçar projeto, guias e leis e anotar gasto, e as próximas parcelas" loading="lazy"></div><figcaption><b>Modo freelancer</b><br>visual Minimalista</figcaption></figure>
+<figure class="fone-i" style="--d:1.15s"><div class="fone"><img src="img/app_educativo.jpg" width="412" height="892" alt="Tela inicial do modo educativo em pixel art, com o cartão do herói no nível 1, a barra de XP, os três potinhos e o Oráculo do dia" loading="lazy"></div><figcaption><b>Modo educativo</b><br>aventura de RPG</figcaption></figure>
 </div>
 <div class="app-tb" aria-hidden="true"><b>Projeto: Controle Financeiro Privado</b><b>Esc. 1:1</b><b>Folha 01/01</b><b>E. Silva</b></div>
 </figure>
 <div class="app-corpo">
-<div class="app-id"><img class="app-ic" src="img/app_controle_icone.png" width="72" height="72" alt="Ícone do Controle Financeiro Privado: uma barra de ouro sobre fundo azul-noite"><div><span class="etq">Android · versão <span data-app="versao">0.2.0</span></span><h3>Controle Financeiro Privado</h3><div class="tp">Finanças pessoais, de negócio e para crianças, sem internet</div></div></div>
-<p>Um app para anotar o dinheiro sem dor de cabeça: o saldo à vista, as contas que vencem e uma pergunta que eu faço antes de toda compra grande, "e se eu comprar?". Eu desenhei a interface, os sete visuais e o tutorial, e cada tela fala em português simples.</p>
+<div class="app-id"><img class="app-ic" src="img/app_controle_icone.png" width="72" height="72" alt="Ícone do Controle Financeiro Privado: uma barra de ouro sobre fundo azul-noite"><div><span class="etq">Android · versão <span data-app="versao">0.3.0</span></span><h3>Controle Financeiro Privado</h3><div class="tp">Finanças pessoais, de negócio, de freelancer e para crianças, sem internet</div></div></div>
+<p>Um app para anotar o dinheiro sem dor de cabeça: o saldo à vista, as contas que vencem e uma pergunta que eu faço antes de toda compra grande, "e se eu comprar?". Eu desenhei a interface, os sete visuais e o tutorial, e cada tela fala em linguagem simples, em português, inglês e espanhol.</p>
 <ol class="app-lista">
 <li><b>Anote do seu jeito</b><span>Escreva "padaria 12,50 ontem", fale ou fotografe a nota, e o app entende o valor, o dia e a categoria.</span></li>
 <li><b>E se eu comprar?</b><span>Simula a compra, à vista ou parcelada, e mostra o saldo mês a mês antes de você gastar.</span></li>
-<li><b>Quatro modos</b><span>Pessoal, empreendimento (para quem está começando um negócio), motorista e educativo, para crianças. Cada modo tem o seu dinheiro e as suas ferramentas, sem se misturar.</span></li>
-<li><b>Modo motorista</b><span>Para quem roda com aplicativo de corrida ou entrega, de carro ou de moto: 40 veículos com o consumo de combustível, o lucro real por quilômetro e por hora, "vale a pena aceitar esta corrida?", etanol ou gasolina, meta do mês e aviso de manutenção. Tudo digitado por você, sem GPS.</span></li>
+<li><b>Cinco modos</b><span>Pessoal, empreendimento (para quem está começando um negócio), motorista, freelancer e educativo, para crianças. Cada modo tem o seu dinheiro e as suas ferramentas, sem se misturar.</span></li>
+<li><b>Modo motorista</b><span>Para quem roda com aplicativo de corrida ou entrega, de carro ou de moto: 40 veículos com o consumo de combustível, o lucro real por quilômetro e por hora, "vale a pena aceitar esta corrida?", etanol ou gasolina, meta do mês e aviso de manutenção. Você digita os números ou lê um print do pedido (Uber, 99 e outros), no próprio celular, sem GPS e sem ler os aplicativos por dentro.</span></li>
+<li><b>Modo freelancer</b><span>Para quem trabalha por projeto: um gerador de contrato em PDF, em português, inglês ou espanhol, com as cláusulas que protegem o pagamento e os direitos autorais, as parcelas a receber, mensagens de cobrança, a calculadora da sua hora, um guia de preços (branding, embalagem, ilustração, apps...) e um guia das leis úteis. É um modelo baseado na lei brasileira, não substitui um advogado.</span></li>
 <li><b>Educativo como RPG</b><span>A criança ganha XP e sobe de nível com tarefas, metas, doações e lições, veste os tesouros que compra, responde ao Oráculo do dia e derrota um chefe em cada lição. A loja se atualiza toda semana, e o jogo premia quem espera e planeja, não quem gasta.</span></li>
 <li><b>Sete visuais</b><span>Técnico (a folha de projeto da primeira tela), Cute, Y2K, PC antigo, Minimalista e Blackpixel RPG para todos, e o Pixel art, que só existe no modo educativo. Cada um com apelidos de mascotes sorteados.</span></li>
+<li><b>Três idiomas</b><span>Português, inglês e espanhol, na abertura ou em Mais > Idioma. A leitura de frases e a voz continuam em português.</span></li>
 <li><b>Tutorial com balões</b><span>Um passeio guiado diferente para cada modo, que mostra cada ferramenta e abre as telas sozinho.</span></li>
 <li><b>Seus dados só com você</b><span>Tudo fica no celular, protegido por PIN e chave de recuperação. Dá para fazer backup criptografado, e o app bloqueia prints nas telas com saldo.</span></li>
 </ol>
@@ -923,14 +926,14 @@ html body[data-tema="logo"] .app-baixar .btn.sec[aria-disabled="true"]{backgroun
 <label class="app-aceite"><input type="checkbox" id="app-aceite"><span>Li e concordo com o termo de uso.</span></label>
 <p class="app-aviso" id="app-aviso" role="status" aria-live="polite" hidden>Marque a confirmação acima para poder baixar.</p>
 </div>
-<a class="btn" id="app-apk" href="#app-termo" aria-disabled="true" data-href="https://github.com/DreamyStation/dev-app-releases/releases/download/v0.2.0/controle-financeiro-0.2.0.apk" rel="noopener">Baixar para Android · <span data-app="tamanho">59 MB</span></a>
+<a class="btn" id="app-apk" href="#app-termo" aria-disabled="true" data-href="https://github.com/DreamyStation/dev-app-releases/releases/download/v0.3.0/controle-financeiro-0.3.0.apk" rel="noopener">Baixar para Android · <span data-app="tamanho">60 MB</span></a>
 <a class="btn sec" id="app-rel" href="#app-termo" aria-disabled="true" data-href="https://github.com/DreamyStation/dev-app-releases/releases" target="_blank" rel="noopener">Ver todas as versões</a>
 <dl class="app-meta">
-<div><dt>Versão</dt><dd data-app="versao">0.2.0</dd></div>
-<div><dt>Tamanho</dt><dd data-app="tamanho">59 MB</dd></div>
+<div><dt>Versão</dt><dd data-app="versao">0.3.0</dd></div>
+<div><dt>Tamanho</dt><dd data-app="tamanho">60 MB</dd></div>
 <div><dt>Requer</dt><dd>Android 7.0 ou mais novo, 64 bits</dd></div>
-<div><dt>Publicado em</dt><dd data-app="data">5 de outubro de 2026</dd></div>
-<div><dt>SHA-256</dt><dd class="app-hash" data-app="hash">5aef40f54816c499eb3ef96df032787a97fd4e02f893556e1185efceff8f83b9</dd></div>
+<div><dt>Publicado em</dt><dd data-app="data">6 de outubro de 2026</dd></div>
+<div><dt>SHA-256</dt><dd class="app-hash" data-app="hash">fdf526c580717a5164cde3449f179a53c75e44505043b6ac2d7aa2506d6fc8c4</dd></div>
 </dl>
 <h4>Como instalar</h4>
 <ol class="app-passos">
@@ -1139,7 +1142,7 @@ addEventListener('scroll',()=>{if(!on){on=true;requestAnimationFrame(f)}},{passi
   var apk=(r.assets||[]).filter(function(a){return /\.apk$/i.test(a.name)})[0];if(!apk)return;
   var b=document.getElementById('app-apk'),l=document.getElementById('app-rel');
   if(b)b.dataset.href=apk.browser_download_url;if(l&&r.html_url)l.dataset.href=r.html_url;liga();
-  pon('versao',String(r.tag_name||'').replace(/^v/,'')||'0.2.0');
+  pon('versao',String(r.tag_name||'').replace(/^v/,'')||'0.3.0');
   pon('tamanho',Math.round(apk.size/1048576)+' MB');
   try{pon('data',new Date(r.published_at).toLocaleDateString('pt-BR',{day:'numeric',month:'long',year:'numeric'}))}catch(e){}
   if(apk.digest)pon('hash',String(apk.digest).replace(/^sha256:/,''));
