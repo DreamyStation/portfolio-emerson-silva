@@ -889,6 +889,119 @@ html[lang="en"] body[data-tema="historia"] .linha::before{content:"Timeline"}
 /* barra do topo: com seis abas, o menu precisa de mais largura e de abas um pouco mais compactas */
 @media(min-width:1400px){.topo .wrap{width:min(100% - 2*var(--m),1500px);grid-template-columns:auto 1fr auto}.topo .wrap>.abas{justify-self:center}}
 @media(min-width:1400px) and (max-width:1599.99px){html body #abas-topo .aba{padding-inline:11px;letter-spacing:.02em}html body[data-tema="ilu"] #abas-topo .aba{font-size:.9rem}}
+
+/* ===== Aba Websites: estética Matrix (o pop.js decide quando, o tema decide como) ===== */
+html body[data-tema="matrix"]{--bg:#000d05;--bg2:#03150a;--bg3:#052b18;--ink:#9dffbd;--mu:#7fd9a0;--ac:#39ff7a;--acd:#0a8f3c;--mu2:#39ff7a;--ray:#0f7a3a;--on:#c6ffd8;--topo:rgba(0,13,5,.94);--dot:rgba(57,255,122,.08);--bd:#39ff7a;--shd:#0a8f3c;color:#c6ffd8}
+html body[data-tema="matrix"]::before,html body[data-tema="matrix"]::after{opacity:0}
+html body[data-tema="matrix"] :focus-visible{outline-color:#39ff7a}
+html body[data-tema="matrix"] ::selection{background:#39ff7a;color:#000}
+html body[data-tema="matrix"] :is(h1,h2,h3){color:#c6ffd8;text-shadow:0 0 14px rgba(57,255,122,.35)}
+html body[data-tema="matrix"] .topo{background:var(--topo);border-bottom:2px solid #39ff7a;box-shadow:0 2px 18px rgba(57,255,122,.25)}
+html body[data-tema="matrix"] .marca{color:#c6ffd8}
+html body[data-tema="matrix"] .abas{background:#03150a;border-color:#39ff7a;box-shadow:0 0 14px rgba(57,255,122,.35)}
+html body[data-tema="matrix"] .aba{color:#9dffbd;font-family:"Space Mono",monospace;font-weight:700;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
+html body[data-tema="matrix"] .aba:hover{background:#052b18}
+html body[data-tema="matrix"] .aba[aria-selected=true]{background:#39ff7a;color:#000;box-shadow:0 0 12px rgba(57,255,122,.6)}
+html body[data-tema="matrix"] .btn{background:#39ff7a;color:#000;border-color:#39ff7a;box-shadow:4px 4px 0 #0a8f3c}
+html body[data-tema="matrix"] .btn:hover{box-shadow:0 0 16px rgba(57,255,122,.6),6px 6px 0 #0a8f3c}
+html body[data-tema="matrix"] .btn.sec{background:#03150a;color:#9dffbd;border-color:#39ff7a;box-shadow:4px 4px 0 #0a8f3c}
+html body[data-tema="matrix"] .btn.sec:hover{box-shadow:0 0 16px rgba(57,255,122,.45),6px 6px 0 #39ff7a}
+html body[data-tema="matrix"] .sel{background:#052b18;color:#39ff7a;border:2px solid #39ff7a;border-radius:0;font-family:"Space Mono",monospace}
+html body[data-tema="matrix"] .etq{background:none;border:1px solid #39ff7a;color:#39ff7a;border-radius:0;padding:3px 10px;font:700 .68rem "Space Mono",monospace;letter-spacing:.08em}
+html body[data-tema="matrix"] a{color:#39ff7a}
+html body[data-tema="matrix"] .btn,html body[data-tema="matrix"] .aba{text-decoration:none}
+html body[data-tema="matrix"] .faixa{background:#00120a;color:#39ff7a;border-block:2px solid #39ff7a;box-shadow:0 0 18px rgba(57,255,122,.3)}
+html body[data-tema="matrix"] .faixa.b{background:#021d10;color:#9dffbd;box-shadow:0 0 18px rgba(57,255,122,.3)}
+html body[data-tema="matrix"] .trilho .ic{background:#39ff7a}html body[data-tema="matrix"] .faixa.b .ic{background:#9dffbd}
+html body[data-tema="matrix"] .contato{--ink:#c6ffd8;--mu:#7fd9a0;background:linear-gradient(rgba(57,255,122,.07) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,rgba(57,255,122,.07) 1px,transparent 1px) 0 0/24px 24px,#00120a;color:#c6ffd8;border-top:2px solid #39ff7a}
+html body[data-tema="matrix"] .contato p,html body[data-tema="matrix"] .contato .zap{color:#c6ffd8}
+html body[data-tema="matrix"] .contato .btn.sec{background:rgba(57,255,122,.08);color:#c6ffd8;border-color:#39ff7a;box-shadow:none}
+/* seletor, fichas e capas */
+html body[data-tema="matrix"] .app-seletor button{background:#03150a;color:#c6ffd8;border-color:#39ff7a;box-shadow:4px 4px 0 #0a8f3c}
+html body[data-tema="matrix"] .app-seletor button:hover{box-shadow:0 0 14px rgba(57,255,122,.5),6px 6px 0 #39ff7a}
+html body[data-tema="matrix"] .app-seletor button b{color:#c6ffd8}
+html body[data-tema="matrix"] .app-seletor button small{color:#7fd9a0}
+html body[data-tema="matrix"] .sel-ic,html body[data-tema="matrix"] .app-ic{background:#03150a;border-color:#39ff7a;box-shadow:0 0 10px rgba(57,255,122,.4)}
+html body[data-tema="matrix"] .app-folha{background:linear-gradient(rgba(57,255,122,.10) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,rgba(57,255,122,.10) 1px,transparent 1px) 0 0/22px 22px,#020b05;border-color:#39ff7a;box-shadow:0 0 22px rgba(57,255,122,.28),8px 8px 0 #0a8f3c}
+html body[data-tema="matrix"] .app-folha :is(.c1,.c2){border-color:#39ff7a}
+html body[data-tema="matrix"] .app-folha :is(.hl,.vl,.cota){border-color:#39ff7a}
+html body[data-tema="matrix"] .app-folha .cota::before,html body[data-tema="matrix"] .app-folha .cota::after{border-color:#39ff7a}
+html body[data-tema="matrix"] .app-folha .cota em{background:#020b05;color:#39ff7a}
+html body[data-tema="matrix"] .app-folha .mk{border-color:#ff6b5e}
+html body[data-tema="matrix"] .app-folha .mk::before,html body[data-tema="matrix"] .app-folha .mk::after{background:#ff6b5e}
+html body[data-tema="matrix"] .app-tb{background:#03150a;color:#9dffbd;border-top-color:#39ff7a}
+html body[data-tema="matrix"] .app-tb b{border-left-color:#39ff7a}
+html body[data-tema="matrix"] .sw-win{border-color:#39ff7a;background:#00120a;box-shadow:0 0 18px rgba(57,255,122,.3),8px 8px 0 #0a8f3c}
+html body[data-tema="matrix"] .sw-bar{background:#052b18;border-bottom-color:#39ff7a}
+html body[data-tema="matrix"] .sw-bar i{background:#00120a;border-color:#39ff7a}
+html body[data-tema="matrix"] .sw-bar b{background:#00120a;color:#9dffbd;border-color:#39ff7a}
+html body[data-tema="matrix"] .sw-cel{border-color:#39ff7a;background:#00120a;box-shadow:0 0 16px rgba(57,255,122,.3),6px 6px 0 #0a8f3c}
+html body[data-tema="matrix"] .sw-abas button{background:#03150a;color:#9dffbd;border-color:#39ff7a}
+html body[data-tema="matrix"] .sw-abas button:hover{background:#052b18}
+html body[data-tema="matrix"] .sw-abas button[aria-pressed=true]{background:#39ff7a;color:#000;box-shadow:0 0 12px rgba(57,255,122,.6)}
+html body[data-tema="matrix"] .app-id .tp,html body[data-tema="matrix"] .app-corpo>p,html body[data-tema="matrix"] .cab p{color:#9dffbd}
+html body[data-tema="matrix"] .app-lista{border-top-color:#39ff7a}
+html body[data-tema="matrix"] .app-lista li{border-bottom-color:#0f7a3a}
+html body[data-tema="matrix"] .app-lista li:hover{background:#052b18}
+html body[data-tema="matrix"] .app-lista span{color:#7fd9a0}
+html body[data-tema="matrix"] .app-baixar{background:#03150a;border-color:#39ff7a;box-shadow:0 0 18px rgba(57,255,122,.25),8px 8px 0 #0a8f3c}
+html body[data-tema="matrix"] .app-baixar h4,html body[data-tema="matrix"] .sw-h,html body[data-tema="matrix"] .sw-mais summary{color:#39ff7a}
+html body[data-tema="matrix"] .app-meta{border-top-color:#39ff7a}
+html body[data-tema="matrix"] .app-meta div{border-bottom-color:#0f7a3a}
+html body[data-tema="matrix"] .app-meta dt{color:#7fd9a0}
+html body[data-tema="matrix"] .app-dir{color:#5fbf86}
+html body[data-tema="matrix"] .sw-mais{border-top-color:#39ff7a}
+/* chuva, filtro verde e flutuação dos ícones */
+#chuva-aba{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;opacity:.34}
+html body[data-tema="matrix"] :is(.sel-ic,.app-ic){filter:url(#mx-verde) drop-shadow(0 0 5px rgba(57,255,122,.6));animation:mxFlut 3.6s ease-in-out infinite;animation-delay:calc(var(--i,0) * -.55s)}
+html body[data-tema="matrix"] :is(.sel-ic,.app-ic)[data-pop].pop-in{animation:mxIn .6s steps(1,end) var(--pd,0ms) both,mxFlut 3.6s ease-in-out calc(var(--i,0) * -.55s) infinite}
+@keyframes mxFlut{0%,100%{translate:0 0}50%{translate:0 -7px}}
+/* glitch de entrada e de saída (substitui o pop das outras abas) */
+@keyframes mxIn{
+ 0%{opacity:0;transform:translate(-10px,0) skewX(-12deg);filter:drop-shadow(4px 0 #ff2bd6) drop-shadow(-4px 0 #00f0ff)}
+ 10%{opacity:1;transform:translate(8px,0) skewX(8deg);filter:drop-shadow(-4px 0 #ff2bd6) drop-shadow(4px 0 #00f0ff)}
+ 20%{opacity:.2;transform:translate(-6px,2px)}
+ 30%{opacity:1;transform:translate(5px,-2px) skewX(-5deg);filter:drop-shadow(3px 0 #00f0ff)}
+ 42%{opacity:.5;transform:translate(-3px,0)}
+ 55%{opacity:1;transform:translate(3px,1px) skewX(3deg);filter:drop-shadow(-2px 0 #ff2bd6)}
+ 70%{opacity:.7;transform:translate(-1px,0)}
+ 85%{opacity:1;transform:none}
+ 100%{opacity:1;transform:none}}
+@keyframes mxOut{
+ 0%{opacity:1}
+ 15%{opacity:.3;transform:translate(6px,0) skewX(8deg);filter:drop-shadow(-3px 0 #ff2bd6) drop-shadow(3px 0 #00f0ff)}
+ 30%{opacity:1;transform:translate(-7px,1px)}
+ 45%{opacity:.4;transform:translate(4px,0) skewX(-6deg)}
+ 60%{opacity:.9;transform:translate(-5px,0)}
+ 80%{opacity:.3;transform:translate(2px,0)}
+ 100%{opacity:0;transform:none}}
+@keyframes mxOutPainel{
+ 0%{opacity:1;transform:none;clip-path:none}
+ 15%{transform:translate(5px,0) skewX(8deg);clip-path:inset(10% 0 55% 0);filter:drop-shadow(-3px 0 #ff2bd6) drop-shadow(3px 0 #00f0ff)}
+ 30%{transform:translate(-6px,1px);clip-path:inset(55% 0 10% 0)}
+ 45%{opacity:.7;transform:translate(3px,0) skewX(-6deg);clip-path:inset(25% 0 30% 0)}
+ 60%{opacity:.4;transform:translate(-4px,0);clip-path:inset(0 0 55% 0)}
+ 80%{opacity:.2;transform:translate(2px,0);clip-path:inset(45% 0 20% 0)}
+ 100%{opacity:0;transform:none;clip-path:inset(50% 0 50% 0)}}
+@keyframes mxGl{
+ 0%{transform:none;clip-path:none}
+ 10%{transform:translate(-3px,1px) skewX(-6deg);clip-path:inset(12% 0 55% 0);filter:drop-shadow(3px 0 #ff2bd6) drop-shadow(-3px 0 #00f0ff)}
+ 22%{transform:translate(4px,-1px);clip-path:inset(58% 0 8% 0);filter:drop-shadow(-3px 0 #ff2bd6) drop-shadow(3px 0 #00f0ff)}
+ 34%{transform:translate(-2px,0) skewX(5deg);clip-path:none}
+ 48%{transform:translate(2px,1px);clip-path:inset(30% 0 35% 0);filter:drop-shadow(2px 0 #00f0ff)}
+ 62%{transform:translate(-1px,0);clip-path:none}
+ 100%{transform:none;clip-path:none}}
+@keyframes mxCursor{50%{opacity:0}}
+html body[data-tema="matrix"] [data-pop].pop-in{animation:mxIn .6s steps(1,end) both;animation-delay:var(--pd,0ms)}
+html body[data-tema="matrix"] [data-pop].pop-out{animation:mxOut .3s steps(1,end) both}
+html body[data-tema="matrix"] .mx-gl{animation:mxGl .45s steps(1,end) 1}
+html body[data-tema="matrix"] .mx-saindo{animation:mxOutPainel .3s steps(1,end) forwards}
+html body[data-tema="matrix"] .tp-pre{visibility:hidden}
+.cur-t{color:#39ff7a;text-shadow:0 0 8px #39ff7a;animation:mxCursor .7s steps(1) infinite;font-weight:400;margin-left:1px}
+@media (prefers-reduced-motion:reduce){html body[data-tema="matrix"] [data-pop]{animation:none!important;opacity:1!important}html body[data-tema="matrix"] :is(.sel-ic,.app-ic){animation:none}.cur-t{animation:none}}
+html body[data-tema="matrix"] footer{background:#00120a;color:#7fd9a0;border-top:2px solid #39ff7a}
+html body[data-tema="matrix"] footer a{color:#39ff7a}
+@media (max-width:700px){html body[data-tema="matrix"] :is(.app-folha,.sw-win,.sw-cel,.app-baixar){box-shadow:0 0 8px rgba(57,255,122,.25),5px 5px 0 #0a8f3c}}
 </style>
 <style id="encaixe">
 /* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
@@ -957,7 +1070,26 @@ img,svg,video,canvas{max-width:100%}
 <!--sites:ini-->
 <section class="painel" id="p-sites" hidden><div class="wrap">
 <div class="cab"><div><span class="sel">Sites maiores · feitos para computador e adaptados ao celular</span><h2>Websites</h2><p>Sites com várias páginas, pensados primeiro para o computador e adaptados ao celular. Cada ficha mostra o site, a que ele se refere e as decisões de design que apliquei. Os sites de uma tela, que funcionam melhor no celular, estão em <a href="#ui-ux" data-vai="ui-ux">UI e UX</a>.</p></div></div>
-<div class="app-seletor" id="sites-seletor" aria-label="Ir para um site"><button type="button" data-ir="site-nap"><img class="sel-ic" src="img/app_nap_icone.png" width="48" height="48" alt=""><span class="sel-tx"><b>NAP</b><small>Site de produto</small></span></button><button type="button" data-ir="site-cfp"><img class="sel-ic" src="img/app_controle_icone.png" width="48" height="48" alt=""><span class="sel-tx"><b>Controle Financeiro</b><small>Site de app</small></span></button><button type="button" data-ir="site-cb"><img class="sel-ic" src="img/sw_ic_cb.png" width="48" height="48" alt=""><span class="sel-tx"><b>Comendo Bem</b><small>Site de marca</small></span></button><button type="button" data-ir="site-bd"><img class="sel-ic" src="img/sw_ic_bd.png" width="48" height="48" alt=""><span class="sel-tx"><b>Badulce</b><small>Site de marca</small></span></button><button type="button" data-ir="site-pa"><img class="sel-ic" src="img/sw_ic_pa.png" width="48" height="48" alt=""><span class="sel-tx"><b>Prática aplicada</b><small>Site educativo</small></span></button></div>
+<div class="app-seletor" id="sites-seletor" aria-label="Ir para um site"><button type="button" data-ir="site-pa"><img class="sel-ic" src="img/sw_ic_pa.png" width="48" height="48" alt=""><span class="sel-tx"><b>Prática aplicada</b><small>Site educativo</small></span></button><button type="button" data-ir="site-nap"><img class="sel-ic" src="img/app_nap_icone.png" width="48" height="48" alt=""><span class="sel-tx"><b>NAP</b><small>Site de produto</small></span></button><button type="button" data-ir="site-cfp"><img class="sel-ic" src="img/app_controle_icone.png" width="48" height="48" alt=""><span class="sel-tx"><b>Controle Financeiro</b><small>Site de app</small></span></button><button type="button" data-ir="site-cb"><img class="sel-ic" src="img/sw_ic_cb.png" width="48" height="48" alt=""><span class="sel-tx"><b>Comendo Bem</b><small>Site de marca</small></span></button><button type="button" data-ir="site-bd"><img class="sel-ic" src="img/sw_ic_bd.png" width="48" height="48" alt=""><span class="sel-tx"><b>Badulce</b><small>Site de marca</small></span></button></div>
+<article class="app sw" id="site-pa">
+<figure class="app-folha sw-folha" aria-label="Telas do site Prática aplicada">
+<i class="c1" aria-hidden="true"></i><i class="c2" aria-hidden="true"></i><i class="hl" aria-hidden="true"></i><i class="vl" aria-hidden="true"></i>
+<i class="cota" aria-hidden="true"><em>1440 × 900 · computador</em></i><i class="mk m1" aria-hidden="true"></i><i class="mk m2" aria-hidden="true"></i>
+<div class="sw-cena">
+<div class="sw-win"><div class="sw-bar" aria-hidden="true"><i></i><i></i><i></i><b>sites/pratica-aplicada/</b></div><img src="img/sw_pa_home.webp" width="1100" height="688" alt="Página inicial do Prática aplicada na estética Matrix: título “Aprenda como um site é feito, fazendo” em verde sobre fundo preto com chuva de códigos, botões para a aula 1 e o terminal de treino." loading="lazy"></div>
+<div class="sw-cel"><img src="img/sw_pa_mob.webp" width="390" height="844" alt="Prática aplicada no celular: cabeçalho em duas linhas, título e botões em uma coluna sobre fundo preto com códigos verdes." loading="lazy"></div>
+</div>
+<div class="sw-abas" role="group" aria-label="Páginas do site"><button type="button" data-src="img/sw_pa_home.webp" data-alt="Página inicial do Prática aplicada na estética Matrix: título “Aprenda como um site é feito, fazendo” em verde sobre fundo preto com chuva de códigos, botões para a aula 1 e o terminal de treino." data-url="sites/pratica-aplicada/" aria-pressed="true">Início</button><button type="button" data-src="img/sw_pa_aula.webp" data-alt="Aula 7 em andamento: terminal de treino em verde com os comandos que escrevem o JavaScript, o progresso em sete de nove passos e a minitela do site ao lado." data-url="sites/pratica-aplicada/aula-7.html" aria-pressed="false">Aula 7</button><button type="button" data-src="img/sw_pa_n2.webp" data-alt="Aula 14 no nível 2: a lista de objetivos cumpridos à esquerda e o editor de código com o CSS do visual Matrix à direita." data-url="sites/pratica-aplicada/aula-14.html" aria-pressed="false">Nível 2</button><button type="button" data-src="img/sw_pa_n2b.webp" data-alt="A minitela com o site transformado em Matrix e, ao lado, o painel que explica erros de código." data-url="sites/pratica-aplicada/aula-14.html" aria-pressed="false">Minitela</button><button type="button" data-src="img/sw_pa_cmd.webp" data-alt="Cola de comandos: campo de busca, atalhos por grupo e a lista de comandos com detalhe e etiqueta de treino." data-url="sites/pratica-aplicada/comandos.html" aria-pressed="false">Comandos</button></div>
+<div class="app-tb" aria-hidden="true"><b>Projeto: Prática aplicada</b><b>Esc. 1:1</b><b>Folha 01/05</b><b>E. Silva</b></div>
+</figure>
+<div class="app-corpo">
+<div class="app-id"><img class="app-ic" src="img/sw_ic_pa.png" width="72" height="72" alt=""><div><span class="etq">Site educativo · computador e celular</span><h3>Prática aplicada</h3><div class="tp">Curso interativo de como um site é feito, com código de verdade e dois níveis</div></div></div>
+<h4 class="sw-h">A que se refere</h4>
+<p>O <b>Prática aplicada</b> é um curso em dezesseis aulas, em dois níveis. No nível 1, quem nunca programou digita comandos num terminal de treino e vê o próprio site se montando numa minitela ao lado: do clique no navegador até o site no ar, passando por HTML, CSS responsivo, JavaScript, servidor e API, login com senha segura e publicação com Git.</p><p>O nível 2 tem mais liberdade e menos roteiro: Python de verdade, e HTML, CSS e JavaScript rodando de verdade no navegador, com um editor de código, o resultado numa minitela e um painel que explica cada erro. Cada prática sorteia o tipo de site e as variações dos desafios, um cronômetro mede cada etapa e a conferência olha o resultado, não o texto exato. Tudo roda no navegador, sem instalar nada. Eu desenhei o curso, escrevi o texto e programei o site, em computador primeiro e adaptado ao celular.</p>
+<details class="sw-mais"><summary>Decisões de design</summary><ol class="app-lista"><li><b>Código de verdade</b><span>O Python roda de verdade no navegador (Pyodide, em um Worker com limite de tempo), o JavaScript roda em uma caixa isolada, e o HTML e o CSS são mostrados pelo próprio navegador. Só o terminal de arquivos é de mentira: o código não.</span></li><li><b>Nada é previsível</b><span>Cada prática sorteia o tipo de site, o layout, a cor-alvo e as variações dos desafios. Os objetivos podem ser cumpridos em qualquer ordem e de jeitos diferentes: a conferência olha o resultado, não o texto digitado.</span></li><li><b>Erros viram aula</b><span>Um painel lê o código e explica, em português, erros de HTML, CSS, JavaScript e Python, com a linha e o que fazer. Há programas quebrados para consertar e um método de 5 passos para depurar.</span></li><li><b>Estética Matrix</b><span>Verde sobre preto, chuva de códigos ao fundo, ícones em pixel art com filtro verde, ruído e flutuação, e as dicas dos termos em janelinhas de terminal. É a única aparência do site.</span></li><li><b>Texto digitado e glitch</b><span>Os títulos aparecem digitados, como num terminal antigo, os blocos e botões entram e saem com glitch, e de vez em quando um título, botão ou ícone treme por um instante. Quem pede menos movimento não vê as animações.</span></li><li><b>Ícones só da minha folha</b><span>Medalhas, comidas, placas, chips e rádios de uma única folha de pixel art, usados como ícones, produtos e prêmios. Sem personagens: o tom é de curso sério.</span></li><li><b>Dicas nas palavras difíceis</b><span>Termos como DNS, hash ou viewport têm uma explicação curta com analogia, digitada numa janelinha de terminal ao passar o mouse, tocar ou navegar por teclado.</span></li><li><b>Cronômetro com medalhas</b><span>O relógio de cada etapa só corre com a aba visível, pistas e erros somam segundos, e o resultado compara o tempo com uma referência e dá medalha de bronze a diamante.</span></li><li><b>Cola de comandos pesquisável</b><span>Mais de 70 comandos em grupos, com detalhe e equivalentes de Windows, Mac e Linux, uma busca e as mensagens de erro mais comuns explicadas.</span></li><li><b>Sons sintetizados</b><span>Cliques, acertos e medalhas têm som gerado no próprio navegador, que dá para desligar. Nenhum arquivo de áudio.</span></li><li><b>Computador primeiro</b><span>No celular, o cabeçalho vira duas linhas, os painéis empilham e o terminal continua usável com o teclado do aparelho.</span></li></ol></details>
+</div>
+<aside class="app-baixar" aria-label="Ver o site Prática aplicada"><h4>Ver o site</h4><a class="btn" href="sites/pratica-aplicada/index.html" target="_blank" rel="noopener">Abrir o curso →</a><a class="btn sec" href="sites/pratica-aplicada/aula-1.html" target="_blank" rel="noopener">Começar pela aula 1</a><a class="btn sec" href="sites/pratica-aplicada/index.html#nivel2" target="_blank" rel="noopener">Ir para o nível 2</a><dl class="app-meta"><div><dt>Tipo</dt><dd>Site educativo, dezoito páginas</dd></div><div><dt>Para</dt><dd>Quem nunca programou e quem quer ir além</dd></div><div><dt>Feito com</dt><dd>HTML, CSS, JavaScript e Python</dd></div><div><dt>Funciona em</dt><dd>Computador e celular</dd></div><div><dt>Idioma</dt><dd>Português</dd></div></dl><p class="app-dir">© 2026 Emerson Silva - DreamyStation. Design, textos e código protegidos pela Lei de Direitos Autorais (Lei 9.610/1998). Todos os direitos reservados.</p></aside>
+</article>
 <article class="app sw" id="site-nap">
 <figure class="app-folha sw-folha" aria-label="Telas do site NAP · Negócio Aprimorado">
 <i class="c1" aria-hidden="true"></i><i class="c2" aria-hidden="true"></i><i class="hl" aria-hidden="true"></i><i class="vl" aria-hidden="true"></i>
@@ -967,7 +1099,7 @@ img,svg,video,canvas{max-width:100%}
 <div class="sw-cel"><img src="img/sw_nap_mob.webp" width="390" height="844" alt="Site do NAP no celular: logo, menu, título e botões em uma coluna." loading="lazy"></div>
 </div>
 <div class="sw-abas" role="group" aria-label="Páginas do site"><button type="button" data-src="img/sw_nap_home.webp" data-alt="Página inicial do site do NAP em tema escuro: título “Seu negócio em ordem, sem complicação”, fotos de pequenos negócios e a logo N." data-url="dreamystation.github.io/nap-demo/" aria-pressed="true">Início</button><button type="button" data-src="img/sw_nap_ferr.webp" data-alt="Página NAP Empreendedor com oito cartões de ferramentas: limite do MEI, metas, recibos, agenda, backup seguro, filiais, cobrança por e-mail e IA controlada." data-url="dreamystation.github.io/nap-demo/#/empreendedor" aria-pressed="false">Ferramentas</button><button type="button" data-src="img/sw_nap_demo.webp" data-alt="Página da demonstração: “A demonstração”, três avisos e a lista do que experimentar." data-url="dreamystation.github.io/nap-demo/#/demonstracao" aria-pressed="false">Demonstração</button></div>
-<div class="app-tb" aria-hidden="true"><b>Projeto: NAP · Negócio Aprimorado</b><b>Esc. 1:1</b><b>Folha 01/05</b><b>E. Silva</b></div>
+<div class="app-tb" aria-hidden="true"><b>Projeto: NAP · Negócio Aprimorado</b><b>Esc. 1:1</b><b>Folha 02/05</b><b>E. Silva</b></div>
 </figure>
 <div class="app-corpo">
 <div class="app-id"><img class="app-ic" src="img/app_nap_icone.png" width="72" height="72" alt=""><div><span class="etq">Site de produto · computador e celular</span><h3>NAP · Negócio Aprimorado</h3><div class="tp">Site de um programa de gestão para MEIs</div></div></div>
@@ -986,7 +1118,7 @@ img,svg,video,canvas{max-width:100%}
 <div class="sw-cel"><img src="img/sw_cfp_mob.webp" width="390" height="844" alt="Site do Controle Financeiro Privado no celular: menu, título e botões em uma coluna." loading="lazy"></div>
 </div>
 <div class="sw-abas" role="group" aria-label="Páginas do site"><button type="button" data-src="img/sw_cfp_home.webp" data-alt="Página inicial do site do Controle Financeiro Privado: título “Seu dinheiro, só com você”, três celulares e a onça-pintada em pixel art." data-url="sites/controle-financeiro/" aria-pressed="true">Início</button><button type="button" data-src="img/sw_cfp_jogo.webp" data-alt="Página do jogo: título “O jogo premia quem espera” e a partida de demonstração do modo educativo." data-url="sites/controle-financeiro/jogo.html" aria-pressed="false">Jogo</button><button type="button" data-src="img/sw_cfp_ferr.webp" data-alt="Página de ferramentas: simulador E se eu comprar? em fundo de papel quadriculado." data-url="sites/controle-financeiro/ferramentas.html" aria-pressed="false">Ferramentas</button></div>
-<div class="app-tb" aria-hidden="true"><b>Projeto: Controle Financeiro Privado</b><b>Esc. 1:1</b><b>Folha 02/05</b><b>E. Silva</b></div>
+<div class="app-tb" aria-hidden="true"><b>Projeto: Controle Financeiro Privado</b><b>Esc. 1:1</b><b>Folha 03/05</b><b>E. Silva</b></div>
 </figure>
 <div class="app-corpo">
 <div class="app-id"><img class="app-ic" src="img/app_controle_icone.png" width="72" height="72" alt=""><div><span class="etq">Site de app · computador e celular</span><h3>Controle Financeiro Privado</h3><div class="tp">Site de apresentação de um app, com demonstrações e um jogo</div></div></div>
@@ -1005,7 +1137,7 @@ img,svg,video,canvas{max-width:100%}
 <div class="sw-cel"><img src="img/sw_cb_mob.webp" width="390" height="844" alt="Site da Comendo Bem no celular: menu no topo, título e botões em uma coluna." loading="lazy"></div>
 </div>
 <div class="sw-abas" role="group" aria-label="Páginas do site"><button type="button" data-src="img/sw_cb_home.webp" data-alt="Página inicial da Comendo Bem: menu verde à esquerda, título “Comer bem não dá trabalho”, foto de três marmitas e faixas de cinta laranja, âmbar e roxa." data-url="sites/comendo-bem/" aria-pressed="true">Início</button><button type="button" data-src="img/sw_cb_semana.webp" data-alt="Planejador da semana: círculos por refeição coloridos por linha e a sacola com total e desconto." data-url="sites/comendo-bem/semana.html" aria-pressed="false">Monte a semana</button><button type="button" data-src="img/sw_cb_nutri.webp" data-alt="Página de proteína e preparo: calculadora de proteína do dia e timer de micro-ondas com anel de progresso." data-url="sites/comendo-bem/nutricao.html" aria-pressed="false">Preparo</button></div>
-<div class="app-tb" aria-hidden="true"><b>Projeto: Comendo Bem</b><b>Esc. 1:1</b><b>Folha 03/05</b><b>E. Silva</b></div>
+<div class="app-tb" aria-hidden="true"><b>Projeto: Comendo Bem</b><b>Esc. 1:1</b><b>Folha 04/05</b><b>E. Silva</b></div>
 </figure>
 <div class="app-corpo">
 <div class="app-id"><img class="app-ic" src="img/sw_ic_cb.png" width="72" height="72" alt=""><div><span class="etq">Site de marca · computador e celular</span><h3>Comendo Bem</h3><div class="tp">Site de uma marmitaria fit, com ferramentas de pedido e de preparo</div></div></div>
@@ -1024,7 +1156,7 @@ img,svg,video,canvas{max-width:100%}
 <div class="sw-cel"><img src="img/sw_bd_mob.webp" width="390" height="844" alt="Site da Badulce no celular: logo, abas em pílulas, título e botões em uma coluna." loading="lazy"></div>
 </div>
 <div class="sw-abas" role="group" aria-label="Páginas do site"><button type="button" data-src="img/sw_bd_home.webp" data-alt="Página inicial da Badulce: logo rosa, título “Doces feitos com carinho”, cinco doces em medalhões brancos com etiqueta e ondas rosa." data-url="sites/badulce/" aria-pressed="true">Início</button><button type="button" data-src="img/sw_bd_card.webp" data-alt="Cardápio da Badulce: filtros por doce e o grupo do brownie, com um cartão de cada opção e etiqueta de preço." data-url="sites/badulce/cardapio.html" aria-pressed="false">Cardápio</button><button type="button" data-src="img/sw_bd_caixa.webp" data-alt="Caixinha de presente: seis espaços em uma caixa rosa, alguns preenchidos com brownies, bombons e brigadeiros, e o total." data-url="sites/badulce/caixinha.html" aria-pressed="false">Caixinha</button><button type="button" data-src="img/sw_bd_festa.webp" data-alt="Calculadora de festa: convidados, duração e ocasião, com a sugestão de doces e a estimativa." data-url="sites/badulce/festa.html" aria-pressed="false">Festa</button></div>
-<div class="app-tb" aria-hidden="true"><b>Projeto: Badulce</b><b>Esc. 1:1</b><b>Folha 04/05</b><b>E. Silva</b></div>
+<div class="app-tb" aria-hidden="true"><b>Projeto: Badulce</b><b>Esc. 1:1</b><b>Folha 05/05</b><b>E. Silva</b></div>
 </figure>
 <div class="app-corpo">
 <div class="app-id"><img class="app-ic" src="img/sw_ic_bd.png" width="72" height="72" alt=""><div><span class="etq">Site de marca · computador e celular</span><h3>Badulce</h3><div class="tp">Site de uma doceria, com caixinha de presente e calculadora de festa</div></div></div>
@@ -1033,25 +1165,6 @@ img,svg,video,canvas{max-width:100%}
 <details class="sw-mais"><summary>Decisões de design</summary><ol class="app-lista"><li><b>Rosa vivo e rosa bebê</b><span>Letras em rosa vivo sobre fundos de rosa bebê e algodão-doce, a paleta definida com a cliente, sem o marrom da primeira rodada.</span></li><li><b>Babados, vichy e ondas</b><span>O babado de canto da identidade vira a borda das seções, o xadrez vichy dos adesivos vira uma faixa e ondas suaves ligam uma cor à outra, tudo feito só com CSS.</span></li><li><b>Kaushan Script, Nunito e Delius</b><span>Letra de pincel nos títulos, Nunito arredondada no texto e Delius no recadinho, como se fosse escrito à mão.</span></li><li><b>Corações que surgem, sobem e somem</b><span>Corações de contorno e cheios nascem embaixo da tela, sobem devagar e desaparecem, por cima de tudo. Quem pede menos movimento não vê a animação.</span></li><li><b>Entrada com pop</b><span>Cada bloco entra na tela com um pequeno salto, o mesmo movimento do site de uma tela da Badulce, e sai com um pop ao deixar a tela.</span></li><li><b>Doces em medalhões</b><span>Cada doce aparece num disco branco com aro rosa, com uma etiqueta de nome, que balança ao passar o mouse.</span></li><li><b>Fita que corre e bandeirinhas</b><span>Uma fita rosa com os nomes dos doces corre pela página inicial, e a página da festa ganha bandeirinhas desenhadas em código.</span></li><li><b>Caixinha que se monta</b><span>Os espaços da caixa, com tampa e laço, se enchem com um toque, com animação de pop, e o total, o cartão e a mensagem do pedido mudam junto.</span></li><li><b>Abas que acompanham</b><span>Logo no centro e abas em pílulas que ficam fixas no topo ao rolar, uma coluna de leitura única e cartões de borda tracejada, bem diferente dos outros sites.</span></li><li><b>Ícones da marca</b><span>Os ícones de traço e duotone do kit entregue à cliente ficam nas abas, nos filtros, nos diferenciais e nos passos.</span></li></ol></details>
 </div>
 <aside class="app-baixar" aria-label="Ver o site Badulce"><h4>Ver o site</h4><a class="btn" href="sites/badulce/index.html" target="_blank" rel="noopener">Abrir o site →</a><a class="btn sec" href="sites/badulce/caixinha.html" target="_blank" rel="noopener">Montar uma caixinha</a><a class="btn sec" href="#logo" data-vai="logo">Ver a identidade em Design de logo</a><dl class="app-meta"><div><dt>Tipo</dt><dd>Site de marca, quatro páginas</dd></div><div><dt>Para</dt><dd>Quem quer doces e presentes</dd></div><div><dt>Feito com</dt><dd>HTML, CSS e JavaScript</dd></div><div><dt>Funciona em</dt><dd>Computador e celular</dd></div><div><dt>Status</dt><dd>Projeto demonstrativo</dd></div></dl><p class="app-dir">© 2026 Emerson Silva - DreamyStation. Design, textos e código protegidos pela Lei de Direitos Autorais (Lei 9.610/1998). Todos os direitos reservados.</p></aside>
-</article>
-<article class="app sw" id="site-pa">
-<figure class="app-folha sw-folha" aria-label="Telas do site Prática aplicada">
-<i class="c1" aria-hidden="true"></i><i class="c2" aria-hidden="true"></i><i class="hl" aria-hidden="true"></i><i class="vl" aria-hidden="true"></i>
-<i class="cota" aria-hidden="true"><em>1440 × 900 · computador</em></i><i class="mk m1" aria-hidden="true"></i><i class="mk m2" aria-hidden="true"></i>
-<div class="sw-cena">
-<div class="sw-win"><div class="sw-bar" aria-hidden="true"><i></i><i></i><i></i><b>sites/pratica-aplicada/</b></div><img src="img/sw_pa_home.webp" width="1100" height="688" alt="Página inicial do Prática aplicada na estética Matrix: título “Aprenda como um site é feito, fazendo” em verde sobre fundo preto com chuva de códigos, botões para a aula 1 e o terminal de treino." loading="lazy"></div>
-<div class="sw-cel"><img src="img/sw_pa_mob.webp" width="390" height="844" alt="Prática aplicada no celular: cabeçalho em duas linhas, título e botões em uma coluna sobre fundo preto com códigos verdes." loading="lazy"></div>
-</div>
-<div class="sw-abas" role="group" aria-label="Páginas do site"><button type="button" data-src="img/sw_pa_home.webp" data-alt="Página inicial do Prática aplicada na estética Matrix: título “Aprenda como um site é feito, fazendo” em verde sobre fundo preto com chuva de códigos, botões para a aula 1 e o terminal de treino." data-url="sites/pratica-aplicada/" aria-pressed="true">Início</button><button type="button" data-src="img/sw_pa_aula.webp" data-alt="Aula 7 em andamento: terminal de treino em verde com os comandos que escrevem o JavaScript, o progresso em sete de nove passos e a minitela do site ao lado." data-url="sites/pratica-aplicada/aula-7.html" aria-pressed="false">Aula 7</button><button type="button" data-src="img/sw_pa_n2.webp" data-alt="Aula 14 no nível 2: a lista de objetivos cumpridos à esquerda e o editor de código com o CSS do visual Matrix à direita." data-url="sites/pratica-aplicada/aula-14.html" aria-pressed="false">Nível 2</button><button type="button" data-src="img/sw_pa_n2b.webp" data-alt="A minitela com o site transformado em Matrix e, ao lado, o painel que explica erros de código." data-url="sites/pratica-aplicada/aula-14.html" aria-pressed="false">Minitela</button><button type="button" data-src="img/sw_pa_cmd.webp" data-alt="Cola de comandos: campo de busca, atalhos por grupo e a lista de comandos com detalhe e etiqueta de treino." data-url="sites/pratica-aplicada/comandos.html" aria-pressed="false">Comandos</button></div>
-<div class="app-tb" aria-hidden="true"><b>Projeto: Prática aplicada</b><b>Esc. 1:1</b><b>Folha 05/05</b><b>E. Silva</b></div>
-</figure>
-<div class="app-corpo">
-<div class="app-id"><img class="app-ic" src="img/sw_ic_pa.png" width="72" height="72" alt=""><div><span class="etq">Site educativo · computador e celular</span><h3>Prática aplicada</h3><div class="tp">Curso interativo de como um site é feito, com código de verdade e dois níveis</div></div></div>
-<h4 class="sw-h">A que se refere</h4>
-<p>O <b>Prática aplicada</b> é um curso em dezesseis aulas, em dois níveis. No nível 1, quem nunca programou digita comandos num terminal de treino e vê o próprio site se montando numa minitela ao lado: do clique no navegador até o site no ar, passando por HTML, CSS responsivo, JavaScript, servidor e API, login com senha segura e publicação com Git.</p><p>O nível 2 tem mais liberdade e menos roteiro: Python de verdade, e HTML, CSS e JavaScript rodando de verdade no navegador, com um editor de código, o resultado numa minitela e um painel que explica cada erro. Cada prática sorteia o tipo de site e as variações dos desafios, um cronômetro mede cada etapa e a conferência olha o resultado, não o texto exato. Tudo roda no navegador, sem instalar nada. Eu desenhei o curso, escrevi o texto e programei o site, em computador primeiro e adaptado ao celular.</p>
-<details class="sw-mais"><summary>Decisões de design</summary><ol class="app-lista"><li><b>Código de verdade</b><span>O Python roda de verdade no navegador (Pyodide, em um Worker com limite de tempo), o JavaScript roda em uma caixa isolada, e o HTML e o CSS são mostrados pelo próprio navegador. Só o terminal de arquivos é de mentira: o código não.</span></li><li><b>Nada é previsível</b><span>Cada prática sorteia o tipo de site, o layout, a cor-alvo e as variações dos desafios. Os objetivos podem ser cumpridos em qualquer ordem e de jeitos diferentes: a conferência olha o resultado, não o texto digitado.</span></li><li><b>Erros viram aula</b><span>Um painel lê o código e explica, em português, erros de HTML, CSS, JavaScript e Python, com a linha e o que fazer. Há programas quebrados para consertar e um método de 5 passos para depurar.</span></li><li><b>Estética Matrix</b><span>Verde sobre preto, chuva de códigos ao fundo, ícones em pixel art com filtro verde, ruído e flutuação, e as dicas dos termos em janelinhas de terminal. É a única aparência do site.</span></li><li><b>Texto digitado e glitch</b><span>Os títulos aparecem digitados, como num terminal antigo, os blocos e botões entram e saem com glitch, e de vez em quando um título, botão ou ícone treme por um instante. Quem pede menos movimento não vê as animações.</span></li><li><b>Ícones só da minha folha</b><span>Medalhas, comidas, placas, chips e rádios de uma única folha de pixel art, usados como ícones, produtos e prêmios. Sem personagens: o tom é de curso sério.</span></li><li><b>Dicas nas palavras difíceis</b><span>Termos como DNS, hash ou viewport têm uma explicação curta com analogia, digitada numa janelinha de terminal ao passar o mouse, tocar ou navegar por teclado.</span></li><li><b>Cronômetro com medalhas</b><span>O relógio de cada etapa só corre com a aba visível, pistas e erros somam segundos, e o resultado compara o tempo com uma referência e dá medalha de bronze a diamante.</span></li><li><b>Cola de comandos pesquisável</b><span>Mais de 70 comandos em grupos, com detalhe e equivalentes de Windows, Mac e Linux, uma busca e as mensagens de erro mais comuns explicadas.</span></li><li><b>Sons sintetizados</b><span>Cliques, acertos e medalhas têm som gerado no próprio navegador, que dá para desligar. Nenhum arquivo de áudio.</span></li><li><b>Computador primeiro</b><span>No celular, o cabeçalho vira duas linhas, os painéis empilham e o terminal continua usável com o teclado do aparelho.</span></li></ol></details>
-</div>
-<aside class="app-baixar" aria-label="Ver o site Prática aplicada"><h4>Ver o site</h4><a class="btn" href="sites/pratica-aplicada/index.html" target="_blank" rel="noopener">Abrir o curso →</a><a class="btn sec" href="sites/pratica-aplicada/aula-1.html" target="_blank" rel="noopener">Começar pela aula 1</a><a class="btn sec" href="sites/pratica-aplicada/index.html#nivel2" target="_blank" rel="noopener">Ir para o nível 2</a><dl class="app-meta"><div><dt>Tipo</dt><dd>Site educativo, dezoito páginas</dd></div><div><dt>Para</dt><dd>Quem nunca programou e quem quer ir além</dd></div><div><dt>Feito com</dt><dd>HTML, CSS, JavaScript e Python</dd></div><div><dt>Funciona em</dt><dd>Computador e celular</dd></div><div><dt>Idioma</dt><dd>Português</dd></div></dl><p class="app-dir">© 2026 Emerson Silva - DreamyStation. Design, textos e código protegidos pela Lei de Direitos Autorais (Lei 9.610/1998). Todos os direitos reservados.</p></aside>
 </article>
 </div></section>
 <!--sites:fim-->
@@ -1283,6 +1396,7 @@ img,svg,video,canvas{max-width:100%}
 <dialog id="dlg" aria-label="Detalhes do projeto"><div class="mod"><div class="cx" id="dlg-corpo"></div></div></dialog>
 <script>window.POP={mode:'fade',click:'.btn,.aba,.chip,.proj,.fx',extra:'.pr,.fluxo>div,.marco,.num>div,.sel,.foto .mold,.contato h2,.contato p,.contato .btn,.cab h2,.cab p,.filtros',exclude:'dialog,.mod,.app-folha img,.app-ic,.cabeca,.dd,.dc,.sun,.dots,.divd,.faixa-w,.faixa *,.tams img'}</script>
 <script src="pop.js" defer></script>
+<script src="matrix.js" defer></script>
 <script>
 (function(){
  var z=[].slice.call(document.querySelectorAll('.pz')),p=document.querySelector('.pista'),f=document.querySelector('.fim-svg'),i=0;
@@ -1324,7 +1438,7 @@ const P=[{"id": "comendobem", "nome": "Comendo Bem", "tag": "Cliente real", "tip
 const abas=[...document.querySelectorAll('#abas-topo .aba')];
 function vai(id,rolar){if(!painel[id])id='logo';abas.forEach(a=>a.setAttribute('aria-selected',a.dataset.p===id));
  Object.entries(painel).forEach(([k,v])=>document.getElementById(v).hidden=(k!==id));document.getElementById('hero').hidden=(id!=='logo');
- document.body.dataset.tema=({'ui-ux':'ui',ilustracoes:'ilu',apps:'logo',sites:'logo'})[id]||id;history.replaceState(null,'','#'+id);{const ab=abas.find(a=>a.dataset.p===id),bx=document.getElementById('abas-topo');if(ab&&bx&&bx.scrollWidth>bx.clientWidth)bx.scrollTo({left:ab.offsetLeft-(bx.clientWidth-ab.offsetWidth)/2,behavior:'smooth'})}window.__tituloPt=({logo:'Design de logo',['ui-ux']:'UI e UX',ilustracoes:'Ilustrações',peregrin:'Peregrin',apps:'APPs',sites:'Websites',historia:'Minha história'})[id]+' · Emerson Silva';document.title=window.TT?window.TT(window.__tituloPt):window.__tituloPt;
+ document.body.dataset.tema=({'ui-ux':'ui',ilustracoes:'ilu',apps:'logo',sites:'matrix'})[id]||id;history.replaceState(null,'','#'+id);{const ab=abas.find(a=>a.dataset.p===id),bx=document.getElementById('abas-topo');if(ab&&bx&&bx.scrollWidth>bx.clientWidth)bx.scrollTo({left:ab.offsetLeft-(bx.clientWidth-ab.offsetWidth)/2,behavior:'smooth'})}window.__tituloPt=({logo:'Design de logo',['ui-ux']:'UI e UX',ilustracoes:'Ilustrações',peregrin:'Peregrin',apps:'APPs',sites:'Websites',historia:'Minha história'})[id]+' · Emerson Silva';document.title=window.TT?window.TT(window.__tituloPt):window.__tituloPt;
  if(rolar)document.getElementById('abas-topo').scrollIntoView({behavior:'smooth',block:'start'});if(id==='apps'&&window.appsAbre)window.appsAbre()}
 abas.forEach(a=>a.onclick=()=>vai(a.dataset.p,true));
 document.querySelectorAll('[data-vai]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();vai(a.dataset.vai,true)}));

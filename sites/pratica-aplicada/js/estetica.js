@@ -122,6 +122,27 @@
   });
   window.addEventListener('pageshow',function(e){if(e.persisted)raiz.classList.remove('gl-saindo')});
 
+  /* ---------- cursor personalizado: rastro de caracteres que caem e somem, e uma explosão curta no clique (só com mouse) ---------- */
+  if(!reduz&&window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+    var ultimo=0,lx=-99,ly=-99,vivos=0;
+    var solta=function(x,y,forte){
+      if(vivos>26)return;
+      var i=document.createElement('i');i.className='cursor-rastro'+(forte?' forte':'');i.textContent=CH[Math.floor(Math.random()*CH.length)];
+      i.style.left=x+'px';i.style.top=y+'px';i.setAttribute('aria-hidden','true');document.body.appendChild(i);vivos++;
+      i.addEventListener('animationend',function(){i.remove();vivos--});
+    };
+    document.addEventListener('pointermove',function(e){
+      if(e.pointerType!=='mouse')return;
+      var t=performance.now();if(t-ultimo<55)return;
+      if(Math.abs(e.clientX-lx)+Math.abs(e.clientY-ly)<14)return;
+      ultimo=t;lx=e.clientX;ly=e.clientY;solta(e.clientX+10,e.clientY+14,false);
+    },{passive:true});
+    document.addEventListener('pointerdown',function(e){
+      if(e.pointerType!=='mouse')return;
+      for(var k=0;k<7;k++){var a=k/7*Math.PI*2;solta(e.clientX+Math.cos(a)*14,e.clientY+Math.sin(a)*14,true)}
+    },{passive:true});
+  }
+
   window.PA=window.PA||{};
   window.PA.Fx={digita:digita,glitch:glitch,reduz:reduz};
 })();
