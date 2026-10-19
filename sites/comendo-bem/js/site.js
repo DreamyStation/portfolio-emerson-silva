@@ -1,10 +1,12 @@
-/* Comendo Bem · ferramentas (valores de exemplo): monte a semana, proteína do dia, timer de preparo e validade no freezer */
+/* Comendo Bem · ferramentas: monte a semana, proteína do dia, timer de preparo e validade no freezer */
 (function(){
   'use strict';
   var $=function(s,r){return (r||document).querySelector(s)};
   var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
   var BRL=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
   var money=function(v){return BRL.format(v)};
+  /* CONFIGURE AQUI: WhatsApp da Comendo Bem com DDI e DDD (ex.: 5547999999999). Vazio = o botão fica escondido e só existe "Copiar pedido". */
+  var WHATS='';
 
   /* ---------- Monte a semana ---------- */
   var grade=$('#grade');
@@ -39,12 +41,13 @@
       $('#s-eco').textContent=!n?'Toque nos círculos para escolher.':prox?'Faltam '+(prox-n)+' para o próximo desconto.':'Desconto máximo da semana!';
       $$('#s-faixa i').forEach(function(el,k){el.classList.toggle('on',n>=[10,14,20][k])});
       var linhas=[];for(var d=0;d<6;d++){var a=S.cel[d],j=S.cel[6+d];if(a||j)linhas.push(DIAS[d]+': '+(a?'almoço '+NOMES[a]:'')+(a&&j?' · ':'')+(j?'jantar '+NOMES[j]:''))}
-      $('#s-texto').textContent=n?'Pedido Comendo Bem (demonstração)\n'+S.tam+' g · '+n+' marmitas\nProteína '+por[1]+' · Leve '+por[2]+' · Veggie '+por[3]+'\n'+linhas.join('\n')+'\nTotal: '+money(total):'Seu pedido aparece aqui.';
+      $('#s-texto').textContent=n?'Pedido Comendo Bem\n'+S.tam+' g · '+n+' marmitas\nProteína '+por[1]+' · Leve '+por[2]+' · Veggie '+por[3]+'\n'+linhas.join('\n')+'\nTotal: '+money(total):'Seu pedido aparece aqui.';
     };
     monta();
     grade.addEventListener('click',function(e){var b=e.target.closest('.cel');if(!b)return;var i=+b.dataset.i;S.cel[i]=(S.cel[i]+1)%4;conta()});
     $$('.tamanhos button').forEach(function(b){b.addEventListener('click',function(){S.tam=+b.dataset.t;conta()})});
     $$('.atalhos button').forEach(function(b){b.addEventListener('click',function(){var p=PRE[b.dataset.p];S.cel=p[0].concat(p[1]);conta()})});
+    var zap=$('#s-zap');if(zap&&WHATS){zap.hidden=false;zap.addEventListener('click',function(){window.open('https://wa.me/'+encodeURIComponent(WHATS)+'?text='+encodeURIComponent($('#s-texto').textContent),'_blank','noopener,noreferrer')})}
     $('#s-copia').addEventListener('click',function(){
       var t=$('#s-texto').textContent,ok=function(){$('#s-copia').textContent='Copiado!';setTimeout(function(){$('#s-copia').textContent='Copiar pedido'},1800)};
       if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,function(){});else{var r=document.createRange();r.selectNodeContents($('#s-texto'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
