@@ -2,15 +2,16 @@
 <html lang="pt-BR">
 <head>
 <title>Prática aplicada · aprenda como um site é feito</title>
-<meta name="description" content="Aprenda como um site é feito praticando: um terminal de treino, uma página que se monta ao vivo e explicações para quem nunca programou.">
+<meta name="description" content="Aprenda como um site é feito praticando: um terminal de treino, uma tela que monta o site ao vivo, um mini game de tempo e explicações para quem nunca programou.">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0A1A4D">
+<script>try{if(JSON.parse(localStorage.getItem('pa:tema'))==='escuro')document.documentElement.dataset.tema='escuro'}catch(e){}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230D1024'/%3E%3Cpath d='M8 9h8v4h-4v2h4v4H8zM18 9h6v4h-6zM18 15h6v10h-6z' fill='%23F5B82E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
-<link rel="stylesheet" href="css/site.css?v=8">
+<link rel="stylesheet" href="css/site.css?v=10">
 <style id="encaixe">
 /* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
 h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
@@ -24,7 +25,9 @@ img,svg,video,canvas{max-width:100%}
 <a class="pula" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo"><div class="cx">
 <a class="marca" href="index.html"><i aria-hidden="true">PA</i>Prática aplicada</a>
-<nav aria-label="Principal"><a href="index.html" aria-current="page">Início</a><a href="#aulas">Aulas</a><a href="../../index.html#sites">Portfólio</a>
+<nav aria-label="Principal"><a href="index.html" aria-current="page">Início</a><a href="index.html#aulas">Aulas</a><a href="comandos.html">Comandos</a><a href="../../index.html#sites">Portfólio</a>
+<span class="hud" id="hud" hidden title="Relógio da partida"><span class="nm"></span><b class="rel">00:00</b></span>
+<button class="tema" id="tema" type="button" aria-pressed="false" aria-label="Alternar tema claro e escuro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg><span>Claro</span></button>
 <button class="mudo" id="mudo" type="button" aria-pressed="false" aria-label="Desligar os sons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg><span>Som</span></button></nav>
 </div></header>
 
@@ -33,21 +36,24 @@ img,svg,video,canvas{max-width:100%}
 <div class="rv"><span class="tag">Para quem nunca programou</span>
 <h1 style="margin-top:18px">Aprenda como um site é feito, <span class="azul">fazendo.</span></h1>
 <p class="lead">Aqui você não só lê. Você digita num terminal de treino, vê a página se montando ao lado e entende o que cada parte faz: do clique no navegador até o site no ar.</p>
-<div class="acoes"><a class="btn jg" href="aula-1.html">Começar a aula 1</a><a class="btn cl" href="#aulas">Ver as 6 aulas</a></div></div>
+<div class="acoes"><a class="btn jg" href="aula-1.html">Começar a aula 1</a><a class="btn cl" href="#aulas">Ver as 8 aulas</a></div></div>
 <div class="palco rv"><img class="spr g flut" src="img/coruja.png" width="128" height="128" alt="" aria-hidden="true" style="left:-58px;bottom:-62px;--d:4.5s"><img class="spr g flut" src="img/arara-azul.png" width="92" height="92" alt="" aria-hidden="true" style="right:-22px;top:-46px;--d:3.6s"><img class="spr g flut" src="img/pao.png" width="52" height="52" alt="" aria-hidden="true" style="right:36px;bottom:-14px;--d:5s"><img class="spr g flut" src="img/bolo.png" width="46" height="46" alt="" aria-hidden="true" style="left:70px;top:-30px;--d:4.2s"><img class="spr g flut" src="img/nuvem.png" width="70" height="70" alt="" aria-hidden="true" style="right:120px;top:-26px;--d:6s;opacity:.9"><div class="mini-term" aria-hidden="true"><div class="bar"><i></i><i></i><i></i><span>TERMINAL DE TREINO</span></div>
 <div class="corpo" id="demo"></div></div></div>
 </div></section>
 
 <section class="sec" id="aulas"><div class="cx">
-<div class="cab rv"><span class="rot">O caminho</span><h2>Seis aulas, do começo ao fim de um site.</h2><p>Você constrói uma padaria fictícia aos poucos. Cada aula tem uma explicação curta, uma prática no terminal e um desafio para fechar.</p></div>
-<div class="trilha">
-<a class="est rv" href="aula-1.html" id="est1"><img class="spr" src="img/capivara.png" width="72" height="72" alt="" aria-hidden="true"><h3>Como um site funciona</h3><p>Você digita um endereço e acompanha o pedido viajando: navegador, catálogo de endereços, servidor e resposta.</p><span class="sel" id="sel1">Disponível agora · 15 min</span></a>
-<div class="est trava rv"><img class="spr" src="img/jabuti.png" width="72" height="72" alt="" aria-hidden="true"><h3>HTML, o esqueleto</h3><p>Títulos, textos, imagens e links: a estrutura da página da padaria.</p><span class="sel bloq">Em breve · aula 2</span></div>
-<div class="est trava rv"><img class="spr" src="img/arara-azul.png" width="72" height="72" alt="" aria-hidden="true"><h3>CSS, a aparência</h3><p>Cor, fonte, espaço e layout. E como a mesma página se adapta ao celular.</p><span class="sel bloq">Em breve · aula 3</span></div>
-<div class="est trava rv"><img class="spr" src="img/mico-leao-dourado.png" width="72" height="72" alt="" aria-hidden="true"><h3>JavaScript, o comportamento</h3><p>Um botão que reage, um contador e uma conta que acontece na hora.</p><span class="sel bloq">Em breve · aula 4</span></div>
-<div class="est trava rv"><img class="spr" src="img/tatu.png" width="72" height="72" alt="" aria-hidden="true"><h3>Backend e API</h3><p>Um servidor de mentira guarda dados e responde pedidos como "me dê o cardápio".</p><span class="sel bloq">Em breve · aula 5</span></div>
-<div class="est trava rv"><img class="spr" src="img/onca-pintada.png" width="72" height="72" alt="" aria-hidden="true"><h3>Publicar</h3><p>Domínio, hospedagem e o endereço no ar: do rascunho ao link que qualquer pessoa abre.</p><span class="sel bloq">Em breve · aula 6</span></div>
-</div></div></section>
+<div class="cab rv"><span class="rot">O caminho</span><h2>Oito aulas, do começo ao fim de um site.</h2><p>Você constrói um site de mentira aos poucos, e a cada partida ele muda. Cada aula tem uma explicação curta, uma prática no terminal e um desafio para fechar.</p></div>
+<div class="trilha"><a class="est rv" href="aula-1.html" id="est1"><img class="spr" src="img/capivara.png" width="64" height="64" alt="" aria-hidden="true"><h3>Como um site funciona</h3><p>Você digita um endereço e acompanha o pedido viajando: navegador, catálogo de endereços, servidor e resposta.</p><span class="sel" id="sel1">Disponível · 15 min</span></a><a class="est rv" href="aula-2.html"><img class="spr" src="img/quati.png" width="64" height="64" alt="" aria-hidden="true"><h3>Seu ambiente de trabalho</h3><p>Qual terminal abrir, quais aplicativos instalar e os comandos que você vai usar todo dia.</p><span class="sel">Disponível · 15 min</span></a><a class="est rv" href="aula-3.html"><img class="spr" src="img/mico-leao-dourado.png" width="64" height="64" alt="" aria-hidden="true"><h3>Planeje o fluxo</h3><p>Desenhe o caminho do visitante antes de escrever código. Aqui começa o relógio da partida.</p><span class="sel">Disponível · 10 min</span></a><a class="est rv" href="aula-4.html"><img class="spr" src="img/jabuti.png" width="64" height="64" alt="" aria-hidden="true"><h3>HTML na prática</h3><p>Monte a página no terminal e veja o site aparecer na tela. Um layout diferente a cada partida.</p><span class="sel">Disponível · 20 min</span></a><div class="est trava rv"><img class="spr" src="img/arara-azul.png" width="64" height="64" alt="" aria-hidden="true"><h3>CSS, a aparência</h3><p>Cor, fonte e espaço, com opções estéticas diferentes a cada partida.</p><span class="sel bloq">Em breve · aula 5</span></div><div class="est trava rv"><img class="spr" src="img/lobo-guara.png" width="64" height="64" alt="" aria-hidden="true"><h3>JavaScript, o comportamento</h3><p>Um botão que reage, um contador e uma conta que acontece na hora.</p><span class="sel bloq">Em breve · aula 6</span></div><div class="est trava rv"><img class="spr" src="img/tatu.png" width="64" height="64" alt="" aria-hidden="true"><h3>Backend e API</h3><p>Um servidor de mentira guarda dados e responde pedidos como "me dê o cardápio".</p><span class="sel bloq">Em breve · aula 7</span></div><div class="est trava rv"><img class="spr" src="img/onca-pintada.png" width="64" height="64" alt="" aria-hidden="true"><h3>Publicar</h3><p>Domínio, hospedagem e o endereço no ar: do rascunho ao link que qualquer pessoa abre.</p><span class="sel bloq">Em breve · aula 8</span></div></div></div></section>
+
+<section class="sec" style="padding-top:0"><div class="cx"><div class="folha rv" data-termos>
+<span class="rot">Mini game de tempo</span><h2>Cada partida é um site diferente.</h2>
+<p style="margin-top:12px;max-width:72ch">Nas aulas de planejamento e construção, o relógio corre. Cada partida sorteia um tipo de site, um layout e um estilo: são 36 combinações. Ao concluir, você vê o tempo, a nota em estrelas e se foi bom ou ruim em comparação com o tempo de referência.</p>
+<div class="pares" style="margin-top:22px">
+<div class="par"><img class="spr" src="img/pao.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">3 tipos de site</span><span class="b">Padaria, barbearia, portfólio</span><p>Cada um com cliente, conteúdo e páginas próprias.</p></div>
+<div class="par"><img class="spr" src="img/notebook.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">3 layouts</span><span class="b">Coluna, cartões, menu lateral</span><p>Muda a estrutura do HTML que você escreve.</p></div>
+<div class="par"><img class="spr" src="img/estrela.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">4 estilos</span><span class="b">Artesanal, pixel, editorial, neon</span><p>Muda a aparência, que você aplica na aula de CSS.</p></div>
+<div class="par"><img class="spr" src="img/item_medalha.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Nota</span><span class="b">De uma a três estrelas</span><p>Pistas e erros somam segundos. Quem pensa antes, ganha tempo.</p></div>
+</div></div></div></section>
 
 <section class="sec"><div class="cx"><div class="folha rv">
 <span class="rot">Como funciona a prática</span><h2>O terminal é de mentira. O aprendizado é de verdade.</h2>
@@ -60,7 +66,9 @@ img,svg,video,canvas{max-width:100%}
 </main>
 
 <footer class="rodape"><div class="cx"><p><b>Prática aplicada</b> · conteúdo e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
-<script src="js/app.js?v=8"></script>
+<script src="js/app.js?v=10"></script>
+<script src="js/termos.js?v=10"></script>
+<script src="js/partida.js?v=10"></script>
 <script>
 (function(){
   var PA=window.PA;if(!PA)return;var d=document.getElementById('demo');

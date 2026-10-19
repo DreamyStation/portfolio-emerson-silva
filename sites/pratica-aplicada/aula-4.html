@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<title>Aula 4 · HTML na prática · Prática aplicada</title>
+<meta name="description" content="Construa o HTML do site da partida no terminal e veja a tela montar ao vivo.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A1A4D">
+<script>try{if(JSON.parse(localStorage.getItem('pa:tema'))==='escuro')document.documentElement.dataset.tema='escuro'}catch(e){}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230D1024'/%3E%3Cpath d='M8 9h8v4h-4v2h4v4H8zM18 9h6v4h-6zM18 15h6v10h-6z' fill='%23F5B82E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/site.css?v=10">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo"><div class="cx">
+<a class="marca" href="index.html"><i aria-hidden="true">PA</i>Prática aplicada</a>
+<nav aria-label="Principal"><a href="index.html">Início</a><a href="index.html#aulas" aria-current="page">Aulas</a><a href="comandos.html">Comandos</a><a href="../../index.html#sites">Portfólio</a>
+<span class="hud" id="hud" hidden title="Relógio da partida"><span class="nm"></span><b class="rel">00:00</b></span>
+<button class="tema" id="tema" type="button" aria-pressed="false" aria-label="Alternar tema claro e escuro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg><span>Claro</span></button>
+<button class="mudo" id="mudo" type="button" aria-pressed="false" aria-label="Desligar os sons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg><span>Som</span></button></nav>
+</div></header>
+<main id="conteudo">
+<section class="hero" style="padding-bottom:clamp(20px,3vw,34px)"><div class="cx" style="grid-template-columns:minmax(0,1fr)">
+<div class="rv"><span class="tag">Aula 4 de 8 · etapa 2 da partida</span>
+<h1 style="margin-top:18px">HTML na <span class="azul">prática.</span></h1>
+<p class="lead" data-termos>Agora o relógio corre enquanto você constrói a página: escreva o HTML no terminal e veja o site aparecer na tela, bloco por bloco. Cada partida pede um layout diferente.</p></div>
+</div></section>
+
+<section class="sec" id="sem-partida" style="padding-top:0" hidden><div class="cx"><div class="folha rv"><span class="rot">Falta uma coisa</span><h2>Comece uma partida na aula 3.</h2><p style="margin-top:12px;max-width:60ch">O HTML desta aula é montado a partir do fluxo que você planeja lá: o menu, o layout e o tipo de site mudam a cada partida.</p><div class="acoes"><a class="btn jg" href="aula-3.html">Ir para a aula 3</a></div></div></div></section>
+
+<div id="com-partida" hidden>
+<section class="sec" style="padding-top:clamp(14px,2vw,24px)"><div class="cx"><div class="folha rv" data-termos>
+<span class="rot">Antes de começar</span><h2>O HTML em três ideias.</h2>
+<div class="pares" style="margin-top:24px">
+<div class="par"><img class="spr" src="img/jabuti.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Ideia 1</span><span class="b">Tudo é etiqueta</span><p>Cada parte da página é uma tag: &lt;h1&gt; é um título, &lt;p&gt; um parágrafo, &lt;img&gt; uma imagem, &lt;a&gt; um link.</p></div>
+<div class="par"><img class="spr" src="img/quati.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Ideia 2</span><span class="b">Abre e fecha</span><p>A maioria das tags abre e fecha: &lt;h1&gt;Título&lt;/h1&gt;. Esquecer o fechamento é o erro número um.</p></div>
+<div class="par"><img class="spr" src="img/coruja.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Ideia 3</span><span class="b">Tags dentro de tags</span><p>Uma lista &lt;ul&gt; tem vários &lt;li&gt; dentro. É isso que dá estrutura à página.</p></div>
+<div class="par"><img class="spr" src="img/pao.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Imagem é arquivo</span><span class="b">Vem de uma pasta</span><p>O &lt;img src="imagens/pao.png"&gt; aponta para um arquivo na pasta imagens do projeto.</p></div>
+</div></div></div></section>
+
+<section class="sec" id="lab" style="padding-top:0"><div class="cx">
+<div class="cab rv"><span class="rot">Etapa 2 · construção</span><h2>Escreva o site no terminal.</h2></div>
+<div class="brief rv" id="brief"></div>
+<div class="lab2 rv">
+<div class="px"><div class="bar"><img class="spr" src="img/coruja.png" width="28" height="28" alt="" aria-hidden="true"><b>terminal de treino · guia: Coruja</b></div><div class="term" id="term" role="log" aria-live="polite"></div><div class="entrada"><span id="pr" aria-hidden="true">~ $</span><input id="cmd" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Digite o comando e aperte Enter" placeholder="digite aqui e aperte Enter"><button class="btn jg" id="enviar" type="button">Enter</button></div><div class="chips" id="chips"><button type="button" class="prin" data-acao="cmd">comando</button><button type="button" data-acao="dica">Dica</button><button type="button" data-acao="limpar">Limpar</button><button type="button" data-acao="reiniciar">Recomeçar</button></div><div class="progresso" id="prog"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><small>0 de 0</small></div></div>
+<div class="base2"><div class="px arq"><div class="bar"><b>suas pastas</b></div><div class="arvore" id="arvore"></div><div class="opcoes-img" id="opcoes-img" aria-label="Ícones disponíveis na pasta imagens"></div></div>
+<div class="px arq" style="grid-column:auto"><div class="bar"><b>a tela do site</b></div><iframe class="telaSite" id="tela" title="Prévia do site que você está construindo" sandbox></iframe><div class="bar" style="border-top:4px solid var(--sombra);border-bottom:0"><b>o código do index.html</b></div><div class="conteudo" id="arqconteudo"></div></div></div>
+</div>
+<div class="resultado" id="resultado" role="status" style="margin-top:28px"><div class="partida-info"></div><div class="tempo">00:00</div><div class="estr">☆☆☆</div><div class="nota">—</div><p class="msg"></p><div class="parts parts"></div>
+<div class="acoes" style="justify-content:center"><a class="btn jg" href="aula-3.html" onclick="try{localStorage.setItem('pa:partida','null')}catch(e){}">Jogar outra partida</a><a class="btn cl" href="index.html#aulas">Voltar às aulas</a></div>
+<p class="mono" style="font-size:.78rem;color:#A9B2DA;margin-top:16px">PRÓXIMA ETAPA: CSS · A APARÊNCIA DO SEU SITE, COM O ESTILO SORTEADO · EM BREVE</p></div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="cx"><div class="folha rv" data-termos>
+<span class="rot">Bônus · como uma imagem é guardada</span><h2>Uma imagem é uma grade de pixels.</h2>
+<p style="margin-top:12px;max-width:70ch">As imagens dos ícones são arquivos PNG. Dentro, cada pixel (quadradinho) guarda uma cor, e o computador guarda tudo como bytes. Para ver isso de perto, aqui vai uma imagem minúscula de 8 por 8 pixels, em preto e branco: cada linha vira um número. Aperte nos quadrados.</p>
+<div class="pixelab" style="margin-top:22px"><div class="grade8" id="grade8"></div><div class="bytes" id="bytes"></div></div>
+<p style="margin-top:18px;max-width:70ch">Um PNG de verdade guarda 4 bytes por pixel (vermelho, verde, azul e transparência) e comprime o resultado. Uma foto de 1000 por 1000 pixels tem 1 milhão de pixels, ou 4 milhões de bytes antes de comprimir. Por isso fotos usam JPG, que aceita perder um pouco de qualidade para ficar leve, e logos simples usam SVG, que guarda a receita do desenho em vez dos pixels.</p>
+</div></div></section>
+
+<section class="sec" style="padding-top:0"><div class="cx"><div class="folha rv" data-termos>
+<span class="rot">Cola rápida</span><h2>Comandos desta etapa.</h2>
+<h3 style="margin:22px 0 4px;font-size:1.05rem">Onde estou e o que tem aqui</h3><ul class="cola"><li><code>pwd</code><span>mostra em qual pasta você está</span></li><li><code>ls</code><span>lista os arquivos e pastas daqui (no Windows: dir)</span></li><li><code>cd pasta</code><span>entra na pasta · cd .. volta uma · cd sozinho vai para a sua pasta pessoal</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Criar</h3><ul class="cola"><li><code>mkdir nome</code><span>cria uma pasta (no Windows: md nome)</span></li><li><code>touch arquivo</code><span>cria um arquivo vazio (no Windows PowerShell: ni arquivo)</span></li><li><code>echo 'texto' > arquivo</code><span>escreve o texto no arquivo, apagando o que havia</span></li><li><code>echo 'texto' >> arquivo</code><span>acrescenta o texto no fim do arquivo</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Ver</h3><ul class="cola"><li><code>cat arquivo</code><span>mostra o conteúdo do arquivo (no Windows: type arquivo)</span></li><li><code>clear</code><span>limpa a tela do terminal (no Windows: cls)</span></li></ul>
+</div></div></section>
+</div>
+</main>
+<footer class="rodape"><div class="cx"><p><b>Prática aplicada</b> · conteúdo e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
+<script src="js/app.js?v=10"></script>
+<script src="js/termos.js?v=10"></script>
+<script src="js/partida.js?v=10"></script>
+<script src="js/shell.js?v=10"></script>
+<script src="js/aula4.js?v=10"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>

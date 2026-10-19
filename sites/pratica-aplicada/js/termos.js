@@ -1,0 +1,93 @@
+/* Prática aplicada · termos com explicação. Passe o mouse, toque ou use Tab: aparece uma dica em português simples, com uma analogia.
+   Uso: <span class="termo" data-t="dns">DNS</span> ou PA.Termos.marca(elemento) para marcar sozinho a primeira ocorrência de cada termo. */
+(function(){
+  'use strict';
+  var T={
+    navegador:{t:'Navegador',al:['navegador','navegadores'],d:'O programa que você usa para abrir sites: Chrome, Edge, Firefox, Safari. Ele pede as páginas e as desenha na tela.',a:'É você, o cliente do restaurante.'},
+    servidor:{t:'Servidor',al:['servidor','servidores'],d:'Um computador ligado o tempo todo que guarda os arquivos de um site e responde a quem pedir.',a:'É a cozinha do restaurante.'},
+    dns:{t:'DNS',al:['DNS'],d:'O catálogo de endereços da internet. Traduz o nome do site (padaria.com) para o número do servidor (o IP).',a:'Como uma lista telefônica: você procura o nome e ela dá o número.'},
+    ip:{t:'IP',al:['IP'],d:'O número que identifica um computador na internet, como 203.0.113.7.',a:'É o CEP da casa do servidor.'},
+    dominio:{t:'Domínio',al:['domínio','domínios'],d:'O nome fácil de lembrar de um site, como padaria.com.br.',a:'O nome da rua, em vez do CEP.'},
+    requisicao:{t:'Requisição',al:['requisição','requisições'],d:'A mensagem que o navegador manda ao servidor pedindo algo, como uma página.',a:'O pedido que o cliente faz ao garçom.'},
+    resposta:{t:'Resposta',al:['resposta','respostas'],d:'O que o servidor devolve depois de um pedido: a página, um erro ou dados.',a:'O prato que volta da cozinha.'},
+    http:{t:'HTTP',al:['HTTP'],d:'O idioma combinado entre navegador e servidor para pedir e responder páginas.',a:'As regras de etiqueta do restaurante.'},
+    s200:{t:'200 OK',al:['200 OK','200'],d:'Código que o servidor manda quando deu tudo certo.',a:'"Aqui está o seu prato."'},
+    s404:{t:'404',al:['404'],d:'Código de "não achei essa página". O servidor está funcionando, mas o endereço pedido não existe.',a:'"Esse prato não está no cardápio."'},
+    html:{t:'HTML',al:['HTML'],d:'A linguagem que descreve a estrutura de uma página: títulos, textos, imagens e links.',a:'O esqueleto da casa.'},
+    css:{t:'CSS',al:['CSS'],d:'A linguagem que cuida da aparência: cores, fontes, espaços e posição.',a:'A pintura e a decoração.'},
+    js:{t:'JavaScript',al:['JavaScript'],d:'A linguagem que dá comportamento à página: reagir a cliques, fazer contas, buscar dados.',a:'A eletricidade da casa.'},
+    tag:{t:'Tag (etiqueta)',al:['tag','tags','etiqueta','etiquetas'],d:'Uma marcação do HTML entre sinais de menor e maior, como <h1>. Quase sempre vem em par: abre <h1> e fecha </h1>.',a:'Uma etiqueta colada numa caixa dizendo o que tem dentro.'},
+    terminal:{t:'Terminal',al:['terminal','Terminal'],d:'Uma janela onde você controla o computador digitando comandos, em vez de clicar.',a:'Conversar com o computador por mensagem de texto.'},
+    comando:{t:'Comando',al:['comando','comandos'],d:'Uma instrução curta que você digita no terminal, como ls (listar) ou mkdir (criar pasta).',a:'Um pedido direto ao computador.'},
+    pasta:{t:'Pasta',al:['pasta','pastas','diretório','diretórios'],d:'Um lugar para organizar arquivos. Também se chama diretório.',a:'Uma gaveta do armário.'},
+    arquivo:{t:'Arquivo',al:['arquivo','arquivos'],d:'Um conteúdo guardado com um nome, como index.html ou foto.png.',a:'Uma folha dentro da gaveta.'},
+    editor:{t:'Editor de código',al:['editor de código','editor'],d:'Um programa para escrever código com ajuda de cores e atalhos. O mais usado hoje é o VS Code, grátis.',a:'O caderno em que você escreve a receita.'},
+    caminho:{t:'Caminho',al:['caminho','caminhos'],d:'O endereço de um arquivo ou pasta dentro do computador, como /home/voce/padaria/index.html.',a:'O trajeto até a gaveta certa.'},
+    git:{t:'Git',al:['Git'],d:'Um programa que guarda o histórico do seu projeto, para você voltar atrás e trabalhar em equipe.',a:'Um caderno de rascunhos com todas as versões.'},
+    node:{t:'Node.js',al:['Node.js','Node'],d:'Um programa que roda JavaScript fora do navegador. Muitas ferramentas de sites precisam dele.',a:'Um fogão extra para a cozinha do JavaScript.'},
+    pixel:{t:'Pixel',al:['pixel','pixels'],d:'Cada quadradinho de uma imagem. Uma foto é uma grade enorme de pixels, cada um com uma cor.',a:'Uma pastilha de um mosaico.'},
+    png:{t:'PNG',al:['PNG'],d:'Formato de imagem sem perda de qualidade e com fundo transparente. Ótimo para ícones e pixel art.',a:'Uma foto revelada sem retoque.'},
+    jpg:{t:'JPG',al:['JPG','JPEG'],d:'Formato de imagem comprimido, bom para fotos: o arquivo fica pequeno, com uma pequena perda de qualidade.',a:'Uma foto espremida para caber na mala.'},
+    svg:{t:'SVG',al:['SVG'],d:'Imagem feita de desenho em texto (linhas e formas), que não perde qualidade ao ampliar. Ótima para logos e ícones simples.',a:'Uma receita de como desenhar, em vez do desenho pronto.'},
+    byte:{t:'Byte',al:['byte','bytes'],d:'A unidade em que o computador guarda tudo. Um arquivo é uma fila de bytes, cada um um número de 0 a 255.',a:'Uma letra do alfabeto do computador.'},
+    api:{t:'API',al:['API'],d:'Um "cardápio" de pedidos que um servidor aceita responder por programas, não só por pessoas.',a:'O cardápio que o garçom entrega à cozinha.'},
+    backend:{t:'Backend',al:['backend','back-end'],d:'A parte do sistema que roda no servidor: guarda dados e aplica as regras. Você não vê, mas depende dela.',a:'A cozinha.'},
+    frontend:{t:'Frontend',al:['frontend','front-end'],d:'A parte do site que aparece para a pessoa: textos, cores, botões. Roda no navegador.',a:'O salão do restaurante.'}
+  };
+  var tip=null,alvo=null,fecha=null;
+  function mk(){if(tip)return tip;tip=document.createElement('div');tip.id='dica-termo';tip.setAttribute('role','tooltip');document.body.appendChild(tip);
+    tip.addEventListener('mouseenter',function(){clearTimeout(fecha)});tip.addEventListener('mouseleave',function(){esconde(200)});return tip}
+  function mostra(el){
+    var d=T[el.dataset.t];if(!d)return;mk();clearTimeout(fecha);
+    tip.textContent='';var b=document.createElement('b');b.textContent=d.t;var p=document.createElement('p');p.textContent=d.d;var a=document.createElement('p');a.className='an';a.textContent=d.a;tip.append(b,p,a);
+    tip.classList.add('on');if(alvo&&alvo!==el)alvo.setAttribute('aria-expanded','false');alvo=el;el.setAttribute('aria-expanded','true');el.setAttribute('aria-describedby','dica-termo');
+    var r=el.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight,sx=window.scrollX,sy=window.scrollY;
+    var x=Math.min(Math.max(8,r.left),window.innerWidth-w-8)+sx,y=r.bottom+10+sy;
+    if(r.bottom+h+16>window.innerHeight&&r.top>h+16)y=r.top-h-10+sy;
+    tip.style.left=x+'px';tip.style.top=y+'px';
+  }
+  function esconde(atraso){clearTimeout(fecha);fecha=setTimeout(function(){if(tip)tip.classList.remove('on');if(alvo){alvo.setAttribute('aria-expanded','false');alvo=null}},atraso||0)}
+  document.addEventListener('mouseover',function(e){var el=e.target.closest&&e.target.closest('.termo');if(el&&matchMedia('(hover:hover)').matches){mostra(el)}});
+  document.addEventListener('mouseout',function(e){var el=e.target.closest&&e.target.closest('.termo');if(el)esconde(250)});
+  document.addEventListener('focusin',function(e){var el=e.target.closest&&e.target.closest('.termo');if(el)mostra(el)});
+  document.addEventListener('focusout',function(e){if(e.target.closest&&e.target.closest('.termo'))esconde(150)});
+  document.addEventListener('click',function(e){
+    var el=e.target.closest&&e.target.closest('.termo');
+    if(el){e.preventDefault();if(alvo===el&&tip.classList.contains('on'))esconde(0);else mostra(el);return}
+    if(tip&&!e.target.closest('#dica-termo'))esconde(0);
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')esconde(0)});
+  window.addEventListener('scroll',function(){if(tip&&tip.classList.contains('on')&&alvo)mostra(alvo)},{passive:true});
+
+  /* marca sozinho a primeira ocorrência de cada termo dentro de um elemento */
+  var PRE='(?<![\\p{L}\\p{N}_<\\/.-])',POS='(?![\\p{L}\\p{N}_>.-]|\\.[a-z])';
+  function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
+  var ER=Object.keys(T).map(function(k){
+    var al=T[k].al.slice().sort(function(a,b){return b.length-a.length});
+    var ac=/^[A-Z0-9.]+$/.test(al[0]);
+    return {k:k,re:new RegExp(PRE+'('+al.map(esc).join('|')+')'+POS,ac?'u':'iu')};
+  });
+  function marca(raiz,opc){
+    opc=opc||{};var usados=opc.usados||{};if(!raiz)return;
+    var w=document.createTreeWalker(raiz,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+      var p=n.parentNode;if(!n.nodeValue.trim())return NodeFilter.FILTER_REJECT;
+      if(p.closest&&p.closest('.termo,button,a,code,pre,input,textarea,script,style,.u,.cmd,.cad,.sel,.tag,h1,.bytes,.arvore,.conteudo'))return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT}});
+    var nos=[];while(w.nextNode())nos.push(w.currentNode);
+    nos.forEach(function(n){
+      var txt=n.nodeValue;
+      for(var i=0;i<ER.length;i++){
+        var e=ER[i];if(usados[e.k])continue;var m=e.re.exec(txt);if(!m)continue;
+        usados[e.k]=1;var ini=m.index,fim=ini+m[0].length;
+        var sp=document.createElement('span');sp.className='termo';sp.dataset.t=e.k;sp.tabIndex=0;sp.setAttribute('role','button');sp.setAttribute('aria-expanded','false');sp.textContent=m[0];
+        var dep=document.createTextNode(txt.slice(fim));n.nodeValue=txt.slice(0,ini);n.parentNode.insertBefore(sp,n.nextSibling);n.parentNode.insertBefore(dep,sp.nextSibling);
+        /* continua procurando outros termos no restante */
+        n=dep;txt=dep.nodeValue;i=-1;
+      }
+    });
+  }
+  /* elementos manuais também ganham acessibilidade */
+  function prepara(){Array.prototype.forEach.call(document.querySelectorAll('.termo:not([role])'),function(el){el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-expanded','false')})}
+  window.PA=window.PA||{};window.PA.Termos={marca:marca,dict:T,prepara:prepara};
+  document.addEventListener('DOMContentLoaded',function(){prepara();Array.prototype.forEach.call(document.querySelectorAll('[data-termos]'),function(el){marca(el)})});
+  if(document.readyState!=='loading'){prepara();Array.prototype.forEach.call(document.querySelectorAll('[data-termos]'),function(el){marca(el)})}
+})();

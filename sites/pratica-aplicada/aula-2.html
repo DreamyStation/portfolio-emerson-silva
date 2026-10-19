@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<title>Aula 2 · Seu ambiente de trabalho · Prática aplicada</title>
+<meta name="description" content="Qual terminal abrir, quais aplicativos instalar e os comandos básicos, com treino num terminal virtual.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A1A4D">
+<script>try{if(JSON.parse(localStorage.getItem('pa:tema'))==='escuro')document.documentElement.dataset.tema='escuro'}catch(e){}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230D1024'/%3E%3Cpath d='M8 9h8v4h-4v2h4v4H8zM18 9h6v4h-6zM18 15h6v10h-6z' fill='%23F5B82E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/site.css?v=10">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo"><div class="cx">
+<a class="marca" href="index.html"><i aria-hidden="true">PA</i>Prática aplicada</a>
+<nav aria-label="Principal"><a href="index.html">Início</a><a href="index.html#aulas" aria-current="page">Aulas</a><a href="comandos.html">Comandos</a><a href="../../index.html#sites">Portfólio</a>
+<span class="hud" id="hud" hidden title="Relógio da partida"><span class="nm"></span><b class="rel">00:00</b></span>
+<button class="tema" id="tema" type="button" aria-pressed="false" aria-label="Alternar tema claro e escuro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg><span>Claro</span></button>
+<button class="mudo" id="mudo" type="button" aria-pressed="false" aria-label="Desligar os sons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg><span>Som</span></button></nav>
+</div></header>
+<main id="conteudo">
+<section class="hero" style="padding-bottom:clamp(20px,3vw,34px)"><div class="cx" style="grid-template-columns:minmax(0,1fr)">
+<div class="rv"><span class="tag">Aula 2 de 8</span>
+<h1 style="margin-top:18px">Seu ambiente de <span class="azul">trabalho.</span></h1>
+<p class="lead" data-termos>Antes de escrever código, você precisa saber qual terminal abrir, quais aplicativos ter no computador e os poucos comandos que vão te acompanhar sempre. Aqui você aprende e treina cada um.</p><p id="ja" hidden class="mono" style="font-size:.85rem;color:#0a6b48;font-weight:700">VOCÊ JÁ CONCLUIU ESTA AULA · PODE REFAZER QUANDO QUISER</p></div>
+</div></section>
+
+<section class="sec" style="padding-top:clamp(14px,2vw,24px)"><div class="cx"><div class="folha rv" data-termos>
+<span class="rot">1 · O terminal</span><h2>Falar com o computador por texto.</h2>
+<p style="margin-top:14px;max-width:70ch">O terminal é uma janela em que, em vez de clicar em pastas e botões, você digita instruções curtas chamadas comandos. Quem faz sites usa o terminal o tempo todo porque é rápido, repetível e funciona igual em qualquer computador. Não tem nada de mágico: cada comando faz uma coisa pequena.</p>
+<h3 style="margin:26px 0 12px">Qual terminal abrir?</h3>
+<div class="cola-os" role="group" aria-label="Seu sistema">
+<button type="button" data-os="win" aria-pressed="false">Windows</button><button type="button" data-os="mac" aria-pressed="false">Mac</button><button type="button" data-os="linux" aria-pressed="false">Linux</button></div>
+<ol class="passos-os" data-os="win"><li><p>Aperte a tecla <b>Windows</b> do teclado.</p></li><li><p>Digite <b>Terminal</b> (ou <b>PowerShell</b>) e aperte <b>Enter</b>. Abre uma janela escura com um texto piscando: é ele.</p></li><li><p>Dica: para abrir já dentro de uma pasta, abra a pasta no Explorador de Arquivos, clique na barra de endereço no topo, digite <b>powershell</b> e aperte Enter.</p></li></ol>
+<ol class="passos-os" data-os="mac" hidden><li><p>Aperte <b>Command + Espaço</b> para abrir a busca.</p></li><li><p>Digite <b>Terminal</b> e aperte <b>Enter</b>.</p></li><li><p>Dica: no Finder, clique com o botão direito numa pasta e escolha <b>Novo Terminal na Pasta</b> (ative em Ajustes, Teclado, Atalhos, Serviços).</p></li></ol>
+<ol class="passos-os" data-os="linux" hidden><li><p>Aperte <b>Ctrl + Alt + T</b> (funciona na maioria das distribuições).</p></li><li><p>Se não abrir, procure por <b>Terminal</b> no menu de aplicativos.</p></li><li><p>Dica: no gerenciador de arquivos, clique com o botão direito dentro de uma pasta e escolha <b>Abrir no terminal</b>.</p></li></ol>
+<p class="mono" style="font-size:.8rem;margin:16px 0 0;color:var(--suave)">AS PEQUENAS DIFERENÇAS ENTRE SISTEMAS APARECEM NA COLA DE COMANDOS, MAIS ABAIXO.</p>
+</div></div></section>
+
+<section class="sec" style="padding-top:0"><div class="cx"><div class="folha rv" data-termos>
+<span class="rot">2 · Os aplicativos</span><h2>O que instalar (e o que você já tem).</h2>
+<div class="pares" style="margin-top:24px">
+<div class="par"><img class="spr" src="img/capivara.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Você já tem</span><span class="b">Navegador</span><p>Chrome, Edge, Firefox ou Safari. É nele que você vê o resultado do seu site.</p></div>
+<div class="par"><img class="spr" src="img/quati.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Já vem no sistema</span><span class="b">Terminal</span><p>Você acabou de aprender a abrir. Não precisa instalar nada.</p></div>
+<div class="par"><img class="spr" src="img/coruja.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Instale agora</span><span class="b">Editor de código</span><p>O VS Code (code.visualstudio.com) é gratuito e o mais usado. É o caderno em que você escreve o HTML.</p></div>
+<div class="par"><img class="spr" src="img/tatu.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Instale depois</span><span class="b">Git e Node.js</span><p>O Git guarda versões do projeto; o Node.js roda JavaScript fora do navegador. Entram nas aulas de JavaScript e publicar.</p></div>
+</div>
+<p style="margin-top:20px;max-width:70ch">Para conferir se um programa está instalado, o terminal responde com a versão: <code class="cmd">node -v</code> ou <code class="cmd">git --version</code>. Se aparecer "comando não encontrado", falta instalar.</p>
+</div></div></section>
+
+<section class="sec" style="padding-top:0"><div class="cx"><div class="folha rv" data-termos>
+<span class="rot">3 · Os comandos</span><h2>A cola que cabe em uma tela.</h2>
+<p style="margin-top:12px">Você não precisa decorar. Treine logo abaixo e deixe esta lista aberta ao lado.</p>
+<h3 style="margin:22px 0 4px;font-size:1.05rem">Onde estou e o que tem aqui</h3><ul class="cola"><li><code>pwd</code><span>mostra em qual pasta você está</span></li><li><code>ls</code><span>lista os arquivos e pastas daqui (no Windows: dir)</span></li><li><code>cd pasta</code><span>entra na pasta · cd .. volta uma · cd sozinho vai para a sua pasta pessoal</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Criar</h3><ul class="cola"><li><code>mkdir nome</code><span>cria uma pasta (no Windows: md nome)</span></li><li><code>touch arquivo</code><span>cria um arquivo vazio (no Windows PowerShell: ni arquivo)</span></li><li><code>echo 'texto' > arquivo</code><span>escreve o texto no arquivo, apagando o que havia</span></li><li><code>echo 'texto' >> arquivo</code><span>acrescenta o texto no fim do arquivo</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Ver</h3><ul class="cola"><li><code>cat arquivo</code><span>mostra o conteúdo do arquivo (no Windows: type arquivo)</span></li><li><code>clear</code><span>limpa a tela do terminal (no Windows: cls)</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Apagar (sem lixeira!)</h3><ul class="cola"><li><code>rm arquivo</code><span>apaga um arquivo para sempre</span></li><li><code>rm -r pasta</code><span>apaga a pasta e tudo que está dentro. Cuidado</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Ferramentas</h3><ul class="cola"><li><code>code .</code><span>abre a pasta atual no editor VS Code</span></li><li><code>node -v</code><span>mostra a versão do Node.js, se estiver instalado</span></li><li><code>git --version</code><span>mostra a versão do Git, se estiver instalado</span></li></ul>
+<p style="margin-top:18px"><a class="btn cl" href="comandos.html">Abrir a cola completa</a></p>
+</div></div></section>
+
+<section class="sec" id="lab" style="padding-top:0"><div class="cx">
+<div class="cab rv"><span class="rot">Prática</span><h2>Treine no terminal virtual.</h2><p>Os comandos são os de verdade; só a pasta é de mentira. À esquerda embaixo, as pastas que você cria; à direita, o conteúdo do arquivo em que você mexeu.</p></div>
+<div class="lab2 rv">
+<div class="px"><div class="bar"><img class="spr" src="img/coruja.png" width="28" height="28" alt="" aria-hidden="true"><b>terminal de treino · guia: Coruja</b></div><div class="term" id="term" role="log" aria-live="polite"></div><div class="entrada"><span id="pr" aria-hidden="true">~ $</span><input id="cmd" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Digite o comando e aperte Enter" placeholder="digite aqui e aperte Enter"><button class="btn jg" id="enviar" type="button">Enter</button></div><div class="chips" id="chips"><button type="button" class="prin" data-acao="cmd">comando</button><button type="button" data-acao="dica">Dica</button><button type="button" data-acao="limpar">Limpar</button><button type="button" data-acao="reiniciar">Recomeçar</button></div><div class="progresso" id="prog"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><small>0 de 0</small></div></div>
+<div class="base2"><div class="px arq"><div class="bar"><b>suas pastas</b></div><div class="arvore" id="arvore"></div></div>
+<div class="px arq"><div class="bar"><b>conteúdo do arquivo</b></div><div class="conteudo" id="arqconteudo" style="min-height:150px"></div></div></div>
+</div></div></section>
+
+<section class="sec" style="padding-top:0"><div class="cx"><div class="fim" id="fim" role="status">
+<div class="selo-fim"><img class="spr" src="img/quati.png" width="132" height="132" alt="" aria-hidden="true"><img class="spr" src="img/item_medalha.png" width="72" height="72" alt="" aria-hidden="true"></div><h2>Aula 2 concluída!</h2>
+<p>Agora você sabe abrir o terminal, quais aplicativos ter e os comandos para navegar e criar arquivos. Na próxima aula você planeja o site antes de construir.</p>
+<div class="acoes" style="justify-content:center"><a class="btn jg" href="aula-3.html">Ir para a aula 3</a><a class="btn cl" href="index.html#aulas">Voltar às aulas</a></div></div></div></section>
+</main>
+<footer class="rodape"><div class="cx"><p><b>Prática aplicada</b> · conteúdo e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
+<script src="js/app.js?v=10"></script>
+<script src="js/termos.js?v=10"></script>
+<script src="js/partida.js?v=10"></script>
+<script src="js/shell.js?v=10"></script>
+<script src="js/aula2.js?v=10"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>
