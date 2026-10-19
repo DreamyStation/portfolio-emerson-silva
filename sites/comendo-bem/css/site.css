@@ -136,3 +136,6 @@ details{background:#fff;border:3px solid var(--verde2);border-radius:18px;paddin
 ::-webkit-scrollbar-corner{background:var(--sb-t)}
 @supports not selector(::-webkit-scrollbar){html{scrollbar-width:auto;scrollbar-color:var(--sb-h) var(--sb-t)}}
 /*sb:fim*/
+
+/* celular: o selo redondo fica dentro da tela */
+@media (max-width:640px){.selo-giro{right:6px;bottom:-14px}}

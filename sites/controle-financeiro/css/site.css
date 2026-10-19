@@ -169,3 +169,7 @@ p{margin:0 0 1em}
 ::-webkit-scrollbar-corner{background:var(--sb-t)}
 @supports not selector(::-webkit-scrollbar){html{scrollbar-width:auto;scrollbar-color:var(--sb-h) var(--sb-t)}}
 /*sb:fim*/
+
+/* celular: leque de telas e gráfico de meses sem passar da borda */
+@media (max-width:640px){.leque .fone{width:40%}.leque .fone:nth-child(1){left:4%}.leque .fone:nth-child(2){left:28%;width:44%}.leque .fone:nth-child(3){right:4%}.fone{box-shadow:0 0 0 3px var(--linha),5px 7px 0 rgba(0,0,0,.45)}}
+.meses{height:auto;grid-auto-rows:150px;grid-template-columns:repeat(auto-fit,minmax(34px,1fr))}

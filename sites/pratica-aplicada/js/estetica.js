@@ -1,26 +1,19 @@
-/* Prática aplicada · estética secundária "Matrix": verde, chuva de códigos, sprites com filtro verde, ruído e flutuação.
-   Botão #matrix ao lado do botão de tema. A escolha fica guardada em localStorage (pa:estetica) e vale para todas as páginas. */
+/* Prática aplicada · estética Matrix (a única do site): chuva de códigos, sprites com filtro verde e ruído, texto digitado como num
+   terminal antigo, glitch de entrada e de saída, glitches raros em títulos, botões e ícones. Expõe PA.Fx para o resto dos scripts. */
 (function(){
   'use strict';
   var $=function(s,r){return (r||document).querySelector(s)};
   var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
   var raiz=document.documentElement;
-  var guarda={
-    le:function(){try{return JSON.parse(localStorage.getItem('pa:estetica'))!=='padrao'}catch(e){return true}},
-    grava:function(v){try{localStorage.setItem('pa:estetica',JSON.stringify(v?'matrix':'padrao'))}catch(e){}}
-  };
+  raiz.dataset.estetica='matrix';
   var reduz=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var botao=$('#matrix'),fav=$('link[rel=icon]');
-  var favPadrao=fav&&fav.getAttribute('href'),favMatrix=fav&&fav.getAttribute('data-matrix');
+  var rnd=function(a,b){return a+Math.random()*(b-a)};
 
   /* cada sprite flutua em um ritmo um pouco diferente */
   $$('img.spr').forEach(function(im,i){im.style.setProperty('--i',String(i%8))});
 
   /* ---------- filtro verde com ruído (SVG) ---------- */
-  function filtro(on){
-    var ex=$('#pa-filtros');
-    if(!on){if(ex)ex.remove();return}
-    if(ex)return;
+  (function(){
     var NS='http://www.w3.org/2000/svg',s=document.createElementNS(NS,'svg');
     s.id='pa-filtros';s.setAttribute('width','0');s.setAttribute('height','0');s.setAttribute('aria-hidden','true');s.style.cssText='position:absolute;width:0;height:0;overflow:hidden';
     s.innerHTML='<filter id="pa-verde" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">'+
@@ -30,7 +23,7 @@
       '<feComposite in="v" in2="rg" operator="arithmetic" k1="0" k2="1" k3="0.55" k4="0" result="s"/>'+
       '<feComposite in="s" in2="SourceAlpha" operator="in"/></filter>';
     document.body.appendChild(s);
-  }
+  })();
 
   /* ---------- chuva de códigos ---------- */
   var chuva={cv:null,t:null,g:null,cols:0,gotas:[],tam:16,w:0,h:0};
@@ -47,40 +40,88 @@
     g.font=c.tam+'px "Space Mono",monospace';
     for(var i=0;i<c.cols;i++){
       var y=c.gotas[i];if(y>=0){
-        var ch=CH[Math.floor(Math.random()*CH.length)];
-        g.fillStyle='#c6ffd8';g.fillText(ch,i*c.tam,y*c.tam);
+        g.fillStyle='#c6ffd8';g.fillText(CH[Math.floor(Math.random()*CH.length)],i*c.tam,y*c.tam);
         if(y>1){g.fillStyle='#39ff7a';g.fillText(CH[Math.floor(Math.random()*CH.length)],i*c.tam,(y-1)*c.tam)}
       }
       c.gotas[i]=(y*c.tam>c.h&&Math.random()>0.975)?Math.floor(Math.random()*-20):y+1;
     }
   }
-  function ligaChuva(){
-    if(chuva.cv)return;
+  (function(){
     var cv=document.createElement('canvas');cv.id='chuva';cv.setAttribute('aria-hidden','true');
     document.body.insertBefore(cv,document.body.firstChild);
     chuva.cv=cv;chuva.g=cv.getContext('2d');mede();
     if(reduz){for(var k=0;k<50;k++)passo()}else chuva.t=setInterval(passo,70);
-    window.addEventListener('resize',redim);
-  }
-  var rt=null;function redim(){clearTimeout(rt);rt=setTimeout(function(){if(chuva.cv)mede()},200)}
-  function desligaChuva(){
-    if(!chuva.cv)return;
-    clearInterval(chuva.t);chuva.t=null;window.removeEventListener('resize',redim);
-    chuva.cv.remove();chuva.cv=null;chuva.g=null;
+    var rt=null;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(mede,200)});
+  })();
+
+  /* ---------- texto digitado, como num terminal antigo ---------- */
+  function digita(el,opc){
+    opc=opc||{};var nos=[],w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+    while(w.nextNode())nos.push(w.currentNode);
+    var tx=nos.map(function(n){return n.nodeValue}),total=tx.reduce(function(a,t){return a+t.length},0);
+    if(!total||reduz){if(opc.fim)opc.fim();return}
+    var h=el.offsetHeight;if(h)el.style.minHeight=h+'px';
+    el.setAttribute('aria-busy','true');
+    nos.forEach(function(n){n.nodeValue=''});
+    var cur=document.createElement('span');cur.className='cur-t';cur.setAttribute('aria-hidden','true');cur.textContent='█';
+    var j=0,k=0,porTick=Math.max(1,Math.ceil(total/(opc.maxTicks||70))),ms=opc.ms||26;
+    function poe(){var n=nos[j];if(n.nextSibling)n.parentNode.insertBefore(cur,n.nextSibling);else n.parentNode.appendChild(cur)}
+    poe();
+    (function tick(){
+      for(var q=0;q<porTick&&j<nos.length;q++){
+        k++;nos[j].nodeValue=tx[j].slice(0,k);
+        if(k>=tx[j].length){j++;k=0;if(j<nos.length)poe()}
+      }
+      if(j<nos.length){setTimeout(tick,ms)}
+      else{setTimeout(function(){if(cur.parentNode)cur.parentNode.removeChild(cur);el.style.minHeight='';el.removeAttribute('aria-busy');if(opc.fim)opc.fim()},opc.cursorFim==null?260:opc.cursorFim)}
+    })();
   }
 
-  /* ---------- liga e desliga ---------- */
-  function aplica(on){
-    if(on)raiz.dataset.estetica='matrix';else delete raiz.dataset.estetica;
-    if(botao){botao.setAttribute('aria-pressed',String(on));var t=$('span',botao);if(t)t.textContent='Matrix'}
-    if(fav){var h=on&&favMatrix?favMatrix:favPadrao;if(h)fav.setAttribute('href',h)}
-    var tc=$('meta[name=theme-color]');if(tc)tc.setAttribute('content',on?'#000d05':'#0A1A4D');
-    if(bt){var esc=raiz.dataset.tema==='escuro';bt.setAttribute('aria-label',on?'Sair do Matrix e usar o tema '+(esc?'escuro':'claro'):'Alternar tema claro e escuro');bt.title=on?'Sair do Matrix':''}
-    filtro(on);if(on)ligaChuva();else desligaChuva();
+  /* títulos e textos de abertura são digitados na primeira vez que aparecem */
+  if(!reduz&&'IntersectionObserver' in window){
+    var feitos=typeof WeakSet==='function'?new WeakSet():null;
+    $$('main h1, main h2, main .lead, main .cab > p').forEach(function(el){if(!el.querySelector('input,textarea,select'))el.classList.add('tp-pre')});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);
+      if(feitos&&feitos.has(el))return;if(feitos)feitos.add(el);
+      el.classList.remove('tp-pre');digita(el,{maxTicks:el.matches('h1,h2')?40:70});
+    })},{threshold:.15});
+    $$('.tp-pre').forEach(function(el){io.observe(el)});
   }
-  /* dentro do Matrix o tema claro/escuro não aparece: o botão de tema sai do Matrix e mostra o tema escolhido (sai do Matrix) */
-  var bt=$('#tema');
-  if(bt)bt.addEventListener('click',function(e){if(raiz.dataset.estetica==='matrix'){e.stopImmediatePropagation();e.preventDefault();guarda.grava(false);aplica(false)}},true);
-  aplica(guarda.le());
-  if(botao)botao.addEventListener('click',function(){var on=!guarda.le();guarda.grava(on);aplica(on)});
+
+  /* ---------- glitch ---------- */
+  function visivel(el){var r=el.getBoundingClientRect();return r.width>0&&r.height>0&&r.bottom>60&&r.top<window.innerHeight-20&&getComputedStyle(el).visibility!=='hidden'}
+  function glitch(el,classe,ms){var c=classe||'gl';el.classList.add(c);setTimeout(function(){el.classList.remove(c)},ms||460)}
+  /* glitches raros: um a cada 6 a 15 segundos, em um item visível por vez (às vezes dois) */
+  if(!reduz){
+    (function laco(){
+      setTimeout(function(){
+        if(!document.hidden){
+          var c=$$('main h1, main h2, .marca b, .marca .logo, .btn, img.spr, .rot, .topo .menu a').filter(visivel);
+          if(c.length){var n=Math.random()<.3?2:1;for(var i=0;i<n;i++)glitch(c[Math.floor(Math.random()*c.length)],'gl',rnd(380,520))}
+        }
+        laco();
+      },rnd(6000,15000));
+    })();
+  }
+  /* botões e blocos que passam a existir (deixam de ficar escondidos) entram com glitch */
+  if('MutationObserver' in window&&!reduz){
+    new MutationObserver(function(ms){ms.forEach(function(m){
+      var el=m.target;if(m.attributeName==='hidden'&&!el.hidden&&el.matches&&el.matches('.btn,.chips button,.resultado,.fim'))glitch(el,'gl-in',560)
+    })}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden']});
+  }
+  /* saída: ao ir para outra página, o conteúdo some com glitch antes de trocar */
+  document.addEventListener('click',function(e){
+    if(reduz||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    var a=e.target.closest&&e.target.closest('a[href]');if(!a||a.target==='_blank'||a.hasAttribute('download'))return;
+    var h=a.getAttribute('href');if(!h||h.charAt(0)==='#'||/^(mailto:|tel:|javascript:)/i.test(h))return;
+    var u;try{u=new URL(a.href,location.href)}catch(x){return}
+    if(u.origin!==location.origin||(u.pathname===location.pathname&&u.search===location.search))return;
+    e.preventDefault();raiz.classList.add('gl-saindo');glitch(a,'gl-out',340);
+    setTimeout(function(){location.href=a.href},340);
+  });
+  window.addEventListener('pageshow',function(e){if(e.persisted)raiz.classList.remove('gl-saindo')});
+
+  window.PA=window.PA||{};
+  window.PA.Fx={digita:digita,glitch:glitch,reduz:reduz};
 })();

@@ -1,4 +1,4 @@
-/* Prática aplicada · base: sons sintetizados, mudo, tema claro/escuro, progresso guardado no navegador, entrada dos blocos e o terminal de treino (falso).
+/* Prática aplicada · base: sons sintetizados, mudo, progresso guardado no navegador, entrada dos blocos e o terminal de treino (falso).
    O Terminal tem dois modos: "passos" (comandos fixos, aula 1) e "shell" (terminal virtual com arquivos, aulas 2 em diante). */
 (function(){
   'use strict';
@@ -10,12 +10,6 @@
     le:function(k,pad){try{var v=localStorage.getItem('pa:'+k);return v===null?pad:JSON.parse(v)}catch(e){return pad}},
     grava:function(k,v){try{localStorage.setItem('pa:'+k,JSON.stringify(v))}catch(e){}}
   };
-
-  /* ---------- tema claro/escuro (o terminal não muda) ---------- */
-  var bt=$('#tema');
-  function aplicaTema(t){document.documentElement.dataset.tema=t==='escuro'?'escuro':'claro';if(bt){bt.setAttribute('aria-pressed',String(t==='escuro'));var s=$('span',bt);if(s)s.textContent=t==='escuro'?'Escuro':'Claro'}}
-  aplicaTema(Arm.le('tema','claro'));
-  if(bt)bt.addEventListener('click',function(){var n=document.documentElement.dataset.tema==='escuro'?'claro':'escuro';Arm.grava('tema',n);aplicaTema(n)});
 
   /* ---------- sons (Web Audio, sem arquivos) ---------- */
   var ctx=null,mudo=Arm.le('mudo',false);

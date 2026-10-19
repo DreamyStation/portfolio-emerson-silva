@@ -71,16 +71,29 @@
   var tip=null,alvo=null,fecha=null;
   function mk(){if(tip)return tip;tip=document.createElement('div');tip.id='dica-termo';tip.setAttribute('role','tooltip');document.body.appendChild(tip);
     tip.addEventListener('mouseenter',function(){clearTimeout(fecha)});tip.addEventListener('mouseleave',function(){esconde(200)});return tip}
-  function mostra(el){
-    var d=T[el.dataset.t];if(!d)return;mk();clearTimeout(fecha);
-    tip.textContent='';var b=document.createElement('b');b.textContent=d.t;var p=document.createElement('p');p.textContent=d.d;var a=document.createElement('p');a.className='an';a.textContent=d.a;tip.append(b,p,a);
-    tip.classList.add('on');if(alvo&&alvo!==el)alvo.setAttribute('aria-expanded','false');alvo=el;el.setAttribute('aria-expanded','true');el.setAttribute('aria-describedby','dica-termo');
+  function posiciona(el){
     var r=el.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight,sx=window.scrollX,sy=window.scrollY;
     var x=Math.min(Math.max(8,r.left),window.innerWidth-w-8)+sx,y=r.bottom+10+sy;
     if(r.bottom+h+16>window.innerHeight&&r.top>h+16)y=r.top-h-10+sy;
     tip.style.left=x+'px';tip.style.top=y+'px';
   }
-  function esconde(atraso){clearTimeout(fecha);fecha=setTimeout(function(){if(tip)tip.classList.remove('on');if(alvo){alvo.setAttribute('aria-expanded','false');alvo=null}},atraso||0)}
+  function mostra(el){
+    var d=T[el.dataset.t];if(!d)return;mk();clearTimeout(fecha);
+    var igual=alvo===el&&tip.classList.contains('on')&&!tip.classList.contains('sai');
+    if(igual){posiciona(el);return}
+    tip.classList.remove('sai');tip.textContent='';
+    var b=document.createElement('b');b.textContent=d.t;var p=document.createElement('p');p.textContent=d.d;var a=document.createElement('p');a.className='an';a.textContent=d.a;tip.append(b,p,a);
+    tip.classList.add('on');if(alvo&&alvo!==el)alvo.setAttribute('aria-expanded','false');alvo=el;el.setAttribute('aria-expanded','true');el.setAttribute('aria-describedby','dica-termo');
+    tip.style.minHeight='';tip.style.minHeight=tip.offsetHeight+'px';posiciona(el);
+    var Fx=window.PA&&window.PA.Fx;
+    if(Fx&&!Fx.reduz){
+      var alvoAtual=el;
+      Fx.digita(p,{ms:9,maxTicks:55,cursorFim:0,fim:function(){if(alvo!==alvoAtual)return;Fx.digita(a,{ms:9,maxTicks:45,cursorFim:500,fim:function(){tip.style.minHeight=''}})}});
+    }
+  }
+  function esconde(atraso){clearTimeout(fecha);fecha=setTimeout(function(){
+    if(tip&&tip.classList.contains('on')){tip.classList.add('sai');setTimeout(function(){if(tip.classList.contains('sai'))tip.classList.remove('on','sai')},170)}
+    if(alvo){alvo.setAttribute('aria-expanded','false');alvo=null}},atraso||0)}
   document.addEventListener('mouseover',function(e){var el=e.target.closest&&e.target.closest('.termo');if(el&&matchMedia('(hover:hover)').matches){mostra(el)}});
   document.addEventListener('mouseout',function(e){var el=e.target.closest&&e.target.closest('.termo');if(el)esconde(250)});
   document.addEventListener('focusin',function(e){var el=e.target.closest&&e.target.closest('.termo');if(el)mostra(el)});
@@ -91,7 +104,7 @@
     if(tip&&!e.target.closest('#dica-termo'))esconde(0);
   });
   document.addEventListener('keydown',function(e){if(e.key==='Escape')esconde(0)});
-  window.addEventListener('scroll',function(){if(tip&&tip.classList.contains('on')&&alvo)mostra(alvo)},{passive:true});
+  window.addEventListener('scroll',function(){if(tip&&tip.classList.contains('on')&&alvo)posiciona(alvo)},{passive:true});
 
   /* marca sozinho a primeira ocorrência de cada termo dentro de um elemento */
   var PRE='(?<![\\p{L}\\p{N}_<\\/.-])',POS='(?![\\p{L}\\p{N}_>.-]|\\.[a-z])';

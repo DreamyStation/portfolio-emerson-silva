@@ -164,18 +164,6 @@ a.est:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--azulb)}
 @media(max-width:980px){/*palco-mobile*/.palco{margin-top:34px;padding-top:64px}.palco .spr.g[src*=med-ouro]{top:-40px!important;width:76px;height:76px}.palco .spr.g[src*=engrenagem]{width:96px;height:96px;left:-14px!important;bottom:-52px!important}}
 /*spr:fim*/
 /*v2:ini*/
-/* tema escuro: só a interface; o terminal e os painéis pixel continuam com as cores deles */
-html[data-tema=escuro]{--papel:#070a1b;--tinta:#E6EBFF;--azul:#8FA9FF;--cartao:#111838;--suave:#aab6e6;--grade:rgba(120,150,255,.09);--grade2:rgba(120,150,255,.17);--sb-t:#0d1330;--sb-h:#5b7cff;--sb-hv:#8FA9FF;--sb-ed:#aab6e6;color-scheme:dark}
-html[data-tema=escuro] .marca i{border-color:#E6EBFF}
-html[data-tema=escuro] .btn{color:#fff}
-html[data-tema=escuro] .btn.jg{color:var(--sombra)}
-html[data-tema=escuro] .btn.cl{color:var(--tinta)}
-html[data-tema=escuro] .par{background:#0c1230}
-html[data-tema=escuro] .rot,html[data-tema=escuro] .azul{color:var(--azul)}
-html[data-tema=escuro] .px,html[data-tema=escuro] .mini-term,html[data-tema=escuro] .carta{border-color:#02030a}
-.tema{font:700 .78rem "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta);padding:9px 12px;border:2px solid var(--tinta);background:none;cursor:pointer;display:inline-flex;gap:8px;align-items:center;min-height:42px}
-.tema:hover{background:var(--tinta);color:var(--papel)}
-.tema svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
 
 /* termos com explicação: passe o mouse, toque ou use o teclado */
 .termo{border-bottom:2px dotted var(--azul);cursor:help;font:inherit;color:inherit;background:none;border-top:0;border-left:0;border-right:0;padding:0;text-align:inherit;display:inline;white-space:normal}
@@ -258,7 +246,6 @@ details.sanfona .dentro{padding:4px 16px 16px}
 .checks li{padding-left:28px;position:relative;color:var(--suave)}.checks li::before{content:"";position:absolute;left:0;top:.3em;width:16px;height:16px;border:3px solid var(--tinta);background:transparent}
 .checks li.ok{color:var(--tinta)}.checks li.ok::before{background:#1B7A3A;border-color:#1B7A3A}
 .msgf{margin:12px 0 0;font:700 .9rem "Space Mono",monospace;min-height:1.6em}.msgf.er{color:#C41D12}.msgf.ok{color:#0a6b48}
-html[data-tema=escuro] .msgf.er{color:var(--coral)}html[data-tema=escuro] .msgf.ok{color:var(--verde)}
 
 /* resultado da partida */
 .resultado{display:none;background:var(--noite);border:4px solid var(--ouro);box-shadow:8px 8px 0 var(--sombra);color:var(--texto);padding:clamp(22px,4vw,40px);text-align:center}
@@ -360,30 +347,26 @@ html[data-tema=escuro] .msgf.er{color:var(--coral)}html[data-tema=escuro] .msgf.
 .topo .marca{margin:0;gap:12px;font-size:1.3rem;white-space:nowrap}
 .marca .logo{width:40px;height:40px;display:block;flex:none;box-shadow:3px 3px 0 var(--azulb);image-rendering:pixelated}
 .logo .lb{fill:var(--noite)}.logo .lt{fill:var(--noite3)}.logo .lf{fill:var(--ouro)}
-html[data-tema=escuro] .marca .logo{outline:2px solid #E6EBFF;outline-offset:0}
 .topo .cx .menu{display:flex;flex:none;flex-wrap:nowrap;justify-content:flex-start;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0;padding:2px}
 .topo .menu::-webkit-scrollbar{display:none}
 .topo .menu a{white-space:nowrap}
 .topo .ctl{display:flex;align-items:center;gap:8px;justify-self:end}
-.topo .ctl .tema,.topo .ctl .mudo,.topo .ctl .mx{font:700 .78rem "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta);padding:9px 12px;border:2px solid var(--tinta);background:none;cursor:pointer;display:inline-flex;gap:8px;align-items:center;min-height:42px;white-space:nowrap}
-.topo .ctl .tema:hover,.topo .ctl .mudo:hover,.topo .ctl .mx:hover{background:var(--tinta);color:var(--papel)}
+.topo .ctl .mudo{font:700 .78rem "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta);padding:9px 12px;border:2px solid var(--tinta);background:none;cursor:pointer;display:inline-flex;gap:8px;align-items:center;min-height:42px;white-space:nowrap}
+.topo .ctl .mudo:hover{background:var(--tinta);color:var(--papel)}
 .topo .ctl .mudo[aria-pressed=true]{background:var(--tinta);color:var(--papel)}
 .topo .ctl svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;flex:none}
-.topo .ctl .mx[aria-pressed=true]{background:#00140a;color:#39ff7a;border-color:#39ff7a;box-shadow:0 0 12px rgba(57,255,122,.55)}
 .topo .ctl .hud{margin:0}
 @media (max-width:900px){
   .topo .cx{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"marca ctl" "menu menu"}
   .topo .marca{grid-area:marca}.topo .ctl{grid-area:ctl}.topo .cx .menu{grid-area:menu;flex:none;width:100%}
   .topo .ctl span{display:none}.topo .ctl .hud .nm{display:none}
-  .topo .ctl .tema,.topo .ctl .mudo,.topo .ctl .mx{padding:8px 10px;min-height:40px}
+  .topo .ctl .mudo{padding:8px 10px;min-height:40px}
   .topo .ctl .hud span.rel{display:inline}
 }
 @media (max-width:420px){.topo .marca{font-size:1.1rem;gap:9px}.marca .logo{width:34px;height:34px}.topo .ctl{gap:5px}}
 
-/* ---------- tema escuro: contorno em volta do terminal ---------- */
-html[data-tema=escuro] .px:has(#term),html[data-tema=escuro] .mini-term{outline:3px solid #8FA9FF;outline-offset:3px}
 
-/* ---------- estética secundária: Matrix ---------- */
+/* ---------- estética Matrix (a única do site) ---------- */
 html[data-estetica=matrix]{--azulb:#0a8f3c;--cartao:#03150a;--suave:#7fd9a0;--papel:#000d05;--tinta:#9dffbd;--azul:#39ff7a;--azul2:#22c55e;--noite:#00120a;--noite2:#031d10;--noite3:#052b18;--linha:#0f7a3a;--ouro:#39ff7a;--ouro2:#b8ffd0;--verde:#39ff7a;--sombra:#000;--texto:#c6ffd8;--mudo:#5fbf86;--grade:rgba(57,255,122,.05);--grade2:rgba(57,255,122,.09);--sb-t:#00120a;--sb-h:#139a47;--sb-hv:#39ff7a;--sb-ed:#7fd9a0;color-scheme:dark}
 html[data-estetica=matrix] body{background:#000d05}
 #chuva{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:0;pointer-events:none;opacity:.34}
@@ -401,7 +384,6 @@ html[data-estetica=matrix] .px:has(#term),html[data-estetica=matrix] .mini-term{
 html[data-estetica=matrix] .px,html[data-estetica=matrix] .mini-term,html[data-estetica=matrix] .carta{border-color:#000}
 html[data-estetica=matrix] .folha,html[data-estetica=matrix] .est{box-shadow:0 0 14px rgba(57,255,122,.18),8px 8px 0 var(--azulb)}
 html[data-estetica=matrix] .rodape{border-top-color:#39ff7a}
-html[data-estetica=matrix] #dica-termo{background:#00120a;color:#c6ffd8;border-color:#39ff7a;box-shadow:0 0 14px rgba(57,255,122,.5),5px 5px 0 #0a8f3c}
 html[data-estetica=matrix] .termo:hover,html[data-estetica=matrix] .termo[aria-expanded=true]{background:rgba(57,255,122,.18)}
 html[data-estetica=matrix] .hud{box-shadow:0 0 10px rgba(57,255,122,.4)}
 html[data-estetica=matrix] .pula{background:#00120a;color:#39ff7a}
@@ -411,6 +393,62 @@ html[data-estetica=matrix] img.spr{filter:url(#pa-verde) drop-shadow(0 0 5px rgb
 @keyframes pa-flut{0%,100%{translate:0 0}50%{translate:0 -7px}}
 html[data-estetica=matrix] .palco .spr.g{display:none!important}
 @media (prefers-reduced-motion:reduce){html[data-estetica=matrix] img.spr,html[data-estetica=matrix] .logo .cur{animation:none}}
+/*fx:ini*/
+/* ---------- digitação, glitch e dicas em estilo terminal ---------- */
+.tp-pre{visibility:hidden}
+.cur-t{color:#39ff7a;text-shadow:0 0 8px #39ff7a;animation:pa-cursor .7s steps(1) infinite;font-weight:400;margin-left:1px}
+.marca b{display:inline-block}
+@keyframes pa-gl-in{
+ 0%{opacity:0;transform:translate(-8px,0) skewX(-10deg);clip-path:inset(45% 0 45% 0);filter:drop-shadow(3px 0 #ff2bd6) drop-shadow(-3px 0 #00f0ff)}
+ 12%{opacity:1;transform:translate(6px,0) skewX(6deg);clip-path:inset(8% 0 62% 0);filter:drop-shadow(-3px 0 #ff2bd6) drop-shadow(3px 0 #00f0ff)}
+ 24%{opacity:.6;transform:translate(-5px,1px);clip-path:inset(62% 0 6% 0)}
+ 36%{opacity:1;transform:translate(4px,-1px) skewX(-4deg);clip-path:inset(20% 0 30% 0)}
+ 48%{transform:translate(-2px,0);clip-path:inset(0 0 40% 0);filter:drop-shadow(2px 0 #00f0ff)}
+ 62%{transform:translate(2px,0);clip-path:inset(35% 0 0 0);filter:drop-shadow(-2px 0 #ff2bd6)}
+ 78%{transform:translate(-1px,0);clip-path:none;filter:none}
+ 100%{opacity:1;transform:none;clip-path:none;filter:none}}
+@keyframes pa-gl-out{
+ 0%{opacity:1;transform:none;clip-path:none;filter:none}
+ 15%{transform:translate(5px,0) skewX(8deg);clip-path:inset(10% 0 55% 0);filter:drop-shadow(-3px 0 #ff2bd6) drop-shadow(3px 0 #00f0ff)}
+ 30%{transform:translate(-6px,1px);clip-path:inset(55% 0 10% 0)}
+ 45%{opacity:.7;transform:translate(3px,0) skewX(-6deg);clip-path:inset(25% 0 30% 0)}
+ 60%{opacity:.4;transform:translate(-4px,0);clip-path:inset(0 0 55% 0)}
+ 80%{opacity:.2;transform:translate(2px,0);clip-path:inset(45% 0 20% 0)}
+ 100%{opacity:0;transform:none;clip-path:inset(50% 0 50% 0)}}
+@keyframes pa-gl{
+ 0%{transform:none;clip-path:none;filter:none}
+ 10%{transform:translate(-3px,1px) skewX(-6deg);clip-path:inset(12% 0 55% 0);filter:drop-shadow(3px 0 #ff2bd6) drop-shadow(-3px 0 #00f0ff)}
+ 22%{transform:translate(4px,-1px);clip-path:inset(58% 0 8% 0);filter:drop-shadow(-3px 0 #ff2bd6) drop-shadow(3px 0 #00f0ff)}
+ 34%{transform:translate(-2px,0) skewX(5deg);clip-path:none;filter:none}
+ 48%{transform:translate(2px,1px);clip-path:inset(30% 0 35% 0);filter:drop-shadow(2px 0 #00f0ff)}
+ 62%{transform:translate(-1px,0);clip-path:none}
+ 100%{transform:none;clip-path:none;filter:none}}
+@keyframes pa-gl-img{
+ 0%{clip-path:none}
+ 15%{transform:translate(-3px,0);clip-path:inset(10% 0 60% 0);filter:url(#pa-verde) drop-shadow(3px 0 #ff2bd6) drop-shadow(-3px 0 #00f0ff)}
+ 30%{transform:translate(4px,0);clip-path:inset(55% 0 10% 0)}
+ 50%{transform:translate(-2px,1px);clip-path:none;filter:url(#pa-verde) invert(1) hue-rotate(90deg)}
+ 70%{transform:translate(2px,0);clip-path:inset(30% 0 30% 0)}
+ 100%{transform:none;clip-path:none}}
+html[data-estetica=matrix] .rv.in{animation:pa-gl-in .6s steps(1,end) var(--d,0ms) both}
+html[data-estetica=matrix] .btn{animation:pa-gl-in .45s steps(1,end) backwards}
+html[data-estetica=matrix] .gl{animation:pa-gl .45s steps(1,end) 1}
+html[data-estetica=matrix] .gl-in{animation:pa-gl-in .55s steps(1,end) backwards}
+html[data-estetica=matrix] .gl-out{animation:pa-gl-out .34s steps(1,end) forwards}
+html.gl-saindo main,html.gl-saindo .topo .menu,html.gl-saindo .rodape{animation:pa-gl-out .34s steps(1,end) forwards}
+html[data-estetica=matrix] img.spr.gl{animation:pa-flut 3.6s ease-in-out infinite,pa-gl-img .45s steps(1,end) 1;animation-delay:calc(var(--i,0) * -.55s),0s}
+/* dicas dos termos: janela de terminal, digitada, com glitch ao abrir e ao fechar */
+html[data-estetica=matrix] #dica-termo{width:min(340px,calc(100vw - 24px));background:#00120a;color:#c6ffd8;border:2px solid #39ff7a;border-radius:0;box-shadow:0 0 18px rgba(57,255,122,.5),4px 4px 0 #0a8f3c;padding:0;font:400 .84rem/1.55 "Space Mono",monospace;overflow:hidden}
+html[data-estetica=matrix] #dica-termo::before{content:"\25A0 \25A0 \25A0   man";display:block;padding:5px 10px;background:#052b18;color:#39ff7a;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #0f7a3a}
+html[data-estetica=matrix] #dica-termo b{display:block;padding:10px 12px 2px;color:#39ff7a;font-weight:700;letter-spacing:.02em;text-shadow:0 0 8px rgba(57,255,122,.6)}
+html[data-estetica=matrix] #dica-termo b::before{content:"$ man ";color:#5fbf86;font-weight:400}
+html[data-estetica=matrix] #dica-termo p{margin:0;padding:3px 12px 6px;color:#c6ffd8;font-style:normal}
+html[data-estetica=matrix] #dica-termo p.an{padding-bottom:12px;color:#7fd9a0}
+html[data-estetica=matrix] #dica-termo p.an::before{content:"// ";color:#39ff7a}
+html[data-estetica=matrix] #dica-termo.on{display:block;animation:pa-gl-in .35s steps(1,end) backwards}
+html[data-estetica=matrix] #dica-termo.sai{display:block;animation:pa-gl-out .17s steps(1,end) forwards}
+@media (prefers-reduced-motion:reduce){html[data-estetica=matrix] .rv.in,html[data-estetica=matrix] .btn,html[data-estetica=matrix] .gl,html[data-estetica=matrix] .gl-in,html[data-estetica=matrix] #dica-termo.on{animation:none}.cur-t{animation:none}}
+/*fx:fim*/
 /*cola2:ini*/
 /* ---------- cola de comandos completa ---------- */
 .busca-cmd{background:var(--cartao);border:3px solid var(--tinta);box-shadow:8px 8px 0 var(--azulb);padding:clamp(16px,3vw,26px);min-width:0}
@@ -435,4 +473,12 @@ html[data-estetica=matrix] .palco .spr.g{display:none!important}
 .tabela-eq tbody th{font-family:"Space Grotesk",sans-serif;font-weight:700;white-space:nowrap}
 @media (max-width:760px){.cola2 li.cm{grid-template-columns:minmax(0,1fr)}.cola2 li.cm .tg{justify-self:start}}
 /*cola2:fim*/
+/*mob-borda:ini*/
+/* celular: contornos e sombras dos painéis ficam dentro da tela */
+@media (max-width:640px){
+  html[data-estetica=matrix] .px:has(#term),html[data-estetica=matrix] .mini-term{outline-offset:0}
+  html[data-estetica=matrix] .px:has(#term),html[data-estetica=matrix] .mini-term{box-shadow:0 0 10px rgba(57,255,122,.4),5px 5px 0 var(--azulb)}
+  html[data-estetica=matrix] .folha,html[data-estetica=matrix] .est{box-shadow:0 0 8px rgba(57,255,122,.18),5px 5px 0 var(--azulb)}
+}
+/*mob-borda:fim*/
 /*estetica:fim*/

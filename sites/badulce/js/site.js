@@ -27,7 +27,7 @@
     var c=document.createElement('div');c.className='coracoes';c.setAttribute('aria-hidden','true');
     for(var i=0;i<18;i++){
       var e=document.createElement('i'),t=Math.random();
-      e.style.cssText='left:'+(2+Math.random()*96).toFixed(1)+'%;--s:'+(14+Math.random()*26).toFixed(0)+'px;--d:'+(11+Math.random()*13).toFixed(1)+'s;--a:-'+(Math.random()*22).toFixed(1)+'s;--x:'+((Math.random()<.5?-1:1)*(18+Math.random()*46)).toFixed(0)+'px;--o:'+(.4+Math.random()*.35).toFixed(2)+';--h:'+V[t<.35?0:t<.65?1:t<.85?3:2];
+      e.style.cssText='left:'+(5+Math.random()*82).toFixed(1)+'%;--s:'+(14+Math.random()*26).toFixed(0)+'px;--d:'+(11+Math.random()*13).toFixed(1)+'s;--a:-'+(Math.random()*22).toFixed(1)+'s;--x:'+((Math.random()<.5?-1:1)*(8+Math.random()*26)).toFixed(0)+'px;--o:'+(.4+Math.random()*.35).toFixed(2)+';--h:'+V[t<.35?0:t<.65?1:t<.85?3:2];
       c.appendChild(e);
     }
     document.body.appendChild(c);
