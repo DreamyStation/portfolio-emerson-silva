@@ -18,15 +18,15 @@
     {dica:'Passo 2: veja o que existe nesta pasta. Digite: ls (de "list", listar).',cmd:'ls',ok:function(S){return ultimo(S)==='ls'},ex:'ls lista pastas e arquivos. As pastas aparecem com uma barra no fim.'},
     {dica:'Passo 3: crie uma pasta para o seu projeto. Digite: mkdir treino',cmd:'mkdir treino',ok:function(S){var n=S.no('~/treino');return !!n&&n.t==='d'},ex:'mkdir cria uma pasta ("make directory").'},
     {dica:'Passo 4: entre na pasta que você criou. Digite: cd treino',cmd:'cd treino',ok:function(S){return S.cwd[S.cwd.length-1]==='treino'},ex:'cd muda de pasta ("change directory"). Repare no endereço no começo da linha.'},
-    {dica:'Passo 5: crie um arquivo vazio. Digite: touch ola.txt',cmd:'touch ola.txt',ok:function(S){var n=S.no('~/treino/ola.txt');return !!n&&n.t==='a'},ex:'touch cria um arquivo vazio. No Windows PowerShell o equivalente é ni ola.txt.'},
-    {dica:'Passo 6: escreva uma frase no arquivo. Digite: echo \'Olá, mundo\' > ola.txt',cmd:"echo 'Olá, mundo' > ola.txt",ok:function(S){var c=S.le('~/treino/ola.txt');return !!c&&c.length>1},ex:'echo escreve um texto. O sinal > joga o texto dentro do arquivo (apaga o que tinha); >> acrescenta no fim.'},
-    {dica:'Passo 7: leia o arquivo. Digite: cat ola.txt',cmd:'cat ola.txt',ok:function(S){return /^cat\s+ola\.txt$/.test(ultimo(S))},ex:'cat mostra o conteúdo de um arquivo. No Windows, type faz o mesmo.'},
-    {dica:'Passo 8: volte uma pasta. Digite: cd ..',cmd:'cd ..',ok:function(S){return home(S)&&!!S.no('~/treino/ola.txt')},ex:'.. significa "a pasta de cima". cd sozinho também leva para a sua pasta pessoal.'},
+    {dica:'Passo 5: crie o arquivo da sua primeira página. Digite: touch index.html',cmd:'touch index.html',ok:function(S){var n=S.no('~/treino/index.html');return !!n&&n.t==='a'},ex:'touch cria um arquivo vazio. index.html é o nome que todo site usa para a página inicial. No Windows PowerShell o equivalente é ni index.html.'},
+    {dica:'Passo 6: escreva um título dentro dele. Digite: echo \'<h1>Olá, mundo</h1>\' > index.html',cmd:"echo '<h1>Olá, mundo</h1>' > index.html",ok:function(S){var c=S.le('~/treino/index.html');return !!c&&/<h1>[^<]+<\/h1>/.test(c)},ex:'Olhe a minitela: é o seu primeiro site! echo escreve o texto; o > joga dentro do arquivo (apaga o que tinha) e >> acrescenta no fim.'},
+    {dica:'Passo 7: leia o arquivo. Digite: cat index.html',cmd:'cat index.html',ok:function(S){return /^cat\s+index\.html$/.test(ultimo(S))},ex:'cat mostra o conteúdo de um arquivo. No Windows, type faz o mesmo.'},
+    {dica:'Passo 8: volte uma pasta. Digite: cd ..',cmd:'cd ..',ok:function(S){return home(S)&&!!S.no('~/treino/index.html')},ex:'.. significa "a pasta de cima". cd sozinho também leva para a sua pasta pessoal.'},
     {dica:'Passo 9: confira se o Node.js está instalado. Digite: node -v',cmd:'node -v',ok:function(S){return ultimo(S)==='node -v'},ex:'-v mostra a versão. Se aparecer um número, o programa está instalado. Você vai usar o Node na aula de JavaScript.'}
   ];
   var term;
   function atualiza(){
-    sh.desenhaArvore($('#arvore'));
+    sh.desenhaArvore($('#arvore'));sh.preview('~/treino',$('#tela'),'A minitela mostra a sua página quando existir um index.html com conteúdo.');
     var c=$('#arqconteudo'),ab=sh.aberto,n=ab?sh.acha(ab.split('/')):null;
     c.textContent='';var h=document.createElement('span');h.className='k';
     if(n&&n.t==='a'){h.textContent='// '+ab.replace('home/voce','~')+'\n';c.appendChild(h);c.appendChild(document.createTextNode(n.c||'(vazio)'))}

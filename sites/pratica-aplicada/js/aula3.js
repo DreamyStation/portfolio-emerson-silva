@@ -44,6 +44,7 @@
     });
     el.cadeia.textContent='';
     if(!cadeia.length){var v=document.createElement('div');v.className='vazio';v.textContent='Toque nas páginas ao lado, na ordem do menu do site. A primeira é a porta de entrada.';el.cadeia.appendChild(v)}
+    esboco();
     cadeia.forEach(function(id,i){
       var pg=t.paginas.filter(function(x){return x.id===id})[0];
       if(i>0){var s=document.createElement('div');s.className='seta';s.textContent='▼';s.setAttribute('aria-hidden','true');el.cadeia.appendChild(s)}
@@ -51,6 +52,19 @@
       b.textContent=(i+1)+'. '+pg.n;var sp=document.createElement('span');sp.textContent='tirar';b.appendChild(sp);
       b.addEventListener('click',function(){cadeia.splice(i,1);Som.clique();desenha();checks()});el.cadeia.appendChild(b);
     });
+  }
+  /* esboço (wireframe) do site: muda quando as páginas entram ou saem do fluxo e conforme o layout da partida */
+  function esboco(){
+    var p=P.get(),t=tipoAtual(),box=$('#esboco');if(!box||!p)return;box.textContent='';
+    var mk=function(c,txt,pai){var d=document.createElement('div');d.className=c;if(txt)d.textContent=txt;(pai||box).appendChild(d);return d};
+    var linhas=function(pai,n){for(var i=0;i<n;i++)mk('wf-l',null,pai).style.width=(90-i*14)+'%'};
+    var menu=function(pai,vert){var m=mk('wf-nav'+(vert?' v':''),null,pai);if(!cadeia.length)mk('wf-ph','menu: escolha as páginas',m);cadeia.forEach(function(id){var pg=t.paginas.filter(function(x){return x.id===id})[0];mk('wf-it',pg.n,m)})};
+    var cab=function(pai){var h=mk('wf-h',null,pai);mk('wf-t',t.nome,h);linhas(h,1)};
+    var rod=function(pai){var f=mk('wf-f',null,pai);mk('wf-l',null,f).style.width='50%'};
+    box.className='esboco lay-'+p.layout;
+    if(p.layout==='lateral'){var w=mk('wf-grade',null);menu(w,true);var c=mk('wf-col',null,w);var m=mk('wf-main',null,c);mk('wf-t',t.nome,m);mk('wf-img',null,m);linhas(m,3);rod(c)}
+    else if(p.layout==='cartoes'){cab(box);menu(box);var g3=mk('wf-3',null);for(var i=0;i<3;i++){var k=mk('wf-card',null,g3);mk('wf-img',null,k);linhas(k,2)}rod(box)}
+    else{cab(box);menu(box);var m2=mk('wf-main',null);mk('wf-img',null,m2);linhas(m2,3);rod(box)}
   }
   function regras(){
     var t=tipoAtual(),nomes=t.essenciais.map(function(id){return t.paginas.filter(function(x){return x.id===id})[0].n});

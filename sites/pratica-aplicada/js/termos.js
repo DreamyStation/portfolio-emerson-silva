@@ -44,6 +44,9 @@
     animation:{t:'animation',al:['animation','animação','animações'],d:'Faz um elemento seguir uma sequência de passos que você descreve com @keyframes.',a:'Um desenho animado: vários quadros em sequência.'},
     keyframes:{t:'@keyframes',al:['@keyframes','keyframes'],d:'Onde você descreve os quadros de uma animação: como o elemento começa (from) e como termina (to).',a:'O roteiro de cada cena.'},
     responsivo:{t:'Responsivo',al:['responsivo','responsiva','media query','@media'],d:'Um site que se adapta ao tamanho da tela. Em CSS, a regra @media muda o estilo conforme a largura.',a:'Uma roupa que se ajusta a quem veste.'},
+    viewport:{t:'Viewport',al:['viewport'],d:'A área da tela em que a página aparece. A tag meta viewport avisa o celular para usar a largura real do aparelho, e não fingir que é um computador.',a:'O tamanho da janela da loja.'},
+    breakpoint:{t:'Ponto de quebra',al:['ponto de quebra','pontos de quebra','breakpoint','breakpoints'],d:'A largura de tela em que o layout muda, como 900 px ou 560 px. Cada ponto de quebra é uma regra @media.',a:'O ponto em que a fila do caixa vira duas filas.'},
+    clamp:{t:'clamp()',al:['clamp'],d:'Uma função do CSS que escolhe um valor entre um mínimo e um máximo: clamp(1.8rem, 5vw, 2.8rem).',a:'Um termostato com temperatura mínima e máxima.'},
     frontend:{t:'Frontend',al:['frontend','front-end'],d:'A parte do site que aparece para a pessoa: textos, cores, botões. Roda no navegador.',a:'O salão do restaurante.'}
   };
   var tip=null,alvo=null,fecha=null;
