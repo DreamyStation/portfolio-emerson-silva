@@ -6,7 +6,7 @@
   var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
   var raiz=document.documentElement;
   var guarda={
-    le:function(){try{return JSON.parse(localStorage.getItem('pa:estetica'))==='matrix'}catch(e){return false}},
+    le:function(){try{return JSON.parse(localStorage.getItem('pa:estetica'))!=='padrao'}catch(e){return true}},
     grava:function(v){try{localStorage.setItem('pa:estetica',JSON.stringify(v?'matrix':'padrao'))}catch(e){}}
   };
   var reduz=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -75,8 +75,12 @@
     if(botao){botao.setAttribute('aria-pressed',String(on));var t=$('span',botao);if(t)t.textContent='Matrix'}
     if(fav){var h=on&&favMatrix?favMatrix:favPadrao;if(h)fav.setAttribute('href',h)}
     var tc=$('meta[name=theme-color]');if(tc)tc.setAttribute('content',on?'#000d05':'#0A1A4D');
+    if(bt){var esc=raiz.dataset.tema==='escuro';bt.setAttribute('aria-label',on?'Sair do Matrix e usar o tema '+(esc?'escuro':'claro'):'Alternar tema claro e escuro');bt.title=on?'Sair do Matrix':''}
     filtro(on);if(on)ligaChuva();else desligaChuva();
   }
+  /* dentro do Matrix o tema claro/escuro não aparece: o botão de tema sai do Matrix e mostra o tema escolhido (sai do Matrix) */
+  var bt=$('#tema');
+  if(bt)bt.addEventListener('click',function(e){if(raiz.dataset.estetica==='matrix'){e.stopImmediatePropagation();e.preventDefault();guarda.grava(false);aplica(false)}},true);
   aplica(guarda.le());
   if(botao)botao.addEventListener('click',function(){var on=!guarda.le();guarda.grava(on);aplica(on)});
 })();
