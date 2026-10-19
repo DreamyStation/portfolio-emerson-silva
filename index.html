@@ -905,6 +905,14 @@ img,svg,video,canvas{max-width:100%}
 @supports not selector(::-webkit-scrollbar){html{scrollbar-width:auto;scrollbar-color:var(--sb-h) var(--sb-t)}}
 /*sb:fim*/
 </style>
+<style id="ajuste-espaco">
+/* legenda das molduras de site/app: texto com respiro e quebra em vez de colar na borda */
+.app-tb b{padding-inline:12px;white-space:normal;text-align:center;line-height:1.15;font-size:.6rem}
+/* UI e UX no celular: o título respira embaixo do mascote */
+@media(max-width:860px){body[data-tema="ui"] .hero-ui .hero2t{padding-top:22px}body[data-tema="ui"] .hero-ui{margin-bottom:clamp(20px,5vw,36px)}}
+/* fichas: etiqueta do tipo de site com espaço até o título quando quebra em duas linhas */
+.caso .tp{display:block;margin-bottom:2px;line-height:1.35}
+</style>
 </head><body>
 <header class="topo"><div class="wrap"><a class="marca" href="#logo" data-vai="logo"><span class="cabeca"><img class="hd0" src="img/head_planta.png" alt=""><canvas class="hd" width="128" height="128" aria-hidden="true"></canvas></span>Emerson Silva</a>
 <nav class="abas" id="abas-topo" role="tablist" aria-label="Seções">
