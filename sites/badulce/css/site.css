@@ -19,7 +19,7 @@ p{margin:0 0 1em}
 .script{font-family:"Kaushan Script",cursive;font-weight:400}
 
 /* corações que surgem, sobem e somem (compartilhado com o site de uma tela) */
-.coracoes{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:60}
+.coracoes{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1}
 .coracoes i{position:absolute;bottom:-48px;width:var(--s,22px);height:var(--s,22px);opacity:0;background:var(--h) center/contain no-repeat;animation:coracaoSobe var(--d,14s) linear var(--a,0s) infinite;will-change:transform,opacity}
 @keyframes coracaoSobe{0%{transform:translate(0,0) rotate(0) scale(.5);opacity:0}12%{opacity:var(--o,.6);transform:translate(calc(var(--x,30px)*.3),-12vh) rotate(6deg) scale(1)}50%{transform:translate(var(--x,30px),-55vh) rotate(-8deg)}86%{opacity:var(--o,.6)}100%{transform:translate(calc(var(--x,30px)*-.6),-112vh) rotate(10deg) scale(1.08);opacity:0}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.coracoes{display:none}}
@@ -37,7 +37,7 @@ p{margin:0 0 1em}
 .abas a[aria-current=page]{background:var(--vivo);border-color:var(--vivo);color:#fff}.abas a[aria-current=page] img{filter:brightness(0) invert(1)}
 .vichy{height:26px;background:linear-gradient(90deg,rgba(233,50,109,.26) 50%,transparent 50%) 0 0/26px 26px,linear-gradient(rgba(233,50,109,.26) 50%,transparent 50%) 0 0/26px 26px,#fff;border-block:3px solid var(--vivo)}
 .onda{display:block;width:100%;height:clamp(36px,6vw,84px);margin:-1px 0;fill:var(--leite)}
-.onda.fim{position:absolute;left:0;bottom:-1px;margin:0;pointer-events:none;z-index:1}.com-onda{padding-bottom:calc(clamp(40px,6vw,80px) + clamp(36px,6vw,84px))}
+.onda.fim{position:absolute;left:0;bottom:-1px;margin:0;pointer-events:none;z-index:-2}.com-onda{padding-bottom:calc(clamp(40px,6vw,80px) + clamp(36px,6vw,84px))}
 .onda.b{fill:var(--bebe)}.onda.a{fill:var(--algodao)}.onda.p{fill:var(--pincel)}.onda.v{fill:var(--vivo)}.onda.inv{transform:scaleY(-1)}
 .brilho{position:absolute;color:var(--vivo);font:400 var(--s,1.6rem)/1 "Kaushan Script";opacity:.7;animation:pisca 3.4s ease-in-out var(--a,0s) infinite;pointer-events:none}
 @keyframes pisca{50%{opacity:.15;scale:.7}}
@@ -49,7 +49,7 @@ p{margin:0 0 1em}
 .acoes{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
 
 /* herói */
-.hero{background:radial-gradient(60% 90% at 88% 12%,var(--algodao),transparent 70%),radial-gradient(45% 60% at 6% 96%,var(--chiclete),transparent 72%),var(--bebe);padding-block:clamp(26px,4vw,56px) clamp(30px,4vw,56px);position:relative;overflow:hidden}
+.hero{padding-block:clamp(26px,4vw,56px) clamp(30px,4vw,56px);position:relative;overflow:hidden}
 .hero .cx{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center;position:relative}
 .hero .kicker{font:400 1.5rem "Kaushan Script";color:var(--fram);margin-bottom:6px;display:flex;align-items:center;gap:8px}
 .hero h1 span{display:block;color:var(--fram);font-size:.4em;font-family:"Nunito";font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-top:12px}
@@ -70,7 +70,7 @@ p{margin:0 0 1em}
 .sec{padding-block:clamp(40px,6vw,80px);position:relative}
 .sec .cab{text-align:center;max-width:56ch;margin:0 auto clamp(24px,4vw,44px)}.sec .cab p{margin-top:12px;font-size:1.1rem}
 .titulo-ornado{display:flex;align-items:center;justify-content:center;gap:14px}.titulo-ornado::before,.titulo-ornado::after{content:"";flex:1;max-width:120px;height:14px;background:radial-gradient(circle 6px at 7px 7px,var(--chiclete) 5.5px,transparent 6.5px) 0 0/20px 14px repeat-x}
-.fita{background:var(--algodao)}.rosa{background:var(--pincel)}.bebe{background:var(--bebe)}
+
 
 /* fita que corre */
 .fita-w{overflow-x:clip;padding-block:14px}
@@ -103,7 +103,7 @@ p{margin:0 0 1em}
 .duas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
 
 /* faixa de chamada */
-.cta{background:linear-gradient(90deg,rgba(233,50,109,.2) 50%,transparent 50%) 0 0/34px 34px,linear-gradient(rgba(233,50,109,.2) 50%,transparent 50%) 0 0/34px 34px,var(--bebe);padding-block:clamp(44px,6vw,80px);text-align:center;border-block:3px solid var(--vivo)}
+.cta{position:relative;padding-block:clamp(44px,6vw,80px);text-align:center;border-block:3px solid var(--vivo)}
 .cta .cartao{display:inline-block;max-width:640px;background:#fff;border:3px solid var(--vivo);border-radius:36px;padding:clamp(24px,4vw,44px);box-shadow:10px 10px 0 var(--chiclete)}
 .cta .cartao .acoes{justify-content:center}
 
@@ -120,7 +120,7 @@ p{margin:0 0 1em}
 .contador{font-size:.8rem;color:var(--fram);text-align:right;text-transform:none;letter-spacing:0}
 
 /* cabeçalho das páginas internas */
-.pag-cab{background:radial-gradient(50% 120% at 90% 0,var(--algodao),transparent 70%),var(--bebe);text-align:center;padding:clamp(26px,4vw,50px) 0 6px;position:relative;overflow:hidden}
+.pag-cab{text-align:center;padding:clamp(26px,4vw,50px) 0 6px;position:relative;overflow:hidden}
 .pag-cab .kicker{font:400 1.4rem "Kaushan Script";color:var(--fram)}
 .pag-cab h1{font-size:clamp(2.6rem,5.4vw,4.6rem)}
 .pag-cab p{max-width:52ch;margin:10px auto 0;font-size:1.1rem}
@@ -180,8 +180,8 @@ p{margin:0 0 1em}
 .grande{font:400 clamp(2.4rem,4vw,3.4rem)/1 "Kaushan Script";color:var(--vivo)}
 
 /* rodapé */
-.rodape{background:var(--vivo);color:#fff;padding-block:34px;font-weight:700;position:relative;margin-top:30px}
-.rodape::before{content:"";position:absolute;left:0;right:0;top:-23px;height:24px;background:radial-gradient(circle 14px at 14px 24px,transparent 13.5px,var(--vivo) 14px) 0 0/28px 24px repeat-x}
+.rodape{color:#fff;padding-block:34px;font-weight:700;position:relative;margin-top:30px}
+.rodape::before{content:"";position:absolute;z-index:-2;left:0;right:0;top:-23px;height:24px;background:radial-gradient(circle 14px at 14px 24px,transparent 13.5px,var(--vivo) 14px) 0 0/28px 24px repeat-x}
 .rodape .cx{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 36px;align-items:center}.rodape p{margin:0}.rodape a{color:#fff}
 .rodape .grande-r{font:400 2rem "Kaushan Script";flex:1 1 100%;text-align:center}
 
@@ -189,3 +189,11 @@ p{margin:0 0 1em}
 @media (max-width:900px){.grupo{grid-template-columns:minmax(0,1fr)}.grupo-lado{flex-direction:row;justify-content:flex-start;text-align:left;padding:16px 20px;gap:16px}.grupo-lado .big{width:64px;height:64px;padding:10px;flex:none}.hero .cx,.duas,.caixa-w,.festa{grid-template-columns:minmax(0,1fr)}.passos{grid-template-columns:minmax(0,1fr)}.vitrine{max-width:430px}.hero .cx{text-align:center}.hero p.sub{margin-inline:auto}.hero .acoes,.chips,.hero .kicker{justify-content:center}}
 @media (max-width:640px){.campos{grid-template-columns:minmax(0,1fr)}.abas a{padding:8px 14px;font-size:.9rem}.abas a img{display:none}.grade{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}.grade5{grid-template-columns:repeat(2,minmax(0,1fr))}.dif{grid-template-columns:minmax(0,1fr)}.fita-corre{font-size:1.4rem}}
 @media (max-width:420px){.grade5{grid-template-columns:minmax(0,1fr)}}
+
+/* fundos das seções num plano atrás dos corações; o conteúdo (header, botões, cartões) fica na frente */
+.hero::before,.pag-cab::before,.sec.fita::before,.sec.rosa::before,.sec.bebe::before,.cta::before,.rodape::after{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none}
+.hero::before{background:radial-gradient(60% 90% at 88% 12%,var(--algodao),transparent 70%),radial-gradient(45% 60% at 6% 96%,var(--chiclete),transparent 72%),var(--bebe)}
+.pag-cab::before{background:radial-gradient(50% 120% at 90% 0,var(--algodao),transparent 70%),var(--bebe)}
+.sec.fita::before{background:var(--algodao)}.sec.rosa::before{background:var(--pincel)}.sec.bebe::before{background:var(--bebe)}
+.cta::before{background:linear-gradient(90deg,rgba(233,50,109,.2) 50%,transparent 50%) 0 0/34px 34px,linear-gradient(rgba(233,50,109,.2) 50%,transparent 50%) 0 0/34px 34px,var(--bebe)}
+.rodape::after{background:var(--vivo)}
