@@ -46,4 +46,5 @@
   term.dica();term.atualiza();L.atualiza();
   $('#concluir').addEventListener('click',fecha);
   function fecha(){var bonus=Math.max(0,term.passo-REQ);L.conclui({bonus:bonus,base:1})}
+  if(PA.Livre)PA.Livre.liga({sh:L.sh,site:L.SITE,term:term});
 })();

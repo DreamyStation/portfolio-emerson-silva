@@ -5,11 +5,16 @@
   var BASE=(function(){try{return new URL('.',document.currentScript?document.currentScript.src:location.href).href.replace(/js\/$/,'')}catch(e){return ''}})();
   var HOME=['home','voce'];
 
-  var PONTE='<script>(function(){var c=0,p={};addEventListener("message",function(e){var d=e.data;if(d&&d.pa==="resp"&&p[d.id]){p[d.id](d);delete p[d.id]}});'+
+  var PONTE='<script>(function(){var c=0,p={};function env(o){try{parent.postMessage(o,"*")}catch(x){}}'+
+   'addEventListener("message",function(e){var d=e.data;if(!d)return;if(d.pa==="resp"&&p[d.id]){p[d.id](d);delete p[d.id]}'+
+   'else if(d.pa==="insp"){var v;try{v=(0,eval)("("+d.code+")")}catch(x){v={__erro:String(x&&x.message||x)}}var js;try{js=JSON.stringify(v===undefined?null:v)}catch(x){js="null"}env({pa:"insp-resp",id:d.id,val:js})}});'+
    'window.fetch=function(u,o){return new Promise(function(res){var id=++c;p[id]=function(d){res({ok:d.status>=200&&d.status<300,status:d.status,json:function(){return Promise.resolve(JSON.parse(d.corpo))},text:function(){return Promise.resolve(d.corpo)}})};'+
-   'parent.postMessage({pa:"req",id:id,url:String(u),metodo:(o&&o.method)||"GET",corpo:(o&&o.body)||null,cab:(o&&o.headers)||{}},"*")})};'+
-   'var L=console.log;console.log=function(){parent.postMessage({pa:"log",txt:[].slice.call(arguments).join(" ")},"*");L.apply(console,arguments)};'+
-   'addEventListener("error",function(e){parent.postMessage({pa:"erro",txt:String(e.message)},"*")});addEventListener("click",function(e){parent.postMessage({pa:"clique",alvo:(e.target&&e.target.id)||""},"*")},true);addEventListener("load",function(){var e=document.getElementById("mais")||document.getElementById("lista");if(e)e.scrollIntoView({block:"center"})})})()<\/script>';
+   'env({pa:"req",id:id,url:String(u),metodo:(o&&o.method)||"GET",corpo:(o&&o.body)||null,cab:(o&&o.headers)||{}})})};'+
+   'var L=console.log,W=console.warn,E=console.error;function fm(a){return [].slice.call(a).map(function(x){try{return typeof x==="object"&&x!==null?JSON.stringify(x):String(x)}catch(y){return String(x)}}).join(" ")}'+
+   'console.log=function(){env({pa:"log",txt:fm(arguments)});L.apply(console,arguments)};console.warn=function(){env({pa:"log",txt:fm(arguments),nv:"w"});W.apply(console,arguments)};console.error=function(){env({pa:"log",txt:fm(arguments),nv:"e"});E.apply(console,arguments)};'+
+   'addEventListener("error",function(e){env({pa:"erro",txt:String(e.message),lin:e.lineno,col:e.colno})});addEventListener("unhandledrejection",function(e){env({pa:"erro",txt:String(e.reason&&e.reason.message||e.reason)})});'+
+   'addEventListener("click",function(e){env({pa:"clique",alvo:(e.target&&e.target.id)||""})},true);'+
+   'addEventListener("load",function(){var e=document.getElementById("mais")||document.getElementById("lista");if(e)e.scrollIntoView({block:"center"});env({pa:"pronto"})})})()<\/script>';
   function dir(){return {t:'d',f:{}}}
   function arq(c){return {t:'a',c:c||''}}
   function img(n){return {t:'i',u:'img/'+n+'.png'}}
@@ -160,12 +165,12 @@
     };
 
     /* ---- tela do site: monta index.html + estilo.css dentro de um iframe sem scripts e sem rede ---- */
-    S.preview=function(raiz,frame,vazio,op){op=op||{};
+    S.preview=function(raiz,frame,vazio,op){op=op||{};var arqNome=op.arquivo||'index.html';
       var pastaSite=S.acha(S.partes(raiz));
-      if(!pastaSite||pastaSite.t!=='d'||!pastaSite.f['index.html']||!pastaSite.f['index.html'].c){
+      if(!pastaSite||pastaSite.t!=='d'||!pastaSite.f[arqNome]||!pastaSite.f[arqNome].c){
         frame.srcdoc='<body style="font:14px system-ui;color:#777;padding:18px;margin:0">'+(vazio||'A tela do site aparece aqui quando existir um index.html com conteúdo.')+'</body>';return false;
       }
-      var base=S.partes(raiz),html=pastaSite.f['index.html'].c;
+      var base=S.partes(raiz),html=pastaSite.f[arqNome].c;
       var resolve=function(src){var arr=base.slice();String(src).split('/').forEach(function(x){if(!x||x==='.')return;if(x==='..')arr.pop();else arr.push(x)});return S.acha(arr)};
       var js='';
       html=html.replace(/<script[^>]*src\s*=\s*(["'])(.*?)\1[^>]*>\s*<\/script>/gi,function(m,q,src){var n=resolve(src);if(op.scripts&&n&&n.t==='a'){js+='\n;'+n.c.replace(/<\/script/gi,'<\\/script')}return ''});
@@ -176,19 +181,33 @@
       html=html.replace(/<style[^>]*>([\s\S]*?)<\/style>/gi,function(m,c){css+='\n'+c;return ''});
       css=css.replace(/@import[^;]*;?/gi,'').replace(/url\(\s*(['"]?)(?!data:)[^)]*\)/gi,'none');
       var origem=BASE?new URL(BASE).origin:'';
-      var csp="default-src 'none'; img-src data: "+origem+"; style-src 'unsafe-inline'"+(op.scripts?"; script-src 'unsafe-inline'":'');
+      var csp="default-src 'none'; img-src data: "+origem+"; style-src 'unsafe-inline'"+(op.scripts?"; script-src 'unsafe-inline' 'unsafe-eval'":'');
       var ponte=op.ponte?PONTE:'';
+      S.laco=false;if(op.scripts&&js&&/\bwhile\s*\(\s*(true|1)\s*\)|\bfor\s*\(\s*;\s*;\s*\)/.test(js)&&!/\bbreak\b/.test(js)){S.laco=true;js=''}
       var codigo=op.scripts&&js?'<script>'+js+'<\/script>':'';
-      frame.srcdoc='<!doctype html><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="'+csp+'"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="about:blank"><style>img[data-quebrada]{border:2px dashed #c00;min-width:40px;min-height:24px;display:inline-block;background:#fee}img[data-quebrada]::after{content:"imagem não encontrada";color:#c00;font:12px sans-serif}img{image-rendering:pixelated}</style><style>'+css+'</style>'+ponte+html+codigo;
+      var doc0='<!doctype html><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="'+csp+'"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="about:blank"><style>img[data-quebrada]{border:2px dashed #c00;min-width:40px;min-height:24px;display:inline-block;background:#fee}img[data-quebrada]::after{content:"imagem não encontrada";color:#c00;font:12px sans-serif}img{image-rendering:pixelated}</style><style>'+css+'</style>'+ponte+html;S.jsOffset=doc0.split('\n').length;frame.srcdoc=doc0+codigo;
       return true;
     };
     S.ligaPonte=function(frame,h){
       window.addEventListener('message',function(e){
         if(e.source!==frame.contentWindow)return;var d=e.data;if(!d||!d.pa)return;
-        if(d.pa==='log'&&h.log)h.log(d.txt);
-        else if(d.pa==='erro'&&h.erro)h.erro(d.txt);
+        if(d.pa==='log'&&h.log)h.log(d.txt,d);
+        else if(d.pa==='erro'&&h.erro)h.erro(d.txt,d);
         else if(d.pa==='clique'&&h.clique)h.clique(d.alvo);
         else if(d.pa==='req'&&h.api){var r=h.api(d);frame.contentWindow.postMessage({pa:'resp',id:d.id,status:r.status,corpo:r.corpo},'*')}
+      });
+    };
+    /* pergunta algo à página do aluno (expressão JavaScript) e devolve o resultado em JSON; tenta de novo até a página carregar */
+    var inspSeq=0;
+    S.inspeciona=function(frame,codigo,ms){
+      ms=ms||2500;
+      return new Promise(function(res){
+        var id=++inspSeq,fim=false,t0=Date.now(),iv=null;
+        function sai(v){if(fim)return;fim=true;clearInterval(iv);window.removeEventListener('message',ou);res(v)}
+        function ou(e){var d=e.data;if(!d||d.pa!=='insp-resp'||d.id!==id||e.source!==frame.contentWindow)return;var v;try{v=JSON.parse(d.val)}catch(x){v=null}sai(v)}
+        window.addEventListener('message',ou);
+        function envia(){if(Date.now()-t0>ms){sai({__erro:'a página não respondeu'});return}try{frame.contentWindow.postMessage({pa:'insp',id:id,code:codigo},'*')}catch(x){}}
+        envia();iv=setInterval(envia,220);
       });
     };
     S.reinicia();

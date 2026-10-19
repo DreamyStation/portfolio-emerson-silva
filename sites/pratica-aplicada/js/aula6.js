@@ -129,4 +129,5 @@
     $('.partida-info',R).textContent=T.nome+' · '+L.nome+' · '+ES.nome+' · responsivo concluído';
     $('#concluir').hidden=true;Som[nv.bom?'selo':'ruim']();setTimeout(function(){R.scrollIntoView({behavior:'smooth',block:'center'})},350);
   }
+  if(PA.Livre)PA.Livre.liga({sh:sh,site:SITE,term:term});
 })();

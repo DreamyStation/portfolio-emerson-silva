@@ -66,7 +66,18 @@
     commit:{t:'Commit',al:['commit','commits'],d:'Uma foto do projeto salva no histórico do Git, com uma mensagem dizendo o que mudou.',a:'Salvar uma versão do jogo.'},
     github:{t:'GitHub',al:['GitHub'],d:'Um site que guarda projetos Git na nuvem e permite publicá-los como sites gratuitos com o GitHub Pages.',a:'Um armário na nuvem para o seu projeto.'},
     https:{t:'HTTPS',al:['HTTPS'],d:'A versão segura do HTTP: criptografa a conversa entre o visitante e o site. É o cadeado do navegador.',a:'Falar em um envelope lacrado, não em um cartão postal.'},
-    hospedagem:{t:'Hospedagem',al:['hospedagem'],d:'O serviço que mantém o seu site num servidor ligado o tempo todo.',a:'O terreno onde a casa fica.'}
+    hospedagem:{t:'Hospedagem',al:['hospedagem'],d:'O serviço que mantém o seu site num servidor ligado o tempo todo.',a:'O terreno onde a casa fica.'},
+    python:{t:'Python',al:['Python'],d:'Uma linguagem de programação de leitura fácil, usada para automatizar tarefas, tratar dados e gerar arquivos.',a:'Um assistente que segue receitas escritas em frases simples.'},
+    lista:{t:'Lista',al:['lista','listas'],d:'Um conjunto ordenado de valores guardado em uma variável: ["pão", "bolo", "café"].',a:'Uma lista de compras.'},
+    laco:{t:'Laço (for)',al:['laço','laços'],d:'Um bloco de código que se repete, uma vez para cada item de uma lista, ou até uma condição mudar.',a:'Uma esteira de fábrica: a mesma ação para cada peça.'},
+    fstring:{t:'f-string',al:['f-string','f-strings'],d:'Um texto do Python com f antes das aspas, em que as chaves { } são trocadas pelo valor de variáveis: f"Olá, {nome}".',a:'Um formulário com lacunas que o programa preenche.'},
+    dicionario:{t:'Dicionário',al:['dicionário','dicionários'],d:'No Python, uma coleção de pares chave: valor, como {"nome": "Pão", "preco": 2}.',a:'Uma agenda: você procura o nome e acha o telefone.'},
+    traceback:{t:'Traceback',al:['traceback'],d:'O relatório completo de um erro do Python: mostra o caminho percorrido até o problema e, na última linha, o tipo do erro.',a:'O rastro de pegadas até o lugar onde o programa tropeçou.'},
+    tryexcept:{t:'try / except',al:['try/except'],d:'Um jeito de tentar fazer algo e, se der erro, dizer o que fazer em vez de o programa parar.',a:'Um plano B para quando a porta estiver trancada.'},
+    canvas:{t:'Canvas',al:['canvas'],d:'Uma área de desenho da página em que o JavaScript pinta formas e texto pixel a pixel.',a:'Uma tela em branco com pincéis controlados por código.'},
+    scanline:{t:'Scanlines',al:['scanlines'],d:'Linhas finas e escuras que cobrem a tela, imitando monitores antigos.',a:'As listras de uma TV de tubo.'},
+    glitch:{t:'Glitch',al:['glitch'],d:'Um defeito visual de mentira: partes da imagem tremem, se deslocam ou trocam de cor por um instante.',a:'A TV chiando por meio segundo.'},
+    cssvar:{t:'Variável CSS',al:['variáveis CSS','variável CSS'],d:'Um valor com nome, definido com dois hífens (--brilho: #39ff7a) e usado com var(--brilho). Mudou em um lugar, muda em todos.',a:'Uma paleta de tintas: troque a tinta e tudo o que a usa muda.'}
   };
   var tip=null,alvo=null,fecha=null;
   function mk(){if(tip)return tip;tip=document.createElement('div');tip.id='dica-termo';tip.setAttribute('role','tooltip');document.body.appendChild(tip);

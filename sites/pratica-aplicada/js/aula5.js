@@ -140,4 +140,5 @@
     $('#concluir').hidden=true;
     Som[nv.bom?'selo':'ruim']();setTimeout(function(){r.scrollIntoView({behavior:'smooth',block:'center'})},350);
   }
+  if(PA.Livre)PA.Livre.liga({sh:sh,site:SITE,term:term});
 })();

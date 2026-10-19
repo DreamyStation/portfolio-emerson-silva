@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR" data-estetica="matrix">
+<head>
+<title>Aula 13 · Dados em JSON e várias páginas · Prática aplicada</title>
+<meta name="description" content="Leia dados e gere um mini-site inteiro.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#000d05">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%20shape-rendering='crispEdges'%3E%3Crect%20fill='%2300120A'%20x='0'%20y='0'%20width='16'%20height='16'/%3E%3Crect%20fill='%2339FF7A'%20x='0'%20y='0'%20width='16'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='0'%20y='15'%20width='16'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='0'%20y='0'%20width='1'%20height='16'/%3E%3Crect%20fill='%2339FF7A'%20x='15'%20y='0'%20width='1'%20height='16'/%3E%3Crect%20fill='%23052B18'%20x='1'%20y='1'%20width='14'%20height='3'/%3E%3Crect%20fill='%2339FF7A'%20x='3'%20y='2'%20width='1'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='5'%20y='2'%20width='1'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='7'%20y='2'%20width='1'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='3'%20y='6'%20width='2'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='5'%20y='7'%20width='2'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='7'%20y='8'%20width='2'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='5'%20y='9'%20width='2'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='3'%20y='10'%20width='2'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='10'%20y='8'%20width='3'%20height='3'/%3E%3Crect%20fill='%23052B18'%20x='3'%20y='13'%20width='7'%20height='1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/site.css?v=25">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo"><div class="cx">
+<a class="marca" href="index.html"><svg class="logo" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect class="lb" x="0" y="0" width="16" height="16"/><rect class="lf" x="0" y="0" width="16" height="1"/><rect class="lf" x="0" y="15" width="16" height="1"/><rect class="lf" x="0" y="0" width="1" height="16"/><rect class="lf" x="15" y="0" width="1" height="16"/><rect class="lt" x="1" y="1" width="14" height="3"/><rect class="lf" x="3" y="2" width="1" height="1"/><rect class="lf" x="5" y="2" width="1" height="1"/><rect class="lf" x="7" y="2" width="1" height="1"/><rect class="lf" x="3" y="6" width="2" height="1"/><rect class="lf" x="5" y="7" width="2" height="1"/><rect class="lf" x="7" y="8" width="2" height="1"/><rect class="lf" x="5" y="9" width="2" height="1"/><rect class="lf" x="3" y="10" width="2" height="1"/><rect class="lf cur" x="10" y="8" width="3" height="3"/><rect class="lt" x="3" y="13" width="7" height="1"/></svg><b>Prática aplicada</b></a>
+<nav class="menu" aria-label="Principal"><a href="index.html">Início</a><a href="index.html#aulas" aria-current="page">Aulas</a><a href="comandos.html">Comandos</a><a href="../../index.html#sites">Portfólio</a></nav>
+<div class="ctl" role="group" aria-label="Relógio e som">
+<span class="hud" id="hud" hidden title="Relógio da prática"><span class="nm"></span><b class="rel">00:00</b></span>
+<button class="mudo" id="mudo" type="button" aria-pressed="false" aria-label="Desligar os sons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg><span>Som</span></button>
+</div>
+</div></header>
+<main id="conteudo">
+<section class="hero" style="padding-bottom:clamp(20px,3vw,34px)"><div class="cx" style="grid-template-columns:minmax(0,1fr)">
+<div class="rv"><span class="tag">Nível 2 · aula 13 de 16</span>
+<h1 style="margin-top:18px">Dados em <span class="azul">JSON.</span></h1>
+<p class="lead" data-termos>Sites de verdade separam o que mostram (as páginas) do que sabem (os dados). O JSON é o formato mais comum para guardar dados, e o Python lê e escreve JSON com facilidade.</p></div>
+</div></section><section class="sec" id="aviso-n1" style="padding-top:0" hidden><div class="cx"><div class="folha rv"><span class="rot">Nível 2</span><h2>Melhor depois do nível 1.</h2><p style="margin-top:12px;max-width:62ch">Estas aulas usam o que o nível 1 ensina (terminal, HTML, CSS e JavaScript). Você pode começar já, mas vai aproveitar mais depois de concluir as dez primeiras aulas.</p><div class="acoes"><a class="btn jg" href="index.html#aulas">Ver o nível 1</a></div></div></div></section><section class="sec" style="padding-top:clamp(14px,2vw,24px)"><div class="cx"><div class="folha rv" data-termos><span class="rot">1 · Quatro ideias</span><h2>Do dado à página.</h2><p style="margin-top:12px;max-width:72ch">Com os dados em um arquivo, adicionar um item novo não exige mexer no HTML: o programa gera tudo de novo.</p><div class="pares" style="margin-top:22px"><div class="par"><img class="spr" src="img/livro2.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">JSON</span><span class="b">Texto com estrutura</span><p>[{"nome": "Pão"}, {"nome": "Bolo"}] é uma lista de objetos. Chaves e aspas duplas são obrigatórias.</p></div><div class="par"><img class="spr" src="img/lupa.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">json.load</span><span class="b">Ler o arquivo</span><p>json.load(arquivo) transforma o texto em listas e dicionários do Python.</p></div><div class="par"><img class="spr" src="img/tijolo.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Uma página por item</span><span class="b">Nomes de arquivo</span><p>Cada volta do laço grava um arquivo com nome diferente, para não sobrescrever o anterior.</p></div><div class="par"><img class="spr" src="img/placa.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Links</span><span class="b">O índice liga tudo</span><p>O index.html lista as páginas com &lt;a href&gt;; cada página tem um link de volta.</p></div></div></div></div></section><section class="sec" style="padding-top:0"><div class="cx"><div class="folha rv" data-termos><span class="rot">Quando algo foge do esperado</span><h2>JSON é exigente.</h2><p style="margin-top:12px;max-width:72ch">Uma vírgula fora do lugar invalida o arquivo todo. É um dos erros mais comuns do dia a dia.</p><h3 style="margin:22px 0 8px;font-size:1.05rem">O método de 5 passos</h3><ol class="metodo"><li><b>Leia a mensagem inteira.</b> Não pule: ela diz o tipo do erro, o arquivo e a linha. No Python, comece pela última linha.</li><li><b>Vá até a linha indicada.</b> Olhe a linha e a de cima: o erro real muitas vezes está um pouco antes.</li><li><b>Reduza o problema.</b> Comente ou apague o que não é necessário até o erro sumir. O último pedaço que você tirou era o culpado.</li><li><b>Mostre os valores.</b> Use print() no Python e console.log() no JavaScript para ver o que as variáveis guardam de verdade.</li><li><b>Compare e só então pesquise.</b> Compare com um exemplo que funciona. Se ainda travar, procure a mensagem de erro com o nome da linguagem.</li></ol><h3 style="margin:26px 0 4px;font-size:1.05rem">Erros comuns desta aula</h3><ul class="cola"><li><code>json.decoder.JSONDecodeError</code><span>O JSON está mal formado: vírgula depois do último item, aspas simples ou comentário.</span></li><li><code>KeyError: 'nome'</code><span>A chave não existe naquele item. Confira com print(item) o que o dicionário tem de verdade.</span></li><li><code>TypeError: string indices must be integers</code><span>Você está tratando um texto como se fosse um dicionário. Veja com print(type(valor)).</span></li><li><code>Todos os links levam à mesma página</code><span>O nome do arquivo gerado dentro do laço não muda a cada volta.</span></li><li><code>Link quebrado</code><span>O href tem uma letra diferente do nome do arquivo criado: monte os dois com a mesma variável.</span></li></ul></div></div></section><section class="sec" id="lab" style="padding-top:0"><div class="cx"><div class="cab rv"><span class="rot">Prática 3</span><h2>Do JSON a um mini-site.</h2><p>O número de itens muda a cada prática. Leia dados.json, gere as páginas e o índice, e conserte o JSON quebrado se quiser o bônus.</p></div><div class="brief rv" id="brief"></div><div class="lab2 rv"><div class="px"><div class="bar"><img class="spr" src="img/livro.png" width="28" height="28" alt="" aria-hidden="true"><b>terminal de treino · guia do treino</b></div><div class="term" id="term" role="log" aria-live="polite"></div><div class="entrada"><span id="pr" aria-hidden="true">~ $</span><input id="cmd" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Digite o comando e aperte Enter" placeholder="digite aqui e aperte Enter"><button class="btn jg" id="enviar" type="button">Enter</button></div><div class="chips" id="chips"><button type="button" class="prin" data-acao="cmd">comando</button><button type="button" data-acao="dica">Dica</button><button type="button" data-acao="limpar">Limpar</button><button type="button" data-acao="reiniciar">Recomeçar</button></div><div class="progresso" id="prog"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><small>0 de 0</small></div></div><div class="n2grid"><div class="n2col"><div class="px"><div class="bar"><b>objetivos</b><span class="dica-sub">qualquer ordem</span></div><ol id="objetivos" class="obj-lista"></ol></div><div class="px arq"><div class="bar"><b>suas pastas</b></div><div class="arvore" id="arvore"></div></div></div><div class="n2col"><div class="px"><div class="bar"><b>editor de código</b><span class="dica-sub">salva sozinho</span></div><div id="editor"></div></div></div><div class="n2col"><div class="px arq"><div class="bar"><b>a minitela do site</b><select id="pagina" aria-label="Página para ver na minitela" hidden></select></div><iframe class="telaSite" id="tela" title="Site de treino rodando de verdade" sandbox="allow-scripts"></iframe></div></div><div class="n2col"><div class="px"><div class="bar"><b>quando algo dá errado</b><span id="diag-resumo" class="diag-resumo ok">tudo certo</span></div><div id="diag" class="diag"></div></div></div></div></div><div class="acoes" style="margin-top:18px"><button class="btn jg" id="concluir" type="button" hidden>Concluir esta etapa agora</button></div><div class="resultado" id="resultado" role="status" style="margin-top:28px"><div class="partida-info"></div><div class="tempo">00:00</div><div class="medalhas"><div class="estr"></div><div class="estr estr2"></div></div><div class="nota">—</div><p class="msg"></p><div class="parts"></div><div class="acoes" style="justify-content:center"><a class="btn jg" href="aula-14.html">Seguir para o visual Matrix</a><a class="btn cl" href="#tela">Ver o site</a><a class="btn cl" href="index.html#nivel2">Voltar às aulas</a></div></div></div></section>
+</main>
+<footer class="rodape"><div class="cx"><p><b>Prática aplicada</b> · conteúdo e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
+<script src="js/app.js?v=25"></script>
+<script src="js/estetica.js?v=25"></script>
+<script src="js/termos.js?v=25"></script>
+<script src="js/partida.js?v=25"></script>
+<script src="js/shell.js?v=25"></script>
+<script src="js/executa.js?v=25"></script>
+<script src="js/diag.js?v=25"></script>
+<script src="js/editor.js?v=25"></script>
+<script src="js/licao2.js?v=25"></script>
+<script src="js/aula13.js?v=25"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>

@@ -111,4 +111,5 @@
       lista.appendChild(li)});
     $('#curso-total').textContent=P.fmt(tot);box.hidden=false;box.classList.add('on');
   }
+  if(PA.Livre)PA.Livre.liga({sh:L.sh,site:L.SITE,term:term});
 })();

@@ -126,4 +126,5 @@
   }
   bytes();
   setTimeout(function(){if(PA.Termos)PA.Termos.prepara()},0);
+  if(PA.Livre)PA.Livre.liga({sh:sh,site:SITE,term:term});
 })();

@@ -85,6 +85,12 @@
         if(r.erro&&o.aoErro)o.aoErro(t);
         if(r.erro)Som.erro();
         if(o.atualizaPrompt)o.atualizaPrompt();
+        var ass=r.assinc?r.assinc(t):null;
+        if(ass){
+          t.ocupado=true;
+          Promise.resolve(ass).catch(function(){t.lin('> Algo deu errado ao rodar o comando.','er')}).then(function(){t.ocupado=false;if(o.atualizaPrompt)o.atualizaPrompt();return o.depois?o.depois(txt,r,t):null}).then(function(){if(o.chips&&matchMedia('(pointer:fine)').matches)o.input.focus()});
+          return;
+        }
         var depois=o.depois?o.depois(txt,r,t):null;
         Promise.resolve(depois).then(function(){if(o.chips&&matchMedia('(pointer:fine)').matches)o.input.focus()});
         return;
