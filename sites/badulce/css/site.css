@@ -1,5 +1,5 @@
 /* Badulce · site web (computador primeiro, adaptado ao celular)
-   Identidade: rosa vivo nas letras, rosa bebê nos fundos, babados, corações e Kaushan Script. Navegação centrada no topo, cartões de fita e caixas que se montam. */
+   Identidade: rosa vivo nas letras, rosa bebê nos fundos, babados, vichy, corações e Kaushan Script. Barra de abas fixa, ondas entre as seções, cartões de doces e caixas que se montam. */
 @font-face{font-family:"Kaushan Script";src:url(../fonts/KaushanScript-Regular.ttf) format("truetype");font-display:swap}
 @font-face{font-family:"Nunito";src:url(../fonts/Nunito.ttf) format("truetype");font-weight:200 1000;font-display:swap}
 @font-face{font-family:"Delius";src:url(../fonts/Delius-Regular.ttf) format("truetype");font-display:swap}
@@ -7,7 +7,7 @@
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--leite);color:var(--tinta);font:600 1.0625rem/1.62 "Nunito",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;height:auto;display:block}
+img,svg{max-width:100%}img{height:auto;display:block}
 a{color:var(--fram)}
 :focus-visible{outline:3px dashed var(--vivo);outline-offset:3px;border-radius:8px}
 h1,h2,h3{margin:0;font-family:"Kaushan Script","Brush Script MT",cursive;font-weight:400;color:var(--vivo);line-height:1.12}
@@ -16,62 +16,101 @@ p{margin:0 0 1em}
 .pula{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;z-index:99}.pula:focus{left:8px}
 .cx{width:min(100% - 2*clamp(18px,4vw,48px),var(--max));margin-inline:auto}
 .recado{font-family:"Delius","Comic Sans MS",cursive;font-weight:400}
-.ic{width:1em;height:1em;display:inline-block;vertical-align:-.12em}
+.script{font-family:"Kaushan Script",cursive;font-weight:400}
 
-/* corações que sobem */
-.coracoes{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1}
-.coracoes i{position:absolute;bottom:-40px;width:var(--s,22px);height:var(--s,22px);opacity:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E9326D' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-8-5.3-8-11a4.5 4.5 0 018-2.6A4.5 4.5 0 0120 10c0 5.7-8 11-8 11z'/%3E%3C/svg%3E") center/contain no-repeat;animation:sobe var(--d,14s) linear var(--a,0s) infinite}
-@keyframes sobe{0%{transform:translateX(0) rotate(0);opacity:0}10%{opacity:.55}50%{transform:translateX(var(--x,30px)) rotate(14deg)}90%{opacity:.45}100%{transform:translateX(calc(var(--x,30px) * -1)) translateY(-110vh) rotate(-14deg);opacity:0}}
+/* corações que surgem, sobem e somem (compartilhado com o site de uma tela) */
+.coracoes{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:60}
+.coracoes i{position:absolute;bottom:-48px;width:var(--s,22px);height:var(--s,22px);opacity:0;background:var(--h) center/contain no-repeat;animation:coracaoSobe var(--d,14s) linear var(--a,0s) infinite;will-change:transform,opacity}
+@keyframes coracaoSobe{0%{transform:translate(0,0) rotate(0) scale(.5);opacity:0}12%{opacity:var(--o,.6);transform:translate(calc(var(--x,30px)*.3),-12vh) rotate(6deg) scale(1)}50%{transform:translate(var(--x,30px),-55vh) rotate(-8deg)}86%{opacity:var(--o,.6)}100%{transform:translate(calc(var(--x,30px)*-.6),-112vh) rotate(10deg) scale(1.08);opacity:0}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.coracoes{display:none}}
-main,header,footer{position:relative;z-index:2}
 
-/* topo: logo e abas em pílulas */
-.topo{background:var(--bebe);text-align:center;padding:18px 0 0;position:relative}
+/* topo, abas fixas, vichy e ondas */
 .demo{background:var(--vivo);color:#fff;font:800 .8rem/1.3 "Nunito",sans-serif;text-align:center;padding:7px 14px}
-.topo .logo{display:inline-block;margin:10px auto 6px}.topo .logo img{height:clamp(64px,8vw,92px);width:auto}
-.abas{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:8px 16px 26px}
-.abas a{display:inline-flex;align-items:center;gap:8px;font:900 .98rem "Nunito";text-decoration:none;color:var(--fram);background:#fff;border:2.5px solid var(--chiclete);padding:9px 20px;border-radius:999px;transition:transform .2s,background .2s}
+.topo{background:var(--bebe);text-align:center;padding:12px 16px 4px;position:relative;z-index:2}
+.topo .logo{display:inline-block}.topo .logo img{height:clamp(64px,8vw,92px);width:auto}
+.abas-w{position:sticky;top:0;z-index:55;background:rgba(253,227,228,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:4px 0 14px;text-align:center}
+.abas-w::after{content:"";position:absolute;left:0;right:0;top:100%;height:14px;background:radial-gradient(circle 14px at 14px 0,transparent 13.5px,rgba(253,227,228,.94) 14px) 0 0/28px 14px repeat-x}
+.abas{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:6px 16px 0}
+.abas a{display:inline-flex;align-items:center;gap:8px;font:900 .98rem "Nunito";text-decoration:none;color:var(--fram);background:#fff;border:2.5px solid var(--chiclete);padding:9px 20px;border-radius:999px;transition:translate .2s,rotate .2s,background .2s}
 .abas a img{width:22px;height:22px}
-.abas a:hover{transform:translateY(-3px) rotate(-1.5deg);background:var(--algodao)}
-.abas a[aria-current=page]{background:var(--vivo);border-color:var(--vivo);color:#fff}
-.abas a[aria-current=page] img{filter:brightness(0) invert(1)}
-.babado{height:24px;background:radial-gradient(circle 14px at 14px 0,transparent 13.5px,var(--bebe) 14px) 0 0/28px 24px repeat-x}
-.babado.v{background:radial-gradient(circle 14px at 14px 0,transparent 13.5px,var(--vivo) 14px) 0 0/28px 24px repeat-x}
-.babado.i{transform:scaleY(-1)}
-.babado.c{background:radial-gradient(circle 14px at 14px 0,transparent 13.5px,var(--chiclete) 14px) 0 0/28px 24px repeat-x}
+.abas a:hover{translate:0 -3px;rotate:-1.5deg;background:var(--algodao)}
+.abas a[aria-current=page]{background:var(--vivo);border-color:var(--vivo);color:#fff}.abas a[aria-current=page] img{filter:brightness(0) invert(1)}
+.vichy{height:26px;background:linear-gradient(90deg,rgba(233,50,109,.26) 50%,transparent 50%) 0 0/26px 26px,linear-gradient(rgba(233,50,109,.26) 50%,transparent 50%) 0 0/26px 26px,#fff;border-block:3px solid var(--vivo)}
+.onda{display:block;width:100%;height:clamp(36px,6vw,84px);margin:-1px 0;fill:var(--leite)}
+.onda.fim{position:absolute;left:0;bottom:-1px;margin:0;pointer-events:none;z-index:1}.com-onda{padding-bottom:calc(clamp(40px,6vw,80px) + clamp(36px,6vw,84px))}
+.onda.b{fill:var(--bebe)}.onda.a{fill:var(--algodao)}.onda.p{fill:var(--pincel)}.onda.v{fill:var(--vivo)}.onda.inv{transform:scaleY(-1)}
+.brilho{position:absolute;color:var(--vivo);font:400 var(--s,1.6rem)/1 "Kaushan Script";opacity:.7;animation:pisca 3.4s ease-in-out var(--a,0s) infinite;pointer-events:none}
+@keyframes pisca{50%{opacity:.15;scale:.7}}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:11px 28px;font:900 1.02rem "Nunito",sans-serif;text-decoration:none;background:var(--vivo);color:#fff;border:0;border-radius:999px;box-shadow:0 6px 0 var(--fram);cursor:pointer;transition:transform .15s,box-shadow .15s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--fram)}.btn:active{transform:translateY(5px);box-shadow:0 1px 0 var(--fram)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:11px 28px;font:900 1.02rem "Nunito",sans-serif;text-decoration:none;background:var(--vivo);color:#fff;border:0;border-radius:999px;box-shadow:0 6px 0 var(--fram);cursor:pointer;transition:translate .15s,box-shadow .15s}
+.btn:hover{translate:0 -2px;box-shadow:0 8px 0 var(--fram)}.btn:active{translate:0 5px;box-shadow:0 1px 0 var(--fram)}
 .btn.alt{background:#fff;color:var(--fram);border:2.5px solid var(--chiclete);box-shadow:0 5px 0 var(--chiclete)}.btn.alt:hover{box-shadow:0 7px 0 var(--chiclete)}
 .btn[disabled]{opacity:.5;cursor:not-allowed}
 .acoes{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
 
 /* herói */
-.hero{background:var(--bebe);padding-block:clamp(20px,4vw,54px) clamp(40px,5vw,70px);text-align:center}
-.hero .cx{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center;text-align:left}
-.hero h1 span{display:block;color:var(--fram);font-size:.44em;font-family:"Nunito";font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-top:10px}
+.hero{background:radial-gradient(60% 90% at 88% 12%,var(--algodao),transparent 70%),radial-gradient(45% 60% at 6% 96%,var(--chiclete),transparent 72%),var(--bebe);padding-block:clamp(26px,4vw,56px) clamp(30px,4vw,56px);position:relative;overflow:hidden}
+.hero .cx{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center;position:relative}
+.hero .kicker{font:400 1.5rem "Kaushan Script";color:var(--fram);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.hero h1 span{display:block;color:var(--fram);font-size:.4em;font-family:"Nunito";font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-top:12px}
 .hero p.sub{font-size:1.2rem;max-width:40ch;margin-top:16px}
-.vitrine{position:relative;aspect-ratio:1;max-width:520px;margin-inline:auto;width:100%}
-.vitrine .disco{position:absolute;width:44%;aspect-ratio:1;border-radius:50%;background:#fff;border:6px solid #fff;box-shadow:0 10px 0 var(--chiclete),0 0 0 3px var(--chiclete);overflow:hidden;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
-.vitrine .disco img{width:100%;height:100%;object-fit:cover}
-.vitrine .disco:hover{transform:scale(1.1) rotate(-4deg);z-index:3}
-.vitrine .d1{left:28%;top:0}.vitrine .d2{left:0;top:28%}.vitrine .d3{right:0;top:30%}.vitrine .d4{left:8%;bottom:0;width:38%}.vitrine .d5{right:6%;bottom:2%;width:36%}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 0;padding:0;list-style:none}.chips li{display:inline-flex;align-items:center;gap:7px;font:800 .85rem "Nunito";background:#fff;border:2px solid var(--chiclete);border-radius:999px;padding:6px 14px;color:var(--fram)}.chips img{width:18px;height:18px}
+.vitrine{position:relative;aspect-ratio:1;max-width:540px;margin-inline:auto;width:100%}
+.vitrine .disco{position:absolute;width:44%;aspect-ratio:1;border-radius:50%;background:#fff;border:6px solid #fff;box-shadow:0 10px 0 var(--chiclete),0 0 0 3px var(--chiclete);overflow:visible;transition:scale .35s cubic-bezier(.3,1.6,.5,1),rotate .35s}
+.vitrine .disco>img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.vitrine .disco:hover{scale:1.1;rotate:-4deg;z-index:3}
+.vitrine .disco b{position:absolute;left:50%;bottom:-12px;translate:-50% 0;white-space:nowrap;font:400 1.1rem "Kaushan Script";color:#fff;background:var(--vivo);padding:2px 16px 4px;border-radius:999px;box-shadow:0 3px 0 var(--fram);rotate:-3deg}
+.vitrine .d1{left:26%;top:0;z-index:2}.vitrine .d2{left:0;top:29%;z-index:1}.vitrine .d3{right:0;top:36%;z-index:1}.vitrine .d4{left:8%;bottom:4%;width:38%}.vitrine .d5{right:6%;bottom:6%;width:36%}
 .vitrine .d1{animation:flutua 6s ease-in-out infinite}.vitrine .d2{animation:flutua 7s ease-in-out -2s infinite}.vitrine .d3{animation:flutua 6.5s ease-in-out -4s infinite}
 @keyframes flutua{50%{translate:0 -9px}}
+.selo-giro{position:absolute;right:-4px;top:-8px;width:clamp(96px,12vw,128px);z-index:4;animation:gira 22s linear infinite}
+.selo-giro text{font:800 15px "Nunito";letter-spacing:.14em;fill:var(--fram);text-transform:uppercase}
+@keyframes gira{to{rotate:360deg}}
 
-.sec{padding-block:clamp(44px,6vw,84px)}
+.sec{padding-block:clamp(40px,6vw,80px);position:relative}
 .sec .cab{text-align:center;max-width:56ch;margin:0 auto clamp(24px,4vw,44px)}.sec .cab p{margin-top:12px;font-size:1.1rem}
-.fita{background:var(--algodao)}.rosa{background:var(--pincel)}
-.passos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,32px);padding:0;margin:0;list-style:none;counter-reset:p}
-.passos li{counter-increment:p;background:#fff;border:3px dashed var(--chiclete);border-radius:28px;padding:30px 22px 24px;text-align:center;position:relative;transition:transform .25s}
-.passos li:hover{transform:translateY(-6px) rotate(-1deg)}
+.titulo-ornado{display:flex;align-items:center;justify-content:center;gap:14px}.titulo-ornado::before,.titulo-ornado::after{content:"";flex:1;max-width:120px;height:14px;background:radial-gradient(circle 6px at 7px 7px,var(--chiclete) 5.5px,transparent 6.5px) 0 0/20px 14px repeat-x}
+.fita{background:var(--algodao)}.rosa{background:var(--pincel)}.bebe{background:var(--bebe)}
+
+/* fita que corre */
+.fita-w{overflow-x:clip;padding-block:14px}
+.fita-corre{background:var(--vivo);color:#fff;white-space:nowrap;overflow:hidden;rotate:-1.2deg;border-block:4px dashed rgba(255,255,255,.55);padding-block:10px;margin-inline:-12px;font:400 1.7rem/1.2 "Kaushan Script";box-shadow:0 8px 0 var(--fram)}
+.fita-corre i{display:inline-block;font-style:normal;padding-right:28px;animation:corre 30s linear infinite}
+@keyframes corre{to{translate:-100% 0}}
+
+/* vitrine de doces */
+.grade5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,1.8vw,22px)}
+.vit-card{--c:var(--algodao);background:var(--c);border-radius:30px;padding:22px 14px 20px;text-align:center;text-decoration:none;color:var(--tinta);display:flex;flex-direction:column;align-items:center;gap:6px;border:3px solid #fff;box-shadow:0 12px 0 rgba(233,50,109,.16);transition:translate .25s,rotate .25s,box-shadow .25s}
+.vit-card:nth-child(2n){--c:var(--pincel)}.vit-card:nth-child(3n){--c:var(--chiclete)}
+.vit-card:hover{translate:0 -8px;rotate:-1.2deg;box-shadow:0 20px 0 rgba(233,50,109,.2)}
+.vit-card .foto{width:min(100%,170px);aspect-ratio:1;border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 0 0 3px var(--vivo);background:#fff}.vit-card .foto img{width:100%;height:100%;object-fit:cover}
+.vit-card h3{margin-top:10px;font-size:1.7rem}.vit-card p{font:400 .96rem/1.35 "Delius";margin:0;min-height:2.7em}
+.vit-card .a-partir{font:900 .9rem "Nunito";color:var(--fram);background:#fff;border-radius:999px;padding:3px 12px;margin-top:4px}
+.vit-card .ver{font:900 .85rem "Nunito";color:var(--vivo);margin-top:6px}
+
+/* diferenciais */
+.dif{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,26px)}
+.dif>div{background:#fff;border:3px dashed var(--chiclete);border-radius:28px;padding:26px 18px;text-align:center;transition:translate .25s}
+.dif>div:hover{translate:0 -6px}
+.dif .ic{width:78px;height:78px;margin:0 auto 12px;border-radius:50%;background:var(--bebe);display:grid;place-items:center}.dif .ic img{width:48px;height:48px}
+.dif h3{font-size:1.5rem;margin-bottom:6px}.dif p{margin:0;font-size:.98rem}
+
+.passos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,32px);padding:0;margin:0;list-style:none;counter-reset:p;position:relative}
+.passos li{counter-increment:p;background:#fff;border:3px dashed var(--chiclete);border-radius:28px;padding:30px 22px 24px;text-align:center;position:relative;transition:translate .25s,rotate .25s}
+.passos li:hover{translate:0 -6px;rotate:-1deg}
 .passos li::before{content:counter(p);position:absolute;top:-20px;left:50%;translate:-50% 0;width:40px;height:40px;border-radius:50%;background:var(--vivo);color:#fff;font:400 1.4rem/40px "Kaushan Script";text-align:center}
 .passos img{width:64px;height:64px;margin:0 auto 10px}.passos h3{margin-bottom:6px}.passos p{margin:0}
 .duas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
 
+/* faixa de chamada */
+.cta{background:linear-gradient(90deg,rgba(233,50,109,.2) 50%,transparent 50%) 0 0/34px 34px,linear-gradient(rgba(233,50,109,.2) 50%,transparent 50%) 0 0/34px 34px,var(--bebe);padding-block:clamp(44px,6vw,80px);text-align:center;border-block:3px solid var(--vivo)}
+.cta .cartao{display:inline-block;max-width:640px;background:#fff;border:3px solid var(--vivo);border-radius:36px;padding:clamp(24px,4vw,44px);box-shadow:10px 10px 0 var(--chiclete)}
+.cta .cartao .acoes{justify-content:center}
+
 /* cartão de recado */
-.cartao-r{background:#fff;border:3px solid var(--vivo);border-radius:22px;padding:30px 26px;position:relative;box-shadow:10px 10px 0 var(--chiclete);transform:rotate(-1.5deg);min-height:200px}
+.cartao-r{background:#fff;border:3px solid var(--vivo);border-radius:22px;padding:30px 26px;position:relative;box-shadow:10px 10px 0 var(--chiclete);rotate:-1.5deg;min-height:200px}
 .cartao-r::before{content:"";position:absolute;inset:8px;border:2px dashed var(--chiclete);border-radius:16px;pointer-events:none}
+.cartao-r::after{content:"";position:absolute;top:-16px;left:34px;width:26px;height:58px;border:4px solid var(--fram);border-radius:14px;border-bottom-color:transparent;rotate:6deg;opacity:.7}
 .cartao-r p{position:relative;font:400 1.35rem/1.45 "Delius",cursive;color:var(--fram);margin:0;overflow-wrap:anywhere}
 .cartao-r .ass{display:flex;align-items:center;gap:10px;margin-top:18px;position:relative}.cartao-r .ass img{height:34px;width:auto}
 .campo{display:flex;flex-direction:column;gap:6px;font:900 .85rem "Nunito";letter-spacing:.06em;text-transform:uppercase;color:var(--fram)}
@@ -80,36 +119,51 @@ main,header,footer{position:relative;z-index:2}
 .campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--vivo);outline:0}
 .contador{font-size:.8rem;color:var(--fram);text-align:right;text-transform:none;letter-spacing:0}
 
+/* cabeçalho das páginas internas */
+.pag-cab{background:radial-gradient(50% 120% at 90% 0,var(--algodao),transparent 70%),var(--bebe);text-align:center;padding:clamp(26px,4vw,50px) 0 6px;position:relative;overflow:hidden}
+.pag-cab .kicker{font:400 1.4rem "Kaushan Script";color:var(--fram)}
+.pag-cab h1{font-size:clamp(2.6rem,5.4vw,4.6rem)}
+.pag-cab p{max-width:52ch;margin:10px auto 0;font-size:1.1rem}
+.bandeirinhas{display:block;width:100%;height:70px;margin-top:6px}
+
 /* cardápio */
-.filtros{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
-.filtros button{display:inline-flex;align-items:center;gap:8px;font:900 .95rem "Nunito";color:var(--fram);background:#fff;border:2.5px solid var(--chiclete);padding:8px 18px;border-radius:999px;cursor:pointer;transition:transform .15s}
-.filtros button img{width:22px;height:22px}.filtros button:hover{transform:rotate(-2deg) scale(1.04)}
+.filtros{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:34px}
+.filtros button{display:inline-flex;align-items:center;gap:8px;font:900 .95rem "Nunito";color:var(--fram);background:#fff;border:2.5px solid var(--chiclete);padding:8px 18px;border-radius:999px;cursor:pointer;transition:scale .15s,rotate .15s}
+.filtros button img{width:22px;height:22px}.filtros button:hover{scale:1.05;rotate:-2deg}
 .filtros button[aria-pressed=true]{background:var(--vivo);color:#fff;border-color:var(--vivo)}.filtros button[aria-pressed=true] img{filter:brightness(0) invert(1)}
-.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:clamp(18px,2.4vw,30px)}
-.doce{background:#fff;border:3px dashed var(--chiclete);border-radius:28px;padding:20px 18px;text-align:center;display:flex;flex-direction:column;gap:6px;transition:transform .25s,box-shadow .25s;animation:entra .5s both}
-.doce:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 14px 0 var(--algodao)}
-.doce .foto{width:150px;aspect-ratio:1;margin:0 auto 6px;border-radius:50%;overflow:hidden;border:5px solid var(--bebe);box-shadow:0 0 0 3px var(--chiclete)}.doce .foto img{width:100%;height:100%;object-fit:cover}
+.grupo{display:grid;grid-template-columns:minmax(190px,250px) minmax(0,1fr);gap:clamp(18px,3vw,36px);align-items:stretch;margin-bottom:clamp(40px,6vw,68px)}
+.grupo-lado{--c:var(--algodao);background:var(--c);border:3px solid #fff;border-radius:34px;box-shadow:0 12px 0 rgba(233,50,109,.16);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px 16px;gap:6px;position:relative;overflow:hidden}
+.grupo:nth-child(2n) .grupo-lado{--c:var(--pincel)}.grupo:nth-child(3n) .grupo-lado{--c:var(--chiclete)}
+.grupo-lado .big{width:92px;height:92px;background:#fff;border-radius:50%;padding:14px;box-shadow:0 0 0 3px var(--vivo)}
+.grupo-lado h2{font-size:clamp(1.9rem,3vw,2.6rem)}.grupo-lado p{margin:0;font:400 .98rem/1.3 "Delius";color:var(--tinta)}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:clamp(18px,2.4vw,30px);align-content:start}
+.doce{background:#fff;border:3px dashed var(--chiclete);border-radius:28px;padding:22px 18px 20px;text-align:center;display:flex;flex-direction:column;gap:6px;position:relative;transition:translate .25s,rotate .25s,box-shadow .25s}
+.doce:hover{translate:0 -6px;rotate:-1deg;box-shadow:0 14px 0 var(--algodao)}
+.doce .foto{width:160px;aspect-ratio:1;margin:0 auto 6px;border-radius:50%;overflow:hidden;border:5px solid var(--bebe);box-shadow:0 0 0 3px var(--chiclete)}.doce .foto img{width:100%;height:100%;object-fit:cover}
+.doce .etiq{position:absolute;top:-12px;right:-8px;width:68px;height:68px;border-radius:50%;background:var(--vivo);color:#fff;display:grid;place-items:center;font:900 1.02rem "Nunito";rotate:9deg;box-shadow:0 4px 0 var(--fram);border:3px solid #fff}
 .doce h3{font-size:1.5rem}.doce p{font:400 .98rem/1.4 "Delius";color:var(--tinta);margin:0}
-.doce .preco{font:900 1.3rem "Nunito";color:var(--fram);margin-top:auto;padding-top:8px}
 .doce select{width:100%;min-height:42px;border:2.5px solid var(--chiclete);border-radius:999px;padding:6px 14px;font:700 .92rem "Nunito";background:var(--leite);color:var(--tinta)}
-.doce .btn{min-height:44px;padding:8px 20px;font-size:.95rem;box-shadow:0 4px 0 var(--fram)}
-@keyframes entra{from{opacity:0;transform:translateY(16px) scale(.96)}}
-.barra{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--vivo);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;transform:translateY(110%);transition:transform .35s cubic-bezier(.3,1.4,.5,1);box-shadow:0 -8px 0 rgba(179,31,82,.25)}
-.barra.on{transform:none}.barra b{font:400 1.7rem "Kaushan Script"}.barra .btn{background:#fff;color:var(--fram);box-shadow:0 4px 0 var(--fram)}
+.doce .btn{min-height:44px;padding:8px 20px;font-size:.95rem;box-shadow:0 4px 0 var(--fram);margin-top:auto}
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:58;background:var(--vivo);color:#fff;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;translate:0 110%;transition:translate .35s cubic-bezier(.3,1.4,.5,1);box-shadow:0 -8px 0 rgba(179,31,82,.25)}
+.barra.on{translate:0 0}.barra b{font:400 1.7rem "Kaushan Script"}.barra .btn{background:#fff;color:var(--fram);box-shadow:0 4px 0 var(--fram)}
 .pedido{white-space:pre-wrap;background:#fff;border:3px dashed var(--chiclete);border-radius:20px;padding:16px 18px;font:400 1rem/1.5 "Delius";margin-top:20px}
 
 /* caixinha */
 .caixa-w{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,52px);align-items:start}
-.caixa{background:var(--chiclete);border:5px solid var(--vivo);border-radius:26px;padding:18px;box-shadow:10px 10px 0 var(--algodao);position:relative}
-.caixa .laco{position:absolute;top:-22px;left:50%;translate:-50% 0;font-size:2.6rem;color:var(--vivo);filter:drop-shadow(0 3px 0 var(--fram))}
+.passo-t{display:flex;align-items:center;gap:10px;font:900 .9rem "Nunito";letter-spacing:.06em;text-transform:uppercase;color:var(--fram);margin:4px 0 8px}
+.passo-t b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--vivo);color:#fff;font:400 1.2rem "Kaushan Script";letter-spacing:0}
+.caixa{background:var(--chiclete);border:5px solid var(--vivo);border-radius:26px;padding:34px 18px 18px;box-shadow:10px 10px 0 var(--algodao);position:relative;margin-top:30px}
+.caixa::before{content:"";position:absolute;left:-12px;right:-12px;top:-26px;height:34px;background:var(--vivo);border-radius:16px;box-shadow:0 5px 0 var(--fram)}
+.caixa::after{content:"♥  ♥  ♥  ♥  ♥  ♥";position:absolute;left:0;right:0;top:-20px;text-align:center;color:#fff;font:400 1rem/22px "Kaushan Script";letter-spacing:.1em;overflow:hidden;white-space:nowrap}
+.caixa .laco{position:absolute;top:-62px;left:50%;translate:-50% 0;width:116px;height:70px;z-index:3;filter:drop-shadow(0 3px 0 rgba(179,31,82,.5))}
 .espacos{display:grid;gap:10px;margin-top:12px}
 .espaco{aspect-ratio:1;border-radius:18px;background:var(--bebe);border:3px dashed var(--vivo);display:grid;place-items:center;overflow:hidden;padding:0;cursor:pointer;color:var(--fram);font:400 1.6rem "Kaushan Script"}
 .espaco img{width:100%;height:100%;object-fit:cover;animation:pop .45s cubic-bezier(.3,1.7,.5,1)}
 @keyframes pop{from{transform:scale(.2) rotate(-30deg);opacity:0}}
 .tamanhos,.escolhas{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 20px}
 .tamanhos button{flex:1 1 90px;font:900 1rem "Nunito";min-height:52px;border-radius:18px;background:#fff;color:var(--fram);border:3px solid var(--chiclete);cursor:pointer}.tamanhos button[aria-pressed=true]{background:var(--vivo);color:#fff;border-color:var(--vivo)}
-.escolhas button{display:flex;align-items:center;gap:12px;flex:1 1 200px;text-align:left;font:900 1rem "Nunito";padding:10px 14px;border-radius:18px;background:#fff;color:var(--tinta);border:3px solid var(--chiclete);cursor:pointer;transition:transform .15s}
-.escolhas button:hover{transform:translateY(-3px)}.escolhas img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:3px solid var(--bebe)}.escolhas small{display:block;font-weight:700;color:var(--fram)}
+.escolhas button{display:flex;align-items:center;gap:12px;flex:1 1 200px;text-align:left;font:900 1rem "Nunito";padding:10px 14px;border-radius:18px;background:#fff;color:var(--tinta);border:3px solid var(--chiclete);cursor:pointer;transition:translate .15s}
+.escolhas button:hover{translate:0 -3px}.escolhas img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:3px solid var(--bebe)}.escolhas small{display:block;font-weight:700;color:var(--fram)}
 .escolhas button:disabled{opacity:.45;cursor:not-allowed}
 .total{display:flex;justify-content:space-between;align-items:baseline;font:400 2.4rem "Kaushan Script";color:var(--vivo);margin:18px 0 6px}.total small{font:700 .9rem "Nunito";color:var(--tinta)}
 .linha{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:2px dashed var(--chiclete);font-weight:800}
@@ -124,8 +178,14 @@ main,header,footer{position:relative;z-index:2}
 .mix .barrinha{height:14px;background:var(--bebe);border-radius:99px;overflow:hidden;margin-top:4px}.mix .barrinha i{display:block;height:100%;background:var(--vivo);border-radius:99px;transition:width .4s}
 .mix b{font:900 1.15rem "Nunito";color:var(--fram)}
 .grande{font:400 clamp(2.4rem,4vw,3.4rem)/1 "Kaushan Script";color:var(--vivo)}
-.rodape{background:var(--vivo);color:#fff;padding-block:30px;font-weight:700}.rodape .cx{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 36px}.rodape p{margin:0}.rodape a{color:#fff}
-.rodape.babado-topo{position:relative;margin-top:24px}.rodape.babado-topo::before{content:"";position:absolute;left:0;right:0;top:-23px;height:24px;background:radial-gradient(circle 14px at 14px 24px,transparent 13.5px,var(--vivo) 14px) 0 0/28px 24px repeat-x}
 
-@media (max-width:900px){.hero .cx,.duas,.caixa-w,.festa{grid-template-columns:minmax(0,1fr)}.passos{grid-template-columns:minmax(0,1fr)}.vitrine{max-width:420px}.hero .cx{text-align:center}.hero p.sub{margin-inline:auto}.hero .acoes{justify-content:center}}
-@media (max-width:640px){.campos{grid-template-columns:minmax(0,1fr)}.abas a{padding:8px 14px;font-size:.9rem}.abas a img{display:none}.grade{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
+/* rodapé */
+.rodape{background:var(--vivo);color:#fff;padding-block:34px;font-weight:700;position:relative;margin-top:30px}
+.rodape::before{content:"";position:absolute;left:0;right:0;top:-23px;height:24px;background:radial-gradient(circle 14px at 14px 24px,transparent 13.5px,var(--vivo) 14px) 0 0/28px 24px repeat-x}
+.rodape .cx{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 36px;align-items:center}.rodape p{margin:0}.rodape a{color:#fff}
+.rodape .grande-r{font:400 2rem "Kaushan Script";flex:1 1 100%;text-align:center}
+
+@media (max-width:1060px){.grade5{grid-template-columns:repeat(3,minmax(0,1fr))}.dif{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.grupo{grid-template-columns:minmax(0,1fr)}.grupo-lado{flex-direction:row;justify-content:flex-start;text-align:left;padding:16px 20px;gap:16px}.grupo-lado .big{width:64px;height:64px;padding:10px;flex:none}.hero .cx,.duas,.caixa-w,.festa{grid-template-columns:minmax(0,1fr)}.passos{grid-template-columns:minmax(0,1fr)}.vitrine{max-width:430px}.hero .cx{text-align:center}.hero p.sub{margin-inline:auto}.hero .acoes,.chips,.hero .kicker{justify-content:center}}
+@media (max-width:640px){.campos{grid-template-columns:minmax(0,1fr)}.abas a{padding:8px 14px;font-size:.9rem}.abas a img{display:none}.grade{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}.grade5{grid-template-columns:repeat(2,minmax(0,1fr))}.dif{grid-template-columns:minmax(0,1fr)}.fita-corre{font-size:1.4rem}}
+@media (max-width:420px){.grade5{grid-template-columns:minmax(0,1fr)}}

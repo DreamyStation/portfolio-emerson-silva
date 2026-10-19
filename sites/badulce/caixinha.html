@@ -20,29 +20,31 @@ img,svg,video,canvas{max-width:100%}
 <body>
 <a class="pula" href="#conteudo">Pular para o conteúdo</a>
 <div class="demo">Site demonstrativo · projeto de design para a identidade Badulce · sabores, preços e prazos são exemplos</div>
-<header class="topo"><a class="logo" href="index.html" aria-label="Badulce, feito com carinho"><img src="img/logo_horizontal_rosa_vivo.png" width="2400" height="806" alt="Badulce · feito com carinho"></a>
-<nav class="abas" aria-label="Principal"><a href="index.html"><img src="img/ic_coracao_traco_vivo.svg" alt="" width="22" height="22">Início</a><a href="cardapio.html"><img src="img/ic_brownie_traco_vivo.svg" alt="" width="22" height="22">Cardápio</a><a href="caixinha.html" aria-current=page><img src="img/ic_sacola_traco_vivo.svg" alt="" width="22" height="22">Caixinha de presente</a><a href="festa.html"><img src="img/ic_bolo_traco_vivo.svg" alt="" width="22" height="22">Para a festa</a></nav></header>
-<div class="babado" aria-hidden="true"></div>
+<header class="topo"><a class="logo" href="index.html" aria-label="Badulce, feito com carinho"><img src="img/logo_horizontal_rosa_vivo.png" width="2400" height="806" alt="Badulce · feito com carinho"></a></header>
+<div class="abas-w"><nav class="abas" aria-label="Principal"><a href="index.html"><img src="img/ic_coracao_traco_vivo.svg" alt="" width="22" height="22">Início</a><a href="cardapio.html"><img src="img/ic_brownie_traco_vivo.svg" alt="" width="22" height="22">Cardápio</a><a href="caixinha.html" aria-current=page><img src="img/ic_sacola_traco_vivo.svg" alt="" width="22" height="22">Caixinha de presente</a><a href="festa.html"><img src="img/ic_bolo_traco_vivo.svg" alt="" width="22" height="22">Para a festa</a></nav></div>
+<div class="vichy" aria-hidden="true"></div>
 <main id="conteudo">
 
-<section class="sec"><div class="cx">
-<div class="cab"><h1>Monte a sua caixinha</h1><p>Escolha o tamanho, encha com os doces que quiser e escreva o recadinho do cartão. Toque num doce da caixa para tirá-lo.</p></div>
+<section class="pag-cab"><span class="brilho" aria-hidden="true" style="left:5%;top:34%;--s:1.8rem;--a:0s">✦</span><span class="brilho" aria-hidden="true" style="left:94%;top:40%;--s:1.4rem;--a:1s">✦</span><div class="cx"><div class="kicker">para presentear</div><h1>Monte a sua caixinha</h1><p>Escolha o tamanho, encha com os doces que quiser e escreva o recadinho do cartão. Toque num doce da caixa para tirá-lo.</p></div></section>
+<section class="sec" style="padding-top:clamp(34px,5vw,60px)"><div class="cx">
 <div class="caixa-w">
-<div><div class="campo">Tamanho da caixinha</div>
+<div><div class="passo-t"><b>1</b>Tamanho da caixinha</div>
 <div class="tamanhos"><button type="button" data-n="4" aria-pressed="false">4 doces</button><button type="button" data-n="6" aria-pressed="true">6 doces</button><button type="button" data-n="9" aria-pressed="false">9 doces</button></div>
-<div class="campo">Escolha os doces <span id="c-vazios" style="text-transform:none;letter-spacing:0"></span></div>
+<div class="passo-t"><b>2</b>Escolha os doces <span id="c-vazios" style="text-transform:none;letter-spacing:0"></span></div>
 <div class="escolhas"></div>
-<div class="campo" style="margin-top:8px">O recadinho do cartão</div><div class="campos"><label class="campo full">Escolha um recadinho<select id="r-pre"></select></label>
+<div class="passo-t"><b>3</b>O recadinho do cartão</div><div class="campos"><label class="campo full">Escolha um recadinho<select id="r-pre"></select></label>
 <label class="campo full">Ou escreva o seu<textarea id="r-texto" maxlength="80"></textarea><span class="contador" id="r-cont">0 / 80</span></label></div></div>
-<div><div class="caixa"><span class="laco" aria-hidden="true">♥</span><div class="espacos" id="caixa"></div></div>
-<div class="cartao-r" style="margin-top:26px;min-height:0"><p id="r-prev">Obrigada pela sua compra!</p><div class="ass"><img src="img/logo_icone_rosa_vivo.png" alt="" width="34" height="34"><span class="recado" style="color:var(--fram)">Badulce · feito com carinho</span></div></div>
+<div><div class="caixa"><svg class="laco" viewBox="0 0 120 72" aria-hidden="true"><path d="M60 40C40 8 6 2 6 26s34 20 54 14z" fill="#E9326D" stroke="#B31F52" stroke-width="3" stroke-linejoin="round"/><path d="M60 40C80 8 114 2 114 26s-34 20-54 14z" fill="#E9326D" stroke="#B31F52" stroke-width="3" stroke-linejoin="round"/><path d="M60 40L38 68M60 40l22 28" stroke="#B31F52" stroke-width="9" stroke-linecap="round" fill="none"/><path d="M60 40L38 68M60 40l22 28" stroke="#E9326D" stroke-width="5" stroke-linecap="round" fill="none"/><circle cx="60" cy="38" r="10" fill="#FCB8C5" stroke="#B31F52" stroke-width="3"/></svg><div class="espacos" id="caixa"></div></div>
+<div class="cartao-r" style="margin-top:30px;min-height:0"><p id="r-prev">Obrigada pela sua compra!</p><div class="ass"><img src="img/logo_icone_rosa_vivo.png" alt="" width="34" height="34"><span class="recado" style="color:var(--fram)">Badulce · feito com carinho</span></div></div>
 <div style="margin-top:22px" id="c-lista"></div><div class="total"><span>Total</span><span id="c-total">R$ 0,00</span></div>
 <div class="pedido" id="c-pedido"></div>
 <div class="acoes"><button type="button" class="btn" id="c-copia">Copiar pedido</button><a class="btn alt" id="c-dm" href="#" target="_blank" rel="noopener">Abrir o direct da Badulce</a></div></div>
 </div></div></section>
 
 </main>
-<footer class="rodape babado-topo"><div class="cx"><p><b>Badulce</b> · doces feitos com carinho · <a href="https://www.instagram.com/baldulce._/" target="_blank" rel="noopener">@baldulce._</a></p><p>Imagens ilustrativas, geradas por IA. Identidade visual e site por <a href="../../index.html#logo" style="text-decoration:underline">Emerson Silva</a> · <a href="../../index.html#sites" style="text-decoration:underline">outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
+<footer class="rodape"><div class="cx"><p class="grande-r" aria-hidden="true">feito com carinho ♥</p><p><b>Badulce</b> · doces feitos com carinho · <a href="https://www.instagram.com/baldulce._/" target="_blank" rel="noopener">@baldulce._</a></p><p>Imagens ilustrativas, geradas por IA. Identidade visual e site por <a href="../../index.html#logo" style="text-decoration:underline">Emerson Silva</a> · <a href="../../index.html#sites" style="text-decoration:underline">outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
+<script>window.POP={extra:'.vit-card,.dif>div,.cta .cartao,.passos li,.pag-cab p,.chips li'}</script>
+<script src="js/pop.js" defer></script>
 <script src="js/site.js"></script>
 <script id="encaixe-js">
 /* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
