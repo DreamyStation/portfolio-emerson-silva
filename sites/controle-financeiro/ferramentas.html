@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ferramentas · Controle Financeiro Privado</title>
+<meta name="description" content="Teste no navegador o simulador de compra, a conta da corrida de aplicativo e o preço da hora de trabalho.">
+<meta name="theme-color" content="#0D1024">
+<link rel="icon" href="img/app_controle_icone.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fredoka:wght@500;600&family=Pixelify+Sans:wght@500;700&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo"><div class="wrap">
+<a class="logo" href="index.html"><img src="img/app_controle_icone.png" width="42" height="42" alt=""><b>Controle Financeiro Privado</b></a>
+<nav class="menu" aria-label="Principal"><a href="index.html">Início</a><a href="modos.html">Modos</a><a href="jogo.html" class=rpg>Jogo</a><a href="ferramentas.html" aria-current=page>Ferramentas</a><a href="privacidade.html">Privacidade</a><a href="baixar.html" class=baixar>Baixar</a></nav>
+</div></header>
+<main id="conteudo">
+
+<section class="sec papel" style="min-height:70vh"><div class="wrap">
+<div class="cab"><span class="etq">Demonstração</span><h1 style="font-size:clamp(2.2rem,4.6vw,3.8rem)">Ferramentas para testar agora</h1><p>Três contas que o app faz por você. Aqui elas rodam no seu navegador, com números que você mesmo digita, e nada é enviado a lugar nenhum.</p></div>
+<div class="abas" role="tablist" aria-label="Ferramentas">
+<button type="button" role="tab" id="t-compra" data-id="compra" aria-selected="true" aria-controls="p-compra">E se eu comprar?</button>
+<button type="button" role="tab" id="t-corrida" data-id="corrida" aria-selected="false" aria-controls="p-corrida">Vale a pena esta corrida?</button>
+<button type="button" role="tab" id="t-hora" data-id="hora" aria-selected="false" aria-controls="p-hora">Quanto cobrar pela hora?</button>
+</div>
+<div id="p-compra" role="tabpanel" aria-labelledby="t-compra"><div class="demo"><div class="pnl"><form id="f-compra" class="campos" onsubmit="return false" aria-label="Simulador E se eu comprar?">
+<label class="">Saldo hoje (R$)<input id="c-saldo" type="number" inputmode="decimal" step="any" value="800"></label><label class="">Quanto entra por mês (R$)<input id="c-renda" type="number" inputmode="decimal" step="any" value="2200"></label>
+<label class="">Gastos fixos por mês (R$)<input id="c-fixos" type="number" inputmode="decimal" step="any" value="1700"></label><label class="">Valor da compra (R$)<input id="c-valor" type="number" inputmode="decimal" step="any" value="900"></label>
+<label class="">Parcelas (1 = à vista)<input id="c-parc" type="number" inputmode="decimal" step="1" value="6"></label><label class="">Juros ao mês (%)<input id="c-juros" type="number" inputmode="decimal" step="any" value="0"></label>
+</form><p class="nota">Modo pessoal. Digite o parcelamento e os juros para ver o custo real da compra.</p></div><div class="pnl res" aria-live="polite">
+<div class="mono">Resultado</div>
+<div class="grande" id="c-parcela">à vista</div>
+<div class="linha"><span>Total pago</span><b id="c-total">R$ 0,00</b></div>
+<div class="linha"><span>Custo dos juros</span><b id="c-juroscusto">R$ 0,00</b></div>
+<div class="linha"><span>Saldo mais baixo</span><b id="c-menor">R$ 0,00</b></div>
+<div class="mono" style="margin-top:16px">Saldo mês a mês, com a compra (vermelho = negativo)</div>
+<div class="meses" id="c-meses"></div>
+<div class="veredito" id="c-veredito"></div>
+<p class="nota">Conta simples: o saldo cresce (entra menos fixos) a cada mês, e a primeira parcela vence no mês 1. No app o cálculo usa os seus lançamentos reais.</p>
+</div></div></div>
+<div id="p-corrida" role="tabpanel" aria-labelledby="t-corrida" hidden><div class="demo"><div class="pnl"><form id="f-corrida" class="campos" onsubmit="return false" aria-label="Simulador Vale a pena esta corrida?">
+<label class="">Valor da corrida (R$)<input id="r-valor" type="number" inputmode="decimal" step="any" value="24"></label><label class="">Distância total (km)<input id="r-km" type="number" inputmode="decimal" step="any" value="9"></label>
+<label class="">Tempo total (min)<input id="r-min" type="number" inputmode="decimal" step="any" value="28"></label><label class="">Consumo (km por litro)<input id="r-cons" type="number" inputmode="decimal" step="any" value="12"></label>
+<label class="">Preço do litro (R$)<input id="r-lit" type="number" inputmode="decimal" step="any" value="6.2"></label><label class="">Desgaste por km (R$)<input id="r-des" type="number" inputmode="decimal" step="any" value="0.2"></label>
+<label class="full">Sua meta por hora (R$)<input id="r-meta" type="number" inputmode="decimal" step="any" value="30"></label>
+</form><p class="nota">Modo motorista. Ajuste o desgaste por quilômetro para o seu carro ou moto.</p></div><div class="pnl res" aria-live="polite">
+<div class="mono">Resultado</div>
+<div class="grande" id="r-h">R$ 0,00</div><div class="mudo">de lucro por hora</div>
+<div class="linha"><span>Combustível</span><b id="r-comb">R$ 0,00</b></div>
+<div class="linha"><span>Desgaste e manutenção</span><b id="r-desg">R$ 0,00</b></div>
+<div class="linha"><span>Lucro da corrida</span><b id="r-lucro">R$ 0,00</b></div>
+<div class="linha"><span>Lucro por km</span><b id="r-km2">R$ 0,00</b></div>
+<div class="veredito" id="r-veredito"></div>
+<p class="nota">Use a distância inteira, contando o deslocamento até o passageiro. O app tem 40 veículos com consumo, meta do mês e aviso de manutenção, e lê o print do pedido no próprio celular.</p>
+</div></div></div>
+<div id="p-hora" role="tabpanel" aria-labelledby="t-hora" hidden><div class="demo"><div class="pnl"><form id="f-hora" class="campos" onsubmit="return false" aria-label="Calculadora da hora de trabalho">
+<label class="">Quanto quer ganhar por mês (R$)<input id="h-renda" type="number" inputmode="decimal" step="any" value="3500"></label><label class="">Custos do mês: internet, programas, MEI (R$)<input id="h-custos" type="number" inputmode="decimal" step="any" value="400"></label>
+<label class="">Horas que consegue cobrar por mês<input id="h-horas" type="number" inputmode="decimal" step="any" value="80"></label><label class="">Impostos e taxas (%)<input id="h-imp" type="number" inputmode="decimal" step="any" value="6"></label>
+<label class="">Horas estimadas do projeto<input id="h-proj" type="number" inputmode="decimal" step="any" value="12"></label><label class="">Margem para imprevistos (%)<input id="h-marg" type="number" inputmode="decimal" step="any" value="10"></label>
+</form><p class="nota">Modo freelancer. A margem cobre retrabalho e o tempo que o projeto sempre toma a mais.</p></div><div class="pnl res" aria-live="polite">
+<div class="mono">Resultado</div>
+<div class="grande" id="h-hora">R$ 0,00</div><div class="mudo">por hora trabalhada</div>
+<div class="linha"><span>Diária de 8 horas</span><b id="h-dia">R$ 0,00</b></div>
+<div class="linha"><span>Preço do projeto</span><b id="h-proj2">R$ 0,00</b></div>
+<div class="linha"><span>Entrada de 50%</span><b id="h-ent">R$ 0,00</b></div>
+<p class="nota">A hora vem de (renda + custos) ÷ (1 − impostos) ÷ horas que dá para cobrar. É uma conta de partida: o app também traz o guia de preços por tipo de serviço e o gerador de contrato em PDF.</p>
+</div></div></div>
+<p class="nota" style="margin-top:26px">São versões simplificadas, para conhecer. No app as mesmas ferramentas usam os seus lançamentos reais. <a href="baixar.html">Baixar para Android ▸</a></p>
+</div></section>
+
+</main>
+<footer class="rodape"><div class="wrap">
+<p><b>Controle Financeiro Privado</b> · versão 0.3.0 para Android. Obra de <b>Emerson Silva - DreamyStation</b>, protegida pelas Leis 9.610/1998 e 9.609/1998. Todos os direitos reservados.</p>
+<p><a href="../../index.html#apps">Ver o app no portfólio</a> · <a href="../../index.html#sites">Ver outros websites</a></p>
+</div></footer>
+<script src="js/site.js"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>

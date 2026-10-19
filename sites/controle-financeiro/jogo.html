@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O jogo · Controle Financeiro Privado</title>
+<meta name="description" content="O modo educativo é uma aventura de RPG que premia quem espera e planeja. Jogue uma partida de demonstração.">
+<meta name="theme-color" content="#0D1024">
+<link rel="icon" href="img/app_controle_icone.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fredoka:wght@500;600&family=Pixelify+Sans:wght@500;700&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo"><div class="wrap">
+<a class="logo" href="index.html"><img src="img/app_controle_icone.png" width="42" height="42" alt=""><b>Controle Financeiro Privado</b></a>
+<nav class="menu" aria-label="Principal"><a href="index.html">Início</a><a href="modos.html">Modos</a><a href="jogo.html" class=rpg aria-current=page>Jogo</a><a href="ferramentas.html">Ferramentas</a><a href="privacidade.html">Privacidade</a><a href="baixar.html" class=baixar>Baixar</a></nav>
+</div></header>
+<main id="conteudo">
+
+<section class="heroi" style="padding-bottom:30px"><div class="wrap" style="grid-template-columns:minmax(0,1fr)">
+<div style="position:relative;max-width:820px">
+<span class="etq">Modo educativo · aventura de RPG</span>
+<h1>O jogo premia <span>quem espera.</span></h1>
+<p class="sub" style="max-width:62ch">No app, a criança é uma heroína do dinheiro: sobe de nível, veste tesouros e derrota chefes. Aqui você joga uma partida de demonstração com as regras de verdade. Gastar na hora rende pouco; esperar e planejar rende muito.</p>
+<img class="sprite" src="img/onca-pintada.png" alt="" aria-hidden="true" width="110" style="right:0;top:-10px;width:110px;--d:5s;--r:-6deg">
+</div></div></section>
+<div class="degraus" aria-hidden="true"></div>
+
+<section class="sec jogo-faixa" id="jogo"><div class="wrap" style="position:relative">
+<div class="jogo">
+<div>
+<div class="pnl" style="background:#120e30">
+<div class="cartao-heroi"><div class="avatar"><img id="j-av" src="img/onca-pintada.png" alt=""></div>
+<div><h3 id="j-nome">Onça-pintada</h3><div class="tit" id="j-nivel"></div><div class="barra-xp" style="margin:10px 0 6px"><i id="j-barra"></i></div><small id="j-xp" style="color:var(--mudo)"></small><div class="poder" id="j-poder"></div></div></div>
+<div class="mono" style="margin-top:18px">Escolha o seu herói</div>
+<div class="escolha" id="j-escolha"></div>
+<div class="mono" style="margin-top:14px">Equipamento (abre a cada nível)</div>
+<div class="casas" id="j-casas" style="margin-bottom:34px"></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn verde" id="j-novo">Novo dia ☀</button><button type="button" class="btn alt" id="j-zera">Recomeçar</button><span class="mono" id="j-dia" style="align-self:center">Dia 1</span></div>
+</div>
+<div class="pnl" style="margin-top:26px"><h3 style="margin-bottom:10px">Diário de aventuras</h3><ul class="diario" id="j-diario"></ul></div>
+</div>
+<div>
+<div class="pnl"><h3 style="margin-bottom:6px">Feitos</h3><p style="color:var(--mudo);margin-bottom:14px">Cada feito rende uma vez só (ou uma vez por dia): repetir a mesma coisa não soma mais. Não dá para fazer farm.</p><div class="feitos" id="j-feitos"></div></div>
+<div class="pnl oraculo" style="margin-top:26px"><h3>O Oráculo do dia</h3><p class="mudo" style="color:var(--mudo);margin:6px 0 0">Uma pergunta de dinheiro por dia. Acertar rende 5 XP, errar rende 1. A resposta certa muda de lugar a cada dia.</p><p id="o-q" style="font-weight:700;margin:14px 0 0"></p><div class="op" id="o-op"></div><p class="exp" id="o-exp"></p></div>
+</div></div>
+
+<div style="margin-top:56px"><div class="cab"><span class="etq">Duelo</span><h2>Chefes das lições</h2><p style="color:var(--mudo)">Cada lição de educação financeira tem um chefe. O duelo é a pergunta do fim: acertar derrota o chefe e rende o XP da lição, uma vez. Errar não tira nada, e dá para tentar de novo.</p></div>
+<ul class="chefes" id="j-chefes"></ul></div>
+
+<div style="margin-top:56px"><div class="cab"><span class="etq">Loja</span><h2>Esperar ou comprar na hora?</h2><p style="color:var(--mudo)">É o mesmo tesouro. O jogo só premia mais quem estava na lista de desejos: 25 XP contra 5.</p></div>
+<div class="trio" id="j-loja"></div></div>
+</div></section>
+
+<section class="sec"><div class="wrap duas" style="align-items:start">
+<div><div class="cab" style="margin-bottom:18px"><span class="etq">As regras</span><h2>O que rende XP</h2></div>
+<div class="pnl"><table class="tab"><thead><tr><th>Feito</th><th>XP</th><th>O que a criança aprende</th></tr></thead><tbody><tr><td>Tarefa aprovada pelos pais</td><td><b>20</b></td><td>dinheiro vem do esforço</td></tr><tr><td>Meta realizada</td><td><b>40</b></td><td>juntar pouco a pouco realiza sonhos grandes</td></tr><tr><td>Doação (1 vez por dia)</td><td><b>15</b></td><td>dividir também é usar bem o dinheiro</td></tr><tr><td>Chefe de lição derrotado</td><td><b>15</b></td><td>quem aprende sobre dinheiro escolhe melhor</td></tr><tr><td>Pergunta do Oráculo (1 por dia)</td><td><b>5 ou 1</b></td><td>pensar antes de decidir; errar também ensina</td></tr><tr><td>Compra planejada (estava na lista)</td><td><b>25</b></td><td>esperar e planejar rende mais</td></tr><tr><td>Compra na hora</td><td><b>5</b></td><td>toda compra é uma escolha</td></tr><tr><td>Coleção completa</td><td><b>60</b></td><td>paciência</td></tr></tbody></table></div></div>
+<div><div class="cab" style="margin-bottom:18px"><span class="etq">Progressão</span><h2>Dez níveis</h2></div>
+<div class="pnl"><table class="tab"><thead><tr><th>Nível</th><th>Título</th><th>XP</th></tr></thead><tbody><tr><td>1</td><td>Aprendiz de Moedas</td><td>0</td></tr><tr><td>2</td><td>Escudeiro Poupador</td><td>30</td></tr><tr><td>3</td><td>Cavaleiro da Paciência</td><td>80</td></tr><tr><td>4</td><td>Mago do Orçamento</td><td>150</td></tr><tr><td>5</td><td>Guardião do Cofre</td><td>250</td></tr><tr><td>6</td><td>Caçador de Ofertas Espertas</td><td>400</td></tr><tr><td>7</td><td>Estrategista do Reino</td><td>600</td></tr><tr><td>8</td><td>Mestre das Metas</td><td>850</td></tr><tr><td>9</td><td>Sábio do Tesouro</td><td>1150</td></tr><tr><td>10</td><td>Lenda do Reino das Moedas</td><td>1500</td></tr></tbody></table></div></div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
+<div class="cab"><span class="etq">Para os pais</span><h2>Um jogo sem pegadinha</h2></div>
+<div class="quad">
+<div class="pnl"><h3>Sem dinheiro real</h3><p>XP, nível e equipamento não valem nada fora do app.</p></div>
+<div class="pnl"><h3>Os pais decidem</h3><p>A área dos pais tem PIN, e aprovar a tarefa é o que rende XP de trabalho.</p></div>
+<div class="pnl"><h3>Sem anúncio</h3><p>Nem ranking, nem sequência obrigatória, nem cobrança.</p></div>
+<div class="pnl"><h3>A loja não tem pressa</h3><p>O Mercador viajante traz novidades duas vezes por semana e nunca tira o que já estava na prateleira.</p></div>
+</div>
+<div class="acoes"><a class="btn" href="baixar.html">Baixar o app</a><a class="btn alt" href="modos.html#educativo">Ver o modo educativo</a></div>
+</div></section>
+
+</main>
+<footer class="rodape"><div class="wrap">
+<p><b>Controle Financeiro Privado</b> · versão 0.3.0 para Android. Obra de <b>Emerson Silva - DreamyStation</b>, protegida pelas Leis 9.610/1998 e 9.609/1998. Todos os direitos reservados.</p>
+<p><a href="../../index.html#apps">Ver o app no portfólio</a> · <a href="../../index.html#sites">Ver outros websites</a></p>
+</div></footer>
+<script src="js/site.js"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>

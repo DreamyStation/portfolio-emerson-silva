@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caixinha de presente · Badulce</title>
+<meta name="description" content="Monte uma caixinha de doces para presentear e escreva o recadinho do cartão.">
+<meta name="theme-color" content="#E9326D">
+<link rel="icon" href="img/logo_icone_rosa_vivo.png">
+<link rel="stylesheet" href="css/site.css">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<div class="demo">Site demonstrativo · projeto de design para a identidade Badulce · sabores, preços e prazos são exemplos</div>
+<header class="topo"><a class="logo" href="index.html" aria-label="Badulce, feito com carinho"><img src="img/logo_horizontal_rosa_vivo.png" width="2400" height="806" alt="Badulce · feito com carinho"></a>
+<nav class="abas" aria-label="Principal"><a href="index.html"><img src="img/ic_coracao_traco_vivo.svg" alt="" width="22" height="22">Início</a><a href="cardapio.html"><img src="img/ic_brownie_traco_vivo.svg" alt="" width="22" height="22">Cardápio</a><a href="caixinha.html" aria-current=page><img src="img/ic_sacola_traco_vivo.svg" alt="" width="22" height="22">Caixinha de presente</a><a href="festa.html"><img src="img/ic_bolo_traco_vivo.svg" alt="" width="22" height="22">Para a festa</a></nav></header>
+<div class="babado" aria-hidden="true"></div>
+<main id="conteudo">
+
+<section class="sec"><div class="cx">
+<div class="cab"><h1>Monte a sua caixinha</h1><p>Escolha o tamanho, encha com os doces que quiser e escreva o recadinho do cartão. Toque num doce da caixa para tirá-lo.</p></div>
+<div class="caixa-w">
+<div><div class="campo">Tamanho da caixinha</div>
+<div class="tamanhos"><button type="button" data-n="4" aria-pressed="false">4 doces</button><button type="button" data-n="6" aria-pressed="true">6 doces</button><button type="button" data-n="9" aria-pressed="false">9 doces</button></div>
+<div class="campo">Escolha os doces <span id="c-vazios" style="text-transform:none;letter-spacing:0"></span></div>
+<div class="escolhas"></div>
+<div class="campo" style="margin-top:8px">O recadinho do cartão</div><div class="campos"><label class="campo full">Escolha um recadinho<select id="r-pre"></select></label>
+<label class="campo full">Ou escreva o seu<textarea id="r-texto" maxlength="80"></textarea><span class="contador" id="r-cont">0 / 80</span></label></div></div>
+<div><div class="caixa"><span class="laco" aria-hidden="true">♥</span><div class="espacos" id="caixa"></div></div>
+<div class="cartao-r" style="margin-top:26px;min-height:0"><p id="r-prev">Obrigada pela sua compra!</p><div class="ass"><img src="img/logo_icone_rosa_vivo.png" alt="" width="34" height="34"><span class="recado" style="color:var(--fram)">Badulce · feito com carinho</span></div></div>
+<div style="margin-top:22px" id="c-lista"></div><div class="total"><span>Total</span><span id="c-total">R$ 0,00</span></div>
+<div class="pedido" id="c-pedido"></div>
+<div class="acoes"><button type="button" class="btn" id="c-copia">Copiar pedido</button><a class="btn alt" id="c-dm" href="#" target="_blank" rel="noopener">Abrir o direct da Badulce</a></div></div>
+</div></div></section>
+
+</main>
+<footer class="rodape babado-topo"><div class="cx"><p><b>Badulce</b> · doces feitos com carinho · <a href="https://www.instagram.com/baldulce._/" target="_blank" rel="noopener">@baldulce._</a></p><p>Imagens ilustrativas, geradas por IA. Identidade visual e site por <a href="../../index.html#logo" style="text-decoration:underline">Emerson Silva</a> · <a href="../../index.html#sites" style="text-decoration:underline">outros websites</a></p></div></footer>
+<script src="js/site.js"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>

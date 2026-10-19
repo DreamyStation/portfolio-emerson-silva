@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monte a semana · Comendo Bem</title>
+<meta name="description" content="Escolha quantas marmitas, quais linhas e em que dias, e veja o preço cair conforme o pedido cresce.">
+<meta name="theme-color" content="#075C3B">
+<link rel="icon" href="img/logo_cb.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nunito:wght@400;700;800;900&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h.01M12 14h.01M16 14h.01"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 10 5 20 4c0 10-5 15-14 15zM5 19l8-8"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4l4 3v4h-8zM6.5 18.5a1.4 1.4 0 100 .01M17.5 18.5a1.4 1.4 0 100 .01"/></symbol>
+<symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M4.2 7l15.6 10M4.2 17L19.8 7M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5"/></symbol>
+<symbol id="i-micro" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><rect x="5.5" y="8" width="9.5" height="8" rx="1.2"/><path d="M18.5 9v.01M18.5 12v.01M18.5 15v.01"/></symbol>
+<symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 016 0v2"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+</defs></svg>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<aside class="rail"><a class="logo" href="index.html"><img src="img/logo_cb.png" width="56" height="56" alt=""><b>Comendo<br>Bem</b></a>
+<nav aria-label="Principal"><a href="index.html"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Início</a><a href="cardapio.html"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>Cardápio</a><a href="semana.html" aria-current=page><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>Monte a semana</a><a href="nutricao.html"><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg>Proteína e preparo</a></nav>
+<div class="pedir"><a class="btn rosa" href="semana.html" style="width:100%">Montar minha semana</a><small>Marmita fit congelada.<br>Site demonstrativo: preços e contatos são exemplos.</small></div></aside>
+<main id="conteudo">
+<div class="demo">Site demonstrativo · projeto de design para a identidade Comendo Bem · preços, prazos e contatos são exemplos</div>
+
+<section class="sec"><div class="cx">
+<div class="cab"><span class="etq">Monte a semana</span><h1 style="font-size:clamp(2.2rem,4.6vw,3.8rem)">Quantas, quais e em que dias</h1><p>Toque num círculo para escolher a linha daquela refeição: Proteína, Leve ou Veggie. Toque de novo para trocar ou tirar. Quanto mais marmitas, menor o preço de cada uma.</p></div>
+<div class="semana">
+<div class="cartao">
+<div class="campo">Tamanho</div>
+<div class="tamanhos"><button type="button" data-t="300" aria-pressed="false">300 g<small>leve · R$ 22</small></button><button type="button" data-t="400" aria-pressed="true">400 g<small>médio · R$ 26</small></button><button type="button" data-t="500" aria-pressed="false">500 g<small>reforçado · R$ 30</small></button></div>
+<div class="grade" id="grade" role="group" aria-label="Refeições da semana"></div>
+<div class="atalhos" role="group" aria-label="Atalhos"><button type="button" data-p="leve">Semana leve</button><button type="button" data-p="equilibrio">Equilibrada</button><button type="button" data-p="forca">Só proteína</button><button type="button" data-p="veggie">Só veggie</button><button type="button" data-p="limpar">Limpar</button></div>
+</div>
+<aside class="sacola" aria-live="polite"><h3>Sua semana</h3><div id="s-n" style="font-weight:900;margin-bottom:6px">0 marmitas</div><div id="s-linhas"></div>
+<div class="l"><span>Subtotal</span><b id="s-sub">R$ 0,00</b></div><div class="l"><span>Desconto</span><b id="s-desc">—</b></div>
+<div class="tot"><span>Total</span><span id="s-total">R$ 0,00</span></div><div class="eco" id="s-eco"></div>
+<div class="faixa-desc" id="s-faixa" aria-hidden="true"><i></i><i></i><i></i></div><small style="display:flex;justify-content:space-between;color:var(--mudo);font-weight:700;margin-top:4px"><span>10 · 5%</span><span>14 · 10%</span><span>20 · 15%</span></small>
+<pre id="s-texto">Seu pedido aparece aqui.</pre>
+<button type="button" class="btn" id="s-copia" style="width:100%">Copiar pedido</button>
+<button type="button" class="btn alt" style="width:100%;margin-top:10px" disabled aria-disabled="true">Enviar pelo WhatsApp (número de exemplo)</button>
+</aside></div></div></section>
+
+<footer class="rodape"><div class="cx"><p><b>Comendo Bem</b> · marmita fit congelada. Identidade visual e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div></footer>
+</main>
+<script src="js/site.js"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>

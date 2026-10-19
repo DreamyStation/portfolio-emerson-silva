@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidade · Controle Financeiro Privado</title>
+<meta name="description" content="PIN, dados só no aparelho, backup criptografado e telas com saldo protegidas contra print.">
+<meta name="theme-color" content="#0D1024">
+<link rel="icon" href="img/app_controle_icone.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fredoka:wght@500;600&family=Pixelify+Sans:wght@500;700&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo"><div class="wrap">
+<a class="logo" href="index.html"><img src="img/app_controle_icone.png" width="42" height="42" alt=""><b>Controle Financeiro Privado</b></a>
+<nav class="menu" aria-label="Principal"><a href="index.html">Início</a><a href="modos.html">Modos</a><a href="jogo.html" class=rpg>Jogo</a><a href="ferramentas.html">Ferramentas</a><a href="privacidade.html" aria-current=page>Privacidade</a><a href="baixar.html" class=baixar>Baixar</a></nav>
+</div></header>
+<main id="conteudo">
+
+<section class="sec"><div class="wrap">
+<div class="cab"><span class="etq">Privacidade</span><h1 style="font-size:clamp(2.2rem,4.6vw,3.8rem)">Seus dados só com você</h1><p>O app foi desenhado para que ninguém, nem o autor, precise ver o seu dinheiro. O que isso quer dizer na prática:</p></div>
+<div class="quad">
+<div class="pnl"><h3>1 · PIN e chave de recuperação</h3><p>O app abre com um PIN. Se você esquecer, a chave de recuperação, que só você guarda, devolve o acesso.</p></div>
+<div class="pnl"><h3>2 · Só no celular</h3><p>Tudo fica no aparelho, e o app funciona sem internet. Não há conta nem servidor.</p></div>
+<div class="pnl"><h3>3 · Backup criptografado</h3><p>Você exporta uma cópia fechada e a guarda onde quiser.</p></div>
+<div class="pnl"><h3>4 · Prints bloqueados</h3><p>As telas com saldo não deixam tirar foto da tela.</p></div>
+</div>
+<div class="duas" style="margin-top:56px;align-items:start">
+<div><span class="etq">Sem anúncio</span><h2 style="font-size:clamp(1.5rem,3vw,2.2rem)">O que o app não faz</h2>
+<ul style="color:var(--mudo);padding-left:1.1em"><li>Não lê os aplicativos de corrida por dentro: o modo motorista só usa os números que você digita ou o print que você mesmo escolhe.</li><li>Não usa GPS para o modo motorista.</li><li>Não mostra anúncio nem cobra dentro do modo educativo.</li><li>Não promete conselho financeiro nem jurídico: os modelos de contrato e guias de leis são pontos de partida.</li></ul></div>
+<div class="termo" id="termo-lei"><b>Termo de uso</b><p style="margin:8px 0 0">O Controle Financeiro Privado é uma obra de <b>Emerson Silva - DreamyStation</b>, protegida pela <b>Lei de Direitos Autorais (Lei 9.610/1998)</b> e pela <b>Lei do Software (Lei 9.609/1998)</b>. Todos os direitos reservados.</p><p style="margin:8px 0 0">Você pode instalar e usar o app para o seu próprio uso. É proibido copiar, plagiar, redistribuir, descompilar, alterar ou criar obras derivadas sem autorização por escrito do autor.</p></div>
+</div>
+</div></section>
+
+</main>
+<footer class="rodape"><div class="wrap">
+<p><b>Controle Financeiro Privado</b> · versão 0.3.0 para Android. Obra de <b>Emerson Silva - DreamyStation</b>, protegida pelas Leis 9.610/1998 e 9.609/1998. Todos os direitos reservados.</p>
+<p><a href="../../index.html#apps">Ver o app no portfólio</a> · <a href="../../index.html#sites">Ver outros websites</a></p>
+</div></footer>
+<script src="js/site.js"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>

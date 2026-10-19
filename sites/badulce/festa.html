@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Para a festa · Badulce</title>
+<meta name="description" content="Calcule quantos doces encomendar para a sua festa e o prazo para pedir.">
+<meta name="theme-color" content="#E9326D">
+<link rel="icon" href="img/logo_icone_rosa_vivo.png">
+<link rel="stylesheet" href="css/site.css">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<div class="demo">Site demonstrativo · projeto de design para a identidade Badulce · sabores, preços e prazos são exemplos</div>
+<header class="topo"><a class="logo" href="index.html" aria-label="Badulce, feito com carinho"><img src="img/logo_horizontal_rosa_vivo.png" width="2400" height="806" alt="Badulce · feito com carinho"></a>
+<nav class="abas" aria-label="Principal"><a href="index.html"><img src="img/ic_coracao_traco_vivo.svg" alt="" width="22" height="22">Início</a><a href="cardapio.html"><img src="img/ic_brownie_traco_vivo.svg" alt="" width="22" height="22">Cardápio</a><a href="caixinha.html"><img src="img/ic_sacola_traco_vivo.svg" alt="" width="22" height="22">Caixinha de presente</a><a href="festa.html" aria-current=page><img src="img/ic_bolo_traco_vivo.svg" alt="" width="22" height="22">Para a festa</a></nav></header>
+<div class="babado" aria-hidden="true"></div>
+<main id="conteudo">
+
+<section class="sec"><div class="cx">
+<div class="cab"><h1>Para a festa</h1><p>Conte quantos convidados vão e por quanto tempo vai a festa. A calculadora sugere quantos doces e como misturar, com 10% de sobra de segurança.</p></div>
+<div class="festa">
+<form class="painel" id="f-festa" onsubmit="return false"><div class="campos">
+<label class="campo">Convidados<input id="f-conv" type="number" inputmode="numeric" min="1" max="500" value="30"></label>
+<label class="campo">Duração<select id="f-dur"><option value="4">Até 2 horas</option><option value="5" selected>De 3 a 4 horas</option><option value="6">Mais de 4 horas</option></select></label>
+<label class="campo full">Ocasião<select id="f-tipo"><option value="aniv" selected>Aniversário</option><option value="cha">Chá ou encontro</option><option value="cas">Casamento</option></select></label>
+<label class="campo full">Data da festa (opcional)<input id="f-data" type="date"></label></div>
+<p id="f-prazo" style="margin:16px 0 0;font-weight:800"></p><p id="f-ok" style="margin:6px 0 0;color:var(--fram);font-weight:900" role="status"></p></form>
+<div class="painel"><div class="campo">Sugestão</div><div class="grande" id="f-qtd">0 doces</div><div class="mix" id="f-mix"></div>
+<div class="linha"><span>Estimativa</span><b id="f-total">R$ 0,00</b></div><div class="linha"><span>Custo médio</span><b id="f-pp">—</b></div>
+<div class="pedido" id="f-pedido"></div>
+<div class="acoes"><button type="button" class="btn" id="f-copia">Copiar pedido</button><a class="btn alt" id="f-dm" href="#" target="_blank" rel="noopener">Abrir o direct da Badulce</a></div></div>
+</div></div></section>
+
+</main>
+<footer class="rodape babado-topo"><div class="cx"><p><b>Badulce</b> · doces feitos com carinho · <a href="https://www.instagram.com/baldulce._/" target="_blank" rel="noopener">@baldulce._</a></p><p>Imagens ilustrativas, geradas por IA. Identidade visual e site por <a href="../../index.html#logo" style="text-decoration:underline">Emerson Silva</a> · <a href="../../index.html#sites" style="text-decoration:underline">outros websites</a></p></div></footer>
+<script src="js/site.js"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>

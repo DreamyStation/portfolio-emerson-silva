@@ -1,0 +1,128 @@
+/* Comendo Bem · site web (computador primeiro, adaptado ao celular)
+   Identidade: verde-floresta, creme de papel, as três cintas (laranja, âmbar, roxo), Alfa Slab One + Nunito. Menu lateral fixo no computador. */
+:root{--verde:#0C8454;--verde2:#075C3B;--verde3:#054B30;--creme:#FAF5E4;--creme2:#F0E7CC;--rosa:#FCE4E4;--tinta:#16241D;--mudo:#4D5F55;--prot:#E4572E;--leve:#F0A63A;--veg:#7B3FA0;--rail:268px}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--tinta);font:400 1.0625rem/1.62 "Nunito",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--verde)}
+:focus-visible{outline:3px solid var(--verde);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{margin:0;font-family:"Alfa Slab One","Roboto Slab",Georgia,serif;font-weight:400;line-height:1.06;color:var(--verde2)}
+h1{font-size:clamp(2.5rem,5.4vw,5rem)}h2{font-size:clamp(1.9rem,3.6vw,3rem)}h3{font-size:clamp(1.25rem,2vw,1.6rem)}
+p{margin:0 0 1em}
+.pula{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 14px;z-index:99}.pula:focus{left:8px}
+svg.i{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* menu lateral */
+.rail{position:fixed;inset:0 auto 0 0;width:var(--rail);background:var(--verde2);color:var(--creme);display:flex;flex-direction:column;padding:24px 20px;z-index:30;overflow-y:auto}
+.rail .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.rail .logo img{width:56px;height:56px;border-radius:15px;flex:none}
+.rail .logo b{font:400 1.25rem/1 "Alfa Slab One",serif}
+.rail nav{margin-top:34px;display:flex;flex-direction:column;gap:6px}
+.rail nav a{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;color:#cfe9dc;text-decoration:none;font-weight:800;transition:background .2s,transform .2s}
+.rail nav a:hover{background:rgba(255,255,255,.1);color:#fff;transform:translateX(3px)}
+.rail nav a[aria-current=page]{background:var(--creme);color:var(--verde2)}
+.rail .pedir{margin-top:auto;padding-top:24px}
+.rail small{display:block;margin-top:14px;color:#9cc7b5;font-size:.8rem;line-height:1.4}
+main{margin-left:var(--rail);min-height:100vh}
+.demo{background:#111;color:#fff;font:700 .8rem/1.3 system-ui,sans-serif;text-align:center;padding:8px 16px}
+.cx{width:min(100% - 2*clamp(18px,4vw,56px),1100px);margin-inline:auto}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:11px 26px;font:900 1.02rem "Nunito",sans-serif;text-decoration:none;background:var(--verde);color:#fff;border:3px solid var(--verde3);border-radius:999px;box-shadow:0 5px 0 var(--verde3);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--verde3)}.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--verde3)}
+.btn.alt{background:var(--creme);color:var(--verde2)}.btn.rosa{background:var(--rosa);color:var(--verde2)}
+.btn[disabled],.btn[aria-disabled=true]{opacity:.5;cursor:not-allowed;transform:none}
+.acoes{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.etq{display:inline-flex;align-items:center;gap:8px;font:900 .78rem "Nunito",sans-serif;letter-spacing:.1em;text-transform:uppercase;background:var(--verde2);color:var(--creme);padding:7px 14px;border-radius:999px;margin-bottom:16px}
+
+/* herói */
+.hero{position:relative;padding-block:clamp(38px,6vw,84px) clamp(48px,6vw,80px);overflow:hidden}
+.hero .cx{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,5vw,64px);align-items:center}
+.hero p.sub{font-size:1.25rem;max-width:44ch;color:var(--mudo);margin-top:20px}
+.hero .foto{position:relative}
+.hero .foto img{border-radius:32px;border:6px solid var(--verde2);box-shadow:14px 14px 0 var(--verde2);aspect-ratio:5/4;object-fit:cover;width:100%}
+.selo-giro{position:absolute;right:-18px;bottom:-26px;width:clamp(110px,13vw,150px);aspect-ratio:1;border-radius:50%;background:var(--prot);color:#fff;display:grid;place-items:center;text-align:center;font:400 1rem/1.05 "Alfa Slab One",serif;border:5px solid var(--creme);animation:gira 18s linear infinite}
+.selo-giro span{display:block;animation:gira 18s linear infinite reverse;padding:10px}
+@keyframes gira{to{transform:rotate(360deg)}}
+
+/* faixas de cinta (marquee) */
+.faixa{overflow:hidden;white-space:nowrap;padding-block:12px;color:#fff;font:400 1.35rem/1 "Alfa Slab One",serif;letter-spacing:.04em;border-block:4px solid rgba(0,0,0,.18)}
+.faixa i{display:inline-block;padding-inline:22px;font-style:normal;animation:corre 26s linear infinite}
+.faixa.p{background:var(--prot)}.faixa.l{background:var(--leve);color:#3a2300}.faixa.v{background:var(--veg)}
+.faixa.l i{animation-direction:reverse}
+@keyframes corre{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.sec{padding-block:clamp(44px,6vw,88px)}
+.sec .cab{max-width:60ch;margin-bottom:clamp(24px,4vw,44px)}.sec .cab p{color:var(--mudo);font-size:1.12rem;margin-top:14px}
+.escuro{background:var(--verde2);color:var(--creme)}.escuro h2,.escuro h3{color:var(--creme)}.escuro .cab p{color:#cfe9dc}
+.rosa-bg{background:var(--rosa)}
+
+/* as três linhas: selos */
+.selos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,40px)}
+.selo{--c:var(--prot);position:relative;text-align:center;padding:clamp(22px,3vw,36px) clamp(18px,2vw,26px);background:var(--creme);border:12px solid var(--c);border-radius:50%;aspect-ratio:1/1.02;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .3s}
+.selo:hover{transform:rotate(-3deg) scale(1.03)}
+.selo.leve{--c:var(--leve)}.selo.veg{--c:var(--veg)}
+.selo img{width:64px;height:64px;border-radius:16px;margin-bottom:8px}
+.selo h3{color:var(--c);font-size:clamp(1.6rem,2.6vw,2.3rem)}.selo.leve h3{color:#9a5a05}
+.selo p{margin:8px 0 0;font-weight:800;font-size:clamp(.92rem,1.2vw,1.05rem);line-height:1.3}.selo small{display:block;color:var(--mudo);font-weight:700;margin-top:8px;font-size:.88rem}
+.cartao{background:#fff;border-radius:24px;border:3px solid var(--verde2);padding:clamp(18px,2.4vw,28px)}
+.passos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;counter-reset:p;padding:0;margin:0;list-style:none}
+.passos li{counter-increment:p;background:var(--creme);color:var(--tinta);border-radius:24px;padding:26px 20px 22px;position:relative}
+.passos li::before{content:counter(p);position:absolute;top:-16px;left:18px;width:36px;height:36px;border-radius:50%;background:var(--leve);color:#3a2300;font:400 1.1rem/36px "Alfa Slab One",serif;text-align:center}
+.passos svg.i{width:42px;height:42px;color:var(--verde);margin-bottom:10px}.passos h3{font-size:1.2rem;margin-bottom:6px}.passos p{margin:0;font-size:.98rem;color:var(--mudo)}
+.passos .neve{animation:gira 14s linear infinite}
+.duas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.duas img{border-radius:28px;border:5px solid var(--verde2)}
+details{background:#fff;border:3px solid var(--verde2);border-radius:18px;padding:14px 20px;margin-bottom:12px}details summary{cursor:pointer;font-weight:900;color:var(--verde2)}details p{margin:10px 0 0;color:var(--mudo)}
+
+/* cardápio */
+.tabela{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:3px solid var(--verde2);border-radius:20px;overflow:hidden}
+.tabela th,.tabela td{padding:14px 16px;text-align:left;border-bottom:2px dashed #d9d2b8;vertical-align:top}.tabela tr:last-child td{border-bottom:0}
+.tabela th{background:var(--verde2);color:var(--creme);font:900 .8rem "Nunito";letter-spacing:.08em;text-transform:uppercase}
+.tag{display:inline-block;font:900 .85rem "Nunito";color:#fff;padding:3px 12px;border-radius:999px;background:var(--prot)}.tag.leve{background:var(--leve);color:#3a2300}.tag.veg{background:var(--veg)}
+
+/* monte a semana */
+.semana{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(18px,3vw,36px);align-items:start}
+.campo{display:flex;flex-direction:column;gap:6px;font-weight:900;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase}
+.campo input,.campo select{min-height:48px;padding:9px 12px;font:700 1rem "Nunito";color:var(--tinta);background:#fff;border:3px solid var(--verde2);border-radius:14px;width:100%}
+.tamanhos{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 24px}
+.tamanhos button{flex:1 1 140px;min-height:62px;font:900 1rem "Nunito";background:#fff;color:var(--verde2);border:3px solid var(--verde2);border-radius:18px;cursor:pointer;line-height:1.2}.tamanhos small{display:block;font-weight:700;color:var(--mudo)}
+.tamanhos button[aria-pressed=true]{background:var(--verde2);color:#fff}.tamanhos button[aria-pressed=true] small{color:#cfe9dc}
+.grade{display:grid;grid-template-columns:60px repeat(6,minmax(0,1fr));gap:8px;align-items:center}
+.grade .dia,.grade .ref{font:900 .78rem "Nunito";text-transform:uppercase;letter-spacing:.06em;text-align:center;color:var(--mudo)}.grade .ref{text-align:left}
+.cel{--c:#e7dfc4;aspect-ratio:1;border:5px solid var(--c);background:var(--creme);border-radius:50%;cursor:pointer;display:grid;place-items:center;font:900 .72rem/1.05 "Nunito";text-align:center;color:var(--tinta);padding:0;transition:transform .15s,background .2s}
+.cel:hover{transform:scale(1.07)}.cel[data-v="1"]{--c:var(--prot);background:#fff1ec}.cel[data-v="2"]{--c:var(--leve);background:#fff6e5}.cel[data-v="3"]{--c:var(--veg);background:#f4ecf9}
+.atalhos{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 6px}.atalhos button{font:900 .88rem "Nunito";padding:9px 16px;border-radius:999px;border:3px solid var(--verde2);background:#fff;color:var(--verde2);cursor:pointer}.atalhos button:hover{background:var(--rosa)}
+.sacola{position:sticky;top:24px;background:var(--rosa);border:4px solid var(--verde2);border-radius:26px;padding:22px;box-shadow:8px 8px 0 var(--verde2)}
+.sacola h3{margin-bottom:12px}.sacola .l{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:2px dashed #d9a8a8;font-weight:700}
+.sacola .tot{display:flex;justify-content:space-between;align-items:baseline;font:400 2.2rem "Alfa Slab One";color:var(--verde2);margin:14px 0 4px}
+.sacola .eco{color:var(--verde);font-weight:900;min-height:1.4em}
+.sacola pre{white-space:pre-wrap;font:600 .85rem/1.4 "Nunito";background:#fff;border:2px dashed var(--verde2);border-radius:14px;padding:10px 12px;margin:12px 0}
+.faixa-desc{display:flex;gap:6px;margin:10px 0 0}.faixa-desc i{flex:1;height:10px;border-radius:99px;background:#e8c9c9}.faixa-desc i.on{background:var(--verde)}
+
+/* nutrição e preparo */
+.ferr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,3vw,36px);align-items:start}
+.campos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.campos .full{grid-column:1/-1}
+.res{margin-top:18px;padding:16px 18px;background:var(--rosa);border:3px solid var(--verde2);border-radius:18px}.res .g{font:400 2.4rem/1 "Alfa Slab One";color:var(--verde2)}.res p{margin:6px 0 0;color:var(--mudo)}
+.timer{display:grid;place-items:center;gap:16px;text-align:center}
+.anel{position:relative;width:min(100%,260px);aspect-ratio:1}.anel svg{width:100%;height:100%;transform:rotate(-90deg)}
+.anel circle{fill:none;stroke-width:14}.anel .fundo{stroke:#e3dcc3}.anel .prog{stroke:var(--prot);stroke-linecap:round;stroke-dasharray:565;stroke-dashoffset:0;transition:stroke-dashoffset .3s linear}
+.anel b{position:absolute;inset:0;display:grid;place-items:center;font:400 3rem "Alfa Slab One";color:var(--verde2)}
+.vapor{display:flex;gap:10px;height:34px;opacity:0;transition:opacity .4s}.vapor.on{opacity:1}.vapor i{width:8px;height:34px;border-radius:8px;background:linear-gradient(#cfe9dc,transparent);animation:sobe 1.6s ease-in-out infinite}.vapor i:nth-child(2){animation-delay:.3s}.vapor i:nth-child(3){animation-delay:.6s}
+@keyframes sobe{0%{transform:translateY(8px) scaleY(.6);opacity:0}50%{opacity:1}100%{transform:translateY(-12px) scaleY(1.1);opacity:0}}
+.opcoes{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.opcoes button{font:900 .9rem "Nunito";padding:9px 16px;border-radius:999px;border:3px solid var(--verde2);background:#fff;color:var(--verde2);cursor:pointer}.opcoes button[aria-pressed=true]{background:var(--verde2);color:#fff}
+.rodape{background:var(--verde3);color:#cfe9dc;padding-block:34px;font-size:.95rem}.rodape .cx{display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:space-between}.rodape p{margin:0}.rodape a{color:#fff}
+
+@media (max-width:1100px){.semana{grid-template-columns:minmax(0,1fr)}.sacola{position:static}.passos{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:34px}}
+@media (max-width:900px){
+ :root{--rail:0px}
+ .rail{position:sticky;inset:0 0 auto 0;width:auto;height:auto;flex-direction:row;align-items:center;flex-wrap:wrap;gap:8px 14px;padding:10px 16px;overflow:visible}
+ .rail .logo img{width:42px;height:42px}.rail .logo b{font-size:1rem}
+ .rail nav{margin:0;flex-direction:row;flex-wrap:wrap;gap:2px;flex:1 1 100%;order:3}.rail nav a{padding:8px 11px;font-size:.9rem}.rail nav a svg{display:none}.rail nav a:hover{transform:none}
+ .rail .pedir,.rail small{display:none}
+ .hero .cx,.duas,.ferr{grid-template-columns:minmax(0,1fr)}.selos{grid-template-columns:minmax(0,1fr);max-width:420px;margin-inline:auto}
+}
+@media (max-width:640px){.passos{grid-template-columns:minmax(0,1fr)}.campos{grid-template-columns:minmax(0,1fr)}.grade{grid-template-columns:66px repeat(6,minmax(0,1fr));gap:4px}.grade .ref{font-size:.64rem;letter-spacing:0}.cel{border-width:3px;font-size:.55rem}.tabela th,.tabela td{padding:10px 8px;font-size:.92rem}.selo-giro{right:-6px}}
+@media (max-width:640px){.tabela.pilha,.tabela.pilha tbody,.tabela.pilha tr,.tabela.pilha td{display:block;width:100%}.tabela.pilha thead{display:none}.tabela.pilha tr{padding:12px 10px;border-bottom:3px solid var(--verde2)}.tabela.pilha td{border:0;padding:4px 6px}.tabela.pilha td::before{content:attr(data-l);display:block;font:900 .68rem Nunito;letter-spacing:.08em;text-transform:uppercase;color:var(--mudo)}}
+@media (max-width:400px){.grade .dia{font-size:.62rem;letter-spacing:0}.sacola .tot{font-size:1.8rem}.sacola{padding:18px}}

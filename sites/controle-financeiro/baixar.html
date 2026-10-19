@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baixar · Controle Financeiro Privado</title>
+<meta name="description" content="Baixe o aplicativo para Android ou a planilha com tutorial para iPhone.">
+<meta name="theme-color" content="#0D1024">
+<link rel="icon" href="img/app_controle_icone.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fredoka:wght@500;600&family=Pixelify+Sans:wght@500;700&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo"><div class="wrap">
+<a class="logo" href="index.html"><img src="img/app_controle_icone.png" width="42" height="42" alt=""><b>Controle Financeiro Privado</b></a>
+<nav class="menu" aria-label="Principal"><a href="index.html">Início</a><a href="modos.html">Modos</a><a href="jogo.html" class=rpg>Jogo</a><a href="ferramentas.html">Ferramentas</a><a href="privacidade.html">Privacidade</a><a href="baixar.html" class=baixar aria-current=page>Baixar</a></nav>
+</div></header>
+<main id="conteudo">
+
+<section class="sec"><div class="wrap">
+<div class="cab"><span class="etq">Baixar</span><h1 style="font-size:clamp(2.2rem,4.6vw,3.8rem)">Controle Financeiro Privado</h1><p>Aplicativo para Android, fora da loja: você baixa o instalador direto do repositório de versões. Para iPhone existe uma planilha com tutorial.</p></div>
+<div class="duas" style="align-items:start">
+<div class="pnl"><div style="display:flex;gap:16px;align-items:center;margin-bottom:16px"><img src="img/app_controle_icone.png" width="72" height="72" alt="Ícone do app: uma barra de ouro sobre fundo azul-noite" style="border:3px solid var(--ouro);box-shadow:4px 4px 0 var(--sombra)"><div><span class="etq" style="margin:0 0 6px">Android · versão 0.3.0</span><h2 style="font-size:1.6rem">Para Android</h2></div></div>
+<div class="termo" id="termo" role="group" aria-labelledby="termo-t"><b id="termo-t">Termo de uso</b>
+<p style="margin:8px 0 0">Obra de <b>Emerson Silva - DreamyStation</b>, protegida pelas <b>Leis 9.610/1998 e 9.609/1998</b>. Você pode instalar e usar o app para o seu próprio uso. É <b>proibido copiar, plagiar, redistribuir, descompilar, alterar ou criar obras derivadas</b> sem autorização por escrito do autor.</p>
+<label><input type="checkbox" id="aceite"><span>Li e concordo com o termo de uso.</span></label>
+<p class="aviso" id="aviso" role="status" aria-live="polite" hidden>Marque a confirmação acima para poder baixar.</p></div>
+<div class="acoes"><a class="btn" id="apk" href="#termo" aria-disabled="true" data-href="https://github.com/DreamyStation/dev-app-releases/releases/download/v0.3.0/controle-financeiro-0.3.0.apk" rel="noopener">Baixar para Android · 60 MB</a><a class="btn alt" href="https://github.com/DreamyStation/dev-app-releases/releases" target="_blank" rel="noopener">Ver todas as versões</a></div>
+<p class="nota" style="color:var(--mudo)">O Android pode pedir para permitir a instalação de fontes externas. O arquivo tem uma soma de verificação (.sha256) na página de versões para você conferir.</p></div>
+<div class="pnl"><span class="etq">iPhone</span><h2 style="font-size:1.6rem;margin-bottom:12px">Planilha com tutorial</h2>
+<p style="color:var(--mudo)">O app é só para Android. Para quem usa iPhone, a mesma ideia vira uma planilha com abas de lançamentos, simulação de compra e resumo do mês, com um tutorial em PDF.</p>
+<div class="acoes"><a class="btn verde" href="../../planilha-tutorial.html">Abrir o tutorial</a><a class="btn alt" href="../../downloads/controle-financeiro-planilha.xlsx">Baixar a planilha</a></div>
+<p class="nota" style="color:var(--mudo)">Há também uma planilha de exemplo, já preenchida, no tutorial.</p></div>
+</div></div></section>
+
+</main>
+<footer class="rodape"><div class="wrap">
+<p><b>Controle Financeiro Privado</b> · versão 0.3.0 para Android. Obra de <b>Emerson Silva - DreamyStation</b>, protegida pelas Leis 9.610/1998 e 9.609/1998. Todos os direitos reservados.</p>
+<p><a href="../../index.html#apps">Ver o app no portfólio</a> · <a href="../../index.html#sites">Ver outros websites</a></p>
+</div></footer>
+<script src="js/site.js"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>

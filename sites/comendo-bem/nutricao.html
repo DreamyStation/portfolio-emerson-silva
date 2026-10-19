@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proteína e preparo · Comendo Bem</title>
+<meta name="description" content="Calcule a proteína do dia, use o timer de preparo e confira a validade no freezer.">
+<meta name="theme-color" content="#075C3B">
+<link rel="icon" href="img/logo_cb.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nunito:wght@400;700;800;900&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h.01M12 14h.01M16 14h.01"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 10 5 20 4c0 10-5 15-14 15zM5 19l8-8"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4l4 3v4h-8zM6.5 18.5a1.4 1.4 0 100 .01M17.5 18.5a1.4 1.4 0 100 .01"/></symbol>
+<symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 2v20M4.2 7l15.6 10M4.2 17L19.8 7M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5"/></symbol>
+<symbol id="i-micro" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><rect x="5.5" y="8" width="9.5" height="8" rx="1.2"/><path d="M18.5 9v.01M18.5 12v.01M18.5 15v.01"/></symbol>
+<symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 016 0v2"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+</defs></svg>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<aside class="rail"><a class="logo" href="index.html"><img src="img/logo_cb.png" width="56" height="56" alt=""><b>Comendo<br>Bem</b></a>
+<nav aria-label="Principal"><a href="index.html"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg>Início</a><a href="cardapio.html"><svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>Cardápio</a><a href="semana.html"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>Monte a semana</a><a href="nutricao.html" aria-current=page><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg>Proteína e preparo</a></nav>
+<div class="pedir"><a class="btn rosa" href="semana.html" style="width:100%">Montar minha semana</a><small>Marmita fit congelada.<br>Site demonstrativo: preços e contatos são exemplos.</small></div></aside>
+<main id="conteudo">
+<div class="demo">Site demonstrativo · projeto de design para a identidade Comendo Bem · preços, prazos e contatos são exemplos</div>
+
+<section class="sec"><div class="cx">
+<div class="cab"><span class="etq">Ferramentas</span><h1 style="font-size:clamp(2.2rem,4.6vw,3.8rem)">Proteína e preparo</h1><p>Duas contas e um timer para o dia a dia. São estimativas gerais para adultos saudáveis, e não substituem um nutricionista.</p></div>
+<div class="ferr">
+<div class="cartao"><h3 style="margin-bottom:14px">Quanta proteína eu preciso?</h3>
+<form id="f-prot" class="campos" onsubmit="return false">
+<label class="campo">Seu peso (kg)<input id="p-peso" type="number" inputmode="decimal" min="30" max="250" step="0.5" value="70"></label>
+<label class="campo">Marmitas Proteína por dia<input id="p-qtd" type="number" inputmode="numeric" min="0" max="4" step="1" value="1"></label>
+<label class="campo full">Seu perfil<select id="p-perfil"><option value="sed">Pouca atividade física</option><option value="ativo" selected>Treina regularmente</option><option value="emag">Quer emagrecer mantendo massa</option><option value="massa">Quer ganhar massa</option></select></label>
+</form>
+<div class="res" aria-live="polite"><div class="g" id="p-faixa">—</div><p>de proteína por dia, como faixa de referência (de 0,8 a 2,0 g por kg, conforme o perfil).</p><p style="margin-top:12px"><b id="p-marm">0 g</b> vêm das suas marmitas Proteína (32 g cada).</p><p id="p-pct"></p></div></div>
+
+<div class="cartao timer" id="timer"><h3>Timer de preparo</h3>
+<div class="opcoes" role="group" aria-label="O que você vai esquentar"><button type="button" data-k="prot" aria-pressed="true">Proteína</button><button type="button" data-k="leve" aria-pressed="false">Leve</button><button type="button" data-k="veg" aria-pressed="false">Veggie</button><button type="button" data-k="forno" aria-pressed="false">Forno</button></div>
+<div class="vapor" id="t-vapor" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="anel"><svg viewBox="0 0 200 200" aria-hidden="true"><circle class="fundo" cx="100" cy="100" r="90"/><circle class="prog" cx="100" cy="100" r="90"/></svg><b id="t-tempo" aria-live="off">05:00</b></div>
+<div id="t-nome" style="font-weight:900;color:var(--verde2)"></div><div id="t-aviso" role="status" aria-live="polite" style="color:var(--mudo);font-weight:700;min-height:1.5em"></div>
+<div class="acoes" style="margin-top:0;justify-content:center"><button type="button" class="btn" id="t-ini">Começar</button><button type="button" class="btn alt" id="t-zera">Zerar</button></div></div>
+
+<div class="cartao" style="grid-column:1/-1"><h3 style="margin-bottom:14px">Até quando posso guardar?</h3>
+<form id="f-freezer" onsubmit="return false" style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:18px;align-items:end"><label class="campo">Data em que chegou<input id="z-data" type="date"></label><div class="res" style="margin:0"><div id="z-res" style="font-weight:900;color:var(--verde2)">Escolha a data em que as marmitas chegaram.</div><p>No freezer, a validade é de 90 dias.</p></div></form></div>
+</div></div></section>
+
+<footer class="rodape"><div class="cx"><p><b>Comendo Bem</b> · marmita fit congelada. Identidade visual e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div></footer>
+</main>
+<script src="js/site.js"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>

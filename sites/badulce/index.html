@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Badulce · doces feitos com carinho</title>
+<meta name="description" content="Brownie, ovo de colher, bombom, bolo e brigadeiro feitos em casa. Monte uma caixinha de presente ou calcule os doces da festa.">
+<meta name="theme-color" content="#E9326D">
+<link rel="icon" href="img/logo_icone_rosa_vivo.png">
+<link rel="stylesheet" href="css/site.css">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<div class="demo">Site demonstrativo · projeto de design para a identidade Badulce · sabores, preços e prazos são exemplos</div>
+<header class="topo"><a class="logo" href="index.html" aria-label="Badulce, feito com carinho"><img src="img/logo_horizontal_rosa_vivo.png" width="2400" height="806" alt="Badulce · feito com carinho"></a>
+<nav class="abas" aria-label="Principal"><a href="index.html" aria-current=page><img src="img/ic_coracao_traco_vivo.svg" alt="" width="22" height="22">Início</a><a href="cardapio.html"><img src="img/ic_brownie_traco_vivo.svg" alt="" width="22" height="22">Cardápio</a><a href="caixinha.html"><img src="img/ic_sacola_traco_vivo.svg" alt="" width="22" height="22">Caixinha de presente</a><a href="festa.html"><img src="img/ic_bolo_traco_vivo.svg" alt="" width="22" height="22">Para a festa</a></nav></header>
+<div class="babado" aria-hidden="true"></div>
+<main id="conteudo">
+
+<section class="hero"><div class="cx">
+<div><h1>Doces feitos<br>com carinho<span>Brownie · ovo de colher · bombom · bolo · brigadeiro</span></h1>
+<p class="sub">Doces caseiros para presentear, dividir ou matar a vontade. Escolha no cardápio, monte uma caixinha de presente ou calcule os doces da sua festa.</p>
+<div class="acoes"><a class="btn" href="cardapio.html">Ver o cardápio</a><a class="btn alt" href="caixinha.html">Montar uma caixinha</a></div></div>
+<div class="vitrine" aria-label="Doces da Badulce">
+<div class="disco d1"><img src="img/ovo_de_colher.jpg" alt="Ovo de colher com recheio de ninho e morango" width="280" height="280"></div>
+<div class="disco d2"><img src="img/brownie.jpg" alt="Brownie empilhado com nozes" width="280" height="280"></div>
+<div class="disco d3"><img src="img/bombom.jpg" alt="Bombons no prato" width="280" height="280"></div>
+<div class="disco d4"><img src="img/bolo.jpg" alt="Fatia de bolo" width="280" height="280"></div>
+<div class="disco d5"><img src="img/brigadeiro.jpg" alt="Brigadeiros" width="280" height="280"></div>
+</div></div></section>
+
+<section class="sec"><div class="cx">
+<div class="cab"><h2>Como pedir</h2><p>Três passos, sem complicação. O pedido sai pronto para você mandar no Instagram.</p></div>
+<ol class="passos">
+<li><img src="img/ic_brownie_duotone.svg" alt="" width="64" height="64"><h3>Escolha</h3><p>Monte o pedido no cardápio ou numa caixinha de presente.</p></li>
+<li><img src="img/ic_mensagem_duotone.svg" alt="" width="64" height="64"><h3>Mande a mensagem</h3><p>O texto do pedido já vem escrito. É só copiar e enviar no direct.</p></li>
+<li><img src="img/ic_sacola_duotone.svg" alt="" width="64" height="64"><h3>Combine a entrega</h3><p>A gente confirma a data, o valor e a forma de receber.</p></li>
+</ol></div></section>
+
+<section class="sec fita"><div class="cx duas">
+<div><h2>Um recadinho em cada caixinha</h2><p style="margin-top:12px;font-size:1.1rem">Todo presente vai com um cartão escrito à mão. Aqui você escreve o seu e vê como fica.</p><div class="campos"><label class="campo full">Escolha um recadinho<select id="r-pre"></select></label>
+<label class="campo full">Ou escreva o seu<textarea id="r-texto" maxlength="80"></textarea><span class="contador" id="r-cont">0 / 80</span></label></div><div class="acoes"><a class="btn" href="caixinha.html">Montar a caixinha</a></div></div>
+<div><div class="cartao-r"><p id="r-prev">Obrigada pela sua compra!</p><div class="ass"><img src="img/logo_icone_rosa_vivo.png" alt="" width="34" height="34"><span class="recado" style="color:var(--fram)">Badulce · feito com carinho</span></div></div></div>
+</div></section>
+
+<section class="sec"><div class="cx">
+<div class="cab"><h2>Para a festa</h2><p>Quantos doces para quantos convidados? A calculadora sugere a quantidade, a mistura e o prazo para encomendar.</p><div class="acoes" style="justify-content:center"><a class="btn" href="festa.html">Calcular os doces da festa</a></div></div>
+</div></section>
+
+</main>
+<footer class="rodape babado-topo"><div class="cx"><p><b>Badulce</b> · doces feitos com carinho · <a href="https://www.instagram.com/baldulce._/" target="_blank" rel="noopener">@baldulce._</a></p><p>Imagens ilustrativas, geradas por IA. Identidade visual e site por <a href="../../index.html#logo" style="text-decoration:underline">Emerson Silva</a> · <a href="../../index.html#sites" style="text-decoration:underline">outros websites</a></p></div></footer>
+<script src="js/site.js"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>
