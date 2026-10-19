@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<title>Aula 5 · CSS, a aparência · Prática aplicada</title>
+<meta name="description" content="Experimente efeitos de botão e aplique o estilo da partida ao seu site pelo terminal.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A1A4D">
+<script>try{if(JSON.parse(localStorage.getItem('pa:tema'))==='escuro')document.documentElement.dataset.tema='escuro'}catch(e){}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230D1024'/%3E%3Cpath d='M8 9h8v4h-4v2h4v4H8zM18 9h6v4h-6zM18 15h6v10h-6z' fill='%23F5B82E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/site.css?v=11">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo"><div class="cx">
+<a class="marca" href="index.html"><i aria-hidden="true">PA</i>Prática aplicada</a>
+<nav aria-label="Principal"><a href="index.html">Início</a><a href="index.html#aulas" aria-current="page">Aulas</a><a href="comandos.html">Comandos</a><a href="../../index.html#sites">Portfólio</a>
+<span class="hud" id="hud" hidden title="Relógio da partida"><span class="nm"></span><b class="rel">00:00</b></span>
+<button class="tema" id="tema" type="button" aria-pressed="false" aria-label="Alternar tema claro e escuro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg><span>Claro</span></button>
+<button class="mudo" id="mudo" type="button" aria-pressed="false" aria-label="Desligar os sons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg><span>Som</span></button></nav>
+</div></header>
+<main id="conteudo">
+<section class="hero" style="padding-bottom:clamp(20px,3vw,34px)"><div class="cx" style="grid-template-columns:minmax(0,1fr)">
+<div class="rv"><span class="tag">Aula 5 de 8 · etapa 3 da partida</span>
+<h1 style="margin-top:18px">CSS, a <span class="azul">aparência.</span></h1>
+<p class="lead" data-termos>O HTML deu a estrutura; o CSS dá a cara do site: cores, fontes, espaços, layout e movimento. Primeiro você vê como funciona uma regra e experimenta efeitos de botão. Depois aplica o estilo da sua partida, comando por comando.</p></div>
+</div></section>
+
+<section class="sec" style="padding-top:clamp(14px,2vw,24px)"><div class="cx"><div class="folha rv" data-termos>
+<span class="rot">1 · Anatomia de uma regra</span><h2>Seletor, propriedade e valor.</h2>
+<p style="margin-top:12px;max-width:70ch">Todo CSS é feito de regras. Cada regra diz a quem se aplica (seletor) e o que mudar (propriedade e valor). É a mesma estrutura do começo ao fim do site.</p>
+<div class="anat" style="margin-top:18px"><span class="s">nav a</span> {
+  <span class="p">padding</span>: <span class="v">8px 14px</span>;
+  <span class="p">border-radius</span>: <span class="v">8px</span>;
+  <span class="p">color</span>: <span class="v">#2563eb</span>;
+}  <span class="t">/* os links dentro do menu ganham espaço, cantos arredondados e cor */</span></div>
+<div class="pares" style="margin-top:22px">
+<div class="par"><img class="spr" src="img/lupa.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Seletor</span><span class="b">Quem recebe o estilo</span><p>h1, nav a, section, img. Escolhe elementos do HTML que você escreveu.</p></div>
+<div class="par"><img class="spr" src="img/chave-inglesa.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Propriedade</span><span class="b">O que muda</span><p>color, padding, margin, font-size, background, border-radius.</p></div>
+<div class="par"><img class="spr" src="img/cristal.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Valor</span><span class="b">Como muda</span><p>Um número com unidade (8px, 2rem), uma cor (#2563eb) ou uma palavra (none, center).</p></div>
+<div class="par"><img class="spr" src="img/tijolo.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Espaço</span><span class="b">Margin e padding</span><p>margin afasta o elemento dos vizinhos; padding afasta o conteúdo da borda.</p></div>
+</div></div></div></section>
+
+<section class="sec" style="padding-top:0"><div class="cx"><div class="folha rv" data-termos>
+<span class="rot">2 · Laboratório de movimento</span><h2>Como animar botões e blocos.</h2>
+<p style="margin-top:12px;max-width:72ch">Escolha um efeito, passe o mouse no botão e veja o código que o produz. Para quase tudo você só precisa de quatro comandos: <code class="cmd">:hover</code>, <code class="cmd">transition</code>, <code class="cmd">transform</code> e <code class="cmd">@keyframes</code> com <code class="cmd">animation</code>.</p>
+<div class="fxlab" style="margin-top:20px"><div><div class="fxbtns" id="fx-lista" role="group" aria-label="Efeitos"></div>
+<div class="fxpalco"><button type="button" class="dbtn" id="demoBtn">Pedir agora</button></div>
+<p class="mono" style="font-size:.78rem;margin:10px 0 0;color:var(--suave)">PASSE O MOUSE OU TOQUE NO BOTÃO · <button type="button" id="fx-replay" class="cola-os-b" style="font:inherit;background:none;border:0;color:var(--azul);cursor:pointer;text-decoration:underline;padding:0">REPETIR</button></p></div>
+<div><div class="bytes" id="fx-codigo" style="min-height:200px"></div><p id="fx-explica" style="margin:12px 0 0;font-size:.95rem;color:var(--suave)"></p></div></div>
+<h3 style="margin:26px 0 4px;font-size:1.05rem">Os comandos de movimento, um por um</h3>
+<ul class="cola"><li><code>:hover</code><span>vale enquanto o mouse está em cima: botao:hover</span></li><li><code>:active</code><span>vale enquanto o botão está sendo apertado</span></li><li><code>transition: transform .2s</code><span>faz a mudança acontecer aos poucos: propriedade e duração</span></li><li><code>transform: translateY(-3px)</code><span>move o elemento (translate), aumenta (scale) ou gira (rotate)</span></li><li><code>box-shadow: 0 8px 16px #0003</code><span>cria sombra: deslocamento, desfoque e cor</span></li><li><code>@keyframes nome { from, to }</code><span>descreve os quadros de uma animação</span></li><li><code>animation: nome 1s ease</code><span>aplica a animação: nome, duração e curva (infinite repete)</span></li><li><code>cursor: pointer</code><span>troca o cursor para a mãozinha sobre elementos clicáveis</span></li></ul>
+</div></div></section>
+
+<section class="sec" id="sem-partida" style="padding-top:0" hidden><div class="cx"><div class="folha rv"><span class="rot">Falta uma coisa</span><h2>Comece uma partida na aula 3.</h2><p style="margin-top:12px;max-width:60ch">A prática de CSS aplica o estilo sorteado ao site que você montou no HTML. Comece a partida, planeje o fluxo e escreva o HTML; depois volte aqui.</p><div class="acoes"><a class="btn jg" href="aula-3.html">Ir para a aula 3</a></div></div></div></section>
+
+<div id="com-partida" hidden>
+<section class="sec" id="lab" style="padding-top:0"><div class="cx">
+<div class="cab rv"><span class="rot">Etapa 3 · aparência</span><h2>Aplique o estilo ao seu site.</h2><p>O terminal escreve o arquivo <code class="cmd">estilo.css</code>. A tela mostra o site mudando a cada comando. Passe o mouse no menu da tela quando chegar nos efeitos.</p></div>
+<div class="brief rv" id="brief"></div>
+<div class="lab2 rv">
+<div class="px"><div class="bar"><img class="spr" src="img/livro.png" width="28" height="28" alt="" aria-hidden="true"><b>terminal de treino · guia do treino</b></div><div class="term" id="term" role="log" aria-live="polite"></div><div class="entrada"><span id="pr" aria-hidden="true">~ $</span><input id="cmd" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Digite o comando e aperte Enter" placeholder="digite aqui e aperte Enter"><button class="btn jg" id="enviar" type="button">Enter</button></div><div class="chips" id="chips"><button type="button" class="prin" data-acao="cmd">comando</button><button type="button" data-acao="dica">Dica</button><button type="button" data-acao="limpar">Limpar</button><button type="button" data-acao="reiniciar">Recomeçar</button></div><div class="progresso" id="prog"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><small>0 de 0</small></div></div>
+<div class="base2"><div class="px arq"><div class="bar"><b>suas pastas</b></div><div class="arvore" id="arvore"></div></div>
+<div class="px arq"><div class="bar"><b>a tela do site</b></div><iframe class="telaSite" id="tela" title="Prévia do site com o estilo aplicado" sandbox></iframe><div class="bar" style="border-top:4px solid var(--sombra);border-bottom:0"><b>o código do estilo.css</b></div><div class="conteudo" id="arqconteudo"></div></div></div>
+</div>
+<div class="acoes" style="margin-top:18px"><button class="btn jg" id="concluir" type="button" hidden>Concluir o site agora</button></div>
+<div class="resultado" id="resultado" role="status" style="margin-top:28px"><div class="partida-info"></div><div class="tempo">00:00</div><div class="medalhas"><div class="estr"></div><div class="estr estr2"></div></div><div class="nota">—</div><p class="msg"></p><div class="parts"></div>
+<div class="acoes" style="justify-content:center"><a class="btn jg" href="aula-3.html" onclick="try{localStorage.setItem('pa:partida','null')}catch(e){}">Jogar outra partida</a><a class="btn cl" href="#tela">Ver o site pronto</a><a class="btn cl" href="index.html#aulas">Voltar às aulas</a></div></div>
+</div></section>
+<section class="sec" style="padding-top:0"><div class="cx"><div class="folha rv" data-termos>
+<span class="rot">Cola rápida</span><h2>Comandos desta etapa.</h2>
+<h3 style="margin:22px 0 4px;font-size:1.05rem">Onde estou e o que tem aqui</h3><ul class="cola"><li><code>pwd</code><span>mostra em qual pasta você está</span></li><li><code>ls</code><span>lista os arquivos e pastas daqui (no Windows: dir)</span></li><li><code>cd pasta</code><span>entra na pasta · cd .. volta uma · cd sozinho vai para a sua pasta pessoal</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Criar</h3><ul class="cola"><li><code>mkdir nome</code><span>cria uma pasta (no Windows: md nome)</span></li><li><code>touch arquivo</code><span>cria um arquivo vazio (no Windows PowerShell: ni arquivo)</span></li><li><code>echo 'texto' > arquivo</code><span>escreve o texto no arquivo, apagando o que havia</span></li><li><code>echo 'texto' >> arquivo</code><span>acrescenta o texto no fim do arquivo</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Ver</h3><ul class="cola"><li><code>cat arquivo</code><span>mostra o conteúdo do arquivo (no Windows: type arquivo)</span></li><li><code>clear</code><span>limpa a tela do terminal (no Windows: cls)</span></li></ul>
+</div></div></section>
+</div>
+</main>
+<footer class="rodape"><div class="cx"><p><b>Prática aplicada</b> · conteúdo e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
+<script src="js/app.js?v=11"></script>
+<script src="js/termos.js?v=11"></script>
+<script src="js/partida.js?v=11"></script>
+<script src="js/shell.js?v=11"></script>
+<script src="js/aula5.js?v=11"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>

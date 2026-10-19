@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230D1024'/%3E%3Cpath d='M8 9h8v4h-4v2h4v4H8zM18 9h6v4h-6zM18 15h6v10h-6z' fill='%23F5B82E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
-<link rel="stylesheet" href="css/site.css?v=10">
+<link rel="stylesheet" href="css/site.css?v=11">
 <style id="encaixe">
 /* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
 h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
@@ -42,26 +42,26 @@ img,svg,video,canvas{max-width:100%}
 <section class="sec" style="padding-top:clamp(14px,2vw,24px)"><div class="cx"><div class="folha rv" data-termos>
 <span class="rot">A analogia do restaurante</span><h2>Um site é um restaurante que funciona pela internet.</h2>
 <div class="pares" style="margin-top:26px">
-<div class="par"><img class="spr" src="img/capivara.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Você é o cliente</span><span class="b">O navegador</span><p>Chrome, Safari, Edge: o programa que faz o pedido e mostra o prato.</p></div>
-<div class="par"><img class="spr" src="img/arara-azul.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">O garçom é o caminho</span><span class="b">A internet</span><p>Leva o pedido até a cozinha e traz a resposta de volta, em segundos.</p></div>
-<div class="par"><img class="spr" src="img/tatu.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">A cozinha é o servidor</span><span class="b">O computador do site</span><p>Um computador ligado o dia todo, guardando as páginas e respondendo pedidos.</p></div>
+<div class="par"><img class="spr" src="img/tela.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Você é o cliente</span><span class="b">O navegador</span><p>Chrome, Safari, Edge: o programa que faz o pedido e mostra o prato.</p></div>
+<div class="par"><img class="spr" src="img/pergaminho.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">O garçom é o caminho</span><span class="b">A internet</span><p>Leva o pedido até a cozinha e traz a resposta de volta, em segundos.</p></div>
+<div class="par"><img class="spr" src="img/placa.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">A cozinha é o servidor</span><span class="b">O computador do site</span><p>Um computador ligado o dia todo, guardando as páginas e respondendo pedidos.</p></div>
 <div class="par"><img class="spr" src="img/pao.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">O prato é a página</span><span class="b">O que chega à tela</span><p>Texto, cores e botões que o navegador desenha a partir do que o servidor mandou.</p></div>
 </div></div></div></section>
 
 <section class="sec" id="lab" style="padding-top:0"><div class="cx">
 <div class="cab rv"><span class="rot">Prática</span><h2>Faça o pedido você mesma(o).</h2><p>Digite no terminal o que o passo pede. À direita, um pacote amarelo mostra o caminho do pedido até o servidor e de volta. Tudo é simulado, nada sai do seu computador.</p></div>
 <div class="lab rv">
-<div class="px"><div class="bar"><img class="spr" src="img/coruja.png" width="28" height="28" alt="" aria-hidden="true"><b>terminal de treino · guia: Coruja</b></div>
+<div class="px"><div class="bar"><img class="spr" src="img/livro.png" width="28" height="28" alt="" aria-hidden="true"><b>terminal de treino · guia do treino</b></div>
 <div class="term" id="term" role="log" aria-live="polite"></div>
 <div class="entrada"><span aria-hidden="true">$</span><input id="cmd" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Digite o comando e aperte Enter" placeholder="digite aqui e aperte Enter"><button class="btn jg" id="enviar" type="button">Enter</button></div>
 <div class="chips" id="chips"><button type="button" class="prin" data-acao="cmd">abrir padaria.com</button><button type="button" data-acao="dica">Dica</button><button type="button" data-acao="limpar">Limpar</button></div>
 <div class="progresso" id="prog"><i></i><i></i><i></i><i></i><small>0 de 4</small></div></div>
 
 <div class="px sim"><div class="bar"><i></i><i></i><i></i><b>o caminho do pedido</b></div>
-<div class="mapa" aria-hidden="true"><div class="trilho"></div><div class="pacote" id="pacote"><img class="spr" src="img/arara-azul.png" width="40" height="40" alt="" aria-hidden="true"></div>
-<div class="no" id="no-nav"><div class="ic"><img class="spr" src="img/capivara.png" width="80" height="80" alt="" aria-hidden="true"></div>Seu navegador<small>cliente</small></div>
-<div class="no" id="no-dns"><div class="ic"><img class="spr" src="img/coruja.png" width="80" height="80" alt="" aria-hidden="true"></div>Catálogo (DNS)<small>endereços</small></div>
-<div class="no" id="no-srv"><div class="ic"><img class="spr" src="img/tatu.png" width="80" height="80" alt="" aria-hidden="true"></div>Servidor<small>cozinha</small></div></div>
+<div class="mapa" aria-hidden="true"><div class="trilho"></div><div class="pacote" id="pacote"><img class="spr" src="img/pergaminho.png" width="40" height="40" alt="" aria-hidden="true"></div>
+<div class="no" id="no-nav"><div class="ic"><img class="spr" src="img/tela.png" width="80" height="80" alt="" aria-hidden="true"></div>Seu navegador<small>cliente</small></div>
+<div class="no" id="no-dns"><div class="ic"><img class="spr" src="img/livro.png" width="80" height="80" alt="" aria-hidden="true"></div>Catálogo (DNS)<small>endereços</small></div>
+<div class="no" id="no-srv"><div class="ic"><img class="spr" src="img/placa.png" width="80" height="80" alt="" aria-hidden="true"></div>Servidor<small>cozinha</small></div></div>
 <div class="legenda" id="legenda" aria-live="polite">Digite o primeiro comando para o pacote começar a viajar.</div>
 <div class="navegador"><div class="endereco"><span aria-hidden="true">◀ ▶</span><b id="end">digite um endereço</b><em id="status">—</em></div><div class="pagina" id="pagina"></div></div>
 <div class="resp" id="resp"><span class="k">CONVERSA</span>
@@ -73,28 +73,28 @@ Aqui aparece o que o navegador e o servidor dizem um ao outro.</div></div>
 <p style="margin-top:14px;font-size:.95rem">Passe o mouse (ou toque) nas palavras sublinhadas para ver o que cada termo quer dizer.</p></div></div></section>
 
 <section class="sec" style="padding-top:0"><div class="cx">
-<div class="cab rv"><span class="rot">Cartas de conceito</span><h2>Cada passo liberta um bicho.</h2><p>Quatro passos, seis conceitos. Cada carta é uma silhueta até você chegar lá, e então o bicho aparece.</p></div>
+<div class="cab rv"><span class="rot">Conceitos</span><h2>Cada passo desbloqueia um conceito.</h2><p>Quatro passos, seis conceitos. Cada um aparece como uma silhueta até você chegar lá.</p></div>
 <div class="glos" data-termos>
-<div class="carta trava" data-k="navegador"><img class="spr" src="img/capivara.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">01</span><h3>Navegador</h3><p>O programa que pede páginas e as desenha na tela. Ele fala a língua dos servidores.</p></div>
-<div class="carta trava" data-k="servidor"><img class="spr" src="img/tatu.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">02</span><h3>Servidor</h3><p>Um computador sempre ligado que guarda o site e responde a quem pedir.</p></div>
-<div class="carta trava" data-k="endereco"><img class="spr" src="img/coruja.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">03</span><h3>Endereço e IP</h3><p>"padaria.com" é fácil para humanos; o IP é o número que os computadores usam. O DNS traduz um no outro.</p></div>
-<div class="carta trava" data-k="pedido"><img class="spr" src="img/arara-azul.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">04</span><h3>Pedido e resposta</h3><p>Todo clique vira um pedido (requisição) e todo pedido tem uma resposta. É sempre nessa ordem.</p></div>
-<div class="carta trava" data-k="status"><img class="spr" src="img/quati.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">05</span><h3>200 e 404</h3><p>Números que dizem como foi: 200 é "deu certo"; 404 é "não achei essa página".</p></div>
-<div class="carta trava" data-k="html"><img class="spr" src="img/jabuti.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">06</span><h3>HTML</h3><p>O texto que o servidor manda e que o navegador transforma em página. Na aula 2 você escreve o seu.</p></div>
+<div class="carta trava" data-k="navegador"><img class="spr" src="img/tela.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">01</span><h3>Navegador</h3><p>O programa que pede páginas e as desenha na tela. Ele fala a língua dos servidores.</p></div>
+<div class="carta trava" data-k="servidor"><img class="spr" src="img/placa.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">02</span><h3>Servidor</h3><p>Um computador sempre ligado que guarda o site e responde a quem pedir.</p></div>
+<div class="carta trava" data-k="endereco"><img class="spr" src="img/livro.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">03</span><h3>Endereço e IP</h3><p>"padaria.com" é fácil para humanos; o IP é o número que os computadores usam. O DNS traduz um no outro.</p></div>
+<div class="carta trava" data-k="pedido"><img class="spr" src="img/pergaminho.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">04</span><h3>Pedido e resposta</h3><p>Todo clique vira um pedido (requisição) e todo pedido tem uma resposta. É sempre nessa ordem.</p></div>
+<div class="carta trava" data-k="status"><img class="spr" src="img/lupa.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">05</span><h3>200 e 404</h3><p>Números que dizem como foi: 200 é "deu certo"; 404 é "não achei essa página".</p></div>
+<div class="carta trava" data-k="html"><img class="spr" src="img/tijolo.png" width="60" height="60" alt="" aria-hidden="true"><span class="cad">06</span><h3>HTML</h3><p>O texto que o servidor manda e que o navegador transforma em página. Na aula 2 você escreve o seu.</p></div>
 </div></div></section>
 
 <section class="sec" style="padding-top:0"><div class="cx"><div class="fim" id="fim" role="status">
-<div class="selo-fim"><img class="spr" src="img/onca-pintada.png" width="132" height="132" alt="" aria-hidden="true"><img class="spr" src="img/item_medalha.png" width="72" height="72" alt="" aria-hidden="true"></div><h2>Aula 1 concluída!</h2>
+<div class="selo-fim"><img class="spr" src="img/med-diamante.png" width="132" height="132" alt="" aria-hidden="true"><img class="spr" src="img/med-ouro.png" width="72" height="72" alt="" aria-hidden="true"></div><h2>Aula 1 concluída!</h2>
 <p>Agora você sabe o que acontece entre o clique e a página: o navegador procura o endereço, pede ao servidor e desenha a resposta. Na próxima aula você abre o terminal de verdade, escolhe os aplicativos certos e treina os comandos básicos.</p>
 <div class="acoes" style="justify-content:center"><a class="btn jg" href="aula-2.html">Ir para a aula 2</a><a class="btn cl" href="index.html#aulas">Voltar às aulas</a><button class="btn cl" type="button" onclick="location.reload()">Refazer</button></div>
 </div></div></section>
 </main>
 
 <footer class="rodape"><div class="cx"><p><b>Prática aplicada</b> · conteúdo e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
-<script src="js/app.js?v=10"></script>
-<script src="js/termos.js?v=10"></script>
-<script src="js/partida.js?v=10"></script>
-<script src="js/aula1.js?v=10"></script>
+<script src="js/app.js?v=11"></script>
+<script src="js/termos.js?v=11"></script>
+<script src="js/partida.js?v=11"></script>
+<script src="js/aula1.js?v=11"></script>
 <script id="encaixe-js">
 /* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
 (function(){

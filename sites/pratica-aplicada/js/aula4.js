@@ -99,22 +99,21 @@
     reiniciar:function(t){sh.reinicia();primeiro=true;t.limpa();t.passo=0;t.atualiza();atualiza();t.lin('> Pasta reiniciada. O relógio continua correndo!','ok');t.dica()},
     fim:function(){conclui()}
   });
-  term.lin('> Coruja: vamos construir o site da '+T.nome+' ('+L.nome.toLowerCase()+'). O relógio já está correndo!','ok');
+  term.lin('> Guia: vamos construir o site da '+T.nome+' ('+L.nome.toLowerCase()+'). O relógio já está correndo!','ok');
   term.lin('> Cada passo mostra o que escrever. "Digitar por mim" digita o comando pronto, mas soma 20 s ao tempo. Erros somam 5 s.','m');
   term.dica();term.atualiza();atualiza();
 
   /* ---------- fim: tempo e nota ---------- */
   function conclui(){
-    var e=P.termina('html'),pp=P.get(),msH=(e.ms||0)+(e.pen||0)*1000,fl=pp.etapas.fluxo,msF=(fl.ms||0)+(fl.pen||0)*1000,tot=msH+msF;
-    var par=(P.par('fluxo',pp)+P.par('html',pp))*1000,n=P.nota(tot,par/1000);
-    pp.etapas.html.nota=n.est;pp.fim=Date.now();P.grava(pp);
-    var novo=P.salvaRecorde(pp,tot);
+    var e=P.termina('html'),pp=P.get(),msH=(e.ms||0)+(e.pen||0)*1000,fl=pp.etapas.fluxo,msF=(fl.ms||0)+(fl.pen||0)*1000;
+    var n=P.nota(msH,P.par('html',pp));
+    pp.etapas.html.nota=n.est;pp.html=sh.le(SITE+'/index.html')||'';P.grava(pp);
     var r=$('#resultado');r.classList.add('on');r.classList.toggle('boa',n.bom);r.classList.toggle('ruim',!n.bom);
-    $('.tempo',r).textContent=P.fmt(tot);$('.nota',r).textContent=n.rot;$('.estr',r).textContent=P.estrelas(n.est);
-    $('.msg',r).textContent=n.msg+(novo?' Novo recorde para '+T.nome+' com este layout!':'');
-    $('.parts',r).innerHTML='';
-    [['Fluxo',P.fmt(msF)],['HTML',P.fmt(msH)],['Pistas',String(((e.pistas||0)+(fl.pistas||0)))+' · erros '+((e.erros||0)+(fl.erros||0))],['Tempo de referência',P.fmt(par)]].forEach(function(x){var d=document.createElement('div');d.textContent=x[0];var b=document.createElement('b');b.textContent=x[1];d.appendChild(b);$('.parts',r).appendChild(d)});
-    $('.partida-info',r).textContent=T.nome+' · '+L.nome+' · estilo '+ES.nome;
+    $('.tempo',r).textContent=P.fmt(msH);$('.nota',r).textContent=n.rot;P.pintaMedalha($('.estr',r),n.est,'velocidade');
+    $('.msg',r).textContent=n.msg+' Esta é a etapa de HTML; o tempo total e a medalha de design saem no fim da aula de CSS.';
+    var pa=$('.parts',r);pa.textContent='';
+    [['Fluxo',P.fmt(msF)],['HTML',P.fmt(msH)],['Pistas',String((e.pistas||0)+(fl.pistas||0))+' · erros '+((e.erros||0)+(fl.erros||0))]].forEach(function(x){var d=document.createElement('div');d.textContent=x[0];var b2=document.createElement('b');b2.textContent=x[1];d.appendChild(b2);pa.appendChild(d)});
+    $('.partida-info',r).textContent='Etapa 2 · HTML concluído · '+T.nome+' · '+L.nome;
     Som[n.bom?'selo':'ruim']();setTimeout(function(){r.scrollIntoView({behavior:'smooth',block:'center'})},350);
   }
 

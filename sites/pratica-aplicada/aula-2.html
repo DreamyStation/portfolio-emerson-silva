@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230D1024'/%3E%3Cpath d='M8 9h8v4h-4v2h4v4H8zM18 9h6v4h-6zM18 15h6v10h-6z' fill='%23F5B82E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
-<link rel="stylesheet" href="css/site.css?v=10">
+<link rel="stylesheet" href="css/site.css?v=11">
 <style id="encaixe">
 /* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
 h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
@@ -52,10 +52,10 @@ img,svg,video,canvas{max-width:100%}
 <section class="sec" style="padding-top:0"><div class="cx"><div class="folha rv" data-termos>
 <span class="rot">2 · Os aplicativos</span><h2>O que instalar (e o que você já tem).</h2>
 <div class="pares" style="margin-top:24px">
-<div class="par"><img class="spr" src="img/capivara.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Você já tem</span><span class="b">Navegador</span><p>Chrome, Edge, Firefox ou Safari. É nele que você vê o resultado do seu site.</p></div>
-<div class="par"><img class="spr" src="img/quati.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Já vem no sistema</span><span class="b">Terminal</span><p>Você acabou de aprender a abrir. Não precisa instalar nada.</p></div>
-<div class="par"><img class="spr" src="img/coruja.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Instale agora</span><span class="b">Editor de código</span><p>O VS Code (code.visualstudio.com) é gratuito e o mais usado. É o caderno em que você escreve o HTML.</p></div>
-<div class="par"><img class="spr" src="img/tatu.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Instale depois</span><span class="b">Git e Node.js</span><p>O Git guarda versões do projeto; o Node.js roda JavaScript fora do navegador. Entram nas aulas de JavaScript e publicar.</p></div>
+<div class="par"><img class="spr" src="img/tela.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Você já tem</span><span class="b">Navegador</span><p>Chrome, Edge, Firefox ou Safari. É nele que você vê o resultado do seu site.</p></div>
+<div class="par"><img class="spr" src="img/lupa.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Já vem no sistema</span><span class="b">Terminal</span><p>Você acabou de aprender a abrir. Não precisa instalar nada.</p></div>
+<div class="par"><img class="spr" src="img/livro.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Instale agora</span><span class="b">Editor de código</span><p>O VS Code (code.visualstudio.com) é gratuito e o mais usado. É o caderno em que você escreve o HTML.</p></div>
+<div class="par"><img class="spr" src="img/placa.png" width="60" height="60" alt="" aria-hidden="true"><span class="a">Instale depois</span><span class="b">Git e Node.js</span><p>O Git guarda versões do projeto; o Node.js roda JavaScript fora do navegador. Entram nas aulas de JavaScript e publicar.</p></div>
 </div>
 <p style="margin-top:20px;max-width:70ch">Para conferir se um programa está instalado, o terminal responde com a versão: <code class="cmd">node -v</code> ou <code class="cmd">git --version</code>. Se aparecer "comando não encontrado", falta instalar.</p>
 </div></div></section>
@@ -70,22 +70,22 @@ img,svg,video,canvas{max-width:100%}
 <section class="sec" id="lab" style="padding-top:0"><div class="cx">
 <div class="cab rv"><span class="rot">Prática</span><h2>Treine no terminal virtual.</h2><p>Os comandos são os de verdade; só a pasta é de mentira. À esquerda embaixo, as pastas que você cria; à direita, o conteúdo do arquivo em que você mexeu.</p></div>
 <div class="lab2 rv">
-<div class="px"><div class="bar"><img class="spr" src="img/coruja.png" width="28" height="28" alt="" aria-hidden="true"><b>terminal de treino · guia: Coruja</b></div><div class="term" id="term" role="log" aria-live="polite"></div><div class="entrada"><span id="pr" aria-hidden="true">~ $</span><input id="cmd" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Digite o comando e aperte Enter" placeholder="digite aqui e aperte Enter"><button class="btn jg" id="enviar" type="button">Enter</button></div><div class="chips" id="chips"><button type="button" class="prin" data-acao="cmd">comando</button><button type="button" data-acao="dica">Dica</button><button type="button" data-acao="limpar">Limpar</button><button type="button" data-acao="reiniciar">Recomeçar</button></div><div class="progresso" id="prog"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><small>0 de 0</small></div></div>
+<div class="px"><div class="bar"><img class="spr" src="img/livro.png" width="28" height="28" alt="" aria-hidden="true"><b>terminal de treino · guia do treino</b></div><div class="term" id="term" role="log" aria-live="polite"></div><div class="entrada"><span id="pr" aria-hidden="true">~ $</span><input id="cmd" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Digite o comando e aperte Enter" placeholder="digite aqui e aperte Enter"><button class="btn jg" id="enviar" type="button">Enter</button></div><div class="chips" id="chips"><button type="button" class="prin" data-acao="cmd">comando</button><button type="button" data-acao="dica">Dica</button><button type="button" data-acao="limpar">Limpar</button><button type="button" data-acao="reiniciar">Recomeçar</button></div><div class="progresso" id="prog"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><small>0 de 0</small></div></div>
 <div class="base2"><div class="px arq"><div class="bar"><b>suas pastas</b></div><div class="arvore" id="arvore"></div></div>
 <div class="px arq"><div class="bar"><b>conteúdo do arquivo</b></div><div class="conteudo" id="arqconteudo" style="min-height:150px"></div></div></div>
 </div></div></section>
 
 <section class="sec" style="padding-top:0"><div class="cx"><div class="fim" id="fim" role="status">
-<div class="selo-fim"><img class="spr" src="img/quati.png" width="132" height="132" alt="" aria-hidden="true"><img class="spr" src="img/item_medalha.png" width="72" height="72" alt="" aria-hidden="true"></div><h2>Aula 2 concluída!</h2>
+<div class="selo-fim"><img class="spr" src="img/lupa.png" width="132" height="132" alt="" aria-hidden="true"><img class="spr" src="img/med-ouro.png" width="72" height="72" alt="" aria-hidden="true"></div><h2>Aula 2 concluída!</h2>
 <p>Agora você sabe abrir o terminal, quais aplicativos ter e os comandos para navegar e criar arquivos. Na próxima aula você planeja o site antes de construir.</p>
 <div class="acoes" style="justify-content:center"><a class="btn jg" href="aula-3.html">Ir para a aula 3</a><a class="btn cl" href="index.html#aulas">Voltar às aulas</a></div></div></div></section>
 </main>
 <footer class="rodape"><div class="cx"><p><b>Prática aplicada</b> · conteúdo e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
-<script src="js/app.js?v=10"></script>
-<script src="js/termos.js?v=10"></script>
-<script src="js/partida.js?v=10"></script>
-<script src="js/shell.js?v=10"></script>
-<script src="js/aula2.js?v=10"></script>
+<script src="js/app.js?v=11"></script>
+<script src="js/termos.js?v=11"></script>
+<script src="js/partida.js?v=11"></script>
+<script src="js/shell.js?v=11"></script>
+<script src="js/aula2.js?v=11"></script>
 <script id="encaixe-js">
 /* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
 (function(){

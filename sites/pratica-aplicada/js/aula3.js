@@ -73,7 +73,7 @@
     P.get().etapas.fluxo.nota=n.est;var q=P.get();q.etapas.fluxo.nota=n.est;P.grava(q);
     Som[n.bom?'selo':'ruim']();
     el.res.classList.add('on');el.res.classList.toggle('boa',n.bom);el.res.classList.toggle('ruim',!n.bom);
-    $('.tempo',el.res).textContent=P.fmt(ms);$('.nota',el.res).textContent=n.rot;$('.estr',el.res).textContent=P.estrelas(n.est);$('.msg',el.res).textContent=n.msg+' Pistas usadas: '+(e.pistas||0)+' · erros: '+(e.erros||0)+'.';
+    $('.tempo',el.res).textContent=P.fmt(ms);$('.nota',el.res).textContent=n.rot;P.pintaMedalha($('.estr',el.res),n.est,'velocidade');$('.msg',el.res).textContent=n.msg+' Pistas usadas: '+(e.pistas||0)+' · erros: '+(e.erros||0)+'.';
     el.conf.disabled=true;setTimeout(function(){el.res.scrollIntoView({behavior:'smooth',block:'center'})},250);
   });
 
@@ -89,7 +89,7 @@
     cadeia=(p.fluxo&&p.fluxo.length)?p.fluxo.slice():[];
     var fim=p.etapas.fluxo&&p.etapas.fluxo.fim;
     if(fim){P.inicia('fluxo');desenha();checks();el.conf.disabled=true;el.res.classList.add('on');var n=P.nota((p.etapas.fluxo.ms||0)+(p.etapas.fluxo.pen||0)*1000,P.par('fluxo',p));
-      el.res.classList.toggle('boa',n.bom);el.res.classList.toggle('ruim',!n.bom);$('.tempo',el.res).textContent=P.fmt((p.etapas.fluxo.ms||0)+(p.etapas.fluxo.pen||0)*1000);$('.nota',el.res).textContent=n.rot;$('.estr',el.res).textContent=P.estrelas(n.est);$('.msg',el.res).textContent=n.msg}
+      el.res.classList.toggle('boa',n.bom);el.res.classList.toggle('ruim',!n.bom);$('.tempo',el.res).textContent=P.fmt((p.etapas.fluxo.ms||0)+(p.etapas.fluxo.pen||0)*1000);$('.nota',el.res).textContent=n.rot;P.pintaMedalha($('.estr',el.res),n.est,'velocidade');$('.msg',el.res).textContent=n.msg}
     else{P.inicia('fluxo');desenha();checks()}
   }
   P.hud($('#hud'));

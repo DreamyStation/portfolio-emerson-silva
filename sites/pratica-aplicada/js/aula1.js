@@ -96,7 +96,7 @@
       var f=$('#fim');f.classList.add('on');PA.Arm.grava('aula1',true);Som.selo();setTimeout(function(){f.scrollIntoView({behavior:'smooth',block:'center'})},300);
     }
   });
-  term.lin('> Coruja: bem-vinda(o) ao laboratório! Aqui você digita e vê o caminho que um pedido faz até um site.','ok');
+  term.lin('> Guia: bem-vinda(o) ao laboratório! Aqui você digita e vê o caminho que um pedido faz até um site.','ok');
   term.lin('> Dica: "dica" rever o passo · "mostra" eu digito por você · setas ↑ ↓ repetem comandos.','m');
   term.dica();term.atualiza();
   desenha('/',true);els.status.textContent='—';els.status.className='';els.end.textContent='digite um endereço';els.pagina.innerHTML='<p class="vazio">A página aparece aqui quando o servidor responder.</p>';

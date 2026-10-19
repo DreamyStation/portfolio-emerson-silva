@@ -32,6 +32,18 @@
     byte:{t:'Byte',al:['byte','bytes'],d:'A unidade em que o computador guarda tudo. Um arquivo é uma fila de bytes, cada um um número de 0 a 255.',a:'Uma letra do alfabeto do computador.'},
     api:{t:'API',al:['API'],d:'Um "cardápio" de pedidos que um servidor aceita responder por programas, não só por pessoas.',a:'O cardápio que o garçom entrega à cozinha.'},
     backend:{t:'Backend',al:['backend','back-end'],d:'A parte do sistema que roda no servidor: guarda dados e aplica as regras. Você não vê, mas depende dela.',a:'A cozinha.'},
+    seletor:{t:'Seletor',al:['seletor','seletores'],d:'A parte da regra CSS que diz a quem ela se aplica, como h1 (todos os títulos) ou nav a (links dentro do menu).',a:'O endereço do destinatário numa carta.'},
+    propriedade:{t:'Propriedade',al:['propriedade','propriedades'],d:'O que você quer mudar, como color (cor), padding (espaço interno) ou font-size (tamanho da letra).',a:'O botão do painel que você vai girar.'},
+    valor:{t:'Valor',al:['valor','valores'],d:'Quanto ou como mudar a propriedade: color: blue, padding: 8px, font-size: 2rem.',a:'A posição do botão do painel.'},
+    margin:{t:'Margin',al:['margin','margem'],d:'O espaço do lado de fora de um elemento, que o afasta dos vizinhos.',a:'A distância entre dois quadros na parede.'},
+    padding:{t:'Padding',al:['padding'],d:'O espaço do lado de dentro de um elemento, entre a borda e o conteúdo.',a:'A moldura branca ao redor de uma foto.'},
+    flex:{t:'Flexbox',al:['flexbox','flex'],d:'Um jeito de organizar itens em uma linha ou coluna, com espaçamento e alinhamento automáticos.',a:'Arrumar livros em uma prateleira.'},
+    grid:{t:'Grid',al:['grid'],d:'Um jeito de organizar a página em linhas e colunas, como uma tabela invisível.',a:'A planta quadriculada de uma cidade.'},
+    hover:{t:':hover',al:[':hover','hover'],d:'Um estado do CSS que vale enquanto o mouse está em cima do elemento. Serve para dar retorno visual a botões e links.',a:'A luz que acende quando você chega perto do interruptor.'},
+    transition:{t:'transition',al:['transition','transição'],d:'Faz a mudança de um valor acontecer aos poucos, em vez de num salto. Ex.: transition: background .2s.',a:'Girar o dimmer em vez de ligar e desligar a luz.'},
+    animation:{t:'animation',al:['animation','animação','animações'],d:'Faz um elemento seguir uma sequência de passos que você descreve com @keyframes.',a:'Um desenho animado: vários quadros em sequência.'},
+    keyframes:{t:'@keyframes',al:['@keyframes','keyframes'],d:'Onde você descreve os quadros de uma animação: como o elemento começa (from) e como termina (to).',a:'O roteiro de cada cena.'},
+    responsivo:{t:'Responsivo',al:['responsivo','responsiva','media query','@media'],d:'Um site que se adapta ao tamanho da tela. Em CSS, a regra @media muda o estilo conforme a largura.',a:'Uma roupa que se ajusta a quem veste.'},
     frontend:{t:'Frontend',al:['frontend','front-end'],d:'A parte do site que aparece para a pessoa: textos, cores, botões. Roda no navegador.',a:'O salão do restaurante.'}
   };
   var tip=null,alvo=null,fecha=null;

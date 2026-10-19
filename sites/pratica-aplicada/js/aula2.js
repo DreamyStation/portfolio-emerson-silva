@@ -40,7 +40,7 @@
     reiniciar:function(t){sh.reinicia();t.limpa();t.passo=0;t.atualiza();atualiza();t.lin('> Treino reiniciado.','ok');t.dica()},
     fim:function(){var f=$('#fim');f.classList.add('on');PA.Arm.grava('aula2',true);Som.selo();setTimeout(function(){f.scrollIntoView({behavior:'smooth',block:'center'})},300)}
   });
-  term.lin('> Coruja: bem-vinda(o)! Este é um terminal de treino: os comandos são os de verdade, mas tudo acontece numa pasta de mentira.','ok');
+  term.lin('> Guia: bem-vinda(o)! Este é um terminal de treino: os comandos são os de verdade, mas tudo acontece numa pasta de mentira.','ok');
   term.lin('> Dica: "dica" rever o passo · "mostra" eu digito por você · "reiniciar" começa de novo.','m');
   term.dica();term.atualiza();atualiza();
   if(PA.Arm.le('aula2',false)){var j=$('#ja');if(j)j.hidden=false}
