@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230D1024'/%3E%3Cpath d='M8 9h8v4h-4v2h4v4H8zM18 9h6v4h-6zM18 15h6v10h-6z' fill='%23F5B82E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
-<link rel="stylesheet" href="css/site.css?v=13">
+<link rel="stylesheet" href="css/site.css?v=16">
 <style id="encaixe">
 /* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
 h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
@@ -26,7 +26,7 @@ img,svg,video,canvas{max-width:100%}
 <header class="topo"><div class="cx">
 <a class="marca" href="index.html"><i aria-hidden="true">PA</i>Prática aplicada</a>
 <nav aria-label="Principal"><a href="index.html">Início</a><a href="index.html#aulas">Aulas</a><a href="comandos.html" aria-current="page">Comandos</a><a href="../../index.html#sites">Portfólio</a>
-<span class="hud" id="hud" hidden title="Relógio da partida"><span class="nm"></span><b class="rel">00:00</b></span>
+<span class="hud" id="hud" hidden title="Relógio da prática"><span class="nm"></span><b class="rel">00:00</b></span>
 <button class="tema" id="tema" type="button" aria-pressed="false" aria-label="Alternar tema claro e escuro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg><span>Claro</span></button>
 <button class="mudo" id="mudo" type="button" aria-pressed="false" aria-label="Desligar os sons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg><span>Som</span></button></nav>
 </div></header>
@@ -39,13 +39,13 @@ img,svg,video,canvas{max-width:100%}
 <section class="sec" style="padding-top:clamp(14px,2vw,24px)"><div class="cx"><div class="folha rv" data-termos>
 <h3 style="margin:22px 0 4px;font-size:1.05rem">Onde estou e o que tem aqui</h3><ul class="cola"><li><code>pwd</code><span>mostra em qual pasta você está</span></li><li><code>ls</code><span>lista os arquivos e pastas daqui (no Windows: dir)</span></li><li><code>cd pasta</code><span>entra na pasta · cd .. volta uma · cd sozinho vai para a sua pasta pessoal</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Criar</h3><ul class="cola"><li><code>mkdir nome</code><span>cria uma pasta (no Windows: md nome)</span></li><li><code>touch arquivo</code><span>cria um arquivo vazio (no Windows PowerShell: ni arquivo)</span></li><li><code>echo 'texto' > arquivo</code><span>escreve o texto no arquivo, apagando o que havia</span></li><li><code>echo 'texto' >> arquivo</code><span>acrescenta o texto no fim do arquivo</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Ver</h3><ul class="cola"><li><code>cat arquivo</code><span>mostra o conteúdo do arquivo (no Windows: type arquivo)</span></li><li><code>clear</code><span>limpa a tela do terminal (no Windows: cls)</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Apagar (sem lixeira!)</h3><ul class="cola"><li><code>rm arquivo</code><span>apaga um arquivo para sempre</span></li><li><code>rm -r pasta</code><span>apaga a pasta e tudo que está dentro. Cuidado</span></li></ul><h3 style="margin:22px 0 4px;font-size:1.05rem">Ferramentas</h3><ul class="cola"><li><code>code .</code><span>abre a pasta atual no editor VS Code</span></li><li><code>node -v</code><span>mostra a versão do Node.js, se estiver instalado</span></li><li><code>git --version</code><span>mostra a versão do Git, se estiver instalado</span></li></ul>
 <h3 style="margin:28px 0 8px">Atalhos que ajudam</h3>
-<ul class="cola"><li><code>Seta ↑</code><span>repete o comando anterior (no terminal virtual e no de verdade)</span></li><li><code>Tab</code><span>no terminal de verdade, completa o nome do arquivo ou pasta</span></li><li><code>Ctrl + C</code><span>interrompe um comando que travou</span></li><li><code>dica · mostra</code><span>só aqui no treino: rever o passo e digitar por você (mostra custa tempo na partida)</span></li></ul>
+<ul class="cola"><li><code>Seta ↑</code><span>repete o comando anterior (no terminal virtual e no de verdade)</span></li><li><code>Tab</code><span>no terminal de verdade, completa o nome do arquivo ou pasta</span></li><li><code>Ctrl + C</code><span>interrompe um comando que travou</span></li><li><code>dica · mostra</code><span>só aqui no treino: rever o passo e digitar por você (mostra custa tempo na prática)</span></li></ul>
 </div></div></section>
 </main>
 <footer class="rodape"><div class="cx"><p><b>Prática aplicada</b> · conteúdo e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
-<script src="js/app.js?v=13"></script>
-<script src="js/termos.js?v=13"></script>
-<script src="js/partida.js?v=13"></script>
+<script src="js/app.js?v=16"></script>
+<script src="js/termos.js?v=16"></script>
+<script src="js/partida.js?v=16"></script>
 <script id="encaixe-js">
 /* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
 (function(){

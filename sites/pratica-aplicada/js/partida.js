@@ -1,22 +1,26 @@
-/* Prática aplicada · partida: cada partida sorteia (ou deixa escolher) um tipo de site, um layout e um estilo; o relógio mede o tempo de cada etapa
+/* Prática aplicada · partida: cada prática sorteia (ou deixa escolher) um tipo de site, um layout e um estilo; o relógio mede o tempo de cada etapa
    e, ao concluir, mostra o tempo, a nota e se foi bom ou ruim. Tudo guardado no navegador. */
 (function(){
   'use strict';
   var PA=window.PA,Arm=PA.Arm,$=PA.$,Som=PA.Som;
 
   var TIPOS={
-    padaria:{id:'padaria',nome:'Padaria do Zé',slug:'padaria',cliente:'Zé, o padeiro',meta:'mostrar o cardápio e receber pedidos',slogan:'Pão quente toda manhã.',rotuloLista:'Cardápio',
+    cardapio:{id:'cardapio',caminho:'Cardápio',nome:'Padaria do Zé',slug:'padaria',cliente:'Zé, o padeiro',meta:'mostrar o cardápio e receber pedidos',slogan:'Pão quente toda manhã.',rotuloLista:'Cardápio',
       itens:['Pão francês · R$ 0,80','Croissant · R$ 6,00','Bolo de milho · R$ 9,00'],imgs:['pao','croissant','bolo'],extras:['rosquinha','cookie','cupcake'],alt:['Pão francês','Croissant','Bolo de milho'],
-      contato:'Rua das Flores, 120 · todo dia, 6h às 19h',
+      contato:'Rua das Flores, 120 · todo dia, 6h às 19h',js:{botao:'Adicionar ao pedido',unidade:'item(ns) no pedido',total:'total do pedido',preco:6},
       paginas:[{id:'inicio',n:'Início',d:'apresenta a padaria e leva às outras páginas'},{id:'cardapio',n:'Cardápio',d:'lista os produtos e os preços'},{id:'contato',n:'Contato',d:'endereço, horário e como pedir'},{id:'sobre',n:'Sobre nós',d:'a história da padaria'},{id:'blog',n:'Blog de receitas',d:'textos e receitas (dá mais trabalho para manter)'}],essenciais:['inicio','cardapio','contato']},
-    barbearia:{id:'barbearia',nome:'Barbearia do Léo',slug:'barbearia',cliente:'Léo, o barbeiro',meta:'mostrar os serviços e receber agendamentos',slogan:'Corte na régua, todo dia.',rotuloLista:'Serviços',
-      itens:['Corte · R$ 35','Barba · R$ 25','Combo corte e barba · R$ 55'],imgs:['tesoura','garrafa','med-ouro'],extras:['chave-inglesa','parafuso','lupa'],alt:['Corte','Barba','Combo corte e barba'],
-      contato:'Rua do Centro, 45 · seg a sáb, 9h às 20h',
-      paginas:[{id:'inicio',n:'Início',d:'apresenta a barbearia e leva às outras páginas'},{id:'servicos',n:'Serviços',d:'lista o que a barbearia faz e os preços'},{id:'agendar',n:'Agendar',d:'como marcar um horário'},{id:'galeria',n:'Galeria',d:'fotos de cortes (precisa de várias fotos)'},{id:'sobre',n:'Sobre',d:'a equipe e a história'}],essenciais:['inicio','servicos','agendar']},
-    portfolio:{id:'portfolio',nome:'Portfólio da Ana',slug:'portfolio',cliente:'Ana, a designer',meta:'mostrar os trabalhos e receber contatos',slogan:'Design que conta histórias.',rotuloLista:'Projetos',
-      itens:['Logo da Padaria do Zé','Embalagem do Café Sol','Cartaz da Feira Verde'],imgs:['diamante','presente','pergaminho'],extras:['livro','cristal','chave'],alt:['Logo','Embalagem','Cartaz'],
-      contato:'ana@exemplo.com · responde em até 1 dia útil',
-      paginas:[{id:'inicio',n:'Início',d:'apresenta a Ana e leva às outras páginas'},{id:'projetos',n:'Projetos',d:'mostra os trabalhos com imagens'},{id:'contato',n:'Contato',d:'e-mail e redes para falar com ela'},{id:'sobre',n:'Sobre',d:'quem é a Ana'},{id:'curriculo',n:'Currículo',d:'experiências e cursos'}],essenciais:['inicio','projetos','contato']}
+    catalogo:{id:'catalogo',caminho:'Catálogo',nome:'Oficina Nova',slug:'oficina',cliente:'Marta, dona da loja',meta:'mostrar os produtos e facilitar a escolha',slogan:'Peças e aparelhos para quem gosta de consertar.',rotuloLista:'Produtos',
+      itens:['Rádio portátil · R$ 120','Placa de controle · R$ 85','Bateria recarregável · R$ 40'],imgs:['radio','placa','bateria'],extras:['chip','cpu','parafuso'],alt:['Rádio portátil','Placa de controle','Bateria recarregável'],
+      contato:'Av. Central, 300 · seg a sex, 9h às 18h',js:{botao:'Guardar na lista',unidade:'produto(s) na lista',total:'soma da lista',preco:85},
+      paginas:[{id:'inicio',n:'Início',d:'apresenta a loja e leva às outras páginas'},{id:'produtos',n:'Catálogo',d:'lista os produtos com foto e preço'},{id:'contato',n:'Contato',d:'endereço, horário e telefone'},{id:'sobre',n:'Sobre a loja',d:'quem somos e o que vendemos'},{id:'garantia',n:'Garantia e trocas',d:'regras de troca (precisa de texto jurídico)'}],essenciais:['inicio','produtos','contato']},
+    marketplace:{id:'marketplace',caminho:'Marketplace',nome:'Feira Digital',slug:'feira',cliente:'Rafa, organizador da feira',meta:'reunir vendedores e receber pedidos',slogan:'Produtos de vários vendedores num lugar só.',rotuloLista:'Produtos',
+      itens:['Pão artesanal · R$ 8','Caderno de capa dura · R$ 28','Rádio vintage · R$ 75'],imgs:['pao','livro','radio'],extras:['tesoura','presente','chave'],alt:['Pão artesanal','Caderno de capa dura','Rádio vintage'],
+      contato:'contato@feiradigital.exemplo',js:{botao:'Adicionar ao carrinho',unidade:'item(ns) no carrinho',total:'total do carrinho',preco:28},
+      paginas:[{id:'inicio',n:'Início',d:'apresenta a feira e leva às outras páginas'},{id:'produtos',n:'Produtos',d:'todos os produtos de todos os vendedores'},{id:'entrar',n:'Entrar',d:'login de comprador e vendedor (exige segurança)'},{id:'vendedores',n:'Vendedores',d:'quem vende na feira'},{id:'carrinho',n:'Carrinho',d:'o que a pessoa escolheu comprar'}],essenciais:['inicio','produtos','entrar']},
+    blog:{id:'blog',caminho:'Blog',nome:'Passo a Passo',slug:'blog',cliente:'Bia, autora do blog',meta:'publicar artigos e fidelizar leitores',slogan:'Tutoriais de tecnologia em português simples.',rotuloLista:'Artigos',
+      itens:['Como escolher um domínio · 5 min de leitura','O que é um servidor · 4 min de leitura','Seu primeiro CSS · 7 min de leitura'],imgs:['livro','placa','cristal'],extras:['lupa','engrenagem','tela'],alt:['Artigo sobre domínios','Artigo sobre servidores','Artigo sobre CSS'],
+      contato:'bia@passoapasso.exemplo · responde em até 2 dias',js:{botao:'Curtir o artigo',unidade:'curtida(s)',total:null,preco:0},
+      paginas:[{id:'inicio',n:'Início',d:'apresenta o blog e os artigos mais recentes'},{id:'artigos',n:'Artigos',d:'lista de todos os artigos'},{id:'sobre',n:'Sobre',d:'quem escreve o blog'},{id:'entrar',n:'Área da autora',d:'login para publicar (exige segurança)'},{id:'contato',n:'Contato',d:'como falar com a autora'}],essenciais:['inicio','artigos','sobre']}
   };
   var LAYOUTS={
     coluna:{id:'coluna',nome:'Coluna única',desc:'Tudo em uma coluna, de cima para baixo: cabeçalho, menu, conteúdo e rodapé.',par:240},
@@ -29,19 +33,19 @@
     editorial:{id:'editorial',nome:'Editorial',desc:'Fonte com serifa, preto e branco e títulos grandes, como uma revista.'},
     artesanal:{id:'artesanal',nome:'Artesanal',desc:'Creme e marrom, cantos arredondados, calor de comércio de bairro.'}
   };
-  var PARES={fluxo:100,css:240,resp:200};
+  var PARES={fluxo:100,css:240,resp:200,js:260,api:240,login:320,deploy:200};
 
   function sorteia(o){var ks=Object.keys(o);return ks[Math.floor(Math.random()*ks.length)]}
   var P={TIPOS:TIPOS,LAYOUTS:LAYOUTS,ESTILOS:ESTILOS};
 
   /* ---------- estado ---------- */
-  P.get=function(){return Arm.le('partida',null)};
+  P.get=function(){var p=Arm.le('partida',null);return p&&TIPOS[p.tipo]&&LAYOUTS[p.layout]&&ESTILOS[p.estilo]?p:null};
   P.grava=function(p){Arm.grava('partida',p)};
   P.nova=function(o){
     o=o||{};var p={tipo:o.tipo||sorteia(TIPOS),layout:o.layout||sorteia(LAYOUTS),estilo:o.estilo||sorteia(ESTILOS),fluxo:[],etapas:{},ativa:null,inicio:null,fim:null,criada:Date.now()};
     P.grava(p);return p;
   };
-  P.par=function(etapa,p){p=p||P.get();if(etapa==='fluxo')return PARES.fluxo;if(etapa==='html')return LAYOUTS[p.layout].par;if(etapa==='css')return PARES.css;if(etapa==='resp')return PARES.resp;return 300};
+  P.par=function(etapa,p){p=p||P.get();if(etapa==='fluxo')return PARES.fluxo;if(etapa==='html')return LAYOUTS[p.layout].par;return PARES[etapa]||300};
 
   /* ---------- relógio: conta só enquanto a página está visível ---------- */
   var rel={etapa:null,t0:0,acum:0,iv:null};
@@ -72,7 +76,7 @@
     if(r<=.7){est=3;rot='Excelente';bom=true;msg='Rapidíssimo e limpo. Dá para contratar!'}
     else if(r<=1){est=2;rot='Bom';bom=true;msg='Dentro do tempo esperado para esse tipo de site.'}
     else if(r<=1.5){est=1;rot='Dá para melhorar';bom=false;msg='Passou um pouco do tempo. Com a prática e menos pedidos de "mostra", fica rápido.'}
-    else{est=0;rot='Lento';bom=false;msg='Demorou bastante. Sem problema: tente outra partida e use a cola de comandos.'}
+    else{est=0;rot='Lento';bom=false;msg='Demorou bastante. Sem problema: tente outra prática e use a cola de comandos.'}
     return {est:est,rot:rot,bom:bom,msg:msg,razao:r};
   };
   P.MEDALHAS=['med-bronze','med-prata','med-ouro','med-diamante'];
@@ -91,7 +95,7 @@
       var par=P.par(p.ativa,p)*1000;el.dataset.estado=ms>par*1.5?'lento':ms>par?'atencao':'ok'};
     f();setInterval(f,1000);
   };
-  /* HTML padrão da partida (mesmos blocos da aula 4); usado se a pessoa chegar ao CSS sem ter terminado o HTML */
+  /* HTML padrão da prática (mesmos blocos da aula 4); usado se a pessoa chegar ao CSS sem ter terminado o HTML */
   P.blocos=function(p){
     var T=TIPOS[p.tipo],pgs=p.fluxo.map(function(id){return T.paginas.filter(function(x){return x.id===id})[0]});
     var nav='<nav>'+pgs.map(function(x){return '<a href="'+(x.id==='inicio'?'index':x.id)+'.html">'+x.n+'</a>'}).join(' ')+'</nav>';

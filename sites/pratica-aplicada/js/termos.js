@@ -47,7 +47,26 @@
     viewport:{t:'Viewport',al:['viewport'],d:'A área da tela em que a página aparece. A tag meta viewport avisa o celular para usar a largura real do aparelho, e não fingir que é um computador.',a:'O tamanho da janela da loja.'},
     breakpoint:{t:'Ponto de quebra',al:['ponto de quebra','pontos de quebra','breakpoint','breakpoints'],d:'A largura de tela em que o layout muda, como 900 px ou 560 px. Cada ponto de quebra é uma regra @media.',a:'O ponto em que a fila do caixa vira duas filas.'},
     clamp:{t:'clamp()',al:['clamp'],d:'Uma função do CSS que escolhe um valor entre um mínimo e um máximo: clamp(1.8rem, 5vw, 2.8rem).',a:'Um termostato com temperatura mínima e máxima.'},
-    frontend:{t:'Frontend',al:['frontend','front-end'],d:'A parte do site que aparece para a pessoa: textos, cores, botões. Roda no navegador.',a:'O salão do restaurante.'}
+    frontend:{t:'Frontend',al:['frontend','front-end'],d:'A parte do site que aparece para a pessoa: textos, cores, botões. Roda no navegador.',a:'O salão do restaurante.'},
+    variavel:{t:'Variável',al:['variável','variáveis'],d:'Uma caixinha com nome que guarda um valor na memória: let n = 0. Dá para trocar o valor depois.',a:'Uma gaveta com etiqueta.'},
+    funcao:{t:'Função',al:['função','funções'],d:'Um bloco de código com nome ou sem nome que roda quando é chamado. A seta => cria uma função curta.',a:'Uma receita que você pode repetir quando quiser.'},
+    evento:{t:'Evento',al:['evento','eventos'],d:'Algo que acontece na página e o JavaScript pode escutar: um clique, uma tecla, o envio de um formulário.',a:'A campainha tocando.'},
+    dom:{t:'DOM',al:['DOM'],d:'A página transformada em uma árvore de objetos que o JavaScript consegue encontrar e alterar.',a:'A planta da casa que dá para reformar com a casa aberta.'},
+    console:{t:'Console',al:['console'],d:'A janela de recados do programador: o código escreve nela com console.log para mostrar valores e erros.',a:'O caderno de anotações do programa.'},
+    condicao:{t:'Condição',al:['condição','condições'],d:'Um teste que decide se um bloco de código roda: if (n >= 5) { ... }.',a:'"Se estiver chovendo, leve o guarda-chuva".'},
+    fetch:{t:'fetch',al:['fetch'],d:'O comando do JavaScript que pede dados a um servidor sem recarregar a página.',a:'O garçom que vai à cozinha e volta com o pedido.'},
+    json:{t:'JSON',al:['JSON'],d:'Texto organizado em chaves e valores que servidores e JavaScript entendem: {"item": "Pão", "qtd": 2}.',a:'A comanda padronizada da cozinha.'},
+    endpoint:{t:'Endpoint',al:['endpoint','endpoints','rota','rotas'],d:'O endereço de um pedido específico da API, como /api/itens.',a:'Cada item do cardápio de pedidos.'},
+    curl:{t:'curl',al:['curl'],d:'Um programa do terminal que faz requisições HTTP e mostra a resposta, sem precisar de navegador.',a:'Um navegador que só fala por texto.'},
+    hash:{t:'Hash',al:['hash'],d:'Uma impressão digital de um texto: sempre gera o mesmo resultado, mas é impossível voltar ao texto original.',a:'Um liquidificador: dá para fazer a vitamina, não dá para desfazer.'},
+    sal:{t:'Sal (salt)',al:['sal'],d:'Um texto aleatório misturado à senha antes do hash, para que senhas iguais gerem hashes diferentes.',a:'O tempero secreto de cada usuário.'},
+    token:{t:'Token',al:['token'],d:'Uma senha temporária que o servidor entrega depois do login. A pessoa a envia nos próximos pedidos em vez da senha.',a:'A pulseira de um evento: prova que você já passou pela portaria.'},
+    xss:{t:'XSS',al:['XSS'],d:'Falha em que o texto digitado por um visitante vira código e roda no navegador de outras pessoas. A defesa é escapar o texto antes de mostrar.',a:'Um bilhete no mural que, ao ser lido, dá ordens ao leitor.'},
+    sqli:{t:'Injeção de SQL',al:['injeção de SQL'],d:'Falha em que o texto digitado reescreve a consulta ao banco de dados. A defesa são consultas com parâmetros.',a:'Alguém reescrevendo o pedido na comanda antes de chegar à cozinha.'},
+    commit:{t:'Commit',al:['commit','commits'],d:'Uma foto do projeto salva no histórico do Git, com uma mensagem dizendo o que mudou.',a:'Salvar uma versão do jogo.'},
+    github:{t:'GitHub',al:['GitHub'],d:'Um site que guarda projetos Git na nuvem e permite publicá-los como sites gratuitos com o GitHub Pages.',a:'Um armário na nuvem para o seu projeto.'},
+    https:{t:'HTTPS',al:['HTTPS'],d:'A versão segura do HTTP: criptografa a conversa entre o visitante e o site. É o cadeado do navegador.',a:'Falar em um envelope lacrado, não em um cartão postal.'},
+    hospedagem:{t:'Hospedagem',al:['hospedagem'],d:'O serviço que mantém o seu site num servidor ligado o tempo todo.',a:'O terreno onde a casa fica.'}
   };
   var tip=null,alvo=null,fecha=null;
   function mk(){if(tip)return tip;tip=document.createElement('div');tip.id='dica-termo';tip.setAttribute('role','tooltip');document.body.appendChild(tip);

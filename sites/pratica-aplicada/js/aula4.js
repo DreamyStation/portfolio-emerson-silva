@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 4: HTML na prática. O terminal constrói o index.html do site da partida (tipo, layout e menu diferentes a cada vez) e a tela mostra o resultado ao vivo. */
+/* Prática aplicada · aula 4: HTML na prática. O terminal constrói o index.html do site da prática (tipo, layout e menu diferentes a cada vez) e a tela mostra o resultado ao vivo. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,$$=PA.$$,Som=PA.Som,P=PA.Partida;
@@ -13,7 +13,7 @@
   var SITE='~/'+T.slug;
   P.inicia('html');
 
-  /* ---------- resumo da partida ---------- */
+  /* ---------- resumo da prática ---------- */
   var br=$('#brief');br.textContent='';
   [['Site',T.nome,'cliente: '+T.cliente],['Layout',L.nome,L.desc],['Menu (do seu fluxo)',pgs.map(function(x){return x.n}).join(' · '),'estilo que vem na aula de CSS: '+ES.nome]].forEach(function(x){
     var d=document.createElement('div'),s=document.createElement('small'),b=document.createElement('b'),sp=document.createElement('span');s.textContent=x[0];b.textContent=x[1];sp.textContent=x[2];d.append(s,b,sp);br.appendChild(d)});

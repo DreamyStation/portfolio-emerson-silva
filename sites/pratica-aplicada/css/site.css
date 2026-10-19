@@ -278,6 +278,7 @@ html[data-tema=escuro] .msgf.er{color:var(--coral)}html[data-tema=escuro] .msgf.
 .resultado .estr{display:flex;flex-direction:column;align-items:center;gap:6px;margin:8px 0;font:inherit;letter-spacing:0}
 .resultado .estr .spr{filter:drop-shadow(3px 3px 0 rgba(0,0,0,.5))}
 .med-rot{font:700 .75rem "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--mudo)}
+/*semflut*/.palco{padding:0!important;margin-top:0!important}.palco .spr.g{display:none!important}.flut{animation:none!important}.est.trava:hover .spr{animation:none!important}
 /*hid*/[hidden]{display:none!important}
 /*wf:ini*/
 .esboco{background:#fff;padding:14px;display:grid;gap:10px;min-height:190px;color:#1a1a1a}
@@ -329,3 +330,26 @@ html[data-tema=escuro] .msgf.er{color:var(--coral)}html[data-tema=escuro] .msgf.
 ::-webkit-scrollbar-corner{background:var(--sb-t)}
 @supports not selector(::-webkit-scrollbar){html{scrollbar-width:auto;scrollbar-color:var(--sb-h) var(--sb-t)}}
 /*sb:fim*/
+
+/* aulas 7 a 10: painel do banco, barra de endereço, estado da publicação e resumo do curso */
+.banco{padding:12px;min-height:150px;max-height:340px;overflow:auto;font:400 .82rem/1.45 "Space Mono",monospace;color:var(--tinta);background:var(--cartao)}
+.banco .vz{margin:0;color:var(--suave)}
+.banco .linha-bd{border:2px solid var(--tinta);padding:10px;margin-bottom:10px;display:grid;gap:8px}
+.banco .linha-bd>b{font-weight:700;word-break:break-all}
+.banco .bd-ruim,.banco .bd-bom{padding:7px 9px;border-left:6px solid;display:grid;gap:2px;min-width:0}
+.banco .bd-ruim{background:#ffd0cb;border-color:var(--verm);color:#4a0d08}
+.banco .bd-bom{background:#c6f3d9;border-color:#1c8a55;color:#0a3a22}
+.banco small{font-size:.72rem;letter-spacing:.04em;text-transform:uppercase}
+.banco code{word-break:break-all;font-size:.8rem}
+.arq>.endereco{display:flex;gap:8px;align-items:center;padding:8px 12px;background:#eef0f7;border-bottom:3px solid var(--tinta);font:400 .85rem "Space Mono",monospace}
+.arq>.endereco b{background:#fff;color:#0A1A4D;border:2px solid #0A1A4D;flex:1;min-width:0;padding:3px 8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:400}
+.chips-pub{display:flex;flex-wrap:wrap;gap:8px;padding:10px 12px;border-top:4px solid var(--sombra)}
+.sel-chip{font:700 .74rem "Space Mono",monospace;padding:4px 9px;border:2px solid var(--tinta);color:var(--suave);background:var(--cartao)}
+.sel-chip.on{background:#c6f3d9;color:#0a3a22;border-color:#1c8a55}
+.lista-et{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:20px;text-align:left}
+.lista-et .et{display:flex;align-items:center;gap:10px;border:2px solid var(--linha);padding:8px 10px;background:var(--noite2);color:var(--texto);min-width:0}
+.lista-et .et b{flex:1;min-width:0;font:700 .9rem "Space Grotesk",sans-serif}
+.lista-et .et span{font:700 .85rem "Space Mono",monospace;color:var(--ouro2)}
+.cursofim .selo-fim{margin-bottom:6px}
+.cursofim .mono{color:var(--mudo)}
+.cursofim .mono b{color:var(--ouro2)}

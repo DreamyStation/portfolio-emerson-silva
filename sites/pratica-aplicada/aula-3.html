@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <title>Aula 3 · Planeje o fluxo · Prática aplicada</title>
-<meta name="description" content="Escolha uma partida e monte o fluxo de páginas do site. Começa o relógio.">
+<meta name="description" content="Escolha uma prática e monte o fluxo de páginas do site. Começa o relógio.">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230D1024'/%3E%3Cpath d='M8 9h8v4h-4v2h4v4H8zM18 9h6v4h-6zM18 15h6v10h-6z' fill='%23F5B82E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
-<link rel="stylesheet" href="css/site.css?v=13">
+<link rel="stylesheet" href="css/site.css?v=16">
 <style id="encaixe">
 /* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
 h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
@@ -26,15 +26,15 @@ img,svg,video,canvas{max-width:100%}
 <header class="topo"><div class="cx">
 <a class="marca" href="index.html"><i aria-hidden="true">PA</i>Prática aplicada</a>
 <nav aria-label="Principal"><a href="index.html">Início</a><a href="index.html#aulas" aria-current="page">Aulas</a><a href="comandos.html">Comandos</a><a href="../../index.html#sites">Portfólio</a>
-<span class="hud" id="hud" hidden title="Relógio da partida"><span class="nm"></span><b class="rel">00:00</b></span>
+<span class="hud" id="hud" hidden title="Relógio da prática"><span class="nm"></span><b class="rel">00:00</b></span>
 <button class="tema" id="tema" type="button" aria-pressed="false" aria-label="Alternar tema claro e escuro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg><span>Claro</span></button>
 <button class="mudo" id="mudo" type="button" aria-pressed="false" aria-label="Desligar os sons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg><span>Som</span></button></nav>
 </div></header>
 <main id="conteudo">
 <section class="hero" style="padding-bottom:clamp(20px,3vw,34px)"><div class="cx" style="grid-template-columns:minmax(0,1fr)">
-<div class="rv"><span class="tag"> de 10 · começa a partida</span>
+<div class="rv"><span class="tag"> de 10 · começa a prática</span>
 <h1 style="margin-top:18px">Planeje o <span class="azul">fluxo.</span></h1>
-<p class="lead" data-termos>Antes de escrever código, desenhe o caminho do visitante: quais páginas o site tem e em que ordem elas aparecem no menu. É como a planta da casa antes de levantar as paredes. Aqui começa o relógio da partida.</p></div>
+<p class="lead" data-termos>Antes de escrever código, desenhe o caminho do visitante: quais páginas o site tem e em que ordem elas aparecem no menu. É como a planta da casa antes de levantar as paredes. Aqui começa o relógio da prática.</p></div>
 </div></section>
 
 <section class="sec" style="padding-top:clamp(14px,2vw,24px)"><div class="cx"><div class="folha rv" data-termos>
@@ -47,14 +47,14 @@ img,svg,video,canvas{max-width:100%}
 </div></div></div></section>
 
 <section class="sec" id="escolha" style="padding-top:0"><div class="cx"><div class="folha rv">
-<span class="rot">Nova partida</span><h2>Escolha o desafio (ou sorteie).</h2>
-<p style="margin-top:12px;max-width:70ch">Cada partida combina um tipo de site, um layout e um estilo. Muda o cliente, a estrutura da página e, na aula de CSS, a aparência. O relógio começa quando você apertar "Começar partida".</p>
+<span class="rot">Nova prática</span><h2>Escolha o desafio (ou sorteie).</h2>
+<p style="margin-top:12px;max-width:70ch">Cada prática combina um tipo de site, um layout e um estilo. Muda o cliente, a estrutura da página e, na aula de CSS, a aparência. O relógio começa quando você apertar "Começar prática".</p>
 <div class="escolha" style="margin-top:22px">
 <div><h3>1 · Tipo de site</h3><div class="opts" id="o-tipo"></div></div>
 <div><h3>2 · Layout (estrutura)</h3><div class="opts" id="o-layout"></div></div>
 <div><h3>3 · Estilo (aparência)</h3><div class="opts" id="o-estilo"></div></div>
 </div>
-<div class="acoes"><button class="btn cl" id="sortear" type="button">Sortear tudo</button><button class="btn jg" id="comeca" type="button" disabled>Começar partida</button></div>
+<div class="acoes"><button class="btn cl" id="sortear" type="button">Sortear tudo</button><button class="btn jg" id="comeca" type="button" disabled>Começar prática</button></div>
 </div></div></section>
 
 <section class="sec" id="jogo" hidden style="padding-top:0"><div class="cx">
@@ -69,14 +69,14 @@ img,svg,video,canvas{max-width:100%}
 <div class="acoes" style="margin-top:14px"><button class="btn jg" id="conferir" type="button">Conferir fluxo</button><button class="btn cl" id="limpar-fluxo" type="button">Limpar</button></div></div>
 </div>
 <div class="resultado" id="res-fluxo" role="status" style="margin-top:28px"><div class="partida-info">Etapa 1 · fluxo concluído</div><div class="tempo">00:00</div><div class="estr"></div><div class="nota">—</div><p class="msg"></p>
-<div class="acoes" style="justify-content:center"><a class="btn jg" href="aula-4.html">Seguir para o HTML</a><button class="btn cl" id="nova" type="button">Nova partida</button></div></div>
+<div class="acoes" style="justify-content:center"><a class="btn jg" href="aula-4.html">Seguir para o HTML</a><button class="btn cl" id="nova" type="button">Nova prática</button></div></div>
 </div></section>
 </main>
 <footer class="rodape"><div class="cx"><p><b>Prática aplicada</b> · conteúdo e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
-<script src="js/app.js?v=13"></script>
-<script src="js/termos.js?v=13"></script>
-<script src="js/partida.js?v=13"></script>
-<script src="js/aula3.js?v=13"></script>
+<script src="js/app.js?v=16"></script>
+<script src="js/termos.js?v=16"></script>
+<script src="js/partida.js?v=16"></script>
+<script src="js/aula3.js?v=16"></script>
 <script id="encaixe-js">
 /* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
 (function(){

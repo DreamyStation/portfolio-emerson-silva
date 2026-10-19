@@ -66,7 +66,7 @@
     var dicaDe=function(p){return p?(typeof p.dica==='function'?p.dica():p.dica):''};
     t.dica=function(){var p=o.passos[t.passo];if(p)t.lin('> '+dicaDe(p),'d');else t.lin('> Etapa concluída.','ok')};
     t.atualiza=function(){
-      $$('i',o.progresso).forEach(function(x,i){x.className=i<t.passo?'on':''});
+      $$('i',o.progresso).forEach(function(x,i){x.className=i<t.passo?'on':'';x.style.display=i>=o.passos.length?'none':''});
       var s=$('small',o.progresso);if(s)s.textContent=Math.min(t.passo,o.passos.length)+' de '+o.passos.length;
       var p=o.passos[t.passo];if(o.chips){var c=$('[data-acao=cmd]',o.chips);if(c){c.textContent=p?cmdDe(p):'Etapa concluída';c.disabled=!p}}
     };

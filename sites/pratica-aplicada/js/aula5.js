@@ -1,10 +1,10 @@
-/* Prática aplicada · aula 5: CSS, a aparência. Laboratório de efeitos de botão e prática no terminal: o estilo da partida (minimalista claro ou escuro, editorial, artesanal)
+/* Prática aplicada · aula 5: CSS, a aparência. Laboratório de efeitos de botão e prática no terminal: o estilo da prática (minimalista claro ou escuro, editorial, artesanal)
    é escrito em estilo.css e a tela do site muda a cada comando. Ao concluir: tempo total, medalha de velocidade e medalha de design. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,$$=PA.$$,Som=PA.Som,P=PA.Partida;
 
-  /* ---------- laboratório de efeitos de botão (funciona sem partida) ---------- */
+  /* ---------- laboratório de efeitos de botão (funciona sem prática) ---------- */
   var FX={
     elevar:{n:'Elevar',css:'.botao {\n  transition: transform .2s, box-shadow .2s;\n}\n.botao:hover {\n  transform: translateY(-3px);\n  box-shadow: 0 8px 16px rgba(0,0,0,.18);\n}',ex:'No hover, o botão sobe 3 px e ganha sombra. O transition faz isso acontecer em 0,2 s em vez de num salto.'},
     cor:{n:'Mudar de cor',css:'.botao {\n  transition: background .25s;\n}\n.botao:hover {\n  background: #1637c7;\n}',ex:'Só a cor de fundo muda. É o efeito mais discreto e funciona em qualquer estilo.'},
@@ -46,7 +46,7 @@
     if(i===2){[C.bg,C.fg,C.acc,C.soft,C.line].forEach(function(cor){var q=document.createElement('i');q.style.cssText='display:inline-block;width:22px;height:22px;border:2px solid #0A1A4D;background:'+cor+';margin-right:4px;vertical-align:middle';b.appendChild(q)})}
     d.append(s,b,sp);br.appendChild(d)});
 
-  /* pasta do site: o HTML da aula 4 (ou o padrão da partida) mais as imagens; estilo.css começa vazio */
+  /* pasta do site: o HTML da aula 4 (ou o padrão da prática) mais as imagens; estilo.css começa vazio */
   var sh=PA.Shell({inicio:function(S){
     var h=S.acha(['home','voce']);h.f.Downloads=PA.fsDir();
     var site=PA.fsDir();site.f.imagens=PA.fsDir();

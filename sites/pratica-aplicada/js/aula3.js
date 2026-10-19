@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 3: planeje o fluxo. Escolha (ou sorteie) a partida e monte a ordem das páginas do site. O relógio da partida começa aqui. */
+/* Prática aplicada · aula 3: planeje o fluxo. Escolha (ou sorteie) a prática e monte a ordem das páginas do site. O relógio da prática começa aqui. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,$$=PA.$$,Som=PA.Som,P=PA.Partida;
@@ -7,7 +7,7 @@
           novo:$('#nova')};
   var sel={tipo:null,layout:null,estilo:null};
 
-  /* ---------- escolha da partida ---------- */
+  /* ---------- escolha da prática ---------- */
   function botoes(alvo,dados,chave,spr){
     alvo.textContent='';
     Object.keys(dados).forEach(function(k){
@@ -53,7 +53,7 @@
       b.addEventListener('click',function(){cadeia.splice(i,1);Som.clique();desenha();checks()});el.cadeia.appendChild(b);
     });
   }
-  /* esboço (wireframe) do site: muda quando as páginas entram ou saem do fluxo e conforme o layout da partida */
+  /* esboço (wireframe) do site: muda quando as páginas entram ou saem do fluxo e conforme o layout da prática */
   function esboco(){
     var p=P.get(),t=tipoAtual(),box=$('#esboco');if(!box||!p)return;box.textContent='';
     var mk=function(c,txt,pai){var d=document.createElement('div');d.className=c;if(txt)d.textContent=txt;(pai||box).appendChild(d);return d};

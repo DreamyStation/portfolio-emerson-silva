@@ -1,9 +1,9 @@
-/* Prática aplicada · aula 6: CSS responsivo. Simulador de larguras de tela e prática no terminal: o site da partida passa a se adaptar a celular, tablet e computador. */
+/* Prática aplicada · aula 6: CSS responsivo. Simulador de larguras de tela e prática no terminal: o site da prática passa a se adaptar a celular, tablet e computador. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,$$=PA.$$,Som=PA.Som,P=PA.Partida;
 
-  /* ---------- simulador de largura (funciona sem partida): uma página de exemplo com @media dentro de um iframe redimensionável ---------- */
+  /* ---------- simulador de largura (funciona sem prática): uma página de exemplo com @media dentro de um iframe redimensionável ---------- */
   var DEMO='<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>'+
    'body{margin:0;padding:16px;font-family:system-ui,sans-serif;background:#fff;color:#1a1a1a}h1{font-size:clamp(1.3rem,5vw,2rem);margin:0 0 12px}'+
    '.g{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}.c{background:#eef3ff;border:1px solid #cfd8f0;border-radius:10px;padding:14px;font-size:14px}'+
@@ -66,7 +66,7 @@
   var tem_=function(re){return re.test(css())};
   var vistas={};
   var passos=[
-    {dica:'Passo 1: entre na pasta do site. Digite: cd '+T.slug,cmd:'cd '+T.slug,ok:function(S){return S.cwd[S.cwd.length-1]===T.slug},ex:'O site da partida, com o estilo da aula anterior, está aqui.'},
+    {dica:'Passo 1: entre na pasta do site. Digite: cd '+T.slug,cmd:'cd '+T.slug,ok:function(S){return S.cwd[S.cwd.length-1]===T.slug},ex:'O site da prática, com o estilo da aula anterior, está aqui.'},
     {dica:'Passo 2: avise o celular que a página é feita para telas pequenas. Digite: '+cmds.viewport,cmd:cmds.viewport,ok:function(){return /<meta[^>]*name=["']?viewport/i.test(idx())},ex:'Sem o viewport, o celular finge que a tela tem uns 980 px e encolhe tudo. Ele vai no head de um site de verdade.'},
     {dica:'Passo 3: faça as imagens nunca passarem da largura da tela. Digite: '+cmds.img,cmd:cmds.img,ok:function(){return tem_(/img\{[^}]*max-width:100%/)},ex:'max-width: 100% deixa a imagem encolher junto com o espaço; height: auto mantém a proporção.'},
     {dica:'Passo 4: deixe o título proporcional à tela. Digite: '+cmds.clamp,cmd:cmds.clamp,ok:function(){return tem_(/h1\{[^}]*clamp\(/)},ex:'clamp(mínimo, ideal, máximo): o título cresce com a tela (5vw) sem ficar menor que 1.8rem nem maior que 2.8rem.'},

@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <title>Aula 6 · CSS responsivo · Prática aplicada</title>
-<meta name="description" content="Simulador de larguras e prática: o site da partida se adapta a celular, tablet e computador.">
+<meta name="description" content="Simulador de larguras e prática: o site da prática se adapta a celular, tablet e computador.">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230D1024'/%3E%3Cpath d='M8 9h8v4h-4v2h4v4H8zM18 9h6v4h-6zM18 15h6v10h-6z' fill='%23F5B82E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
-<link rel="stylesheet" href="css/site.css?v=13">
+<link rel="stylesheet" href="css/site.css?v=16">
 <style id="encaixe">
 /* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
 h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
@@ -26,15 +26,15 @@ img,svg,video,canvas{max-width:100%}
 <header class="topo"><div class="cx">
 <a class="marca" href="index.html"><i aria-hidden="true">PA</i>Prática aplicada</a>
 <nav aria-label="Principal"><a href="index.html">Início</a><a href="index.html#aulas" aria-current="page">Aulas</a><a href="comandos.html">Comandos</a><a href="../../index.html#sites">Portfólio</a>
-<span class="hud" id="hud" hidden title="Relógio da partida"><span class="nm"></span><b class="rel">00:00</b></span>
+<span class="hud" id="hud" hidden title="Relógio da prática"><span class="nm"></span><b class="rel">00:00</b></span>
 <button class="tema" id="tema" type="button" aria-pressed="false" aria-label="Alternar tema claro e escuro"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg><span>Claro</span></button>
 <button class="mudo" id="mudo" type="button" aria-pressed="false" aria-label="Desligar os sons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg><span>Som</span></button></nav>
 </div></header>
 <main id="conteudo">
 <section class="hero" style="padding-bottom:clamp(20px,3vw,34px)"><div class="cx" style="grid-template-columns:minmax(0,1fr)">
-<div class="rv"><span class="tag">Aula 6 de 10 · etapa 4 da partida</span>
+<div class="rv"><span class="tag">Aula 6 de 10 · etapa 4 da prática</span>
 <h1 style="margin-top:18px">CSS <span class="azul">responsivo.</span></h1>
-<p class="lead" data-termos>Muita gente vai abrir o seu site pelo celular. Um site responsivo se adapta à tela de quem olha: o mesmo HTML, o mesmo CSS, três jeitos de se organizar. Aqui você vê a ideia funcionando e aplica ao site da sua partida.</p></div>
+<p class="lead" data-termos>Muita gente vai abrir o seu site pelo celular. Um site responsivo se adapta à tela de quem olha: o mesmo HTML, o mesmo CSS, três jeitos de se organizar. Aqui você vê a ideia funcionando e aplica ao site da sua prática.</p></div>
 </div></section>
 
 <section class="sec" style="padding-top:clamp(14px,2vw,24px)"><div class="cx"><div class="folha rv" data-termos>
@@ -58,7 +58,7 @@ img,svg,video,canvas{max-width:100%}
 <ul class="cola"><li><code>&lt;meta name="viewport" ...&gt;</code><span>avisa o celular para usar a largura real da tela</span></li><li><code>max-width: 100%</code><span>imagem que nunca passa do espaço disponível</span></li><li><code>clamp(1.8rem, 5vw, 2.8rem)</code><span>tamanho que cresce com a tela entre um mínimo e um máximo</span></li><li><code>@media (max-width: 600px)</code><span>regras que só valem em telas de até 600 px</span></li><li><code>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))</code><span>colunas que se ajustam sozinhas, sem @media</span></li><li><code>flex-wrap: wrap</code><span>itens quebram de linha quando falta espaço</span></li><li><code>@media (prefers-color-scheme: dark)</code><span>acompanha o tema escuro do aparelho</span></li><li><code>@media (prefers-reduced-motion: reduce)</code><span>desliga animações para quem pediu menos movimento</span></li></ul>
 </div></div></section>
 
-<section class="sec" id="sem-partida" style="padding-top:0" hidden><div class="cx"><div class="folha rv"><span class="rot">Falta uma coisa</span><h2>Comece uma partida na aula 3.</h2><p style="margin-top:12px;max-width:60ch">A prática de responsivo usa o site que você monta nas aulas 3, 4 e 5. Comece a partida e volte aqui.</p><div class="acoes"><a class="btn jg" href="aula-3.html">Ir para a aula 3</a></div></div></div></section>
+<section class="sec" id="sem-partida" style="padding-top:0" hidden><div class="cx"><div class="folha rv"><span class="rot">Falta uma coisa</span><h2>Comece uma prática na aula 3.</h2><p style="margin-top:12px;max-width:60ch">A prática de responsivo usa o site que você monta nas aulas 3, 4 e 5. Comece a prática e volte aqui.</p><div class="acoes"><a class="btn jg" href="aula-3.html">Ir para a aula 3</a></div></div></div></section>
 
 <div id="com-partida" hidden>
 <section class="sec" id="lab" style="padding-top:0"><div class="cx">
@@ -74,17 +74,16 @@ img,svg,video,canvas{max-width:100%}
 </div>
 <div class="acoes" style="margin-top:18px"><button class="btn jg" id="concluir" type="button" hidden>Concluir esta etapa agora</button></div>
 <div class="resultado" id="resultado" role="status" style="margin-top:28px"><div class="partida-info"></div><div class="tempo">00:00</div><div class="medalhas"><div class="estr"></div><div class="estr estr2"></div></div><div class="nota">—</div><p class="msg"></p><div class="parts"></div>
-<div class="acoes" style="justify-content:center"><a class="btn jg" href="aula-3.html" onclick="try{localStorage.setItem('pa:partida','null')}catch(e){}">Jogar outra partida</a><a class="btn cl" href="#tela">Ver o site</a><a class="btn cl" href="index.html#aulas">Voltar às aulas</a></div>
-<p class="mono" style="font-size:.78rem;color:#A9B2DA;margin-top:16px">PRÓXIMAS AULAS: JAVASCRIPT, BACKEND E API, LOGIN E SEGURANÇA, PUBLICAR · EM BREVE</p></div>
+<div class="acoes" style="justify-content:center"><a class="btn jg" href="aula-7.html">Seguir para JavaScript</a><a class="btn cl" href="#tela">Ver o site</a><a class="btn cl" href="index.html#aulas">Voltar às aulas</a></div></div>
 </div></section>
 </div>
 </main>
 <footer class="rodape"><div class="cx"><p><b>Prática aplicada</b> · conteúdo e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
-<script src="js/app.js?v=13"></script>
-<script src="js/termos.js?v=13"></script>
-<script src="js/partida.js?v=13"></script>
-<script src="js/shell.js?v=13"></script>
-<script src="js/aula6.js?v=13"></script>
+<script src="js/app.js?v=16"></script>
+<script src="js/termos.js?v=16"></script>
+<script src="js/partida.js?v=16"></script>
+<script src="js/shell.js?v=16"></script>
+<script src="js/aula6.js?v=16"></script>
 <script id="encaixe-js">
 /* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
 (function(){
