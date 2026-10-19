@@ -93,6 +93,18 @@ p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap
 :where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
 img,svg,video,canvas{max-width:100%}
 </style>
+<style id="sb">
+/*sb:ini*/
+:root{--sb-t:#E6EBF8;--sb-h:#1F4BFF;--sb-hv:#1637C7;--sb-ed:#E6EBF8}
+::-webkit-scrollbar{width:16px;height:16px}
+::-webkit-scrollbar-track{background:var(--sb-t);}
+::-webkit-scrollbar-thumb{background:var(--sb-h);border-radius:999px;border:4px solid var(--sb-t);min-height:48px;min-width:48px}
+::-webkit-scrollbar-thumb:hover{background:var(--sb-hv)}
+::-webkit-scrollbar-thumb:active{background:var(--sb-hv)}
+::-webkit-scrollbar-corner{background:var(--sb-t)}
+@supports not selector(::-webkit-scrollbar){html{scrollbar-width:auto;scrollbar-color:var(--sb-h) var(--sb-t)}}
+/*sb:fim*/
+</style>
 </head><body>
 <header class="barra"><div class="wrap">
 <a class="marca" href="index.html#apps">&larr; Emerson Silva · APPs</a>
