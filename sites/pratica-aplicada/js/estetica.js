@@ -1,4 +1,4 @@
-/* Prática aplicada · estética Matrix (a única do site): chuva de códigos, sprites com filtro verde e ruído, texto digitado como num
+/* CodeHome · estética Matrix (a única do site): chuva de códigos, sprites com filtro verde e ruído, texto digitado como num
    terminal antigo, glitch de entrada e de saída, glitches raros em títulos, botões e ícones. Expõe PA.Fx para o resto dos scripts. */
 (function(){
   'use strict';

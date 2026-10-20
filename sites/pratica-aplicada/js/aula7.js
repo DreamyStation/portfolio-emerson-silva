@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 7: JavaScript. O terminal escreve script.js e a minitela passa a reagir a cliques: contador, soma e limite. O console do navegador aparece no terminal. */
+/* CodeHome · aula 7: JavaScript. O terminal escreve script.js e a minitela passa a reagir a cliques: contador, soma e limite. O console do navegador aparece no terminal. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,Som=PA.Som,P=PA.Partida;
@@ -6,7 +6,9 @@
   var L=PA.Licao({
     etapa:'js',medalha2:'interatividade',fim:'JavaScript concluído',arquivo:'script.js',scripts:true,ponte:true,manterScript:true,
     brief:function(L){return [['Site',L.T.nome,'caminho: '+L.T.caminho+' · layout: '+L.LY.nome],['Objetivo','Interatividade','um botão que conta e calcula na minitela'],['Ferramenta','JavaScript','o arquivo script.js, ligado ao index.html']]},
-    aoReiniciar:function(){cliques=0}
+    aoReiniciar:function(){cliques=0},
+    persistExtra:function(L){return {salva:function(){return {cliques:cliques}},carrega:function(o){cliques=o.cliques||0}}},
+    persistDepois:function(L,t){if(t.passo>=REQ){feitoReq=true;$('#concluir').hidden=false}var e=P.get().etapas.js;if(e&&e.fim)fecha()}
   });
   if(!L)return;
   var T=L.T,J=T.js,tot=J.total!==null;

@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 9: login e segurança. Cadastro com e-mail e senha, hash, login por token, XSS e injeção de SQL num servidor de mentira.
+/* CodeHome · aula 9: login e segurança. Cadastro com e-mail e senha, hash, login por token, XSS e injeção de SQL num servidor de mentira.
    A minitela mostra a página do site e o painel mostra o "banco de dados". Tudo simulado no navegador. */
 (function(){
   'use strict';
@@ -17,7 +17,9 @@
           else r.linhas.push(['> Modo atual do servidor: '+serv.modo,'m']);
         };
       return {curl:PA.curl(serv),servidor:srv,server:srv}},
-    aoAtualizar:function(L){desenha(L)},aoReiniciar:function(){if(serv)serv.zera()}
+    aoAtualizar:function(L){desenha(L)},aoReiniciar:function(){if(serv)serv.zera()},
+    persistExtra:function(L){return {salva:function(){return {s:PA.Servidor.estado(serv)}},carrega:function(o){PA.Servidor.carrega(serv,o.s)}}},
+    persistDepois:function(L,t){if(t.passo>=REQ){feitoReq=true;$('#concluir').hidden=false}var e=P.get().etapas.login;if(e&&e.fim)fecha()}
   });
   if(!L)return;
   var T=L.T;

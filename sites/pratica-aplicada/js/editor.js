@@ -1,4 +1,4 @@
-/* Prática aplicada · editor de código de verdade (CodeMirror) ligado à pasta de treino.
+/* CodeHome · editor de código de verdade (CodeMirror) ligado à pasta de treino.
    O que o aluno escreve aqui é o arquivo: a minitela, o terminal (cat, python, node) e as conferências leem o mesmo texto. */
 (function(){
   'use strict';

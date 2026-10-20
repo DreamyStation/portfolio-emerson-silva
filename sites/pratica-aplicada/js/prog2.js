@@ -1,4 +1,4 @@
-/* Prática aplicada · programação geral 2: lógica (decisões, repetições e funções). O aluno escreve funções em logica.py; testes escondidos, com valores sorteados, rodam em Python de verdade. */
+/* CodeHome · programação geral 2: lógica (decisões, repetições e funções). O aluno escreve funções em logica.py; testes escondidos, com valores sorteados, rodam em Python de verdade. */
 (function(){
   'use strict';
   var PA=window.PA,N2=PA.N2;

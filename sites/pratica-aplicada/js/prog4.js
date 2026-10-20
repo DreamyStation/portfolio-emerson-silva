@@ -1,4 +1,4 @@
-/* Prática aplicada · programação geral 4: código limpo e refatoração. O aluno reorganiza um programa confuso sem mudar o que ele mostra; a conferência olha a saída e a organização do código. */
+/* CodeHome · programação geral 4: código limpo e refatoração. O aluno reorganiza um programa confuso sem mudar o que ele mostra; a conferência olha a saída e a organização do código. */
 (function(){
   'use strict';
   var PA=window.PA;

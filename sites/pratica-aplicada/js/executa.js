@@ -1,4 +1,4 @@
-/* Prática aplicada · execução de código de verdade.
+/* CodeHome · execução de código de verdade.
    PA.Python: Python real (Pyodide) dentro de um Web Worker, com limite de tempo; os arquivos da pasta de treino são copiados para lá e os que o programa criar ou mudar voltam.
    PA.Node: JavaScript real em um iframe isolado (sem acesso à página), com console capturado e limite de tempo. */
 (function(){

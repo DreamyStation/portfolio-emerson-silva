@@ -1,4 +1,4 @@
-/* Prática aplicada · programação geral 1: depuração. Quatro programas com defeitos sorteados (Python, JavaScript no Node e uma página); o aluno investiga e conserta. */
+/* CodeHome · programação geral 1: depuração. Quatro programas com defeitos sorteados (Python, JavaScript no Node e uma página); o aluno investiga e conserta. */
 (function(){
   'use strict';
   var PA=window.PA,N2=PA.N2;

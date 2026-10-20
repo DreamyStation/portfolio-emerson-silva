@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 14 (nível 2): personalizar o site no estilo Matrix com CSS de verdade, com variação de cor sorteada. */
+/* CodeHome · aula 14 (nível 2): personalizar o site no estilo Matrix com CSS de verdade, com variação de cor sorteada. */
 (function(){
   'use strict';
   var PA=window.PA,N2=PA.N2;

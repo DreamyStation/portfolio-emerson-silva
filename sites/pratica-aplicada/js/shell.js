@@ -1,4 +1,4 @@
-/* Prática aplicada · terminal virtual. Sistema de arquivos de mentira, comandos de verdade (pwd, ls, cd, mkdir, touch, cat, echo > e >>, rm, code, node -v, git --version)
+/* CodeHome · terminal virtual. Sistema de arquivos de mentira, comandos de verdade (pwd, ls, cd, mkdir, touch, cat, echo > e >>, rm, code, node -v, git --version)
    e uma "tela" que monta o site a partir do index.html e do estilo.css digitados. Nada sai do navegador. */
 (function(){
   'use strict';
@@ -26,6 +26,25 @@
       S.raiz=dir();S.cwd=HOME.slice();S.aberto=null;S.tocados={};S.cmds=[];
       var h=S.raiz;HOME.forEach(function(n){h.f[n]=dir();h=h.f[n]});
       (opc.inicio||function(){})(S);
+    };
+    /* ---- salvar e restaurar o estado do terminal (para não perder o progresso ao trocar de página) ---- */
+    S.serializa=function(){
+      function ser(n){
+        if(n.t==='d'){var f={};Object.keys(n.f).forEach(function(k){f[k]=ser(n.f[k])});return {t:'d',f:f}}
+        if(n.t==='a')return {t:'a',c:n.c};
+        return {t:'i',u:n.u};
+      }
+      return {raiz:ser(S.raiz),cwd:S.cwd.slice(),aberto:S.aberto,tocados:S.tocados,cmds:S.cmds.slice(-300)};
+    };
+    S.restaura=function(o){
+      function de(n){
+        if(n.t==='d'){var d=dir();Object.keys(n.f).forEach(function(k){d.f[k]=de(n.f[k])});return d}
+        if(n.t==='a')return {t:'a',c:n.c};
+        return {t:'i',u:n.u};
+      }
+      if(!o||!o.raiz)return false;
+      S.raiz=de(o.raiz);S.cwd=(o.cwd||HOME).slice();S.aberto=o.aberto||null;S.tocados=o.tocados||{};S.cmds=(o.cmds||[]).slice();
+      return true;
     };
     /* ---- caminhos ---- */
     S.partes=function(p){

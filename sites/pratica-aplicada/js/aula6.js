@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 6: CSS responsivo. Simulador de larguras de tela e prática no terminal: o site da prática passa a se adaptar a celular, tablet e computador. */
+/* CodeHome · aula 6: CSS responsivo. Simulador de larguras de tela e prática no terminal: o site da prática passa a se adaptar a celular, tablet e computador. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,$$=PA.$$,Som=PA.Som,P=PA.Partida;
@@ -99,6 +99,7 @@
   function balanceado(){var c=sh.le(SITE+'/estilo.css')||'';return (c.match(/\{/g)||[]).length===(c.match(/\}/g)||[]).length}
   term=PA.Terminal({
     term:$('#term'),input:$('#cmd'),chips:$('#chips'),progresso:$('#prog'),enviar:$('#enviar'),passos:passos,shell:sh,
+    persist:{id:'resp',pid:p.criada,depois:function(t){if(t.passo>=REQ){feitoReq=true;$('#concluir').hidden=false}var e=P.get().etapas.resp;if(e&&e.fim)conclui()}},
     prompt:function(){return sh.prompt().replace(' $','')+' $'},atualizaPrompt:function(){atualiza();salva()},
     aoMostra:function(){P.penalidade(20,'pista')},aoDica:function(){P.penalidade(5,'pista')},aoErro:function(){P.penalidade(5,'erro')},
     depois:function(txt,r,t){

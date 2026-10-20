@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 4: HTML na prática. O terminal constrói o index.html do site da prática (tipo, layout e menu diferentes a cada vez) e a tela mostra o resultado ao vivo. */
+/* CodeHome · aula 4: HTML na prática. O terminal constrói o index.html do site da prática (tipo, layout e menu diferentes a cada vez) e a tela mostra o resultado ao vivo. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,$$=PA.$$,Som=PA.Som,P=PA.Partida;
@@ -90,6 +90,7 @@
   var term;
   term=PA.Terminal({
     term:$('#term'),input:$('#cmd'),chips:$('#chips'),progresso:$('#prog'),enviar:$('#enviar'),passos:passos,shell:sh,
+    persist:{id:'html',pid:p.criada,depois:function(t){primeiro=false;var e=P.get().etapas.html;if(t.passo>=passos.length||(e&&e.fim))conclui()}},
     prompt:function(){return sh.prompt().replace(' $','')+' $'},atualizaPrompt:atualiza,
     aoMostra:function(){P.penalidade(20,'pista')},aoDica:function(){P.penalidade(5,'pista')},aoErro:function(){P.penalidade(5,'erro')},
     depois:function(txt,r,t){

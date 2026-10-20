@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 12 (nível 2): Python escreve o HTML e o CSS. */
+/* CodeHome · aula 12 (nível 2): Python escreve o HTML e o CSS. */
 (function(){
   'use strict';
   var PA=window.PA,N2=PA.N2,D=PA.Diag;

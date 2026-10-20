@@ -1,4 +1,4 @@
-/* Prática aplicada · base das aulas do nível 2. Aqui o código é de verdade: o aluno escreve no editor ou pelo terminal, o navegador (HTML, CSS, JavaScript) e o Python real executam,
+/* CodeHome · base das aulas do nível 2. Aqui o código é de verdade: o aluno escreve no editor ou pelo terminal, o navegador (HTML, CSS, JavaScript) e o Python real executam,
    e as conferências olham o resultado, não o texto exato do comando. Os objetivos podem ser cumpridos em qualquer ordem e de jeitos diferentes. */
 (function(){
   'use strict';
@@ -170,6 +170,7 @@
     L.cmdAtual=function(){for(var i=0;i<objs.length;i++){if(!objs[i].bonus&&!L.feitos[i]){var ex=objs[i].exemplo;return (typeof ex==='function'?ex(L):ex)||'ls'}}return 'ls'};
     var o={term:$('#term'),input:$('#cmd'),chips:$('#chips'),progresso:$('#prog'),enviar:$('#enviar'),passos:passos,shell:L.sh,
       prompt:function(){return L.sh.prompt().replace(' $','')+' $'},
+      persist:{id:cfg.etapa,pid:p.criada,semShell:true,extra:{salva:function(){return {feitos:L.feitos}},carrega:function(o){if(o&&o.feitos)L.feitos=o.feitos}}},
       atualizaPrompt:function(){L.atualiza(false);L.persiste()},
       aoMostra:function(){P.penalidade(20,'pista')},aoDica:function(){P.penalidade(5,'pista')},
       reiniciar:function(t){PA.Arm.grava(CHAVE,null);L.hist=[];PA.Arm.grava('n2h:'+cfg.etapa,[]);L.sh.reinicia();t.limpa();L.feitos={};L.logs=[];L.errosJS=[];L.itemPy=null;L.itemNode=null;L.atualiza(false);L.ed.atualiza();t.lin('> Pasta reiniciada. O relógio continua correndo.','ok');t.dica()}};

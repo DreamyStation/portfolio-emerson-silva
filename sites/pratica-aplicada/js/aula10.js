@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 10: publicar. Versionar com Git, enviar ao GitHub e colocar o site no ar (simulado). No fim, o resumo do curso com todas as etapas e medalhas. */
+/* CodeHome · aula 10: publicar. Versionar com Git, enviar ao GitHub e colocar o site no ar (simulado). No fim, o resumo do curso com todas as etapas e medalhas. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,Som=PA.Som,P=PA.Partida;
@@ -54,7 +54,9 @@
       };
     },
     aoAtualizar:function(L){desenha(L)},
-    aoReiniciar:function(){G.init=G.staged=G.pushed=false;G.msg=G.remote='';G.consultas=[]}
+    aoReiniciar:function(){G.init=G.staged=G.pushed=false;G.msg=G.remote='';G.consultas=[]},
+    persistExtra:function(L){return {salva:function(){return JSON.parse(JSON.stringify(G))},carrega:function(o){Object.keys(o).forEach(function(k){G[k]=o[k]})}}},
+    persistDepois:function(L,t){if(t.passo>=REQ){feitoReq=true;$('#concluir').hidden=false}var e=P.get().etapas.deploy;if(e&&e.fim)fecha()}
   });
   if(!L)return;
   var T=L.T,slug=T.slug,site='https://'+USER+'.github.io/'+slug+'/';

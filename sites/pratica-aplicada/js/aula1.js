@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 1: como um site funciona. O terminal é de mentira; o simulador mostra o caminho de um pedido: navegador → catálogo de endereços (DNS) → servidor → resposta. */
+/* CodeHome · aula 1: como um site funciona. O terminal é de mentira; o simulador mostra o caminho de um pedido: navegador → catálogo de endereços (DNS) → servidor → resposta. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,$$=PA.$$,Som=PA.Som;
@@ -84,6 +84,9 @@
 
   var term=PA.Terminal({
     term:$('#term'),input:$('#cmd'),chips:$('#chips'),progresso:$('#prog'),enviar:$('#enviar'),passos:passos,
+    persist:{id:'aula1',pid:'1',extra:{salva:function(){return {aberto:estado.aberto,cartas:$$('.carta.aberta').map(function(c){return c.dataset.k})}},
+      carrega:function(o){estado.aberto=!!o.aberto;(o.cartas||[]).forEach(function(k){var c=$('.carta[data-k="'+k+'"]');if(c){c.classList.remove('trava');c.classList.add('aberta')}})}},
+      depois:function(t){if(t.passo>=passos.length){var f=$('#fim');if(f)f.classList.add('on')}}},
     /* explorar: comandos fora do passo também funcionam, como num terminal de verdade */
     extra:function(txt,t,casou){
       if(casou)return false;

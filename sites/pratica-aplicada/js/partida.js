@@ -1,4 +1,4 @@
-/* Prática aplicada · partida: cada prática sorteia (ou deixa escolher) um tipo de site, um layout e um estilo; o relógio mede o tempo de cada etapa
+/* CodeHome · partida: cada prática sorteia (ou deixa escolher) um tipo de site, um layout e um estilo; o relógio mede o tempo de cada etapa
    e, ao concluir, mostra o tempo, a nota e se foi bom ou ruim. Tudo guardado no navegador. */
 (function(){
   'use strict';
@@ -112,6 +112,7 @@
     Object.keys(P.CURSOS).forEach(function(c){
       var et=P.CURSOS[c];if(p['rank_'+c])return;
       if(!et.every(function(k){return p.etapas[k]&&p.etapas[k].fim}))return;
+      if(et.some(function(k){return p.etapas[k]&&p.etapas[k].pulada})){p['rank_'+c]=true;return}
       var tot=et.reduce(function(a,k){var e=p.etapas[k];return a+(e.ms||0)+(e.pen||0)*1000},0);
       p['rank_'+c]=true;P.registra(c,tot,p,0);
     });

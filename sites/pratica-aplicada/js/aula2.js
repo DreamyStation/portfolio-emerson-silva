@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 2: seu ambiente de trabalho. Qual terminal abrir, quais aplicativos ter e os comandos que você vai usar, treinados num terminal virtual. */
+/* CodeHome · aula 2: seu ambiente de trabalho. Qual terminal abrir, quais aplicativos ter e os comandos que você vai usar, treinados num terminal virtual. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,$$=PA.$$,Som=PA.Som;
@@ -35,6 +35,7 @@
   }
   term=PA.Terminal({
     term:$('#term'),input:$('#cmd'),chips:$('#chips'),progresso:$('#prog'),enviar:$('#enviar'),passos:passos,shell:sh,
+    persist:{id:'aula2',pid:'2',depois:function(t){if(t.passo>=passos.length){var f=$('#fim');if(f)f.classList.add('on')}}},
     prompt:function(){return sh.prompt().replace(' $','')+' $'},atualizaPrompt:atualiza,
     depois:function(txt,r,t){var p=passos[t.passo];if(p&&!r.erro&&p.ok(sh)){return t.avanca(p.ex)}},
     reiniciar:function(t){sh.reinicia();t.limpa();t.passo=0;t.atualiza();atualiza();t.lin('> Treino reiniciado.','ok');t.dica()},

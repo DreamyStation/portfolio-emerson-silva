@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 13 (nível 2): dados em JSON e várias páginas geradas por Python. */
+/* CodeHome · aula 13 (nível 2): dados em JSON e várias páginas geradas por Python. */
 (function(){
   'use strict';
   var PA=window.PA,N2=PA.N2,D=PA.Diag;

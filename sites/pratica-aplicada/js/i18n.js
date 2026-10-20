@@ -1,4 +1,4 @@
-/* Prática aplicada · idioma (PT/EN). Este arquivo é pequeno e fica em todas as páginas: guarda a escolha, liga o botão PT | EN e, só em inglês,
+/* CodeHome · idioma (PT/EN). Este arquivo é pequeno e fica em todas as páginas: guarda a escolha, liga o botão PT | EN e, só em inglês,
    carrega o motor de tradução (i18n_en.js, gerado por Sites_Maiores/_ferramentas/pa_i18n_build.py). Trocar de idioma recarrega a página;
    o progresso das aulas fica salvo no navegador. */
 (function(){

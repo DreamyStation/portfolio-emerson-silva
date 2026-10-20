@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 11 (nível 2): Python, primeiros passos. Python de verdade; o aluno escolhe nomes e jeitos, e a conferência olha o que o programa fez. */
+/* CodeHome · aula 11 (nível 2): Python, primeiros passos. Python de verdade; o aluno escolhe nomes e jeitos, e a conferência olha o que o programa fez. */
 (function(){
   'use strict';
   var PA=window.PA,N2=PA.N2;

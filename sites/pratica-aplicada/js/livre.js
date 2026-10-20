@@ -1,4 +1,4 @@
-/* Prática aplicada · editor livre das aulas do nível 1 (opcional). Acrescenta, embaixo do laboratório, um editor de código de verdade e o painel de erros.
+/* CodeHome · editor livre das aulas do nível 1 (opcional). Acrescenta, embaixo do laboratório, um editor de código de verdade e o painel de erros.
    O que for escrito aqui vale como se tivesse sido digitado no terminal: a minitela muda na hora e os passos são conferidos pelo resultado. */
 (function(){
   'use strict';

@@ -1,4 +1,4 @@
-/* Prática aplicada · servidor de mentira (back-end e API) com cadastro, login por token, banco de dados em memória e demonstrações de falhas de segurança (XSS e injeção de SQL).
+/* CodeHome · servidor de mentira (back-end e API) com cadastro, login por token, banco de dados em memória e demonstrações de falhas de segurança (XSS e injeção de SQL).
    Nada sai do navegador: as "requisições" do terminal (curl) e do site da minitela (fetch) caem aqui. */
 (function(){
   'use strict';
@@ -106,5 +106,7 @@
       if(aoResposta)aoResposta(met.toUpperCase(),url,rs);
     };
   }
+  Servidor.estado=function(S){return JSON.parse(JSON.stringify({modo:S.modo,pedidos:S.pedidos,usuarios:S.usuarios,tokens:S.tokens,ultimoToken:S.ultimoToken,comentarios:S.comentarios,falhas:S.falhas,seq:S.seq,log:S.log,hist:S.hist||[],idxSeguro:S.idxSeguro||0}))};
+  Servidor.carrega=function(S,o){if(!o)return;Object.keys(o).forEach(function(k){S[k]=o[k]})};
   window.PA=window.PA||{};window.PA.Servidor=Servidor;window.PA.curl=curl;window.PA.sha256=sha256;
 })();

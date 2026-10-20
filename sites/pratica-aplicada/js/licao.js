@@ -1,4 +1,4 @@
-/* Prática aplicada · base das aulas práticas 7 a 10: prepara a pasta do site da prática, a minitela, o terminal, o relógio e o resultado com medalhas. */
+/* CodeHome · base das aulas práticas 7 a 10: prepara a pasta do site da prática, a minitela, o terminal, o relógio e o resultado com medalhas. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,$$=PA.$$,Som=PA.Som,P=PA.Partida;
@@ -52,6 +52,7 @@
         prompt:function(){return L.sh.prompt().replace(' $','')+' $'},atualizaPrompt:function(){L.atualiza();L.salva()},
         aoMostra:function(){P.penalidade(20,'pista')},aoDica:function(){P.penalidade(5,'pista')},aoErro:function(){P.penalidade(5,'erro')},
         reiniciar:function(t){L.sh.reinicia();L.garante();if(cfg.aoReiniciar)cfg.aoReiniciar(L);t.limpa();t.passo=0;t.atualiza();L.atualiza();t.lin('> Pasta reiniciada. O relógio continua correndo.','ok');t.dica()}};
+      o.persist={id:cfg.etapa,pid:p.criada,extra:cfg.persistExtra?cfg.persistExtra(L):null,depois:cfg.persistDepois?function(t){cfg.persistDepois(L,t)}:null};
       for(var k in extra)o[k]=extra[k];
       L.term=PA.Terminal(o);return L.term;
     };

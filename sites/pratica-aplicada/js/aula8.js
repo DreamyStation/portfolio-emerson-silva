@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 8: backend e API. O terminal conversa com um servidor de mentira (curl) e a minitela busca os dados dele com fetch. */
+/* CodeHome · aula 8: backend e API. O terminal conversa com um servidor de mentira (curl) e a minitela busca os dados dele com fetch. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,Som=PA.Som,P=PA.Partida;
@@ -7,7 +7,9 @@
     etapa:'api',medalha2:'API',fim:'backend e API concluídos',arquivo:'script.js',scripts:true,ponte:true,manterScript:true,
     brief:function(L){return [['Site',L.T.nome,'caminho: '+L.T.caminho],['Objetivo','API','pedir dados ao servidor e mostrar na página'],['Ferramentas','curl e fetch','curl no terminal, fetch no JavaScript']]},
     cmds:function(L){serv=PA.Servidor(L.T);return {curl:PA.curl(serv)}},
-    aoReiniciar:function(){reqFront=false;if(serv)serv.zera()}
+    aoReiniciar:function(){reqFront=false;if(serv)serv.zera()},
+    persistExtra:function(L){return {salva:function(){return {s:PA.Servidor.estado(serv),rf:reqFront}},carrega:function(o){PA.Servidor.carrega(serv,o.s);reqFront=!!o.rf}}},
+    persistDepois:function(L,t){if(t.passo>=REQ){feitoReq=true;$('#concluir').hidden=false}var e=P.get().etapas.api;if(e&&e.fim)fecha()}
   });
   if(!L)return;
   var T=L.T,item=serv.itens[0].nome;

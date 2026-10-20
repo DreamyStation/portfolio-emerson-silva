@@ -1,4 +1,4 @@
-/* Prática aplicada · diagnóstico de erros. Lê o que o aluno escreveu (HTML, CSS, JavaScript, Python) e explica, em português simples,
+/* CodeHome · diagnóstico de erros. Lê o que o aluno escreveu (HTML, CSS, JavaScript, Python) e explica, em português simples,
    o que está errado, onde e como resolver. Nada aqui é roteiro fixo: as regras olham o código de verdade. */
 (function(){
   'use strict';

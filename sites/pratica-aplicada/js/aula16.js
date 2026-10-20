@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 16 (nível 2): desafio final. Um programa Python que gera um site temático Matrix inteiro, com variações. */
+/* CodeHome · aula 16 (nível 2): desafio final. Um programa Python que gera um site temático Matrix inteiro, com variações. */
 (function(){
   'use strict';
   var PA=window.PA,N2=PA.N2,D=PA.Diag,P=PA.Partida,$=PA.$;

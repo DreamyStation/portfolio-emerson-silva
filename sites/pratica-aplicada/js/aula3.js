@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 3: planeje o fluxo. Escolha (ou sorteie) a prática e monte a ordem das páginas do site. O relógio da prática começa aqui. */
+/* CodeHome · aula 3: planeje o fluxo. Escolha (ou sorteie) a prática e monte a ordem das páginas do site. O relógio da prática começa aqui. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,$$=PA.$$,Som=PA.Som,P=PA.Partida;
@@ -75,6 +75,7 @@
     ];
   }
   function checks(){
+    (function(){var q=P.get();if(q&&!(q.etapas.fluxo&&q.etapas.fluxo.fim)){q.fluxo=cadeia.slice();P.grava(q)}})();
     el.checks.textContent='';regras().forEach(function(r){var li=document.createElement('li');li.textContent=r[0];if(r[1])li.className='ok';el.checks.appendChild(li)});
     el.msg.textContent='';el.msg.className='msgf';
   }

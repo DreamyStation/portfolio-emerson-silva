@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 15 (nível 2): efeitos Matrix com JavaScript de verdade (texto digitado e chuva em canvas), com variação sorteada. */
+/* CodeHome · aula 15 (nível 2): efeitos Matrix com JavaScript de verdade (texto digitado e chuva em canvas), com variação sorteada. */
 (function(){
   'use strict';
   var PA=window.PA,N2=PA.N2;

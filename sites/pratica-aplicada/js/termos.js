@@ -1,4 +1,4 @@
-/* Prática aplicada · termos com explicação. Passe o mouse, toque ou use Tab: aparece uma dica em português simples, com uma analogia.
+/* CodeHome · termos com explicação. Passe o mouse, toque ou use Tab: aparece uma dica em português simples, com uma analogia.
    Uso: <span class="termo" data-t="dns">DNS</span> ou PA.Termos.marca(elemento) para marcar sozinho a primeira ocorrência de cada termo. */
 (function(){
   'use strict';

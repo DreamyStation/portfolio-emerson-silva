@@ -1,4 +1,4 @@
-/* Prática aplicada · aula 5: CSS, a aparência. Laboratório de efeitos de botão e prática no terminal: o estilo da prática (minimalista claro ou escuro, editorial, artesanal)
+/* CodeHome · aula 5: CSS, a aparência. Laboratório de efeitos de botão e prática no terminal: o estilo da prática (minimalista claro ou escuro, editorial, artesanal)
    é escrito em estilo.css e a tela do site muda a cada comando. Ao concluir: tempo total, medalha de velocidade e medalha de design. */
 (function(){
   'use strict';
@@ -99,6 +99,7 @@
   var feitoReq=false,term;
   term=PA.Terminal({
     term:$('#term'),input:$('#cmd'),chips:$('#chips'),progresso:$('#prog'),enviar:$('#enviar'),passos:passos,shell:sh,
+    persist:{id:'css',pid:p.criada,depois:function(t){if(t.passo>=REQ){feitoReq=true;$('#concluir').hidden=false}var e=P.get().etapas.css;if(e&&e.fim)conclui()}},
     prompt:function(){return sh.prompt().replace(' $','')+' $'},atualizaPrompt:function(){atualiza();salvaEstado()},
     aoMostra:function(){P.penalidade(20,'pista')},aoDica:function(){P.penalidade(5,'pista')},aoErro:function(){P.penalidade(5,'erro')},
     depois:function(txt,r,t){

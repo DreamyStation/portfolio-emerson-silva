@@ -1,4 +1,4 @@
-/* Prática aplicada · programação geral 3: testes. O aluno escreve testes com assert; a conferência roda esses testes contra uma versão com defeitos (precisam falhar) e contra uma versão correta (precisam passar). */
+/* CodeHome · programação geral 3: testes. O aluno escreve testes com assert; a conferência roda esses testes contra uma versão com defeitos (precisam falhar) e contra uma versão correta (precisam passar). */
 (function(){
   'use strict';
   var PA=window.PA;

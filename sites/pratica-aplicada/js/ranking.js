@@ -1,4 +1,4 @@
-/* Prática aplicada · ranking de velocidade. Lê as tentativas guardadas no navegador (pa:ranking) e mostra, do melhor ao pior tempo, com data e hora. */
+/* CodeHome · ranking de velocidade. Lê as tentativas guardadas no navegador (pa:ranking) e mostra, do melhor ao pior tempo, com data e hora. */
 (function(){
   'use strict';
   var PA=window.PA,$=PA.$,P=PA.Partida,Som=PA.Som;
