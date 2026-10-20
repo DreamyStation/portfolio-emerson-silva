@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR" data-estetica="matrix">
+<head>
+<title>Aulas · escolha por dificuldade e assunto · CodeHome</title>
+<meta name="description" content="Escolha as aulas por dificuldade e por assunto, continue de onde parou ou pule direto para uma aula.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#000d05">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%20shape-rendering='crispEdges'%3E%3Crect%20fill='%2300120A'%20x='0'%20y='0'%20width='16'%20height='16'/%3E%3Crect%20fill='%2339FF7A'%20x='0'%20y='0'%20width='16'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='0'%20y='15'%20width='16'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='0'%20y='0'%20width='1'%20height='16'/%3E%3Crect%20fill='%2339FF7A'%20x='15'%20y='0'%20width='1'%20height='16'/%3E%3Crect%20fill='%23052B18'%20x='1'%20y='1'%20width='14'%20height='3'/%3E%3Crect%20fill='%2339FF7A'%20x='3'%20y='2'%20width='1'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='5'%20y='2'%20width='1'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='7'%20y='2'%20width='1'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='3'%20y='6'%20width='2'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='5'%20y='7'%20width='2'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='7'%20y='8'%20width='2'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='5'%20y='9'%20width='2'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='3'%20y='10'%20width='2'%20height='1'/%3E%3Crect%20fill='%2339FF7A'%20x='10'%20y='8'%20width='3'%20height='3'/%3E%3Crect%20fill='%23052B18'%20x='3'%20y='13'%20width='7'%20height='1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/site.css?v=43">
+<style id="encaixe">
+/* encaixe de texto: títulos equilibrados, parágrafos sem palavra sozinha, nada estoura a coluna */
+h1,h2,h3,h4{text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:manual}
+p,li,dd,figcaption,blockquote,summary,small,label,.sub,.nota,.desc,.tp{text-wrap:pretty;overflow-wrap:break-word}
+.btn,button,[role=button],[role=tab]{max-width:100%;text-wrap:balance;overflow-wrap:break-word}
+:where(div,section,article,aside,main,header,footer,nav,ul,ol,li,form,fieldset,figure,dl,dt,dd,p,h1,h2,h3,h4,span,label){min-width:0}
+img,svg,video,canvas{max-width:100%}
+</style>
+</head>
+<body>
+<a class="pula" href="#conteudo">Pular para o conteúdo</a>
+<header class="topo"><div class="cx">
+<a class="marca" href="index.html"><svg class="logo" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect class="lb" x="0" y="0" width="16" height="16"/><rect class="lf" x="0" y="0" width="16" height="1"/><rect class="lf" x="0" y="15" width="16" height="1"/><rect class="lf" x="0" y="0" width="1" height="16"/><rect class="lf" x="15" y="0" width="1" height="16"/><rect class="lt" x="1" y="1" width="14" height="3"/><rect class="lf" x="3" y="2" width="1" height="1"/><rect class="lf" x="5" y="2" width="1" height="1"/><rect class="lf" x="7" y="2" width="1" height="1"/><rect class="lf" x="3" y="6" width="2" height="1"/><rect class="lf" x="5" y="7" width="2" height="1"/><rect class="lf" x="7" y="8" width="2" height="1"/><rect class="lf" x="5" y="9" width="2" height="1"/><rect class="lf" x="3" y="10" width="2" height="1"/><rect class="lf cur" x="10" y="8" width="3" height="3"/><rect class="lt" x="3" y="13" width="7" height="1"/></svg><b>CodeHome</b></a>
+<nav class="menu" aria-label="Principal"><a href="index.html">Início</a><a href="aulas.html" aria-current="page">Aulas</a><a href="index.html#programacao">Programação</a><a href="comandos.html">Comandos</a><a href="dicionarios.html">Dicionários</a><a href="ranking.html">Ranking</a><a href="../../index.html#sites">Portfólio</a></nav>
+<div class="ctl" role="group" aria-label="Relógio e som">
+<span class="hud" id="hud" hidden title="Relógio da prática"><span class="nm"></span><b class="rel">00:00</b></span>
+<button class="mudo" id="mudo" type="button" aria-pressed="false" aria-label="Desligar os sons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg><span>Som</span></button>
+<div class="idioma" role="group" aria-label="Idioma · Language"><button type="button" data-lang="pt" aria-label="Português" aria-pressed="true">PT</button><button type="button" data-lang="en" aria-label="English" aria-pressed="false">EN</button></div>
+</div>
+</div></header>
+<main id="conteudo">
+<section class="hero" style="padding-bottom:clamp(20px,3vw,34px)"><div class="cx" style="grid-template-columns:minmax(0,1fr)">
+<div class="rv"><span class="tag">Aulas</span>
+<h1 style="margin-top:18px">Escolha por onde <span class="azul">começar.</span></h1>
+<p class="lead" data-termos>Filtre por dificuldade e por assunto e vá direto à aula. Nas aulas 4 a 10 há um botão para começar sem passar pelas anteriores, e o seu progresso fica guardado neste navegador.</p></div>
+</div></section><section class="sec" style="padding-top:clamp(14px,2vw,24px)"><div class="cx"><div class="folha rv"><div id="continuar" class="continuar" hidden></div><span class="rot">Escolha por onde começar</span><h2>Pule para o que você quer praticar.</h2><div id="exp" class="exp"></div><p style="margin:22px 0 0"><a class="btn cl" href="index.html#aulas">Ver o caminho completo</a></p></div></div></section>
+</main>
+<footer class="rodape"><div class="cx"><p><b>CodeHome</b> · conteúdo e site por <a href="../../index.html#logo">Emerson Silva</a>.</p><p><a href="../../index.html#sites">Ver outros websites</a></p></div><p class="direitos" style="flex:1 1 100%;width:100%;max-width:74ch;margin:12px auto 0;padding:0 16px;font:500 .78rem/1.5 system-ui,sans-serif;text-align:center;opacity:.8;letter-spacing:0;text-transform:none">Este site e tudo o que há nele (design, textos, imagens, código e aplicativos) são obras protegidas pela Lei de Direitos Autorais (Lei 9.610/1998) e, no caso de programas de computador, pela Lei do Software (Lei 9.609/1998). É proibido copiar, reproduzir, redistribuir ou criar obras derivadas sem autorização por escrito do autor, Emerson Silva - DreamyStation. Marcas e logotipos de clientes pertencem aos seus titulares.</p></footer>
+<script src="js/i18n.js?v=43"></script>
+<script src="js/app.js?v=43"></script>
+<script src="js/progresso.js?v=43"></script>
+<script src="js/estetica.js?v=43"></script>
+<script src="js/termos.js?v=43"></script>
+<script src="js/partida.js?v=43"></script>
+<script id="encaixe-js">
+/* encaixe de texto: se uma palavra de título não couber na coluna, reduz a fonte só o necessário (até 60%) e refaz ao redimensionar */
+(function(){
+  var Q='h1,h2,h3,.fit';
+  function amarrar(el){ /* as duas últimas palavras do título ficam juntas: nunca sobra uma palavra sozinha na última linha */
+    var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT),last=null,n;
+    while((n=w.nextNode()))if(n.nodeValue.trim())last=n;
+    if(!last)return;
+    var v=last.nodeValue,novo=v.replace(/(\S+)\s+(\S+)(\s*)$/,'$1 $2$3');
+    if(novo!==v)last.nodeValue=novo;
+  }
+  function fit(){
+    var els=document.querySelectorAll(Q);
+    for(var i=0;i<els.length;i++){
+      var el=els[i];amarrar(el);el.style.removeProperty('font-size');
+      var fs=parseFloat(getComputedStyle(el).fontSize),min=fs*.6,n=0;
+      while(el.scrollWidth>el.clientWidth+1&&fs>min&&n++<40){fs-=.5;el.style.fontSize=fs+'px';}
+    }
+  }
+  var t;function later(){clearTimeout(t);t=setTimeout(fit,60);}
+  addEventListener('resize',later);addEventListener('load',later);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(later);
+  if(window.MutationObserver)new MutationObserver(later).observe(document.body,{childList:true,subtree:true,characterData:true,attributeFilter:['lang']});
+  window.encaixe=fit;fit();
+})();
+</script>
+</body>
+</html>
