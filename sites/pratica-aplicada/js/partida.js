@@ -33,7 +33,7 @@
     editorial:{id:'editorial',nome:'Editorial',desc:'Fonte com serifa, preto e branco e títulos grandes, como uma revista.'},
     artesanal:{id:'artesanal',nome:'Artesanal',desc:'Creme e marrom, cantos arredondados, calor de comércio de bairro.'}
   };
-  var PARES={fluxo:100,css:240,resp:200,js:260,api:240,login:320,deploy:200};
+  var PARES={fluxo:100,css:240,resp:200,js:260,api:240,login:320,deploy:200,py1:480,py2:600,py3:720,mx1:720,mx2:840,final:1500,g1:840,g2:900,g3:900,g4:960};
 
   function sorteia(o){var ks=Object.keys(o);return ks[Math.floor(Math.random()*ks.length)]}
   var P={TIPOS:TIPOS,LAYOUTS:LAYOUTS,ESTILOS:ESTILOS};
@@ -66,7 +66,14 @@
   P.termina=function(etapa){
     var p=P.get();if(!p)return null;var e=p.etapas[etapa];if(!e)return null;
     if(rel.etapa===etapa&&rel.t0){e.ms=(e.ms||0)+(agora()-rel.t0);rel.t0=0}
-    e.fim=true;rel.etapa=null;p.ativa=null;P.grava(p);return e;
+    var jaFim=e.fim;
+    e.fim=true;rel.etapa=null;p.ativa=null;
+    if(!jaFim){
+      var ms=(e.ms||0)+(e.pen||0)*1000;
+      P.ultimo=P.registra(etapa,ms,p,e.pistas||0);
+      P.cursosCompletos(p);
+    }
+    P.grava(p);return e;
   };
   P.fmt=function(ms){var s=Math.round(ms/1000),m=Math.floor(s/60);return (m<10?'0':'')+m+':'+(s%60<10?'0':'')+(s%60)};
 
@@ -80,12 +87,47 @@
     return {est:est,rot:rot,bom:bom,msg:msg,razao:r};
   };
   P.MEDALHAS=['med-bronze','med-prata','med-ouro','med-diamante'];
-  P.estrelas=function(n){return ['Bronze','Prata','Ouro','Diamante'][n]};
-  P.pintaMedalha=function(el,est,tipo){el.textContent='';var im=document.createElement('img');im.className='spr';im.src='img/'+P.MEDALHAS[est]+'.png';im.width=im.height=72;im.alt='';el.appendChild(im);var s=document.createElement('div');s.className='med-rot';s.textContent='Medalha de '+tipo+' · '+P.estrelas(est).toLowerCase();el.appendChild(s)};
+  P.estrelas=function(n){var r=['Bronze','Prata','Ouro','Diamante'][n];return window.PA&&PA.I18n?PA.I18n.t(r):r};
+  P.pintaMedalha=function(el,est,tipo){el.textContent='';var im=document.createElement('img');im.className='spr';im.src='img/'+P.MEDALHAS[est]+'.png';im.width=im.height=72;im.alt='';el.appendChild(im);var s=document.createElement('div');s.className='med-rot';s.textContent=PA.I18n.t('Medalha de')+' '+PA.I18n.t(tipo)+' · '+P.estrelas(est).toLowerCase();el.appendChild(s)};
 
   /* ---------- recordes ---------- */
   P.recorde=function(p){var r=Arm.le('recordes',{});return r[p.tipo+'/'+p.layout]||null};
   P.salvaRecorde=function(p,ms){var r=Arm.le('recordes',{}),k=p.tipo+'/'+p.layout,novo=!r[k]||ms<r[k];if(novo){r[k]=ms;Arm.grava('recordes',r)}return novo};
+
+
+  /* ---------- ranking de velocidade: todas as tentativas, com data ---------- */
+  P.ETAPAS={fluxo:'Aula 3 · Planeje o fluxo',html:'Aula 4 · HTML na prática',css:'Aula 5 · CSS, a aparência',resp:'Aula 6 · CSS responsivo',js:'Aula 7 · JavaScript',api:'Aula 8 · Backend e API',login:'Aula 9 · Login e segurança',deploy:'Aula 10 · Publicar',
+    py1:'Aula 11 · Python, primeiros passos',py2:'Aula 12 · Python escreve o HTML',py3:'Aula 13 · Dados em JSON e várias páginas',mx1:'Aula 14 · Visual Matrix com CSS',mx2:'Aula 15 · Efeitos Matrix com JavaScript',final:'Aula 16 · Desafio final',
+    g1:'Programação 1 · Depuração',g2:'Programação 2 · Lógica',g3:'Programação 3 · Testes',g4:'Programação 4 · Código limpo',
+    curso1:'Nível 1 completo (aulas 3 a 10)',curso2:'Nível 2 completo (aulas 11 a 16)',curso3:'Programação geral completa (4 aulas)'};
+  P.CURSOS={curso1:['fluxo','html','css','resp','js','api','login','deploy'],curso2:['py1','py2','py3','mx1','mx2','final'],curso3:['g1','g2','g3','g4']};
+  P.rankingTodos=function(){var r=Arm.le('ranking',[]);return Array.isArray(r)?r:[]};
+  P.rankingDe=function(chave){return P.rankingTodos().filter(function(x){return x.k===chave}).sort(function(a,b){return a.ms-b.ms||a.em-b.em})};
+  P.registra=function(chave,ms,p,pistas){
+    var r=P.rankingTodos(),e={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),k:chave,ms:Math.round(ms),em:Date.now(),site:p?(p.tipo+'|'+p.layout+'|'+p.estilo):'',pistas:pistas||0};
+    r.push(e);if(r.length>400)r=r.slice(-400);Arm.grava('ranking',r);
+    var lista=P.rankingDe(chave);return {id:e.id,k:chave,ms:e.ms,pos:lista.map(function(x){return x.id}).indexOf(e.id)+1,total:lista.length};
+  };
+  P.cursosCompletos=function(p){
+    Object.keys(P.CURSOS).forEach(function(c){
+      var et=P.CURSOS[c];if(p['rank_'+c])return;
+      if(!et.every(function(k){return p.etapas[k]&&p.etapas[k].fim}))return;
+      var tot=et.reduce(function(a,k){var e=p.etapas[k];return a+(e.ms||0)+(e.pen||0)*1000},0);
+      p['rank_'+c]=true;P.registra(c,tot,p,0);
+    });
+  };
+  /* mostra a posição no painel de resultado de qualquer aula */
+  document.addEventListener('DOMContentLoaded',function(){
+    var R=document.getElementById('resultado');if(!R||!window.MutationObserver)return;
+    var feito=false;
+    new MutationObserver(function(){
+      if(feito||!R.classList.contains('on')||!P.ultimo)return;feito=true;
+      var pa=R.querySelector('.parts');if(!pa)return;
+      var u=P.ultimo,d=document.createElement('div');d.textContent='Ranking';var b=document.createElement('b');b.textContent=u.pos+'º de '+u.total+(u.total===1?' tentativa':' tentativas');d.appendChild(b);pa.appendChild(d);
+      var a=document.createElement('a');a.href='ranking.html';a.className='btn cl';a.textContent='Ver o ranking';a.style.marginTop='10px';
+      var ac=R.querySelector('.acoes');if(ac)ac.appendChild(a);
+    }).observe(R,{attributes:true,attributeFilter:['class']});
+  });
 
   /* ---------- HUD (relógio no topo) ---------- */
   P.hud=function(el){

@@ -44,7 +44,7 @@
           cm=window.CodeMirror(host,{value:'',lineNumbers:true,lineWrapping:true,tabSize:2,indentUnit:2,indentWithTabs:false,matchBrackets:true,mode:'text/plain',viewportMargin:Infinity,
             extraKeys:{Tab:function(c){if(c.somethingSelected())c.indentSelection('add');else c.replaceSelection('  ','end')},'Shift-Tab':function(c){c.indentSelection('subtract')},'Ctrl-S':function(){grava()},'Cmd-S':function(){grava()}},
             inputStyle:'contenteditable',spellcheck:false,autocorrect:false,autocapitalize:false});
-          cm.on('change',agenda);cm.on('cursorActivity',function(){var p=cm.getCursor();pos.textContent='linha '+(p.line+1)+', coluna '+(p.ch+1)});
+          cm.on('change',agenda);cm.on('cursorActivity',function(){var p=cm.getCursor();pos.textContent=(window.PA&&PA.I18n&&PA.I18n.en?'line ':'linha ')+(p.line+1)+(window.PA&&PA.I18n&&PA.I18n.en?', column ':', coluna ')+(p.ch+1)});
         }else{
           ta=document.createElement('textarea');ta.className='ed-ta';ta.spellcheck=false;ta.setAttribute('aria-label','Editor de código');host.appendChild(ta);
           ta.addEventListener('input',agenda);

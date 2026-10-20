@@ -72,13 +72,13 @@
 
   /* ---------- passos ---------- */
   var passos=[
-    {dica:'Passo 1: digite o endereço de um site, como faz no navegador. Digite: abrir padaria.com',cmd:'abrir padaria.com',aceita:/^abrir\s+(https?:\/\/)?(www\.)?padaria\.com(\.br)?\/?$/i,
+    {dica:'Passo 1: digite o endereço de um site, como faz no navegador. Digite: abrir padaria.com',cmd:PA.I18n.t('abrir padaria.com'),aceita:/^(?:abrir|open)\s+(https?:\/\/)?(www\.)?padaria\.com(\.br)?\/?$/i,
      roda:function(m,t){return procuraEndereco(t,'padaria.com',true).then(function(){return pede(t,'/','3)')}).then(function(){estado.aberto=true;abre('navegador','servidor','endereco')})}},
-    {dica:'Passo 2: agora peça outra página do mesmo site. Digite: pedir /cardapio',cmd:'pedir /cardapio',aceita:/^pedir\s+\/?cardapio\/?$/i,
+    {dica:'Passo 2: agora peça outra página do mesmo site. Digite: pedir /cardapio',cmd:PA.I18n.t('pedir /cardapio'),aceita:/^(?:pedir|get)\s+\/?cardapio\/?$/i,
      roda:function(m,t){return pede(t,'/cardapio','Agora o navegador já sabe o endereço, então vai direto ao servidor.').then(function(){abre('pedido')})}},
-    {dica:'Passo 3: peça uma página que o servidor NÃO tem, para ver um erro de verdade. Digite: pedir /pizza',cmd:'pedir /pizza',aceita:/^pedir\s+\/?(?!(?:cardapio|contato)\/?$)[a-z0-9_-]+\/?$/i,
-     roda:function(m,t){return pede(t,m[0].replace(/^pedir\s+/i,''),'Vamos testar o erro.').then(function(){abre('status')})}},
-    {dica:'Desafio: sem exemplo desta vez. Peça a página de contato da padaria.',cmd:'pedir /contato',aceita:/^pedir\s+\/?contato\/?$/i,
+    {dica:'Passo 3: peça uma página que o servidor NÃO tem, para ver um erro de verdade. Digite: pedir /pizza',cmd:PA.I18n.t('pedir /pizza'),aceita:/^(?:pedir|get)\s+\/?(?!(?:cardapio|contato)\/?$)[a-z0-9_-]+\/?$/i,
+     roda:function(m,t){return pede(t,m[0].replace(/^(?:pedir|get)\s+/i,''),'Vamos testar o erro.').then(function(){abre('status')})}},
+    {dica:'Desafio: sem exemplo desta vez. Peça a página de contato da padaria.',cmd:PA.I18n.t('pedir /contato'),aceita:/^(?:pedir|get)\s+\/?contato\/?$/i,
      roda:function(m,t){return pede(t,'/contato','Você sabe o caminho!').then(function(){abre('html')})}}
   ];
 
@@ -87,7 +87,7 @@
     /* explorar: comandos fora do passo também funcionam, como num terminal de verdade */
     extra:function(txt,t,casou){
       if(casou)return false;
-      var a=txt.match(/^abrir\s+(\S+)/i),p=txt.match(/^pedir\s+(\S+)/i);
+      var a=txt.match(/^(?:abrir|open)\s+(\S+)/i),p=txt.match(/^(?:pedir|get)\s+(\S+)/i);
       if(a){var nome=a[1].toLowerCase().replace(/^https?:\/\//,'').replace(/^www\./,'').replace(/\/.*$/,'');return procuraEndereco(t,nome.slice(0,30),false).then(function(){return true})}
       if(p){if(!estado.aberto){t.lin('> Primeiro abra o endereço, como no navegador: abrir padaria.com','d');Som.erro();return true}return pede(t,p[1],'Explorando!').then(function(){return true})}
       return false;

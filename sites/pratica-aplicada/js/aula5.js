@@ -133,7 +133,7 @@
     P.pintaMedalha($('.estr',r),nv.est,'velocidade');
     P.pintaMedalha($('.estr2',r),dEst,'design');
     var rot=['Bronze','Prata','Ouro','Diamante'];
-    $('.msg',r).textContent=nv.msg+' Design: '+rot[dEst].toLowerCase()+(bonus?' (com '+bonus+' bônus)':'')+'.'+(novo?' Novo recorde para '+T.nome+' com este layout!':'');
+    $('.msg',r).textContent=PA.I18n.t(nv.msg)+' Design: '+PA.I18n.t(rot[dEst]).toLowerCase()+(bonus?' ('+PA.I18n.t('com')+' '+bonus+' '+PA.I18n.t('bônus')+')':'')+'.'+(novo?' '+PA.I18n.t('Novo recorde para')+' '+T.nome+' '+PA.I18n.t('com este layout!'):'');
     var pa=$('.parts',r);pa.textContent='';
     [['Fluxo',P.fmt(msF)],['HTML',P.fmt(msH)],['CSS',P.fmt(msC)],['Pistas',String((e.pistas||0)+(ht.pistas||0)+(fl.pistas||0))+' · erros '+((e.erros||0)+(ht.erros||0)+(fl.erros||0))],['Referência',P.fmt(par*1000)]].forEach(function(x){var d=document.createElement('div');d.textContent=x[0];var b=document.createElement('b');b.textContent=x[1];d.appendChild(b);pa.appendChild(d)});
     $('.partida-info',r).textContent=T.nome+' · '+L.nome+' · '+ES.nome+' · site concluído';

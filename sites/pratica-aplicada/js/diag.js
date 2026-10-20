@@ -169,7 +169,7 @@
     if(!itens||!itens.length){var p=document.createElement('p');p.className='diag-ok';p.textContent=vazio||'Nada de errado encontrado por aqui.';el.appendChild(p);return}
     itens.slice(0,12).forEach(function(i){
       var d=document.createElement('div');d.className='diag-item '+i.n;
-      var h=document.createElement('b');h.textContent=(i.n==='erro'?'Erro':i.n==='aviso'?'Atenção':'Dica')+(i.arq?' · '+i.arq:'')+(i.lin?' · linha '+i.lin:'')+' — '+i.t;
+      var h=document.createElement('b');h.textContent=(i.n==='erro'?'Erro':i.n==='aviso'?'Atenção':'Dica')+(i.arq?' · '+i.arq:'')+(i.lin?(window.PA&&PA.I18n&&PA.I18n.en?' · line ':' · linha ')+i.lin:'')+' — '+i.t;
       d.appendChild(h);
       if(i.x){var x=document.createElement('p');x.textContent=i.x;d.appendChild(x)}
       if(i.c){var c=document.createElement('p');c.className='como';c.textContent='Como resolver: '+i.c;d.appendChild(c)}

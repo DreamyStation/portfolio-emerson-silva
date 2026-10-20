@@ -32,7 +32,7 @@
     relogio:function(){tom(1500,.03,'square',.03)},
     ruim:function(){[392,330,262].forEach(function(f,i){tom(f,.22,'triangle',.06,i*.18)})}
   };
-  window.PA={Som:Som,Arm:Arm,$:$,$$:$$,mudo:function(){return mudo}};
+  window.PA=Object.assign(window.PA||{},{Som:Som,Arm:Arm,$:$,$$:$$,mudo:function(){return mudo}});
 
   var bm=$('#mudo');
   if(bm){
@@ -53,7 +53,7 @@
   function Terminal(o){
     var t={},hist=[],hi=0;
     t.passo=0;t.ocupado=false;t.o=o;
-    t.lin=function(txt,cl){var p=document.createElement('p');if(cl)p.className=cl;p.textContent=txt;o.term.appendChild(p);if(window.PA.Termos&&cl&&cl!=='u')window.PA.Termos.marca(p);o.term.scrollTop=o.term.scrollHeight;return p};
+    t.lin=function(txt,cl){var p=document.createElement('p');if(cl)p.className=cl;if(!cl||cl==='u'||/^\[console/.test(txt))p.setAttribute('data-i18n','skip');p.textContent=(!p.hasAttribute('data-i18n')&&window.PA&&PA.I18n?PA.I18n.t(txt):txt);o.term.appendChild(p);if(window.PA.Termos&&cl&&cl!=='u')window.PA.Termos.marca(p);o.term.scrollTop=o.term.scrollHeight;return p};
     t.espera=function(ms){return new Promise(function(r){setTimeout(r,ms)})};
     t.digita=function(texto){return new Promise(function(res){var i=0;o.input.value='';(function f(){if(i<texto.length){o.input.value+=texto[i++];Som.tec();setTimeout(f,34+Math.random()*28)}else res()})()})};
     var cmdDe=function(p){return p?(typeof p.cmd==='function'?p.cmd():p.cmd):''};
@@ -74,9 +74,9 @@
       o.input.value='';hist.push(txt);hi=hist.length;
       t.lin((o.prompt?o.prompt():'$')+' '+txt,'u');
       var n=txt.toLowerCase();
-      if(n==='dica'||n==='ajuda'||n==='help'){if(o.aoDica)o.aoDica(t);t.lin('> Comandos do treino: dica · mostra (eu digito para você) · limpar'+(o.shell?' · reiniciar':''),'m');t.dica();return}
-      if(n==='mostra'){mostra();return}
-      if(n==='reiniciar'&&o.reiniciar){o.reiniciar(t);return}
+      if(n==='dica'||n==='hint'||n==='ajuda'||n==='help'){if(o.aoDica)o.aoDica(t);t.lin('> Comandos do treino: dica · mostra (eu digito para você) · limpar'+(o.shell?' · reiniciar':''),'m');t.dica();return}
+      if(n==='mostra'||n==='show'){mostra();return}
+      if((n==='reiniciar'||n==='restart')&&o.reiniciar){o.reiniciar(t);return}
       if(n==='limpar'||n==='clear'||n==='cls'){t.limpa();if(!o.shell){t.dica();return}}
       if(o.shell){
         var r=o.shell.exec(txt);

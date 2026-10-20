@@ -9,13 +9,14 @@
     etapa:'login',medalha2:'segurança',fim:'login e segurança concluídos',semPreview:true,
     brief:function(L){return [['Site',L.T.nome,'caminho: '+L.T.caminho],['Objetivo','Proteger o acesso','login com e-mail e senha, sem guardar a senha'],['Ferramenta','curl e servidor de mentira','tudo simulado no navegador']]},
     cmds:function(L){serv=PA.Servidor(L.T);
-      return {curl:PA.curl(serv),
-        servidor:function(tk,r){
+      var srv=function(tk,r){
           var a=(tk[1]&&tk[1].v||'estado').toLowerCase();
+          if(a==='secure')a='seguro';if(a==='insecure')a='inseguro';
           if(a==='seguro'){serv.modo='seguro';serv.idxSeguro=(serv.hist||[]).length;r.linhas.push(['> Defesas ligadas: consultas com parâmetros e texto dos usuários escapado na página.','ok'])}
           else if(a==='inseguro'){serv.modo='inseguro';r.linhas.push(['> Defesas desligadas (só para estudo!).','er'])}
           else r.linhas.push(['> Modo atual do servidor: '+serv.modo,'m']);
-        }}},
+        };
+      return {curl:PA.curl(serv),servidor:srv,server:srv}},
     aoAtualizar:function(L){desenha(L)},aoReiniciar:function(){if(serv)serv.zera()}
   });
   if(!L)return;
@@ -55,7 +56,7 @@
     {dica:'Passo 6: peça o perfil com o token. Digite: curl -H "Authorization: Bearer $TOKEN" /api/perfil',cmd:'curl -H "Authorization: Bearer $TOKEN" /api/perfil',ok:function(){return h('GET','/api/perfil',200)},ex:'Agora o servidor reconhece quem você é. O $TOKEN é trocado pelo token real que o login devolveu. Veja o site na minitela: conectada.'},
     {dica:'Passo 7: envie um comentário malicioso (XSS). Digite: curl -X POST /api/comentarios -d \'{"texto":"<img src=x onerror=alert(1)>"}\'',cmd:"curl -X POST /api/comentarios -d '{\"texto\":\"<img src=x onerror=alert(1)>\"}'",ok:function(){return h('POST','/api/comentarios',201)&&serv.comentarios.some(function(c){return /</.test(c.texto)})},ex:'Veja o alerta na minitela. XSS acontece quando o site mostra texto de usuários como se fosse HTML: o código de um visitante rodaria no navegador de todos os outros.'},
     {dica:'Passo 8: teste uma injeção de SQL na busca. Digite: curl "/api/produtos?busca=\' OR \'1\'=\'1"',cmd:"curl \"/api/produtos?busca=' OR '1'='1\"",ok:function(){return (serv.hist||[]).some(inj)&&(serv.idxSeguro==null)},ex:'Repare no SQL montado: o texto digitado virou parte do comando e a busca devolveu tudo. É por isso que nunca se junta texto de usuário dentro de uma consulta.'},
-    {dica:'Passo 9: ligue as defesas do servidor. Digite: servidor seguro',cmd:'servidor seguro',ok:function(){return serv.modo==='seguro'},ex:'Agora o servidor usa consultas com parâmetros (o ? no SQL) e a página escapa o texto dos usuários. Veja o mural na minitela: o comentário virou texto comum.'},
+    {dica:'Passo 9: ligue as defesas do servidor. Digite: servidor seguro',cmd:PA.I18n.t('servidor seguro'),ok:function(){return serv.modo==='seguro'},ex:'Agora o servidor usa consultas com parâmetros (o ? no SQL) e a página escapa o texto dos usuários. Veja o mural na minitela: o comentário virou texto comum.'},
     {dica:'Passo 10: repita a injeção e veja a defesa funcionando. Digite: curl "/api/produtos?busca=\' OR \'1\'=\'1"',cmd:"curl \"/api/produtos?busca=' OR '1'='1\"",ok:function(){var hs=serv.hist||[];return serv.idxSeguro!=null&&hs.slice(serv.idxSeguro).some(function(x){return x.url.indexOf("'1'='1")>=0&&x.status===200})},ex:'O texto é tratado só como texto: nenhum produto se chama "\' OR \'1\'=\'1". Parâmetros e escape são a base da segurança de qualquer site com banco de dados.'},
     {dica:'Bônus 1: simule um ataque de força bruta. Repita até o servidor bloquear (429): curl -X POST /api/login -d \'{"email":"ana@exemplo.com","senha":"x"}\'',cmd:"curl -X POST /api/login -d '{\"email\":\"ana@exemplo.com\",\"senha\":\"x\"}'",bonus:true,ok:function(){return h('POST','/api/login',429)},ex:'Depois de 5 erros seguidos o servidor trava as tentativas. Limitar tentativas impede que um robô teste milhares de senhas.'},
     {dica:'Bônus 2: tente cadastrar o mesmo e-mail de novo. Digite: curl -X POST /api/cadastro -d \'{"email":"ana@exemplo.com","senha":"Outra-senha-77"}\'',cmd:"curl -X POST /api/cadastro -d '{\"email\":\"ana@exemplo.com\",\"senha\":\"Outra-senha-77\"}'",bonus:true,ok:function(){return h('POST','/api/cadastro',409)},ex:'409 quer dizer "conflito": o e-mail já existe. Em sites reais isso também pode revelar quem tem conta, então muitos sistemas mandam um e-mail em vez de responder na tela.'}

@@ -123,7 +123,7 @@
     R.classList.add('on');R.classList.toggle('boa',nv.bom);R.classList.toggle('ruim',!nv.bom);
     $('.tempo',R).textContent=P.fmt(ms);$('.nota',R).textContent=nv.rot;
     P.pintaMedalha($('.estr',R),nv.est,'velocidade');P.pintaMedalha($('.estr2',R),dEst,'responsivo');
-    $('.msg',R).textContent=nv.msg+' Medalha de responsivo: '+['bronze','prata','ouro','diamante'][dEst]+(bonus?' (com '+bonus+' bônus)':'')+'.';
+    $('.msg',R).textContent=PA.I18n.t(nv.msg)+' '+PA.I18n.t('Medalha de')+' '+PA.I18n.t('responsivo')+': '+PA.I18n.t(['bronze','prata','ouro','diamante'][dEst])+(bonus?' ('+PA.I18n.t('com')+' '+bonus+' '+PA.I18n.t('bônus')+')':'')+'.';
     var pa=$('.parts',R);pa.textContent='';
     [['Esta etapa',P.fmt(ms)],['Pistas',String(e.pistas||0)+' · erros '+(e.erros||0)],['Referência',P.fmt(P.par('resp',pp)*1000)]].forEach(function(x){var d=document.createElement('div');d.textContent=x[0];var b=document.createElement('b');b.textContent=x[1];d.appendChild(b);pa.appendChild(d)});
     $('.partida-info',R).textContent=T.nome+' · '+L.nome+' · '+ES.nome+' · responsivo concluído';

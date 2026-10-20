@@ -48,6 +48,16 @@
     L.existe=function(nome){return !!L.sh.no(L.SITE+'/'+nome)};
     L.arquivos=function(ext){var n=L.pasta();if(!n)return [];return Object.keys(n.f).filter(function(k){return n.f[k].t==='a'&&(!ext||new RegExp('\\.'+ext+'$','i').test(k))})};
     L.compacto=function(nome){return (L.arq(nome)||'').replace(/\s+/g,'')};
+    /* conferência escondida: roda um Python temporário (que pode importar os arquivos do aluno) e devolve o resultado; troca arquivos por um instante com `trocas` {nome:texto} */
+    L.confere=function(codigo,trocas){
+      var dir=L.pasta(),tmp='_conferencia_'+Math.floor(Math.random()*1e6)+'.py',guardado={};
+      if(!dir)return Promise.resolve({erro:true,texto:'',erroTexto:'sem pasta',saida:[]});
+      Object.keys(trocas||{}).forEach(function(k){guardado[k]=dir.f[k]?dir.f[k].c:null;dir.f[k]=PA.fsArq(trocas[k])});
+      dir.f[tmp]=PA.fsArq(codigo);
+      function volta(){delete dir.f[tmp];Object.keys(guardado).forEach(function(k){if(guardado[k]==null)delete dir.f[k];else dir.f[k]=PA.fsArq(guardado[k])})}
+      return PA.Python.roda(L.sh,'/'+L.sh.partes(L.SITE).join('/')+'/'+tmp).then(function(r){volta();return r},function(e){volta();throw e});
+    };
+    L.json=function(res){var l=String(res&&res.texto||'').trim().split('\n').pop();try{return JSON.parse(l)}catch(e){return null}};
     L.insp=function(codigo){return L.sh.inspeciona($('#tela'),codigo)};
     L.persiste=function(){
       var n=L.pasta();if(!n)return;var o={},base={'index.html':1,'estilo.css':1};
@@ -67,7 +77,7 @@
       var htmls=L.arquivos('html');
       if(htmls.indexOf(L.pagina)<0)L.pagina=htmls.indexOf('index.html')>=0?'index.html':(htmls[0]||'index.html');
       if(seletor){var antes=seletor.value,k=htmls.join('|');if(seletor.dataset.k!==k){seletor.textContent='';htmls.forEach(function(n){var o=el('option',null,n);o.value=n;seletor.appendChild(o)});seletor.dataset.k=k}seletor.value=L.pagina;seletor.hidden=htmls.length<2}
-      L.sh.preview(L.SITE,f,cfg.vazio||'A minitela mostra o site quando existir um index.html.',{scripts:true,ponte:true,arquivo:L.pagina});
+      L.sh.preview(L.SITE,f,cfg.vazio||'A minitela mostra o site quando existir um index.html.',{scripts:true,ponte:true,arquivo:L.pagina,noLugar:!!cfg.scriptNoLugar});
       if(L.sh.laco)L.errosJS.push({n:'erro',arq:L.arquivos('js')[0]||'script.js',lin:0,t:'Laço infinito bloqueado',x:'O código tem while(true) ou for(;;) sem break. Rodar isso travaria a minitela (e a página), então ele não foi executado.',c:'Todo laço precisa de uma condição que um dia fique falsa, ou de um break. Para repetir de tempos em tempos, use setInterval em vez de while.'});
     };
     if(seletor)seletor.addEventListener('change',function(){L.pagina=seletor.value;L.desenha();L.avalia()});
@@ -144,12 +154,12 @@
 
     /* ---------- ponte com a minitela: console e erros de verdade ---------- */
     L.sh.ligaPonte($('#tela'),{
-      log:function(t,d){L.logs.push(t);if(L.term)L.term.lin('[console'+(d&&d.nv==='e'?' erro':d&&d.nv==='w'?' aviso':'')+'] '+t,d&&d.nv==='e'?'er':'ok');L.avalia()},
+      log:function(t,d){L.logs.push(t);if(L.term)L.term.lin('[console'+(d&&d.nv==='e'?(PA.I18n.en?' error':' erro'):d&&d.nv==='w'?(PA.I18n.en?' warning':' aviso'):'')+'] '+t,d&&d.nv==='e'?'er':'ok');L.avalia()},
       erro:function(t,d){
         var lin=d&&d.lin?Math.max(1,d.lin-(L.sh.jsOffset||0)):0;
-        var arqJs=L.arquivos('js')[0]||'script.js';
+        var arqJs=L.arquivos('js')[0]||'script.js';try{var mj=/<script[^>]*src\s*=\s*["']([^"']+)["']/i.exec(L.arq(L.pagina||'index.html')||'');if(mj&&L.arq(mj[1]))arqJs=mj[1]}catch(e){}
         var it=D.jsErro(t,lin,arqJs);L.errosJS.push(it);
-        if(L.term){L.term.lin('[erro] '+t+(lin?' (linha '+lin+' de '+arqJs+')':''),'er')}
+        if(L.term){L.term.lin((PA.I18n.en?'[error] ':'[erro] ')+t+(lin?(PA.I18n.en?' (line '+lin+' of ':' (linha '+lin+' de ')+arqJs+')':''),'er')}
         L.diagnostica();L.avalia();
       }
     });
@@ -175,7 +185,7 @@
       R.classList.add('on');R.classList.toggle('boa',nv.bom);R.classList.toggle('ruim',!nv.bom);
       $('.tempo',R).textContent=P.fmt(ms);$('.nota',R).textContent=nv.rot;
       P.pintaMedalha($('.estr',R),nv.est,'velocidade');P.pintaMedalha($('.estr2',R),q2,cfg.medalha2);
-      $('.msg',R).textContent=nv.msg+' Medalha de '+cfg.medalha2+': '+['bronze','prata','ouro','diamante'][q2]+(L.nBonus?' (com '+L.nBonus+' bônus)':'')+'.';
+      $('.msg',R).textContent=PA.I18n.t(nv.msg)+' '+PA.I18n.t('Medalha de')+' '+PA.I18n.t(cfg.medalha2)+': '+PA.I18n.t(['bronze','prata','ouro','diamante'][q2])+(L.nBonus?' ('+PA.I18n.t('com')+' '+L.nBonus+' '+PA.I18n.t('bônus')+')':'')+'.';
       var pa=$('.parts',R);pa.textContent='';
       [['Esta etapa',P.fmt(ms)],['Pistas',String(e.pistas||0)],['Referência',P.fmt((cfg.par||P.par(cfg.etapa,pp))*1000)]].forEach(function(x){var d=el('div',null,x[0]);d.appendChild(el('b',null,x[1]));pa.appendChild(d)});
       $('.partida-info',R).textContent=L.T.nome+' · '+cfg.fim;
@@ -236,13 +246,14 @@
             else if(!res.erro){L.itemPy=null}
             if(res.tempo){L.itemPy={n:'erro',arq:arq||'',lin:0,t:'Programa interrompido por demorar demais',x:'Ele rodou mais de 10 segundos sem terminar, provavelmente um laço infinito.',c:'Todo while precisa de uma condição que um dia fique falsa; confira o contador.'}}
             if(res.mudou&&res.mudou.length){t.lin('> O programa criou ou alterou: '+res.mudou.map(function(c){return c.split('/').pop()}).join(', '),'m')}
+            if(L.cfg.aoPython&&!res.tempo&&!res.falhaCarga)return Promise.resolve(L.cfg.aoPython(L,arq,res,t)).catch(function(){});
           });
         }
         return PA.Node.roda(codigo).then(function(res){
           linhas(t,res.saida);
           L.saida=res.texto;L.rodou[arq||'-e']={ok:!res.erro,texto:res.texto,quando:Date.now()};L.ultNode={arq:arq,ok:!res.erro,texto:res.texto};
           L.hist.push({t:'js',arq:arq||'-e',ok:!res.erro,texto:res.texto,erro:res.erro?res.erro.msg:'',codigo:codigo,mudou:[],quando:Date.now()});L.guardaHist();
-          if(res.erro){var it=D.jsErro(res.erro.msg,res.erro.lin,arq||'');L.itemNode=it;t.lin((/^Uncaught/.test(res.erro.msg)?'':'Uncaught ')+res.erro.msg+(res.erro.lin?' (linha '+res.erro.lin+')':''),'er');t.lin('> '+it.t+'. '+it.x,'d');t.lin('> '+it.c,'d');PA.Som.erro()}
+          if(res.erro){var it=D.jsErro(res.erro.msg,res.erro.lin,arq||'');L.itemNode=it;t.lin((/^Uncaught/.test(res.erro.msg)?'':'Uncaught ')+res.erro.msg+(res.erro.lin?(PA.I18n.en?' (line ':' (linha ')+res.erro.lin+')':''),'er');t.lin('> '+it.t+'. '+it.x,'d');t.lin('> '+it.c,'d');PA.Som.erro()}
           else L.itemNode=null;
           if(res.tempo)t.lin('> O programa foi interrompido por demorar mais de 5 segundos (laço infinito?).','er');
         });

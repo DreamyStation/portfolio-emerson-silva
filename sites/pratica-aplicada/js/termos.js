@@ -3,6 +3,16 @@
 (function(){
   'use strict';
   var T={
+    depuracao:{t:'Depuração (debug)',al:['depuração','depurar','depurador','debugar'],d:'O trabalho de descobrir por que um programa não faz o que deveria e corrigir a causa. Funciona melhor como investigação com hipóteses do que como tentativa e erro.',a:'Como um mecânico: ele ouve o motor, levanta uma suspeita e testa uma peça de cada vez.'},
+    bug:{t:'Bug',al:['bug','bugs','defeito','defeitos'],d:'Um defeito no programa: ele roda, mas faz algo diferente do esperado, às vezes sem mostrar erro nenhum.',a:'Um erro de receita: o bolo sai, só que com sal no lugar do açúcar.'},
+    assert:{t:'assert',al:['assert','AssertionError'],d:'Uma afirmação no código: "isto precisa ser verdade". Se não for, o programa para ali e conta o que esperava.',a:'O fiscal que confere cada item da lista e para a fila se algo estiver errado.'},
+    teste:{t:'Teste automático',al:['teste automático','testes automáticos'],d:'Um programa pequeno que usa o seu código e confere o resultado, sempre do mesmo jeito. Se algo quebrar, ele avisa na hora.',a:'Um checklist que roda sozinho antes de cada entrega.'},
+    casoborda:{t:'Caso de borda',al:['casos de borda','caso de borda'],d:'Um valor nos extremos: lista vazia, zero, o primeiro e o último item, o limite exato. É onde a maioria dos bugs mora.',a:'Os cantos da sala, onde a vassoura costuma não chegar.'},
+    algoritmo:{t:'Algoritmo',al:['algoritmo','algoritmos'],d:'Uma sequência de passos que sempre leva ao resultado certo. Programar é escrever algoritmos que o computador consegue seguir.',a:'Uma receita de bolo, com passos na ordem.'},
+    refatorar:{t:'Refatoração',al:['refatorar','refatoração','refatorando'],d:'Reorganizar o código por dentro sem mudar o que ele faz por fora. A saída do programa é a prova de que nada quebrou.',a:'Arrumar a oficina: as ferramentas mudam de lugar, mas o trabalho entregue é o mesmo.'},
+    constante:{t:'Constante',al:['constante','constantes','números mágicos','número mágico'],d:'Um valor com nome, escrito em MAIÚSCULAS no topo do arquivo (DESCONTO = 10). Evita números soltos que ninguém entende e permite mudar o valor em um lugar só.',a:'A etiqueta de preço na prateleira, em vez de o preço escrito em cada caixa.'},
+    docstring:{t:'Docstring',al:['docstring','docstrings'],d:'O texto entre três aspas logo abaixo do def que explica o que a função faz. O help() mostra esse texto.',a:'A etiqueta de instruções colada na máquina.'},
+    pontoparada:{t:'Ponto de parada',al:['breakpoint','debugger'],d:'Uma marca que pausa o programa naquela linha para você olhar o valor de tudo, passo a passo.',a:'Apertar o pause no filme para examinar a cena.'},
     navegador:{t:'Navegador',al:['navegador','navegadores'],d:'O programa que você usa para abrir sites: Chrome, Edge, Firefox, Safari. Ele pede as páginas e as desenha na tela.',a:'É você, o cliente do restaurante.'},
     servidor:{t:'Servidor',al:['servidor','servidores'],d:'Um computador ligado o tempo todo que guarda os arquivos de um site e responde a quem pedir.',a:'É a cozinha do restaurante.'},
     dns:{t:'DNS',al:['DNS'],d:'O catálogo de endereços da internet. Traduz o nome do site (padaria.com) para o número do servidor (o IP).',a:'Como uma lista telefônica: você procura o nome e ela dá o número.'},
@@ -118,6 +128,7 @@
   window.addEventListener('scroll',function(){if(tip&&tip.classList.contains('on')&&alvo)posiciona(alvo)},{passive:true});
 
   /* marca sozinho a primeira ocorrência de cada termo dentro de um elemento */
+  if(window.PA&&window.PA.I18n&&window.PA.I18n.termos)window.PA.I18n.termos(T);
   var PRE='(?<![\\p{L}\\p{N}_<\\/.-])',POS='(?![\\p{L}\\p{N}_>.-]|\\.[a-z])';
   function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
   var ER=Object.keys(T).map(function(k){
@@ -127,6 +138,7 @@
   });
   function marca(raiz,opc){
     opc=opc||{};var usados=opc.usados||{};if(!raiz)return;
+    if(window.PA&&window.PA.I18n&&window.PA.I18n.en&&window.PA.I18n.aplica)window.PA.I18n.aplica(raiz);
     var w=document.createTreeWalker(raiz,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
       var p=n.parentNode;if(!n.nodeValue.trim())return NodeFilter.FILTER_REJECT;
       if(p.closest&&p.closest('.termo,button,a,code,pre,input,textarea,script,style,.u,.cmd,.cad,.sel,.tag,h1,.bytes,.arvore,.conteudo'))return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT}});

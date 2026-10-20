@@ -81,7 +81,7 @@
   el.limpa.addEventListener('click',function(){cadeia=[];Som.clique();desenha();checks()});
   el.conf.addEventListener('click',function(){
     var r=regras(),falta=r.filter(function(x){return !x[1]});
-    if(falta.length){P.penalidade(10,'erro');Som.erro();el.msg.className='msgf er';el.msg.textContent='Ainda falta: '+falta[0][0].toLowerCase()+'. (+10 s no relógio)';return}
+    if(falta.length){P.penalidade(10,'erro');Som.erro();el.msg.className='msgf er';var ft=PA.I18n.t(falta[0][0]);el.msg.textContent=PA.I18n.t('Ainda falta:')+' '+(PA.I18n.en?ft:ft.toLowerCase())+PA.I18n.t('. (+10 s no relógio)');return}
     var p=P.get();p.fluxo=cadeia.slice();P.grava(p);var e=P.termina('fluxo');
     var ms=(e.ms||0)+(e.pen||0)*1000,n=P.nota(ms,P.par('fluxo',p));
     P.get().etapas.fluxo.nota=n.est;var q=P.get();q.etapas.fluxo.nota=n.est;P.grava(q);
